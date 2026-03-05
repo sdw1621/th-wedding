@@ -4,14 +4,14 @@ import ChevronDown from 'lucide-react/dist/esm/icons/chevron-down';
 import ChevronUp from 'lucide-react/dist/esm/icons/chevron-up';
 import Copy from 'lucide-react/dist/esm/icons/copy';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-// 토스 딥링크용 은행명 매핑 (토스가 인식하는 정확한 한글 은행명)
+// 토스 딥링크용 은행명 (토스 앱이 인식하는 축약형)
 const TOSS_BANK_NAMES = {
     '카카오뱅크': '카카오뱅크',
-    '농협': '농협은행',
-    '우리은행': '우리은행',
-    '국민은행': '국민은행',
-    '신한은행': '신한은행',
-    '하나은행': '하나은행',
+    '농협': '농협',
+    '우리은행': '우리',
+    '국민은행': '국민',
+    '신한은행': '신한',
+    '하나은행': '하나',
 };
 
 // 토스 송금 딥링크
