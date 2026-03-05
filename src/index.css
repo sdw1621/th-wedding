@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --color-gold: #d4a853;
+  --color-gold-light: #e8cc8a;
+  --color-cream: #fdf6e8;
+  --color-sage: #7a9a76;
+  --color-charcoal: #2d2d2d;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Noto Serif KR', serif;
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background-color: #ffffff;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold-light);
+  border-radius: 10px;
+}
+
+/* Scroll reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Envelope animation */
+.envelope-container {
+  perspective: 1000px;
+}
+
+.envelope-flap {
+  transform-origin: top center;
+  transition: transform 0.8s ease-in-out;
+}
+
+.envelope-flap.open {
+  transform: rotateX(180deg);
+}
+
+/* Shimmer effect */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(212, 168, 83, 0.15) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Petal fall animation */
+@keyframes petalFall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg) translateX(0);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(25vh) rotate(90deg) translateX(15px);
+  }
+  50% {
+    transform: translateY(50vh) rotate(180deg) translateX(-10px);
+  }
+  75% {
+    transform: translateY(75vh) rotate(270deg) translateX(20px);
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg) translateX(5px);
+    opacity: 0;
+  }
+}
+
+.petal {
+  animation: petalFall linear infinite;
+  pointer-events: none;
+}
+
+/* Toast animation */
+@keyframes toastIn {
+  0% { transform: translateY(100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes toastOut {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+
+.toast-in {
+  animation: toastIn 0.3s ease-out forwards;
+}
+
+.toast-out {
+  animation: toastOut 0.3s ease-in forwards;
+}
+
+/* Gallery scroll snap */
+.gallery-scroll {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.gallery-scroll > * {
+  scroll-snap-align: center;
+}
+
+/* Quiz option hover */
+.quiz-option {
+  transition: all 0.3s ease;
+}
+
+.quiz-option:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(212, 168, 83, 0.3);
+}
+
+/* Divider */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 40px;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold-light), transparent);
+}
+
+/* Heart beat */
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.15); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.1); }
+}
+
+.heart-beat {
+  animation: heartBeat 1.5s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* Bottom nav safe area */
+.content-with-nav {
+  padding-bottom: 80px;
+}
+
+/* Account accordion */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+}
+
+.accordion-content.open {
+  max-height: 500px;
+}
+
+/* Image gallery shimmer placeholder */
+.img-placeholder {
+  background: linear-gradient(
+    -45deg, 
+    #f0e6d3 25%, 
+    #f7eed9 50%, 
+    #f0e6d3 75%
+  );
+  background-size: 400% 400%;
+  animation: shimmer 1.5s ease infinite;
+}
