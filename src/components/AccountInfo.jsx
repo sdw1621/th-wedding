@@ -4,21 +4,21 @@ import ChevronDown from 'lucide-react/dist/esm/icons/chevron-down';
 import ChevronUp from 'lucide-react/dist/esm/icons/chevron-up';
 import Copy from 'lucide-react/dist/esm/icons/copy';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-// 은행 코드 매핑 (토스 딥링크용)
-const BANK_CODES = {
-    '카카오뱅크': '090',
-    '농협': '011',
-    '우리은행': '020',
-    '국민은행': '004',
-    '신한은행': '088',
-    '하나은행': '081',
+// 토스 딥링크용 은행명 매핑 (토스가 인식하는 정확한 한글 은행명)
+const TOSS_BANK_NAMES = {
+    '카카오뱅크': '카카오뱅크',
+    '농협': '농협은행',
+    '우리은행': '우리은행',
+    '국민은행': '국민은행',
+    '신한은행': '신한은행',
+    '하나은행': '하나은행',
 };
 
 // 토스 송금 딥링크
 const openToss = (bankLabel, accountNo, holder) => {
-    const bankCode = BANK_CODES[bankLabel] || bankLabel;
+    const tossBankName = TOSS_BANK_NAMES[bankLabel] || bankLabel;
     const cleanAccount = accountNo.replace(/-/g, '');
-    window.location.href = `supertoss://send?bank=${bankCode}&accountNo=${cleanAccount}&origin=wedding`;
+    window.location.href = `supertoss://send?bank=${encodeURIComponent(tossBankName)}&accountNo=${cleanAccount}&origin=wedding`;
 };
 
 
