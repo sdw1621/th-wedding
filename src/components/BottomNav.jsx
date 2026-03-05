@@ -1,5 +1,9 @@
 import React from 'react';
-import { Calendar, Camera, MapPin, Gift } from 'lucide-react';
+import Heart from 'lucide-react/dist/esm/icons/heart';
+import Camera from 'lucide-react/dist/esm/icons/camera';
+import MapPin from 'lucide-react/dist/esm/icons/map-pin';
+import MessageSquare from 'lucide-react/dist/esm/icons/message-square';
+import Gift from 'lucide-react/dist/esm/icons/gift';
 
 export default function BottomNav() {
     const scrollTo = (id) => {
@@ -7,24 +11,26 @@ export default function BottomNav() {
         if (el) el.scrollIntoView({ behavior: 'smooth' });
     };
 
+    const navItems = [
+        { id: 'greeting', label: '인사말', icon: Heart },
+        { id: 'gallery', label: '갤러리', icon: Camera },
+        { id: 'location', label: '오시는길', icon: MapPin },
+        { id: 'account', label: '마음전하기', icon: Gift },
+        { id: 'guestbook', label: '방명록', icon: MessageSquare },
+    ];
+
     return (
-        <div className="fixed bottom-0 w-full max-w-[480px] bg-white/95 backdrop-blur-md border-t border-stone-200 z-40 px-6 pt-3 pb-[max(24px,env(safe-area-inset-bottom))] flex justify-between items-center left-1/2 -translate-x-1/2">
-            <button onClick={() => scrollTo('greeting')} className="flex flex-col items-center text-stone-500 hover:text-stone-800 transition-colors w-16">
-                <Calendar size={20} className="mb-1" />
-                <span className="text-[10px] font-bold">일시</span>
-            </button>
-            <button onClick={() => scrollTo('gallery')} className="flex flex-col items-center text-stone-500 hover:text-stone-800 transition-colors w-16">
-                <Camera size={20} className="mb-1" />
-                <span className="text-[10px] font-bold">갤러리</span>
-            </button>
-            <button onClick={() => scrollTo('location')} className="flex flex-col items-center text-stone-500 hover:text-stone-800 transition-colors w-16">
-                <MapPin size={20} className="mb-1" />
-                <span className="text-[10px] font-bold">오시는길</span>
-            </button>
-            <button onClick={() => scrollTo('account')} className="flex flex-col items-center text-stone-500 hover:text-stone-800 transition-colors w-16">
-                <Gift size={20} className="mb-1" />
-                <span className="text-[10px] font-bold">마음전달</span>
-            </button>
+        <div className="fixed bottom-0 w-full max-w-[480px] bg-white/95 backdrop-blur-md border-t border-stone-200 z-40 px-2 pt-3 pb-[max(24px,env(safe-area-inset-bottom))] flex justify-around items-center left-1/2 -translate-x-1/2">
+            {navItems.map((item) => (
+                <button
+                    key={item.id}
+                    onClick={() => scrollTo(item.id)}
+                    className="flex flex-col items-center text-rose-300 hover:text-rose-500 transition-colors duration-300 w-[18%]"
+                >
+                    <item.icon size={18} strokeWidth={1.5} className="mb-1.5" />
+                    <span className="text-[9px] font-bold tracking-tight whitespace-nowrap text-stone-500">{item.label}</span>
+                </button>
+            ))}
         </div>
     );
 }

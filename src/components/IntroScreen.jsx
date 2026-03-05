@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Heart } from 'lucide-react';
+import Heart from 'lucide-react/dist/esm/icons/heart';
 
 export default function IntroScreen({ onEnter }) {
     const [isOpen, setIsOpen] = useState(false);

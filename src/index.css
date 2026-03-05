@@ -102,33 +102,33 @@ body {
 }
 
 /* Petal fall animation */
-@keyframes petalFall {
+@keyframes petal-fall {
   0% {
-    transform: translateY(-10vh) rotate(0deg) translateX(0);
-    opacity: 1;
+    transform: translateY(-10vh) translateX(0) rotate(0deg);
+    opacity: 0;
   }
 
-  25% {
-    transform: translateY(25vh) rotate(90deg) translateX(15px);
+  10% {
+    opacity: 0.8;
   }
 
-  50% {
-    transform: translateY(50vh) rotate(180deg) translateX(-10px);
-  }
-
-  75% {
-    transform: translateY(75vh) rotate(270deg) translateX(20px);
+  90% {
+    opacity: 0.8;
   }
 
   100% {
-    transform: translateY(100vh) rotate(360deg) translateX(5px);
+    transform: translateY(110vh) translateX(100px) rotate(360deg);
     opacity: 0;
   }
 }
 
 .petal {
-  animation: petalFall linear infinite;
+  position: fixed;
+  top: -10%;
+  user-select: none;
   pointer-events: none;
+  z-index: 10;
+  animation: petal-fall linear infinite;
 }
 
 /* Toast animation */
@@ -250,4 +250,21 @@ body {
       #f0e6d3 75%);
   background-size: 400% 400%;
   animation: shimmer 1.5s ease infinite;
+}
+
+/* --- Utilities --- */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }

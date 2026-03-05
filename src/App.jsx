@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle2 } from 'lucide-react';
+import CheckCircle2 from 'lucide-react/dist/esm/icons/check-circle-2';
 
 import IntroScreen from './components/IntroScreen';
 import Hero from './components/Hero';
@@ -10,6 +10,8 @@ import Location from './components/Location';
 import AccountInfo from './components/AccountInfo';
 import Guestbook from './components/Guestbook';
 import BottomNav from './components/BottomNav';
+import Petals from './components/Petals';
+import MusicPlayer from './components/MusicPlayer';
 
 export default function App() {
     const [isEntered, setIsEntered] = useState(false);
@@ -26,6 +28,9 @@ export default function App() {
 
     return (
         <div className="min-h-screen bg-[#FDFBF7] text-stone-800 font-sans selection:bg-rose-200 relative pb-24">
+            <Petals />
+            <MusicPlayer />
+
             <Hero />
             <Greeting />
             <CoupleQuiz />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart } from 'lucide-react';
+import Heart from 'lucide-react/dist/esm/icons/heart';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function Greeting() {
@@ -8,7 +8,7 @@ export default function Greeting() {
     return (
         <section className="py-24 px-6 text-center" id="greeting">
             <div ref={ref} className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                <Heart className="mx-auto text-rose-400 mb-8" size={32} strokeWidth={1.5} />
+                <Heart className="mx-auto text-rose-200 mb-8" size={28} strokeWidth={1.5} />
                 <h2 className="text-xl font-serif tracking-widest mb-12 text-stone-800 font-bold">결혼합니다</h2>
                 <div className="space-y-6 text-stone-700 leading-relaxed text-[15px] break-keep font-medium">
                     <p>서로를 마주 보며 다져온 인연을<br />이제는 함께 같은 곳을 바라보며<br />걸어가려 합니다.</p>
