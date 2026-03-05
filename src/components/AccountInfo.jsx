@@ -49,20 +49,20 @@ export default function AccountInfo({ showToast }) {
                             <div className="p-6 border-t border-stone-100 space-y-4">
                                 <div className="flex justify-between items-center">
                                     <div>
-                                        <p className="text-xs text-stone-600 mb-1 font-medium">OO은행 123-456-789012</p>
+                                        <p className="text-xs text-stone-600 mb-1 font-medium">카카오뱅크 3333015650207</p>
                                         <p className="text-sm font-bold text-stone-800">예금주: 강태구</p>
                                     </div>
-                                    <button onClick={() => handleCopy("OO은행 123-456-789012")} className="text-xs px-3 py-1.5 bg-stone-100 text-stone-700 font-medium rounded-lg flex items-center hover:bg-stone-200">
+                                    <button onClick={() => handleCopy("카카오뱅크 3333015650207")} className="text-xs px-3 py-1.5 bg-stone-100 text-stone-700 font-medium rounded-lg flex items-center hover:bg-stone-200">
                                         <Copy size={14} className="mr-1" /> 복사
                                     </button>
                                 </div>
                                 <div className="w-full h-px bg-stone-100"></div>
                                 <div className="flex justify-between items-center">
                                     <div>
-                                        <p className="text-xs text-stone-600 mb-1 font-medium">OO은행 123-456-789012</p>
-                                        <p className="text-sm font-bold text-stone-800">예금주: 강영태</p>
+                                        <p className="text-xs text-stone-600 mb-1 font-medium">농협 735080-51-036329</p>
+                                        <p className="text-sm font-bold text-stone-800">예금주: 김경자</p>
                                     </div>
-                                    <button onClick={() => handleCopy("OO은행 123-456-789012")} className="text-xs px-3 py-1.5 bg-stone-100 text-stone-700 font-medium rounded-lg flex items-center hover:bg-stone-200">
+                                    <button onClick={() => handleCopy("농협 735080-51-036329")} className="text-xs px-3 py-1.5 bg-stone-100 text-stone-700 font-medium rounded-lg flex items-center hover:bg-stone-200">
                                         <Copy size={14} className="mr-1" /> 복사
                                     </button>
                                 </div>
@@ -83,20 +83,20 @@ export default function AccountInfo({ showToast }) {
                             <div className="p-6 border-t border-stone-100 space-y-4">
                                 <div className="flex justify-between items-center">
                                     <div>
-                                        <p className="text-xs text-stone-600 mb-1 font-medium">OO은행 123-456-789012</p>
+                                        <p className="text-xs text-stone-600 mb-1 font-medium">우리은행 1002-837-547920</p>
                                         <p className="text-sm font-bold text-stone-800">예금주: 신희영</p>
                                     </div>
-                                    <button onClick={() => handleCopy("OO은행 123-456-789012")} className="text-xs px-3 py-1.5 bg-stone-100 text-stone-700 font-medium rounded-lg flex items-center hover:bg-stone-200">
+                                    <button onClick={() => handleCopy("우리은행 1002-837-547920")} className="text-xs px-3 py-1.5 bg-stone-100 text-stone-700 font-medium rounded-lg flex items-center hover:bg-stone-200">
                                         <Copy size={14} className="mr-1" /> 복사
                                     </button>
                                 </div>
                                 <div className="w-full h-px bg-stone-100"></div>
                                 <div className="flex justify-between items-center">
                                     <div>
-                                        <p className="text-xs text-stone-600 mb-1 font-medium">OO은행 123-456-789012</p>
-                                        <p className="text-sm font-bold text-stone-800">예금주: 신현갑</p>
+                                        <p className="text-xs text-stone-600 mb-1 font-medium">우리은행 1002-734-796143</p>
+                                        <p className="text-sm font-bold text-stone-800">예금주: 송현숙</p>
                                     </div>
-                                    <button onClick={() => handleCopy("OO은행 123-456-789012")} className="text-xs px-3 py-1.5 bg-stone-100 text-stone-700 font-medium rounded-lg flex items-center hover:bg-stone-200">
+                                    <button onClick={() => handleCopy("우리은행 1002-734-796143")} className="text-xs px-3 py-1.5 bg-stone-100 text-stone-700 font-medium rounded-lg flex items-center hover:bg-stone-200">
                                         <Copy size={14} className="mr-1" /> 복사
                                     </button>
                                 </div>
