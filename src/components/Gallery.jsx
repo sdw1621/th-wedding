@@ -6,11 +6,12 @@ export default function Gallery() {
     const [ref, isVisible] = useScrollReveal();
 
     const images = [
-        "https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=600&q=80",
-        "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80",
-        "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=600&q=80",
-        "https://images.unsplash.com/photo-1544531270-202dd34b6e51?auto=format&fit=crop&w=600&q=80",
-        "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80"
+        `${import.meta.env.BASE_URL}img/pages/KakaoTalk_20260305_232813657.png`,
+        `${import.meta.env.BASE_URL}img/pages/clip1772720241909.png`,
+        `${import.meta.env.BASE_URL}img/pages/clip1772720265226.png`,
+        `${import.meta.env.BASE_URL}img/pages/clip1772720440413.png`,
+        `${import.meta.env.BASE_URL}img/pages/clip1772720601331.png`,
+        `${import.meta.env.BASE_URL}img/pages/clip1772721300357.png`
     ];
 
     return (
