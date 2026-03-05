@@ -21,12 +21,26 @@ const openToss = (bankLabel, accountNo, holder) => {
     window.location.href = `supertoss://send?bank=${bankCode}&accountNo=${cleanAccount}&origin=wedding`;
 };
 
-// 카카오톡 송금하기: 카카오톡 내장 송금 기능으로 이동 (계좌 자동 입력)
+// 카카오톡 송금하기: 계좌번호 복사 → 안내 → 카카오톡 송금 화면 이동
 const openKakaoPay = (bankLabel, accountNo, showToast) => {
     const bankCode = BANK_CODES[bankLabel] || '000';
     const cleanAccount = accountNo.replace(/-/g, '');
-    // 카카오톡 내 송금 화면으로 바로 이동 (은행코드 + 계좌번호 자동 입력)
-    window.location.href = `kakaotalk://kakaopay/money/to/bank?bank=${bankCode}&account=${cleanAccount}`;
+    // 1. 계좌번호를 클립보드에 복사
+    const text = cleanAccount;
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.position = "fixed";
+    textArea.style.left = "-9999px";
+    document.body.appendChild(textArea);
+    textArea.select();
+    try { document.execCommand('copy'); } catch (e) { /* fallback */ }
+    document.body.removeChild(textArea);
+    // 2. 안내 토스트 표시
+    showToast(`계좌번호(${cleanAccount})가 복사되었습니다!\n카카오톡에서 붙여넣기 해주세요.`);
+    // 3. 잠시 후 카카오톡 송금 화면 열기
+    setTimeout(() => {
+        window.location.href = `kakaotalk://kakaopay/money/to/bank?bank=${bankCode}&account=${cleanAccount}`;
+    }, 800);
 };
 
 // 계좌 항목 하나를 렌더링하는 서브 컴포넌트
