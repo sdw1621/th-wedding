@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&display=swap');
 
 :root {
   --color-gold: #d4a853;
@@ -83,19 +83,22 @@ body {
 
 /* Shimmer effect */
 .shimmer {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(212, 168, 83, 0.15) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(212, 168, 83, 0.15) 50%,
+      transparent 100%);
   background-size: 200% 100%;
   animation: shimmer 2s linear infinite;
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 /* Petal fall animation */
@@ -104,15 +107,19 @@ body {
     transform: translateY(-10vh) rotate(0deg) translateX(0);
     opacity: 1;
   }
+
   25% {
     transform: translateY(25vh) rotate(90deg) translateX(15px);
   }
+
   50% {
     transform: translateY(50vh) rotate(180deg) translateX(-10px);
   }
+
   75% {
     transform: translateY(75vh) rotate(270deg) translateX(20px);
   }
+
   100% {
     transform: translateY(100vh) rotate(360deg) translateX(5px);
     opacity: 0;
@@ -126,13 +133,27 @@ body {
 
 /* Toast animation */
 @keyframes toastIn {
-  0% { transform: translateY(100%); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @keyframes toastOut {
-  0% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(100%); opacity: 0; }
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
 }
 
 .toast-in {
@@ -149,7 +170,7 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-.gallery-scroll > * {
+.gallery-scroll>* {
   scroll-snap-align: center;
 }
 
@@ -181,10 +202,23 @@ body {
 
 /* Heart beat */
 @keyframes heartBeat {
-  0%, 100% { transform: scale(1); }
-  15% { transform: scale(1.15); }
-  30% { transform: scale(1); }
-  45% { transform: scale(1.1); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  15% {
+    transform: scale(1.15);
+  }
+
+  30% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(1.1);
+  }
 }
 
 .heart-beat {
@@ -210,12 +244,10 @@ body {
 
 /* Image gallery shimmer placeholder */
 .img-placeholder {
-  background: linear-gradient(
-    -45deg, 
-    #f0e6d3 25%, 
-    #f7eed9 50%, 
-    #f0e6d3 75%
-  );
+  background: linear-gradient(-45deg,
+      #f0e6d3 25%,
+      #f7eed9 50%,
+      #f0e6d3 75%);
   background-size: 400% 400%;
   animation: shimmer 1.5s ease infinite;
 }

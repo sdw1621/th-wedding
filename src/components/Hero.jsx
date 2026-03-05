@@ -1,6 +1,5 @@
 import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import mainImg from '../../img/main_img.png';
 
 export default function Hero() {
     const [ref, isVisible] = useScrollReveal();
@@ -9,7 +8,7 @@ export default function Hero() {
         <div className="relative w-full h-[100dvh] overflow-hidden flex flex-col items-center justify-start pt-20" id="home">
             <div className="absolute inset-0">
                 <img
-                    src={mainImg}
+                    src={`${import.meta.env.BASE_URL}img/main_img.png`}
                     alt="Wedding Hero"
                     className="w-full h-full object-cover object-[center_top] opacity-90"
                 />
