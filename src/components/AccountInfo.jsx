@@ -4,15 +4,36 @@ import ChevronDown from 'lucide-react/dist/esm/icons/chevron-down';
 import ChevronUp from 'lucide-react/dist/esm/icons/chevron-up';
 import Copy from 'lucide-react/dist/esm/icons/copy';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-
-// 토스 송금 딥링크
-const openToss = (bank, accountNo, holder) => {
-    window.open(`supertoss://send?bank=${encodeURIComponent(bank)}&accountNo=${accountNo}&origin=wedding`, '_blank');
+// 은행 코드 매핑 (토스 딥링크용)
+const BANK_CODES = {
+    '카카오뱅크': '090',
+    '농협': '011',
+    '우리은행': '020',
+    '국민은행': '004',
+    '신한은행': '088',
+    '하나은행': '081',
 };
 
-// 카카오 송금 딥링크
-const openKakaoPay = (bank, accountNo) => {
-    window.open(`https://qr.kakaopay.com/`, '_blank');
+// 토스 송금 딥링크
+const openToss = (bankLabel, accountNo, holder) => {
+    const bankCode = BANK_CODES[bankLabel] || bankLabel;
+    const cleanAccount = accountNo.replace(/-/g, '');
+    window.location.href = `supertoss://send?bank=${bankCode}&accountNo=${cleanAccount}&origin=wedding`;
+};
+
+// 카카오페이: 계좌번호 복사 후 카카오페이 앱 열기
+const openKakaoPay = (bankLabel, accountNo, showToast) => {
+    const text = `${bankLabel} ${accountNo}`;
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    try { document.execCommand('copy'); } catch (e) { /* fallback */ }
+    document.body.removeChild(textArea);
+    showToast('계좌번호가 복사되었습니다. 카카오페이에서 붙여넣기 해주세요!');
+    setTimeout(() => {
+        window.location.href = 'kakaotalk://kakaopay/home';
+    }, 500);
 };
 
 // 계좌 항목 하나를 렌더링하는 서브 컴포넌트
@@ -30,14 +51,14 @@ function AccountRow({ bankLabel, accountNo, holder, bankCode, showToast, handleC
             </div>
             <div className="flex space-x-2 mt-3">
                 <button
-                    onClick={() => openToss(bankCode, accountNo.replace(/-/g, ''), holder)}
+                    onClick={() => openToss(bankLabel, accountNo, holder)}
                     className="flex-1 py-2 bg-[#0064FF] text-white text-[11px] font-bold rounded-lg hover:bg-[#0050dd] transition-colors flex items-center justify-center"
                 >
                     <svg className="w-3.5 h-3.5 mr-1" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2V9h-2v8zm0-10h2V5h-2v2z" /></svg>
                     토스로 송금
                 </button>
                 <button
-                    onClick={() => openKakaoPay(bankCode, accountNo.replace(/-/g, ''))}
+                    onClick={() => openKakaoPay(bankLabel, accountNo, showToast)}
                     className="flex-1 py-2 bg-[#FAE100] text-[#3C1E1E] text-[11px] font-bold rounded-lg hover:bg-[#f0d700] transition-colors flex items-center justify-center"
                 >
                     <svg className="w-3.5 h-3.5 mr-1" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.48 3 2 6.69 2 11.16c0 2.88 1.87 5.41 4.71 6.83l-.97 3.56c-.07.26.22.47.45.33l4.17-2.74c.53.05 1.07.08 1.64.08 5.52 0 10-3.69 10-8.22S17.52 3 12 3z" /></svg>
