@@ -7832,11 +7832,25 @@ function AccountInfo({ showToast }) {
   const [ref, isVisible] = useScrollReveal();
   const [openGroom, setOpenGroom] = reactExports.useState(true);
   const [openBride, setOpenBride] = reactExports.useState(true);
-  const handleCopy = (text) => {
+  const handleCopy = async (text) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        showToast("계좌번호가 복사되었습니다.");
+        return;
+      }
+    } catch (err) {
+      console.warn("Clipboard API failed, falling back to execCommand", err);
+    }
     const textArea = document.createElement("textarea");
     textArea.value = text;
+    textArea.style.position = "fixed";
+    textArea.style.left = "-9999px";
+    textArea.style.top = "-9999px";
     document.body.appendChild(textArea);
+    textArea.focus();
     textArea.select();
+    textArea.setSelectionRange(0, 99999);
     try {
       document.execCommand("copy");
       showToast("계좌번호가 복사되었습니다.");
