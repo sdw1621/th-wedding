@@ -7283,7 +7283,7 @@ function Hero() {
     const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
     window.open(googleCalendarUrl, "_blank");
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative w-full h-[100dvh] overflow-hidden flex flex-col items-center justify-between pb-32 pt-20", id: "home", children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative w-full h-screen overflow-hidden flex flex-col items-center justify-between pb-32 pt-20", id: "home", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute inset-0", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(
         "img",
