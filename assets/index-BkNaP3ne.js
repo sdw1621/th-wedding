@@ -7795,8 +7795,8 @@ const Copy = createLucideIcon("Copy", [
 ]);
 function AccountInfo({ showToast }) {
   const [ref, isVisible] = useScrollReveal();
-  const [openGroom, setOpenGroom] = reactExports.useState(false);
-  const [openBride, setOpenBride] = reactExports.useState(false);
+  const [openGroom, setOpenGroom] = reactExports.useState(true);
+  const [openBride, setOpenBride] = reactExports.useState(true);
   const handleCopy = (text) => {
     const textArea = document.createElement("textarea");
     textArea.value = text;
@@ -7828,14 +7828,14 @@ function AccountInfo({ showToast }) {
           {
             onClick: () => setOpenGroom(!openGroom),
             style: { touchAction: "manipulation" },
-            className: "w-full px-6 py-5 flex justify-between items-center text-left bg-blue-50/50 hover:bg-blue-50 active:bg-blue-100 transition-colors",
+            className: "w-full px-6 py-5 flex justify-between items-center text-left bg-blue-50/50 hover:bg-blue-50 active:bg-blue-100 transition-colors select-none cursor-pointer",
             children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-bold text-stone-800", children: "신랑측 계좌번호" }),
               openGroom ? /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronUp, { size: 20, className: "text-stone-500" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronDown, { size: 20, className: "text-stone-500" })
             ]
           }
         ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `transition-all duration-300 ease-in-out ${openGroom ? "max-h-60 opacity-100" : "max-h-0 opacity-0"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 border-t border-stone-100 space-y-4", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `transition-all duration-300 ease-in-out ${openGroom ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 border-t border-stone-100 space-y-4", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between items-center", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-stone-600 mb-1 font-medium", children: "카카오뱅크 3333-01-5650207" }),
@@ -7887,14 +7887,14 @@ function AccountInfo({ showToast }) {
           {
             onClick: () => setOpenBride(!openBride),
             style: { touchAction: "manipulation" },
-            className: "w-full px-6 py-5 flex justify-between items-center text-left bg-rose-50/50 hover:bg-rose-50 active:bg-rose-100 transition-colors",
+            className: "w-full px-6 py-5 flex justify-between items-center text-left bg-rose-50/50 hover:bg-rose-50 active:bg-rose-100 transition-colors select-none cursor-pointer",
             children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-bold text-stone-800", children: "신부측 계좌번호" }),
               openBride ? /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronUp, { size: 20, className: "text-stone-500" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronDown, { size: 20, className: "text-stone-500" })
             ]
           }
         ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `transition-all duration-300 ease-in-out ${openBride ? "max-h-60 opacity-100" : "max-h-0 opacity-0"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 border-t border-stone-100 space-y-4", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `transition-all duration-300 ease-in-out ${openBride ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 border-t border-stone-100 space-y-4", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between items-center", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-stone-600 mb-1 font-medium", children: "우리은행 1002-837-547920" }),
