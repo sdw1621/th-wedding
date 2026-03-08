@@ -7656,7 +7656,7 @@ function Gallery() {
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             "button",
             {
-              className: "absolute top-6 left-6 z-[510] flex items-center justify-center w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-stone-800 shadow-xl active:scale-95 active:bg-white transition-all select-none",
+              className: "absolute top-6 right-6 z-[510] flex items-center justify-center w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-stone-800 shadow-xl active:scale-95 active:bg-white transition-all select-none",
               onPointerDown: (e) => {
                 e.stopPropagation();
                 document.body.classList.remove("music-hidden");
