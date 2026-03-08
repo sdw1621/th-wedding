@@ -131,8 +131,8 @@ export default function MusicPlayer({ forcePlay }) {
             </div>
 
             {/* 재생 목록 모달/드롭다운 */}
-            <div className={`mt-3 w-64 bg-white/98 rounded-2xl border border-rose-100 shadow-2xl transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] origin-top-left overflow-hidden ${showPlaylist ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 -translate-y-4 pointer-events-none'}`}>
-                <div className="px-5 py-4 border-b border-stone-50 flex justify-between items-center bg-stone-50/50">
+            <div className={`mt-3 w-64 bg-white rounded-2xl border border-rose-100 shadow-2xl transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] origin-top-left overflow-hidden ${showPlaylist ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 -translate-y-4 pointer-events-none'}`}>
+                <div className="px-5 py-4 border-b border-stone-100 flex justify-between items-center bg-stone-50">
                     <h3 className="text-[11px] font-bold text-stone-400 uppercase tracking-widest">Playlist</h3>
                     <span className="text-[10px] text-rose-400 font-bold bg-rose-50 px-2 py-0.5 rounded-full">{currentTrackIndex + 1} / {PLAYLIST.length}</span>
                 </div>
