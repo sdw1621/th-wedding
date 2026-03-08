@@ -7535,7 +7535,7 @@ function Gallery() {
         /* @__PURE__ */ jsxRuntimeExports.jsx(Camera, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "우리의 빛나는 순간" })
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-center mb-4", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-stone-500 font-medium", children: "크게 보시고 싶으시면 영상 터치 후 Youtube 로고를 눌러주세요" }) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-center mb-4", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-stone-500 font-medium", children: "크게 보시고 싶으시면 영상 터치 후 Youtube 로고를 눌러주세요 👆" }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-6 mb-12", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-2xl overflow-hidden shadow-sm aspect-video bg-stone-100 border border-stone-200 relative group", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
         "iframe",
         {
