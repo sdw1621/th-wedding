@@ -8,16 +8,16 @@ export default function Gallery() {
     const [selectedImg, setSelectedImg] = useState(null);
 
     const images = [
-        `${import.meta.env.BASE_URL}img/pages/KakaoTalk_20260305_230912710.png`,
-        `${import.meta.env.BASE_URL}img/pages/KakaoTalk_20260305_232813657.png`,
-        `${import.meta.env.BASE_URL}img/pages/clip1772719635985.png`,
-        `${import.meta.env.BASE_URL}img/pages/clip1772719933405.png`,
-        `${import.meta.env.BASE_URL}img/pages/clip1772719961777.png`,
-        `${import.meta.env.BASE_URL}img/pages/clip1772720241909.png`,
-        `${import.meta.env.BASE_URL}img/pages/clip1772720265226.png`,
-        `${import.meta.env.BASE_URL}img/pages/clip1772720440413.png`,
-        `${import.meta.env.BASE_URL}img/pages/clip1772720601331.png`,
-        `${import.meta.env.BASE_URL}img/pages/clip1772721300357.png`
+        `${import.meta.env.BASE_URL}img/pages/KakaoTalk_20260305_230912710.webp`,
+        `${import.meta.env.BASE_URL}img/pages/KakaoTalk_20260305_232813657.webp`,
+        `${import.meta.env.BASE_URL}img/pages/clip1772719635985.webp`,
+        `${import.meta.env.BASE_URL}img/pages/clip1772719933405.webp`,
+        `${import.meta.env.BASE_URL}img/pages/clip1772719961777.webp`,
+        `${import.meta.env.BASE_URL}img/pages/clip1772720241909.webp`,
+        `${import.meta.env.BASE_URL}img/pages/clip1772720265226.webp`,
+        `${import.meta.env.BASE_URL}img/pages/clip1772720440413.webp`,
+        `${import.meta.env.BASE_URL}img/pages/clip1772720601331.webp`,
+        `${import.meta.env.BASE_URL}img/pages/clip1772721300357.webp`
     ];
 
     return (
@@ -37,7 +37,7 @@ export default function Gallery() {
                                 className="rounded-xl overflow-hidden shadow-sm aspect-[4/5] cursor-zoom-in group relative"
                                 onClick={() => setSelectedImg(src)}
                             >
-                                <img src={src} alt={`Gallery ${idx + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                                <img src={src} alt={`Gallery ${idx + 1}`} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
                             </div>
                         </div>

@@ -21,8 +21,10 @@ export default function Hero() {
         <div className="relative w-full h-[100dvh] overflow-hidden flex flex-col items-center justify-between pb-32 pt-20" id="home">
             <div className="absolute inset-0">
                 <img
-                    src={`${import.meta.env.BASE_URL}img/main_img.png`}
+                    src={`${import.meta.env.BASE_URL}img/main_img.webp`}
                     alt="Wedding Hero"
+                    fetchpriority="high"
+                    decoding="async"
                     className="w-full h-full object-cover object-[center_top] opacity-90"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-[#FDFBF7] via-white/40 to-white/10 opacity-90"></div>
