@@ -7584,13 +7584,25 @@ function Gallery() {
           }
         )
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-center items-center gap-2 mb-2", children: images.map((_, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-center items-center gap-2 mb-8", children: images.map((_, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(
         "div",
         {
           className: `rounded-full transition-all duration-300 ${i === currentScrollIdx ? "w-6 h-2 bg-rose-400" : "w-2 h-2 bg-stone-200"}`
         },
         i
-      )) })
+      )) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-6 pb-6", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-2xl overflow-hidden shadow-sm aspect-video bg-stone-100 border border-stone-200 relative group", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "video",
+        {
+          src: `${"/th-wedding/"}결혼영상.mp4`,
+          className: "w-full h-full object-cover",
+          controls: true,
+          playsInline: true,
+          preload: "metadata",
+          poster: "",
+          children: "브라우저가 동영상을 지원하지 않습니다."
+        }
+      ) }) })
     ] }),
     selectedIdx !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs(
       "div",
