@@ -19988,7 +19988,7 @@ function BottomNav() {
   };
   const navItems = [
     { id: "greeting", label: "인사말", icon: Heart },
-    { id: "gallery", label: "갤러리", icon: Camera },
+    { id: "gallery", label: "영상&갤러리", icon: Camera },
     { id: "location", label: "오시는길", icon: MapPin },
     { id: "account", label: "마음전하기", icon: Gift },
     { id: "guestbook", label: "방명록", icon: MessageSquare }
