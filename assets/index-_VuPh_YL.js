@@ -7532,8 +7532,7 @@ function Gallery() {
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-2xl mx-auto transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-8 px-6", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(Camera, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "우리의 빛나는 순간" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-stone-500 mt-3 animate-pulse font-medium", children: "사진을 누르면 크게 보실 수 있어요 📸" })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "우리의 빛나는 순간" })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-6 mb-12", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-2xl overflow-hidden shadow-sm aspect-video bg-stone-100 border border-stone-200 relative group", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
         "iframe",
@@ -7545,6 +7544,7 @@ function Gallery() {
           allowFullScreen: true
         }
       ) }) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-center mb-4", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-stone-500 animate-pulse font-medium", children: "사진을 누르면 크게 보실 수 있어요 📸" }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative group", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           "button",
