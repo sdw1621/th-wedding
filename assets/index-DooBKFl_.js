@@ -19953,7 +19953,7 @@ function Guestbook({ showToast }) {
 }
 function Share() {
   const [ref, isVisible] = useScrollReveal();
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "pt-8 pb-24 bg-white", id: "share", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { ref, className: `max-w-md mx-auto text-center transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4", children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "pt-8 pb-4 bg-white", id: "share", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { ref, className: `max-w-md mx-auto text-center transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[28px] font-serif italic text-stone-800 tracking-wider", children: "Thank you!" }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-2xl text-stone-900", children: "🖤" })
   ] }) }) });
@@ -20253,7 +20253,7 @@ function App() {
         onEnter: () => setIsEntered(true)
       }
     ) : /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "pb-36 animate-in fade-in duration-500 relative z-10", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "pb-28 animate-in fade-in duration-500 relative z-10", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(Hero, {}),
         /* @__PURE__ */ jsxRuntimeExports.jsx(Greeting, {}),
         /* @__PURE__ */ jsxRuntimeExports.jsx(WeddingSchedule, {}),
