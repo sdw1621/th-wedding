@@ -19944,76 +19944,10 @@ function Share() {
       }
     };
   }, []);
-  const shareKakao = () => {
-    if (!window.Kakao) {
-      alert("카카오 SDK를 불러오는 중입니다. 잠시 후 다시 시도해 주세요.");
-      return;
-    }
-    window.Kakao.Share.sendDefault({
-      objectType: "feed",
-      content: {
-        title: "강태구 ♥ 신희영 결혼합니다",
-        description: "2026년 3월 13일 금요일 오전 11시 30분 | 메이필드 봉래헌",
-        imageUrl: "https://sdw1621.github.io/th-wedding/img/thumbnail.webp",
-        link: {
-          mobileWebUrl: "https://sdw1621.github.io/th-wedding/",
-          webUrl: "https://sdw1621.github.io/th-wedding/"
-        }
-      },
-      buttons: [
-        {
-          title: "청첩장 보기",
-          link: {
-            mobileWebUrl: "https://sdw1621.github.io/th-wedding/",
-            webUrl: "https://sdw1621.github.io/th-wedding/"
-          }
-        }
-      ]
-    });
-  };
-  const shareKakaoStory = () => {
-    if (!window.Kakao) return;
-    window.Kakao.Story.share({
-      url: "https://sdw1621.github.io/th-wedding/",
-      text: "강태구 ♥ 신희영 결혼합니다. 2026년 3월 13일 금요일 오전 11시 30분, 메이필드 봉래헌"
-    });
-  };
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 bg-white", id: "share", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `max-w-md mx-auto text-center transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-3xl font-serif text-stone-900 mb-12 tracking-widest font-bold", children: "소식공유" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-center space-x-3 mb-24 px-6 md:px-0", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "button",
-        {
-          onClick: shareKakao,
-          style: { touchAction: "manipulation" },
-          className: "flex-1 flex items-center justify-center space-x-2 bg-[#3B1E1E] text-white py-4 px-4 rounded-full active:bg-[#2A1515] shadow-md select-none",
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "bg-white rounded-full p-1.5 flex items-center justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("svg", { className: "w-3 h-3 text-[#3B1E1E] fill-current", viewBox: "0 0 24 24", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M12 3c-4.97 0-9 3.116-9 7.124 0 2.508 1.637 4.706 4.156 5.96l-.78 2.85c-.122.454.156.44.331.328l3.193-2.128c.414.048.847.072 1.3.072 4.97 0 9-3.116 9-7.124S16.97 3 12 3z" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("text", { x: "5", y: "15", fontSize: "8", fontWeight: "900", style: { fontFamily: "sans-serif" }, children: "TALK" })
-            ] }) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[13px] font-bold tracking-tight", children: "카카오톡 공유" })
-          ]
-        }
-      ),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "button",
-        {
-          onClick: shareKakaoStory,
-          style: { touchAction: "manipulation" },
-          className: "flex-1 flex items-center justify-center space-x-2 bg-[#3B1E1E] text-white py-4 px-4 rounded-full active:bg-[#2A1515] shadow-md select-none",
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "bg-white rounded-full p-1.5 flex items-center justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx("svg", { className: "w-3 h-3 text-[#3B1E1E] fill-current", viewBox: "0 0 24 24", children: /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10C22 6.477 17.523 2 12 2zm1.666 14.333c-.666 0-1.333-.333-1.666-1-.333.667-1 1-1.666 1-.667 0-1.334-.333-1.667-1V12h3.333v3.333h1.667v-3.333h1.667v3.333c0 .667-.667 1-1.334 1z" }) }) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[13px] font-bold tracking-tight", children: "카카오 스토리 공유" })
-          ]
-        }
-      )
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-6", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[28px] font-serif italic text-stone-800 tracking-wider", children: "Thank you!" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-2xl text-stone-900", children: "🖤" })
-    ] })
-  ] }) });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 bg-white", id: "share", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { ref, className: `max-w-md mx-auto text-center transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-6 pt-12", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[28px] font-serif italic text-stone-800 tracking-wider", children: "Thank you!" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-2xl text-stone-900", children: "🖤" })
+  ] }) }) });
 }
 function BottomNav() {
   const scrollTo = (id) => {
