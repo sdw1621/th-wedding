@@ -7612,32 +7612,39 @@ function Gallery() {
         onTouchStart: handleTouchStart,
         onTouchEnd: handleTouchEnd,
         children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { className: "absolute top-4 left-4 text-white p-4 z-10 select-none active:opacity-50", onClick: (e) => {
-            e.stopPropagation();
-            setSelectedIdx(null);
-          }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { size: 28 }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             "button",
             {
-              className: "absolute left-0 top-1/2 -translate-y-1/2 text-white/40 active:text-white p-6 z-10 transition-colors",
-              style: { touchAction: "manipulation" },
+              className: "absolute top-6 left-6 z-30 flex items-center justify-center w-11 h-11 rounded-full bg-white/20 backdrop-blur-md text-white border border-white/20 shadow-lg active:scale-95 transition-all select-none",
               onClick: (e) => {
                 e.stopPropagation();
-                goPrev();
+                setSelectedIdx(null);
               },
-              children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { size: 32 })
+              children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { size: 22 })
             }
           ),
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             "button",
             {
-              className: "absolute right-0 top-1/2 -translate-y-1/2 text-white/40 active:text-white p-6 z-10 transition-colors",
+              className: "absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/70 backdrop-blur-md text-stone-800 shadow-lg active:scale-90 active:bg-white/90 transition-all select-none",
+              style: { touchAction: "manipulation" },
+              onClick: (e) => {
+                e.stopPropagation();
+                goPrev();
+              },
+              children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { size: 24 })
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
+            {
+              className: "absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/70 backdrop-blur-md text-stone-800 shadow-lg active:scale-90 active:bg-white/90 transition-all select-none",
               style: { touchAction: "manipulation" },
               onClick: (e) => {
                 e.stopPropagation();
                 goNext();
               },
-              children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { size: 32 })
+              children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { size: 24 })
             }
           ),
           /* @__PURE__ */ jsxRuntimeExports.jsx(
