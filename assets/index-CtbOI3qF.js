@@ -7615,7 +7615,7 @@ function Gallery() {
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             "button",
             {
-              className: "absolute top-6 left-6 z-30 flex items-center justify-center w-11 h-11 rounded-full bg-white/20 backdrop-blur-md text-white border border-white/20 shadow-lg active:scale-95 transition-all select-none",
+              className: "absolute top-6 left-6 z-30 flex items-center justify-center w-11 h-11 rounded-full bg-white/70 backdrop-blur-md text-stone-800 shadow-lg active:scale-95 active:bg-white/90 transition-all select-none",
               onClick: (e) => {
                 e.stopPropagation();
                 setSelectedIdx(null);
