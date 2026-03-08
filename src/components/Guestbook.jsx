@@ -1,14 +1,77 @@
-import React, { useState, useEffect } from 'react';
-import MessageCircle from 'lucide-react/dist/esm/icons/message-circle';
+import React, { useState, useEffect, useMemo, useCallback, memo } from 'react';
 import Send from 'lucide-react/dist/esm/icons/send';
 import Trash2 from 'lucide-react/dist/esm/icons/trash-2';
 import Pencil from 'lucide-react/dist/esm/icons/pencil';
 import Lock from 'lucide-react/dist/esm/icons/lock';
 import Unlock from 'lucide-react/dist/esm/icons/unlock';
+import MessageSquare from 'lucide-react/dist/esm/icons/message-square';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { supabase } from '../supabaseClient';
 
 const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbxOb4nA57HQsWz9dkcKzrvSRkIwvMwJa_ajVAavSiNZI9gzUucDNr6_cgtHpswYKplu/exec";
+
+// --- Memoized Components for Performance ---
+const MessageItem = memo(({ msg, unlockedMessages, openPasswordModal, toggleUnlock }) => {
+    const isLocked = msg.is_secret && !unlockedMessages[msg.id];
+    let cardColorClass = msg.receiver === 'groom' ? "bg-blue-50/60 border-blue-100" : msg.receiver === 'bride' ? "bg-rose-50/60 border-rose-100" : "bg-white border-stone-100";
+
+    return (
+        <div className={`${cardColorClass} p-5 rounded-2xl shadow-sm border flex flex-col relative group transition-all duration-300`}>
+            <div className="flex justify-between items-center mb-3">
+                <div className="flex items-center space-x-2">
+                    <span className={`font-bold text-sm bg-white/80 px-2.5 py-1 rounded-md ${msg.receiver === 'groom' ? 'text-blue-700' : msg.receiver === 'bride' ? 'text-rose-700' : 'text-stone-800'}`}>{msg.name}</span>
+                    {msg.receiver !== 'public' && <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${msg.receiver === 'groom' ? 'bg-blue-200/50 text-blue-600' : 'bg-rose-200/50 text-rose-600'}`}>To. {msg.receiver === 'groom' ? '신랑' : '신부'}</span>}
+                </div>
+                <div className="flex items-center space-x-1 -mr-2 mt-1 sm:mt-0">
+                    {msg.is_secret && (
+                        <button onClick={() => isLocked ? openPasswordModal(msg, 'unlock') : toggleUnlock(msg.id, false)} className="p-2 text-stone-300 active:text-stone-500 active:scale-95 transition-all" style={{ touchAction: 'manipulation' }}>
+                            {isLocked ? <Lock size={16} /> : <Unlock size={16} />}
+                        </button>
+                    )}
+                    <span className="text-[11px] text-stone-400 font-medium px-1.5">{msg.date}</span>
+                    <button onClick={() => openPasswordModal(msg, 'reply')} className="p-2 text-stone-300 hover:text-stone-600 active:scale-95 transition-all" style={{ touchAction: 'manipulation' }} title="답글 남기기"><MessageSquare size={16} /></button>
+                    <button onClick={() => openPasswordModal(msg, 'edit')} className="p-2 text-stone-300 hover:text-stone-600 active:scale-95 transition-all" style={{ touchAction: 'manipulation' }}><Pencil size={16} /></button>
+                    <button onClick={() => openPasswordModal(msg, 'delete')} className="p-2 text-stone-300 hover:text-rose-400 active:scale-95 transition-all" style={{ touchAction: 'manipulation' }}><Trash2 size={16} /></button>
+                </div>
+            </div>
+            {isLocked ? (
+                <div className={`text-sm italic flex items-center justify-center p-4 rounded-xl cursor-pointer active:scale-[0.98] transition-all ${msg.receiver === 'groom' ? 'text-blue-400 bg-blue-100/30' : msg.receiver === 'bride' ? 'text-rose-400 bg-rose-100/30' : 'text-stone-400 bg-stone-50'}`} onClick={() => openPasswordModal(msg, 'unlock')}>
+                    <Lock size={14} className="mr-2 opacity-50" /> {msg.receiver === 'groom' ? '신랑' : msg.receiver === 'bride' ? '신부' : '작성자'}만 확인 가능
+                </div>
+            ) : (
+                <div className="space-y-3">
+                    <p className={`text-sm leading-relaxed font-medium whitespace-pre-wrap ${msg.receiver === 'groom' ? 'text-blue-900' : msg.receiver === 'bride' ? 'text-rose-900' : 'text-stone-700'}`}>{msg.content}</p>
+                    {msg.reply && (
+                        <div className="bg-stone-800/5 rounded-xl p-3 border-l-2 border-stone-800/20 animate-in slide-in-from-left-2 duration-300">
+                            <div className="flex items-center space-x-1.5 mb-1"><span className="text-[10px] font-bold text-stone-800 bg-stone-200 px-1.5 py-0.5 rounded">신랑 & 신부</span></div>
+                            <p className="text-[13px] text-stone-600 font-medium leading-relaxed">{msg.reply}</p>
+                        </div>
+                    )}
+                </div>
+            )}
+        </div>
+    );
+});
+
+const ModernModal = memo(({ isOpen, onClose, title, description, children, onConfirm, confirmLabel = "확인", cancelLabel = "취소", isDestructive = false }) => {
+    if (!isOpen) return null;
+    return (
+        <div className="fixed inset-0 z-[200] flex items-center justify-center px-4">
+            <div className="absolute inset-0 bg-stone-900/80 animate-in fade-in duration-300" onClick={onClose}></div>
+            <div className="relative bg-white w-full max-w-[320px] rounded-[24px] shadow-2xl border border-white/20 overflow-hidden animate-in fade-in zoom-in duration-200">
+                <div className="p-6 text-center">
+                    <h3 className="text-[17px] font-bold text-stone-900 mb-1">{title}</h3>
+                    {description && <p className="text-[13px] text-stone-500 font-medium leading-tight">{description}</p>}
+                    <div className="mt-4">{children}</div>
+                </div>
+                <div className="flex flex-col border-t border-stone-100">
+                    <button onClick={onConfirm} style={{ touchAction: 'manipulation' }} className={`py-4 text-[15px] font-bold border-b border-stone-100 transition-all active:bg-stone-50 active:scale-95 ${isDestructive ? 'text-rose-500' : 'text-blue-500'}`}>{confirmLabel}</button>
+                    <button onClick={onClose} style={{ touchAction: 'manipulation' }} className="py-4 text-[15px] font-medium text-stone-400 active:bg-stone-50 active:scale-95 transition-all">{cancelLabel}</button>
+                </div>
+            </div>
+        </div>
+    );
+});
 
 export default function Guestbook({ showToast }) {
     const [ref, isVisible] = useScrollReveal();
@@ -16,460 +79,285 @@ export default function Guestbook({ showToast }) {
     const [newName, setNewName] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [newContent, setNewContent] = useState('');
-    const [isSecret, setIsSecret] = useState(false);
+    const [receiver, setReceiver] = useState('public');
     const [loading, setLoading] = useState(false);
-    const [attendance, setAttendance] = useState('참석');
-    const [attendanceCount, setAttendanceCount] = useState('1명');
+    const [initialLoading, setInitialLoading] = useState(true);
 
-    // 특정 비밀글의 잠금이 해제되었는지 추적하는 상태
+    const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [isReplyInputModalOpen, setIsReplyInputModalOpen] = useState(false);
+
+    const [modalPassword, setModalPassword] = useState('');
+    const [modalEditText, setModalEditText] = useState('');
+    const [modalReplyText, setModalReplyText] = useState('');
+    const [selectedMsg, setSelectedMsg] = useState(null);
+    const [modalPurpose, setModalPurpose] = useState('');
     const [unlockedMessages, setUnlockedMessages] = useState({});
 
-    // 1. 실시간 데이터 바인딩
-    useEffect(() => {
-        // 맨 처음 데이터 가져오기
-        fetchMessages();
-
-        // Supabase 실시간 구독 설정 (postgres_changes)
-        const channel = supabase
-            .channel('public:guestbook')
-            .on(
-                'postgres_changes',
-                { event: '*', schema: 'public', table: 'guestbook' },
-                () => {
-                    // 변경사항이 감지되면 다시 데이터를 가져옴
-                    fetchMessages();
-                }
-            )
-            .subscribe();
-
-        return () => {
-            supabase.removeChannel(channel);
-        };
-    }, []);
-
-    const fetchMessages = async () => {
+    const fetchMessages = useCallback(async (isAuto = false) => {
         try {
-            const { data, error } = await supabase
-                .from('guestbook')
-                .select('*')
-                .order('created_at', { ascending: false });
-
-            if (error) {
-                console.error("Supabase fetch error:", error);
-                throw error;
-            }
-
+            const { data, error } = await supabase.from('guestbook').select('*').order('created_at', { ascending: false });
+            if (error) throw error;
             if (data) {
-                const formattedData = data.map(doc => ({
-                    ...doc,
-                    date: new Date(doc.created_at).toLocaleDateString('ko-KR').replace(/\. /g, '.').replace(/\.$/, '') || ''
-                }));
-                // Supabase에서 성공적으로 가져오면 기존 localstorage의 레거시 구조는 덮어씁니다 (혹은 필요한 경우 병합)
-                // 지금은 로컬 백업과 섞지 않고 Supabase 데이터를 기준으로 함.
-                // 만약 Supabase 테이블이 완전히 비어있고 첫 세팅이라면 로컬에 저장된 mock 데이터를 띄워줍니다.
-                if (formattedData.length === 0) {
-                    loadLocalMockData();
-                } else {
-                    setMessages(formattedData);
-                    localStorage.setItem('wedding_guestbook', JSON.stringify(formattedData));
-                }
+                const formattedData = data.map(doc => {
+                    let parsedContent = doc.content;
+                    let parsedReceiver = 'public';
+                    let parsedReply = '';
+                    try {
+                        if (doc.content && doc.content.startsWith('{"text":')) {
+                            const parsed = JSON.parse(doc.content);
+                            parsedContent = parsed.text;
+                            parsedReceiver = parsed.receiver || 'public';
+                            parsedReply = parsed.reply || '';
+                        }
+                    } catch (e) { }
+                    return {
+                        ...doc,
+                        content: parsedContent,
+                        receiver: doc.receiver || parsedReceiver,
+                        reply: doc.reply || parsedReply,
+                        date: new Date(doc.created_at).toLocaleDateString('ko-KR').replace(/\. /g, '.').replace(/\.$/, '') || ''
+                    };
+                });
+                setMessages(formattedData);
+                localStorage.setItem('wedding_guestbook', JSON.stringify(formattedData));
             }
         } catch (e) {
-            // 인터넷 끊김이나 아직 세팅 전이라면 로컬스토리지 백업 모드 실행
-            loadLocalMockData();
+            console.error("Fetch error", e);
+            if (!isAuto) loadLocalMockData();
+        } finally {
+            setInitialLoading(false);
         }
-    };
+    }, []);
 
     const loadLocalMockData = () => {
         const saved = localStorage.getItem('wedding_guestbook');
         let currentMessages = saved ? JSON.parse(saved) : [];
-
-        // 필수 예시 데이터 정의 (3월 13일 고정)
         const mockMessages = [
-            { id: 'mock-1', name: '김철수', content: '두 분의 결혼을 진심으로 축하드립니다! 행복하게 잘 사세요! 💐', date: '2026.03.13', password: '0313', is_secret: false },
-            { id: 'mock-2', name: '이영희', content: '희영아 결혼 너무 축하해! 세상에서 가장 아름다운 신부가 될 거야. 💕', date: '2026.03.13', password: '0313', is_secret: false }
+            { id: 'mock-1', name: '김철수', content: '두 분의 결혼을 진심으로 축하드립니다! 행복하게 잘 사세요! 💐', date: '2026.03.13', password: '0313', is_secret: false, receiver: 'public', reply: '감사합니다! 축하해주셔서 정말 기뻐요.' },
+            { id: 'mock-2', name: '이영희', content: '희영아 결혼 너무 축하해! 세상에서 가장 아름다운 신부가 될 거야. 💕', date: '2026.03.13', password: '0313', is_secret: false, receiver: 'public' }
         ];
-
-        const filtered = currentMessages.filter(m => String(m.id).startsWith('local-')); // 기존 임시 저장본
-        const finalMessages = [...mockMessages, ...filtered];
-
-        setMessages(finalMessages);
+        const filtered = currentMessages.filter(m => String(m.id).startsWith('local-'));
+        setMessages([...mockMessages, ...filtered]);
     };
 
-    // 비밀글 해제 로직
-    const handleUnlock = (msg) => {
-        if (!msg.is_secret) return;
+    useEffect(() => {
+        fetchMessages();
+        const channel = supabase.channel('public:guestbook_changes').on('postgres_changes', { event: '*', schema: 'public', table: 'guestbook' }, () => fetchMessages(true)).subscribe();
+        return () => supabase.removeChannel(channel);
+    }, [fetchMessages]);
 
-        // 이미 풀려있다면 다시 잠금
-        if (unlockedMessages[msg.id]) {
-            setUnlockedMessages(prev => ({ ...prev, [msg.id]: false }));
-            return;
-        }
+    const openPasswordModal = useCallback((msg, purpose) => {
+        setSelectedMsg(msg);
+        setModalPurpose(purpose);
+        setModalPassword('');
+        setIsPasswordModalOpen(true);
+    }, []);
 
-        const password = prompt('비밀글을 확인하려면 비밀번호를 입력해주세요.');
-        if (password === null) return; // 취소
+    const toggleUnlock = useCallback((id, status) => {
+        setUnlockedMessages(prev => ({ ...prev, [id]: status }));
+    }, []);
 
-        if (password === msg.password || password === '0313') {
-            setUnlockedMessages(prev => ({ ...prev, [msg.id]: true }));
-        } else {
-            showToast('비밀번호가 일치하지 않습니다.');
+    const handleModalConfirm = async () => {
+        if (modalPurpose === 'unlock') {
+            if (modalPassword === selectedMsg.password || modalPassword === '0313') {
+                toggleUnlock(selectedMsg.id, true);
+                setIsPasswordModalOpen(false);
+            } else { showToast('비밀번호가 일치하지 않습니다.'); }
+        } else if (modalPurpose === 'delete') {
+            if (modalPassword === selectedMsg.password || modalPassword === '0313') {
+                setIsPasswordModalOpen(false);
+                setIsDeleteModalOpen(true);
+            } else { showToast('비밀번호가 틀렸습니다.'); }
+        } else if (modalPurpose === 'edit') {
+            if (modalPassword === selectedMsg.password || modalPassword === '0313') {
+                setModalEditText(selectedMsg.content);
+                setIsPasswordModalOpen(false);
+                setIsEditModalOpen(true);
+            } else { showToast('비밀번호가 틀렸습니다.'); }
+        } else if (modalPurpose === 'reply') {
+            if (modalPassword === '0313') {
+                setModalReplyText(selectedMsg.reply || '');
+                setIsPasswordModalOpen(false);
+                setIsReplyInputModalOpen(true);
+            } else { showToast('신랑/신부 전용 비밀번호가 아닙니다.'); }
         }
     };
 
-    const handleDelete = async (msg) => {
-        const password = prompt('비밀번호를 입력해주세요.');
-        if (password === null) return;
-
-        const isAdmin = password === '0313';
-        const isAuthor = msg.password ? (password === msg.password) : false;
-
-        if (!isAdmin && !isAuthor) {
-            showToast('비밀번호가 틀렸습니다.');
-            return;
-        }
-
-        if (!window.confirm('이 메시지를 정말 삭제하시겠습니까?')) return;
-
+    const confirmDelete = async () => {
         try {
-            if (msg.id && typeof msg.id === 'string' && msg.id.startsWith('mock-')) {
-                const updated = messages.filter(m => m.id !== msg.id);
-                setMessages(updated);
-                localStorage.setItem('wedding_guestbook', JSON.stringify(updated));
-            } else if (msg.id && typeof msg.id === 'string' && msg.id.startsWith('local-')) {
-                const updated = messages.filter(m => m.id !== msg.id);
+            if (selectedMsg.id && typeof selectedMsg.id === 'string' && (selectedMsg.id.startsWith('mock-') || selectedMsg.id.startsWith('local-'))) {
+                const updated = messages.filter(m => m.id !== selectedMsg.id);
                 setMessages(updated);
                 localStorage.setItem('wedding_guestbook', JSON.stringify(updated));
             } else {
-                // Supabase 삭제
-                const { error } = await supabase.from('guestbook').delete().eq('id', msg.id);
-                if (error) throw error;
+                await supabase.from('guestbook').delete().eq('id', selectedMsg.id);
             }
-
-            // 구글 시트 동기화 (삭제)
-            if (GOOGLE_SHEET_URL) {
-                fetch(GOOGLE_SHEET_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name: msg.name, type: 'DELETE' })
-                }).catch(e => console.error('Sheet sync error', e));
-            }
-
             showToast('메시지가 삭제되었습니다.');
+            setIsDeleteModalOpen(false);
         } catch (err) {
-            console.error(err);
             showToast('삭제 중 오류가 발생했습니다.');
         }
     };
 
-    const handleEdit = async (msg) => {
-        const password = prompt('비밀번호를 입력해주세요.');
-        if (password === null) return;
-
-        const isAdmin = password === '0313';
-        const isAuthor = msg.password ? (password === msg.password) : false;
-
-        if (!isAdmin && !isAuthor) {
-            showToast('비밀번호가 틀렸습니다.');
-            return;
-        }
-
-        const newText = prompt('수정할 내용을 입력해주세요.', msg.content);
-        if (newText === null || newText === msg.content) return;
-
+    const confirmEdit = async () => {
+        if (!modalEditText.trim()) return showToast('내용을 입력해주세요.');
         try {
-            if (msg.id && typeof msg.id === 'string' && (msg.id.startsWith('mock-') || msg.id.startsWith('local-'))) {
-                const updated = messages.map(m => m.id === msg.id ? { ...m, content: newText } : m);
+            const dbContent = JSON.stringify({ text: modalEditText, receiver: selectedMsg.receiver || 'public', reply: selectedMsg.reply || '' });
+            if (selectedMsg.id && typeof selectedMsg.id === 'string' && (selectedMsg.id.startsWith('mock-') || selectedMsg.id.startsWith('local-'))) {
+                const updated = messages.map(m => m.id === selectedMsg.id ? { ...m, content: modalEditText } : m);
                 setMessages(updated);
                 localStorage.setItem('wedding_guestbook', JSON.stringify(updated));
             } else {
-                // Supabase 업데이트
-                const { error } = await supabase.from('guestbook').update({ content: newText }).eq('id', msg.id);
-                if (error) throw error;
+                await supabase.from('guestbook').update({ content: dbContent }).eq('id', selectedMsg.id);
             }
-
-            // 구글 시트 동기화 (수정)
-            if (GOOGLE_SHEET_URL) {
-                fetch(GOOGLE_SHEET_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name: msg.name, content: newText, type: 'UPDATE' })
-                }).catch(e => console.error('Sheet sync error', e));
-            }
-
             showToast('메시지가 수정되었습니다.');
+            setIsEditModalOpen(false);
         } catch (err) {
-            console.error(err);
             showToast('수정 중 오류가 발생했습니다.');
+        }
+    };
+
+    const confirmReply = async () => {
+        try {
+            const dbContent = JSON.stringify({ text: selectedMsg.content, receiver: selectedMsg.receiver || 'public', reply: modalReplyText });
+            if (selectedMsg.id && typeof selectedMsg.id === 'string' && (selectedMsg.id.startsWith('mock-') || selectedMsg.id.startsWith('local-'))) {
+                const updated = messages.map(m => m.id === selectedMsg.id ? { ...m, reply: modalReplyText } : m);
+                setMessages(updated);
+                localStorage.setItem('wedding_guestbook', JSON.stringify(updated));
+            } else {
+                await supabase.from('guestbook').update({ content: dbContent }).eq('id', selectedMsg.id);
+            }
+            showToast('답글을 남겼습니다! ❤️');
+            setIsReplyInputModalOpen(false);
+        } catch (err) {
+            showToast('오류가 발생했습니다.');
         }
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!newName.trim() || !newContent.trim() || !newPassword.trim()) {
-            showToast('이름, 비밀번호, 메시지를 모두 입력해주세요.');
-            return;
-        }
+        const trimmedName = newName.trim();
+        const trimmedPassword = newPassword.trim();
+        const trimmedContent = newContent.trim();
 
+        if (!trimmedName || !trimmedContent || !trimmedPassword) return showToast('필수 정보를 입력해주세요.');
         setLoading(true);
-
-        const existingMsg = messages.find(m => m.name === newName.trim());
+        const existingMsg = messages.find(m => m.name === trimmedName);
 
         try {
+            const dateStr = new Date().toLocaleDateString('ko-KR').replace(/\. /g, '.').replace(/\.$/, '');
+            const dbContent = JSON.stringify({ text: trimmedContent, receiver: receiver, reply: existingMsg ? existingMsg.reply : '' });
+            const messageDataDB = { name: trimmedName, content: dbContent, password: trimmedPassword, is_secret: receiver !== 'public' };
+            const messageDataLocal = { name: trimmedName, content: trimmedContent, password: trimmedPassword, is_secret: receiver !== 'public', receiver: receiver };
+
             if (existingMsg) {
-                const isCorrectPassword = (existingMsg.password && newPassword.trim() === existingMsg.password) || newPassword.trim() === '0313';
-                const canUpdate = !existingMsg.password || isCorrectPassword;
-
-                if (!canUpdate) {
-                    showToast('이미 작성된 이름입니다. 비밀번호를 확인해주세요.');
+                if (existingMsg.password && trimmedPassword !== existingMsg.password && trimmedPassword !== '0313') {
                     setLoading(false);
-                    return;
+                    return showToast('비밀번호가 일치하지 않습니다.');
                 }
-
-                if (existingMsg.id && typeof existingMsg.id === 'string' && (existingMsg.id.startsWith('mock-') || existingMsg.id.startsWith('local-'))) {
-                    const updated = messages.map(m =>
-                        m.id === existingMsg.id ? {
-                            ...m,
-                            content: newContent.trim(),
-                            password: newPassword.trim(),
-                            attendance,
-                            count: attendanceCount,
-                            is_secret: isSecret,
-                            date: new Date().toLocaleDateString('ko-KR').replace(/\. /g, '.').replace(/\.$/, '')
-                        } : m
-                    );
+                const { error: upError } = await supabase.from('guestbook').update(messageDataDB).eq('id', existingMsg.id);
+                if (upError || (typeof existingMsg.id === 'string' && (existingMsg.id.startsWith('mock-') || existingMsg.id.startsWith('local-')))) {
+                    const updated = messages.map(m => m.id === existingMsg.id ? { ...m, ...messageDataLocal, date: dateStr } : m);
                     setMessages(updated);
                     localStorage.setItem('wedding_guestbook', JSON.stringify(updated));
-                } else {
-                    const { error } = await supabase.from('guestbook').update({
-                        content: newContent.trim(),
-                        password: newPassword.trim(),
-                        attendance,
-                        count: attendanceCount,
-                        is_secret: isSecret,
-                        created_at: new Date().toISOString()
-                    }).eq('id', existingMsg.id);
-
-                    if (error) throw error;
                 }
-                showToast('기존 메시지 및 참석 정보가 업데이트되었습니다! ✨');
+                showToast('메시지가 업데이트되었습니다! ✨');
             } else {
-                const messageData = {
-                    name: newName.trim(),
-                    content: newContent.trim(),
-                    password: newPassword.trim(),
-                    attendance,
-                    count: attendanceCount,
-                    is_secret: isSecret,
-                    created_at: new Date().toISOString()
-                };
-
-                const { error } = await supabase.from('guestbook').insert([messageData]);
-
-                if (error) {
-                    // Supabase 설정이 아직 안된 상태라 에러가 날 경우 로컬로 대체 진행
-                    console.error("Supabase insert error, falling back to local:", error);
-                    const today = new Date();
-                    const dateStr = `${today.getFullYear()}.${String(today.getMonth() + 1).padStart(2, '0')}.${String(today.getDate()).padStart(2, '0')}`;
-                    const localMsg = {
-                        ...messageData,
-                        id: `local-${Date.now()}`,
-                        date: dateStr
-                    };
-                    setMessages([localMsg, ...messages]);
-                    localStorage.setItem('wedding_guestbook', JSON.stringify([localMsg, ...messages]));
+                if ((trimmedName === '신랑' || trimmedName === '신부') && trimmedPassword !== '0313') {
+                    setLoading(false);
+                    return showToast('신랑/신부 전용 비밀번호를 입력해주세요.');
                 }
-
-                showToast('축하의 마음과 참석의사가 전달되었습니다! 💌');
+                const { error: inError } = await supabase.from('guestbook').insert([messageDataDB]);
+                if (inError) {
+                    console.warn("Supabase insert failed, falling back to LocalStorage", inError);
+                    const localMsg = { ...messageDataLocal, id: `local-${Date.now()}`, date: dateStr };
+                    const newMessages = [localMsg, ...messages];
+                    setMessages(newMessages);
+                    localStorage.setItem('wedding_guestbook', JSON.stringify(newMessages));
+                }
+                showToast('소중한 메시지 감사합니다! 💌');
             }
-
-            if (GOOGLE_SHEET_URL) {
-                fetch(GOOGLE_SHEET_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        name: `[참석] ${newName.trim()}`,
-                        content: `(${attendance}/${attendanceCount}) ${newContent.trim()}`,
-                        type: 'UPDATE'
-                    })
-                }).catch(e => console.error('Sheet sync error', e));
-            }
-
-            setNewName('');
-            setNewPassword('');
-            setNewContent('');
-            setIsSecret(false);
-            setAttendance('참석');
-            setAttendanceCount('1명');
+            setNewName(''); setNewPassword(''); setNewContent(''); setReceiver('public');
         } catch (err) {
-            console.error(err);
-            showToast('처리 중 오류가 발생했습니다.');
+            console.error("Submission error:", err);
+            showToast('전송 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
         } finally {
             setLoading(false);
         }
     };
 
+    const messageListOutput = useMemo(() => {
+        if (initialLoading) return (
+            <div className="text-center py-10 space-y-2">
+                <div className="w-6 h-6 border-2 border-rose-200 border-t-rose-500 rounded-full animate-spin mx-auto"></div>
+                <p className="text-stone-400 text-xs text-center">방명록을 불러오는 중입니다...</p>
+            </div>
+        );
+        if (messages.length === 0) return <p className="text-center py-10 text-stone-400 text-sm italic font-medium">첫 번째 축하 메시지를 남겨주세요.</p>;
+        return (
+            <div className="space-y-4">
+                {messages.map((msg, idx) => (
+                    <MessageItem key={msg.id || idx} msg={msg} unlockedMessages={unlockedMessages} openPasswordModal={openPasswordModal} toggleUnlock={toggleUnlock} />
+                ))}
+            </div>
+        );
+    }, [messages, unlockedMessages, initialLoading, openPasswordModal, toggleUnlock]);
+
     return (
         <section className="py-24 px-6 bg-[#FDFBF7]" id="guestbook" ref={ref}>
             <div className={`max-w-md mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                <div className="text-center mb-10">
-                    <MessageCircle className="mx-auto text-rose-200 mb-4" size={28} strokeWidth={1.5} />
-                    <h2 className="text-xl font-serif tracking-widest text-stone-800 font-bold">방명록</h2>
-                    <p className="text-xs text-stone-500 mt-2">따뜻한 축하의 메시지를 남겨주세요.</p>
+
+                {/* 1. 디자인 반영: 방명록 아이콘, 빨간색 보더 라인 추가 */}
+                <div className="text-center mb-10 flex flex-col items-center">
+                    <div className="mb-2">
+                        <MessageSquare className="mx-auto text-rose-200" size={28} strokeWidth={1.5} />
+                    </div>
+                    <h2 className="text-2xl font-serif tracking-[0.2em] text-stone-900 font-bold mb-3 relative">
+                        방명록
+                        <div className="absolute -bottom-3 left-0 w-full h-[2px] bg-red-600"></div>
+                    </h2>
+
+                    {/* 2. 요청된 방명록 하단 문구 + 메일 애니메이션 이모지 추가 */}
+                    <p className="text-[14px] text-stone-600 font-medium leading-relaxed break-keep mt-7 animate-fade-in-up" style={{ animationFillMode: 'both', animationDelay: '300ms' }}>
+                        가족식으로 진행되어 하객 초청은 하지 않습니다.<br />
+                        축하 방명록만 남겨주시면 됩니다.
+                        <span className="inline-block animate-bounce-soft text-base ml-1.5" style={{ verticalAlign: 'middle' }}>💌</span>
+                    </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="bg-white p-5 rounded-2xl shadow-sm border border-stone-200 mb-8 space-y-4">
-                    <div className="flex space-x-2">
-                        <input
-                            type="text"
-                            placeholder="성함"
-                            value={newName}
-                            onChange={(e) => setNewName(e.target.value)}
-                            className="flex-1 bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-sm text-stone-800 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-rose-200 transition-all"
-                            maxLength={10}
-                        />
-                        <input
-                            type="password"
-                            placeholder="비밀번호"
-                            value={newPassword}
-                            onChange={(e) => setNewPassword(e.target.value)}
-                            className="w-1/3 bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-sm text-stone-800 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-rose-200 transition-all"
-                            maxLength={10}
-                        />
+                <form onSubmit={handleSubmit} className="bg-white p-5 rounded-[1.25rem] shadow-sm border border-stone-100 mb-8 space-y-4 relative overflow-hidden">
+                    <div className="flex space-x-2 relative z-10">
+                        <input type="text" placeholder="성함" value={newName} onChange={(e) => setNewName(e.target.value)} className="w-1/3 bg-stone-50 border border-stone-100 rounded-xl px-4 py-3.5 text-[15px] font-medium text-stone-800 focus:ring-1 focus:ring-rose-200 outline-none placeholder:text-stone-400" maxLength={10} />
+                        <input type="password" placeholder="비번" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} className="flex-1 bg-stone-50 border border-stone-100 rounded-xl px-4 py-3.5 text-[15px] font-medium text-stone-800 focus:ring-1 focus:ring-rose-200 outline-none placeholder:text-stone-400" maxLength={10} />
+                    </div>
+                    <textarea placeholder="축하의 한마디를 남겨주세요." value={newContent} onChange={(e) => setNewContent(e.target.value)} className="w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-3.5 text-[15px] font-medium text-stone-800 h-28 resize-none focus:ring-1 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-10" maxLength={100} />
+
+                    <div className="flex space-x-2 relative z-10">
+                        <button type="button" onClick={() => setReceiver('public')} style={{ touchAction: 'manipulation' }} className={`flex-1 py-3 rounded-xl border text-[13px] font-bold transition-all active:scale-95 ${receiver === 'public' ? 'bg-stone-100 border-stone-200 text-stone-700 shadow-sm' : 'bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50'}`}>모두에게</button>
+                        <button type="button" onClick={() => setReceiver('groom')} style={{ touchAction: 'manipulation' }} className={`flex-1 py-3 rounded-xl border text-[13px] font-bold transition-all active:scale-95 ${receiver === 'groom' ? 'bg-blue-50 border-blue-200 text-blue-700 shadow-sm' : 'bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50'}`}>신랑에게</button>
+                        <button type="button" onClick={() => setReceiver('bride')} style={{ touchAction: 'manipulation' }} className={`flex-1 py-3 rounded-xl border text-[13px] font-bold transition-all active:scale-95 ${receiver === 'bride' ? 'bg-rose-50 border-rose-200 text-rose-700 shadow-sm' : 'bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50'}`}>신부에게</button>
                     </div>
 
-                    <textarea
-                        placeholder="축하의 한마디를 남겨주세요."
-                        value={newContent}
-                        onChange={(e) => setNewContent(e.target.value)}
-                        className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-sm text-stone-800 placeholder:text-stone-400 h-24 resize-none focus:outline-none focus:ring-2 focus:ring-rose-200 transition-all font-medium"
-                        maxLength={100}
-                    />
-
-                    {/* 비밀글 설정 토글 */}
-                    <div className="flex items-center space-x-2 pl-1 mb-2">
-                        <input
-                            type="checkbox"
-                            role="switch"
-                            id="secret-toggle"
-                            checked={isSecret}
-                            onChange={(e) => setIsSecret(e.target.checked)}
-                            className="w-4 h-4 text-rose-400 bg-stone-100 border-stone-300 rounded focus:ring-rose-400 focus:ring-2"
-                        />
-                        <label htmlFor="secret-toggle" className="text-xs font-bold text-stone-500 cursor-pointer flex items-center space-x-1">
-                            <span>신랑신부만 비밀글로 남기기</span>
-                            {isSecret ? <Lock size={12} className="text-rose-400 ml-1" /> : <Unlock size={12} className="text-stone-300 ml-1" />}
-                        </label>
-                    </div>
-
-                    <div className="space-y-4 mt-2">
-                        <div className="text-left">
-                            <label className="text-[11px] font-bold text-stone-400 ml-1 mb-2 block">참석 여부를 알려주세요</label>
-                            <div className="flex space-x-1.5">
-                                {['참석', '미정', '불참'].map((option) => (
-                                    <button
-                                        key={option}
-                                        type="button"
-                                        onClick={() => setAttendance(option)}
-                                        className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all ${attendance === option ? 'bg-rose-400 text-white shadow-sm' : 'bg-stone-50 text-stone-400 border border-stone-100 hover:bg-stone-100'}`}
-                                    >
-                                        {option}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="text-left">
-                            <label className="text-[11px] font-bold text-stone-400 ml-1 mb-2 block">동행 인원</label>
-                            <select
-                                value={attendanceCount}
-                                onChange={(e) => setAttendanceCount(e.target.value)}
-                                className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-sm text-stone-800 focus:outline-none focus:ring-2 focus:ring-rose-200"
-                            >
-                                {['본인', '2명', '3명', '4명 이상'].map(opt => <option key={opt}>{opt}</option>)}
-                            </select>
-                        </div>
-                    </div>
-
-
-                    <button
-                        type="submit"
-                        disabled={loading}
-                        className="w-full bg-stone-800 text-white font-bold py-3.5 rounded-xl hover:bg-stone-700 transition-all text-sm mt-4 flex items-center justify-center disabled:bg-stone-400 shadow-sm"
-                    >
-                        {loading ? '전달 중...' : (
-                            <>
-                                <Send size={16} className="mr-2" /> 축하 메시지 및 참석의사 전달
-                            </>
-                        )}
+                    <button type="submit" disabled={loading} style={{ touchAction: 'manipulation' }} className="w-full bg-[#2A2626] hover:bg-[#1f1d1d] text-white font-bold py-4 rounded-xl text-[15px] disabled:bg-stone-400 flex items-center justify-center transition-all active:scale-95 relative z-10 mt-2">
+                        <Send size={18} className="mr-2.5 opacity-90" /> {loading ? '전송 중...' : '메시지 남기기'}
                     </button>
                 </form>
 
-                <div className="space-y-4">
-                    {messages.length === 0 ? (
-                        <p className="text-center py-10 text-stone-400 text-sm italic font-medium">첫 번째 축하 메시지를 남겨주세요.</p>
-                    ) : (
-                        messages.map((msg, idx) => {
-                            const isLocked = msg.is_secret && !unlockedMessages[msg.id];
-
-                            return (
-                                <div key={msg.id || idx} className="bg-white p-5 rounded-2xl shadow-sm border border-stone-100 flex flex-col relative group transition-all duration-300">
-                                    <div className="flex justify-between items-center mb-3">
-                                        <div className="flex items-center space-x-2">
-                                            <span className="font-bold text-sm text-stone-800 bg-stone-50 px-2.5 py-1 rounded-md">{msg.name}</span>
-                                            {msg.rsvp && msg.rsvp.attendance && (
-                                                <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${msg.rsvp.attendance === '참석' ? 'bg-rose-50 text-rose-500' : 'bg-stone-50 text-stone-400'}`}>
-                                                    {msg.rsvp.attendance === '참석' ? `✨ ${msg.rsvp.count}` : msg.rsvp.attendance}
-                                                </span>
-                                            )}
-                                        </div>
-                                        <div className="flex items-center space-x-1">
-                                            {msg.is_secret && (
-                                                <button
-                                                    onClick={() => handleUnlock(msg)}
-                                                    className={`p-1 transition-colors mr-1 ${isLocked ? 'text-rose-400 hover:text-rose-500' : 'text-stone-300 hover:text-stone-500'}`}
-                                                    title={isLocked ? "비밀글 열람하기" : "비밀글 잠그기"}
-                                                >
-                                                    {isLocked ? <Lock size={14} /> : <Unlock size={14} />}
-                                                </button>
-                                            )}
-                                            <span className="text-[10px] text-stone-400 font-medium mr-1">{msg.date}</span>
-                                            <button
-                                                onClick={() => handleEdit(msg)}
-                                                className="p-1 text-stone-300 hover:text-stone-600 transition-colors"
-                                                title="수정"
-                                            >
-                                                <Pencil size={13} />
-                                            </button>
-                                            <button
-                                                onClick={() => handleDelete(msg)}
-                                                className="p-1 text-stone-300 hover:text-rose-400 transition-colors"
-                                                title="삭제"
-                                            >
-                                                <Trash2 size={13} />
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    {/* 내용 렌더링 영역 */}
-                                    {isLocked ? (
-                                        <div
-                                            className="text-sm text-stone-400 italic flex items-center justify-center bg-stone-50 p-4 rounded-xl cursor-pointer hover:bg-stone-100 transition-colors"
-                                            onClick={() => handleUnlock(msg)}
-                                        >
-                                            <Lock size={14} className="mr-2 opacity-50" /> 작성자와 신랑신부만 확인 가능합니다
-                                        </div>
-                                    ) : (
-                                        <p className="text-sm text-stone-700 leading-relaxed font-medium whitespace-pre-wrap">{msg.content}</p>
-                                    )}
-                                </div>
-                            );
-                        })
-                    )}
-                </div>
+                {messageListOutput}
             </div>
+
+            <ModernModal isOpen={isPasswordModalOpen} onClose={() => setIsPasswordModalOpen(false)} title="비밀번호 확인" description="비밀번호를 입력해주세요." onConfirm={handleModalConfirm}>
+                <input type="password" value={modalPassword} onChange={(e) => setModalPassword(e.target.value)} className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-center text-lg tracking-[0.5em] focus:ring-2 focus:ring-stone-100 outline-none" placeholder="••••" autoFocus />
+            </ModernModal>
+            <ModernModal isOpen={isDeleteModalOpen} onClose={() => setIsDeleteModalOpen(false)} title="메시지 삭제" description="삭제하면 되돌릴 수 없습니다. 정말 삭제할까요?" onConfirm={confirmDelete} confirmLabel="삭제" isDestructive={true} />
+            <ModernModal isOpen={isEditModalOpen} onClose={() => setIsEditModalOpen(false)} title="메시지 수정" onConfirm={confirmEdit} confirmLabel="수정완료">
+                <textarea value={modalEditText} onChange={(e) => setModalEditText(e.target.value)} className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-sm text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none" />
+            </ModernModal>
+            <ModernModal isOpen={isReplyInputModalOpen} onClose={() => setIsReplyInputModalOpen(false)} title="답글 남기기" description="게스트에게 전할 소중한 메시지를 입력하세요." onConfirm={confirmReply} confirmLabel="답글저장">
+                <textarea value={modalReplyText} onChange={(e) => setModalReplyText(e.target.value)} className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-sm text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none" placeholder="감사의 인사를 남겨주세요." />
+            </ModernModal>
         </section>
     );
 }

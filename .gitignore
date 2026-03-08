@@ -22,3 +22,20 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Build artifacts
+build_dist/
+dist_test/
+target_dist/
+build_full.txt
+build_out.txt
+build_std.txt
+build_verbose.txt
+build.txt
+runs.json.bak
+test_build.js
+err.txt
+error.txt
+
+# Claude IDE
+.claude/

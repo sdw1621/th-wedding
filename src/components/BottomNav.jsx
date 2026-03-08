@@ -20,15 +20,16 @@ export default function BottomNav() {
     ];
 
     return (
-        <div className="fixed bottom-0 w-full max-w-[480px] bg-white/95 backdrop-blur-md border-t border-stone-200 z-40 px-2 pt-3 pb-[max(24px,env(safe-area-inset-bottom))] flex justify-around items-center left-1/2 -translate-x-1/2">
+        <div className="fixed bottom-0 w-full max-w-[480px] bg-white/95 border-t border-stone-200 z-40 px-2 pt-1 pb-[max(24px,env(safe-area-inset-bottom))] flex justify-around items-center left-1/2 -translate-x-1/2 shadow-[0_-5px_20px_rgba(0,0,0,0.05)]">
             {navItems.map((item) => (
                 <button
                     key={item.id}
                     onClick={() => scrollTo(item.id)}
-                    className="flex flex-col items-center text-rose-300 hover:text-rose-500 transition-colors duration-300 w-[18%]"
+                    style={{ touchAction: 'manipulation' }}
+                    className="flex flex-col items-center justify-center text-rose-300 hover:text-rose-500 transition-all active:scale-90 duration-75 w-[18%] py-3"
                 >
-                    <item.icon size={18} strokeWidth={1.5} className="mb-1.5" />
-                    <span className="text-[9px] font-bold tracking-tight whitespace-nowrap text-stone-500">{item.label}</span>
+                    <item.icon size={20} strokeWidth={1.5} className="mb-1" />
+                    <span className="text-[9px] font-bold tracking-tight whitespace-nowrap text-stone-500 uppercase">{item.label}</span>
                 </button>
             ))}
         </div>

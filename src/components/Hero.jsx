@@ -21,7 +21,7 @@ export default function Hero() {
         <div className="relative w-full h-[100dvh] overflow-hidden flex flex-col items-center justify-between pb-32 pt-20" id="home">
             <div className="absolute inset-0">
                 <img
-                    src={`${import.meta.env.BASE_URL}img/main_img.webp`}
+                    src={`${import.meta.env.BASE_URL}img/메인이미지.webp`}
                     alt="Wedding Hero"
                     fetchpriority="high"
                     decoding="async"
@@ -51,7 +51,7 @@ export default function Hero() {
 
                 <button
                     onClick={addToCalendar}
-                    className="mt-10 flex items-center space-x-2 px-6 py-2.5 bg-white/60 backdrop-blur-sm border border-stone-200 rounded-full text-stone-600 text-[11px] font-bold hover:bg-white/80 transition-all shadow-sm"
+                    className="mt-10 flex items-center space-x-2 px-6 py-2.5 bg-white/90 border border-stone-200 rounded-full text-stone-600 text-[11px] font-bold hover:bg-white transition-all shadow-sm"
                 >
                     <Calendar size={14} />
                     <span>캘린더에 일정 추가</span>

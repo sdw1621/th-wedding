@@ -1,24 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import Camera from 'lucide-react/dist/esm/icons/camera';
 import X from 'lucide-react/dist/esm/icons/x';
+import ChevronLeft from 'lucide-react/dist/esm/icons/chevron-left';
+import ChevronRight from 'lucide-react/dist/esm/icons/chevron-right';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function Gallery() {
     const [ref, isVisible] = useScrollReveal();
-    const [selectedImg, setSelectedImg] = useState(null);
+    const [selectedIdx, setSelectedIdx] = useState(null);
+    const touchStartX = useRef(0);
+    const touchEndX = useRef(0);
 
     const images = [
-        `${import.meta.env.BASE_URL}img/pages/KakaoTalk_20260305_230912710.webp`,
-        `${import.meta.env.BASE_URL}img/pages/KakaoTalk_20260305_232813657.webp`,
-        `${import.meta.env.BASE_URL}img/pages/clip1772719635985.webp`,
-        `${import.meta.env.BASE_URL}img/pages/clip1772719933405.webp`,
-        `${import.meta.env.BASE_URL}img/pages/clip1772719961777.webp`,
-        `${import.meta.env.BASE_URL}img/pages/clip1772720241909.webp`,
-        `${import.meta.env.BASE_URL}img/pages/clip1772720265226.webp`,
-        `${import.meta.env.BASE_URL}img/pages/clip1772720440413.webp`,
-        `${import.meta.env.BASE_URL}img/pages/clip1772720601331.webp`,
-        `${import.meta.env.BASE_URL}img/pages/clip1772721300357.webp`
+        { src: `${import.meta.env.BASE_URL}img/pages/커플_꽃셔츠.webp`, alt: '커플 꽃무늬 셔츠' },
+        { src: `${import.meta.env.BASE_URL}img/pages/커플_드레스업.webp`, alt: '커플 드레스업' },
+        { src: `${import.meta.env.BASE_URL}img/pages/한복_전통혼례.webp`, alt: '한복 전통혼례' },
+        { src: `${import.meta.env.BASE_URL}img/pages/정원_산책.webp`, alt: '정원 산책' },
+        { src: `${import.meta.env.BASE_URL}img/pages/가을_은행나무.webp`, alt: '가을 은행나무' },
+        { src: `${import.meta.env.BASE_URL}img/pages/한옥_정면컷.webp`, alt: '한옥 정면컷' },
+        { src: `${import.meta.env.BASE_URL}img/pages/한옥_마주보기.webp`, alt: '한옥 마주보기' },
+        { src: `${import.meta.env.BASE_URL}img/pages/신랑_솔로컷.webp`, alt: '신랑 솔로컷' },
+        { src: `${import.meta.env.BASE_URL}img/pages/신부_솔로컷.webp`, alt: '신부 솔로컷' },
+        { src: `${import.meta.env.BASE_URL}img/pages/정원_로맨틱.webp`, alt: '정원 로맨틱' },
     ];
+
+    const goNext = useCallback(() => {
+        setSelectedIdx(prev => (prev + 1) % images.length);
+    }, [images.length]);
+
+    const goPrev = useCallback(() => {
+        setSelectedIdx(prev => (prev - 1 + images.length) % images.length);
+    }, [images.length]);
+
+    const handleTouchStart = (e) => {
+        touchStartX.current = e.touches[0].clientX;
+    };
+
+    const handleTouchEnd = (e) => {
+        touchEndX.current = e.changedTouches[0].clientX;
+        const diff = touchStartX.current - touchEndX.current;
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) goNext();
+            else goPrev();
+        }
+    };
 
     return (
         <section className="py-24 bg-white overflow-hidden" id="gallery" ref={ref}>
@@ -31,13 +56,13 @@ export default function Gallery() {
 
                 {/* 가로 스크롤 갤러리 */}
                 <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar px-6 space-x-4 pb-8">
-                    {images.map((src, idx) => (
+                    {images.map((img, idx) => (
                         <div key={idx} className="flex-none w-[80vw] sm:w-[300px] snap-center">
                             <div
                                 className="rounded-xl overflow-hidden shadow-sm aspect-[4/5] cursor-zoom-in group relative"
-                                onClick={() => setSelectedImg(src)}
+                                onClick={() => setSelectedIdx(idx)}
                             >
-                                <img src={src} alt={`Gallery ${idx + 1}`} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                                <img src={img.src} alt={img.alt} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
                             </div>
                         </div>
@@ -46,19 +71,56 @@ export default function Gallery() {
             </div>
 
             {/* Lightbox Modal */}
-            {selectedImg && (
+            {selectedIdx !== null && (
                 <div
-                    className="fixed inset-0 z-[60] bg-black/95 flex items-center justify-center p-4 animate-in fade-in duration-300"
-                    onClick={() => setSelectedImg(null)}
+                    className="fixed inset-0 z-[200] bg-black/95 flex items-center justify-center p-4 animate-in fade-in duration-300"
+                    onClick={() => setSelectedIdx(null)}
+                    onTouchStart={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
                 >
-                    <button className="absolute top-8 right-8 text-white p-2" onClick={() => setSelectedImg(null)}>
-                        <X size={32} />
+                    <button className="absolute top-6 left-6 text-white/70 active:text-white p-3 z-10" onClick={(e) => { e.stopPropagation(); setSelectedIdx(null); }}>
+                        <X size={28} />
                     </button>
+
+                    {/* 이전 버튼 */}
+                    <button
+                        className="absolute left-0 top-1/2 -translate-y-1/2 text-white/40 active:text-white p-6 z-10 transition-colors"
+                        style={{ touchAction: 'manipulation' }}
+                        onClick={(e) => { e.stopPropagation(); goPrev(); }}
+                    >
+                        <ChevronLeft size={32} />
+                    </button>
+
+                    {/* 다음 버튼 */}
+                    <button
+                        className="absolute right-0 top-1/2 -translate-y-1/2 text-white/40 active:text-white p-6 z-10 transition-colors"
+                        style={{ touchAction: 'manipulation' }}
+                        onClick={(e) => { e.stopPropagation(); goNext(); }}
+                    >
+                        <ChevronRight size={32} />
+                    </button>
+
                     <img
-                        src={selectedImg}
-                        alt="Zoomed"
-                        className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl animate-in zoom-in-95 duration-300"
+                        src={images[selectedIdx].src}
+                        alt={images[selectedIdx].alt}
+                        className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl animate-in zoom-in-95 duration-300"
+                        onClick={(e) => e.stopPropagation()}
                     />
+
+                    {/* 분홍 도트 인디케이터 */}
+                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2">
+                        {images.map((_, i) => (
+                            <button
+                                key={i}
+                                onClick={(e) => { e.stopPropagation(); setSelectedIdx(i); }}
+                                className={`rounded-full transition-all duration-300 ${
+                                    i === selectedIdx
+                                        ? 'w-6 h-2.5 bg-rose-400'
+                                        : 'w-2.5 h-2.5 bg-white/30'
+                                }`}
+                            />
+                        ))}
+                    </div>
                 </div>
             )}
         </section>

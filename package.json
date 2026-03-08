@@ -9,10 +9,11 @@
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d build_dist"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.98.0",
+    "dotenv": "^17.3.1",
     "lucide-react": "^0.460.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"

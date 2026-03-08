@@ -36,7 +36,7 @@ export default function Countdown() {
         <div className="flex space-x-4 mt-8">
             {units.map((unit, idx) => (
                 <div key={idx} className="flex flex-col items-center">
-                    <div className="bg-white/40 backdrop-blur-sm border border-white/20 w-12 h-12 rounded-lg flex items-center justify-center shadow-sm mb-1">
+                    <div className="bg-white/80 border border-white/20 w-12 h-12 rounded-lg flex items-center justify-center shadow-sm mb-1">
                         <span className="text-lg font-serif text-stone-800">{String(unit.value).padStart(2, '0')}</span>
                     </div>
                     <span className="text-[9px] tracking-tighter text-stone-500 font-bold">{unit.label}</span>

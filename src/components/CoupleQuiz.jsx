@@ -62,15 +62,15 @@ export default function CoupleQuiz() {
                                     ))}
                                 </div>
                             </div>
-                            <h3 className="text-lg font-medium text-stone-800 mb-6 break-keep">{quizData[currentQ].question}</h3>
+                            <h3 className="text-lg font-medium text-stone-800 mb-6 break-keep leading-relaxed">{quizData[currentQ].question}</h3>
                             <div className="space-y-3">
                                 {quizData[currentQ].options.map((opt, i) => {
-                                    let btnClass = "w-full text-left px-5 py-4 rounded-xl border text-sm transition-all ";
+                                    let btnClass = "w-full text-left px-5 py-4.5 rounded-2xl border text-sm transition-all active:scale-95 ";
                                     if (selected === null) {
-                                        btnClass += "border-stone-300 text-stone-700 font-medium hover:bg-stone-50 hover:border-stone-400";
+                                        btnClass += "border-stone-200 text-stone-700 font-medium bg-stone-50/30 active:bg-stone-100";
                                     } else {
                                         if (i === quizData[currentQ].answer) {
-                                            btnClass += "bg-emerald-50 border-emerald-200 text-emerald-700 font-medium";
+                                            btnClass += "bg-emerald-50 border-emerald-200 text-emerald-700 font-bold";
                                         } else if (i === selected) {
                                             btnClass += "bg-rose-50 border-rose-200 text-rose-700";
                                         } else {
@@ -82,6 +82,7 @@ export default function CoupleQuiz() {
                                         <button
                                             key={i}
                                             onClick={() => handleOptionClick(i)}
+                                            style={{ touchAction: 'manipulation' }}
                                             className={btnClass}
                                             disabled={selected !== null}
                                         >
@@ -93,7 +94,7 @@ export default function CoupleQuiz() {
                         </div>
                     ) : (
                         <div className="text-center py-8">
-                            <div className="w-20 h-20 bg-rose-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <div className="w-20 h-20 bg-rose-50 rounded-full flex items-center justify-center mx-auto mb-4 animate-in zoom-in duration-500">
                                 <span className="text-3xl font-bold text-rose-400">{score * 33 + 1}점</span>
                             </div>
                             <h3 className="text-xl font-medium text-stone-800 mb-2">
@@ -102,7 +103,8 @@ export default function CoupleQuiz() {
                             <p className="text-stone-600 font-medium text-sm mb-6">참여해주셔서 감사합니다.</p>
                             <button
                                 onClick={() => { setCurrentQ(0); setScore(0); setShowResult(false); setSelected(null); }}
-                                className="text-sm text-stone-600 font-bold underline underline-offset-4"
+                                style={{ touchAction: 'manipulation' }}
+                                className="text-sm text-stone-600 font-bold underline underline-offset-4 active:text-stone-900 transition-colors"
                             >
                                 다시 풀어보기
                             </button>

@@ -9,6 +9,7 @@ export default defineConfig({
     host: '127.0.0.1'
   },
   build: {
+    outDir: 'build_dist',
     minify: true
   }
 })
