@@ -7598,6 +7598,7 @@ function Gallery() {
                 className: "rounded-xl overflow-hidden shadow-sm aspect-[4/5] cursor-zoom-in relative active:opacity-90",
                 onClick: () => {
                   document.body.classList.add("music-hidden");
+                  document.body.classList.add("nav-hidden");
                   setSelectedIdx(idx);
                 },
                 children: [
@@ -7635,9 +7636,12 @@ function Gallery() {
       "div",
       {
         className: "fixed inset-0 z-[500] bg-black/95 flex items-center justify-center p-4 animate-in fade-in duration-300",
-        onClick: () => {
-          document.body.classList.remove("music-hidden");
-          setSelectedIdx(null);
+        onClick: (e) => {
+          if (e.target === e.currentTarget) {
+            document.body.classList.remove("music-hidden");
+            document.body.classList.remove("nav-hidden");
+            setSelectedIdx(null);
+          }
         },
         onTouchStart: handleTouchStart,
         onTouchEnd: handleTouchEnd,
@@ -7649,8 +7653,10 @@ function Gallery() {
               onPointerDown: (e) => {
                 e.stopPropagation();
                 document.body.classList.remove("music-hidden");
+                document.body.classList.remove("nav-hidden");
                 setSelectedIdx(null);
               },
+              onClick: (e) => e.stopPropagation(),
               children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { size: 24 })
             }
           ),
@@ -7663,6 +7669,7 @@ function Gallery() {
                 e.stopPropagation();
                 goPrev();
               },
+              onClick: (e) => e.stopPropagation(),
               children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { size: 24 })
             }
           ),
@@ -7675,6 +7682,7 @@ function Gallery() {
                 e.stopPropagation();
                 goNext();
               },
+              onClick: (e) => e.stopPropagation(),
               children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { size: 24 })
             }
           ),

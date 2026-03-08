@@ -2618,6 +2618,10 @@ a svg {
   padding-bottom: 80px;
 }
 
+body.nav-hidden .fixed.bottom-0 {
+  display: none !important;
+}
+
 /* Account accordion */
 
 .accordion-content {
