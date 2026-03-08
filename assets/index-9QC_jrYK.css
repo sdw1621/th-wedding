@@ -672,6 +672,10 @@ video {
   z-index: 300;
 }
 
+.z-\[5\]{
+  z-index: 5;
+}
+
 .-m-1{
   margin: -0.25rem;
 }
@@ -1099,6 +1103,11 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.translate-y-6{
+  --tw-translate-y: 1.5rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .translate-y-\[-30px\]{
   --tw-translate-y: -30px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1140,38 +1149,6 @@ video {
 
 .animate-\[music-bar_0\.8s_ease-in-out_infinite_0\.1s\]{
   animation: music-bar 0.8s ease-in-out infinite 0.1s;
-}
-
-@keyframes bounceSoft{
-
-  0%, 100%{
-    transform: translateY(0);
-  }
-
-  50%{
-    transform: translateY(-5px);
-  }
-}
-
-.animate-bounce-soft{
-  animation: bounceSoft 2s ease-in-out infinite;
-}
-
-@keyframes fadeInUp{
-
-  0%{
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  100%{
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in-up{
-  animation: fadeInUp 0.8s ease-out forwards;
 }
 
 @keyframes pulse{
@@ -2875,12 +2852,6 @@ a svg {
   width: 100%;
 }
 
-.group:hover .group-hover\:scale-110{
-  --tw-scale-x: 1.1;
-  --tw-scale-y: 1.1;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
 .group\/item:hover .group-hover\/item\:bg-rose-100{
   --tw-bg-opacity: 1;
   background-color: rgb(255 228 230 / var(--tw-bg-opacity, 1));
@@ -2909,6 +2880,12 @@ a svg {
   .sm\:text-5xl{
     font-size: 3rem;
     line-height: 1;
+  }
+
+  .group:hover .sm\:group-hover\:scale-110{
+    --tw-scale-x: 1.1;
+    --tw-scale-y: 1.1;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 }
 
