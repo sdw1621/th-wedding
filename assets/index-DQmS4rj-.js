@@ -7759,9 +7759,33 @@ function Location() {
             " 자가용 이용 시"
           ] }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex space-x-2 pl-3.5 mt-4", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: openNaverMap, style: { touchAction: "manipulation" }, className: "flex-1 py-4 bg-[#00C73C] text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#009b2e] shadow-sm select-none", children: "네이버 지도" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: openKakaoMap, style: { touchAction: "manipulation" }, className: "flex-1 py-4 bg-[#FAE100] text-[#391B1B] text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#e0c800] shadow-sm select-none", children: "카카오맵" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: openTmap, style: { touchAction: "manipulation" }, className: "flex-1 py-4 bg-stone-800 text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-stone-900 shadow-sm select-none", children: "티맵" })
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "button",
+              {
+                onClick: openNaverMap,
+                style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
+                className: "flex-1 py-4 bg-[#00C73C] text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#009b2e] shadow-sm select-none",
+                children: "네이버 지도"
+              }
+            ),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "button",
+              {
+                onClick: openKakaoMap,
+                style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
+                className: "flex-1 py-4 bg-[#FAE100] text-[#391B1B] text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#e0c800] shadow-sm select-none",
+                children: "카카오맵"
+              }
+            ),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "button",
+              {
+                onClick: openTmap,
+                style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
+                className: "flex-1 py-4 bg-stone-800 text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-stone-900 shadow-sm select-none",
+                children: "티맵"
+              }
+            )
           ] })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
