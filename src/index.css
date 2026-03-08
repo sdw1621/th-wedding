@@ -26,7 +26,6 @@ body {
   font-family: 'Noto Serif KR', serif;
   background-color: var(--color-cream);
   color: var(--color-charcoal);
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
@@ -54,6 +53,7 @@ a svg {
   background-color: #ffffff;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
   position: relative;
+  overflow-x: hidden;
 }
 
 /* Custom scrollbar */

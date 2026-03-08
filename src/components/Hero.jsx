@@ -18,7 +18,7 @@ export default function Hero() {
     };
 
     return (
-        <div className="relative w-full h-[100dvh] overflow-hidden flex flex-col items-center justify-between pb-32 pt-20" id="home">
+        <div className="relative w-full h-screen overflow-hidden flex flex-col items-center justify-between pb-32 pt-20" id="home">
             <div className="absolute inset-0">
                 <img
                     src={`${import.meta.env.BASE_URL}img/메인이미지.webp`}
@@ -41,7 +41,7 @@ export default function Hero() {
 
                 <div className="flex flex-col items-center gap-1">
                     <p className="text-sm md:text-base tracking-[0.1em] text-stone-800 font-medium">2026년 3월 13일 금요일 오전 11시 30분</p>
-                    <p className="text-sm md:text-base text-stone-800 font-medium tracking-wide">메이필드 호텔 봉래헌</p>
+                    <a href="https://www.mayfield.co.kr/restaurant/bongraeheon" target="_blank" rel="noopener noreferrer" className="text-sm md:text-base text-stone-800 font-medium tracking-wide underline underline-offset-4 decoration-stone-800/30 active:text-rose-500 pb-0.5 mt-0.5">메이필드 호텔 봉래헌</a>
                 </div>
             </div>
 

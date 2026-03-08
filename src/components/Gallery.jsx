@@ -8,8 +8,10 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 export default function Gallery() {
     const [ref, isVisible] = useScrollReveal();
     const [selectedIdx, setSelectedIdx] = useState(null);
+    const [currentScrollIdx, setCurrentScrollIdx] = useState(0);
     const touchStartX = useRef(0);
     const touchEndX = useRef(0);
+    const scrollContainerRef = useRef(null);
 
     const images = [
         { src: `${import.meta.env.BASE_URL}img/pages/커플_꽃셔츠.webp`, alt: '커플 꽃무늬 셔츠' },
@@ -45,6 +47,27 @@ export default function Gallery() {
         }
     };
 
+    const handleScroll = () => {
+        if (!scrollContainerRef.current) return;
+        const container = scrollContainerRef.current;
+        const scrollPosition = container.scrollLeft + container.clientWidth / 2;
+        let closestIndex = 0;
+        let minDistance = Infinity;
+
+        Array.from(container.children).forEach((child, idx) => {
+            const childCenter = child.offsetLeft + child.clientWidth / 2;
+            const distance = Math.abs(scrollPosition - childCenter);
+            if (distance < minDistance) {
+                minDistance = distance;
+                closestIndex = idx;
+            }
+        });
+
+        if (closestIndex !== currentScrollIdx) {
+            setCurrentScrollIdx(closestIndex);
+        }
+    };
+
     return (
         <section className="py-24 bg-white overflow-hidden" id="gallery" ref={ref}>
             <div className={`max-w-2xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -55,17 +78,63 @@ export default function Gallery() {
                 </div>
 
                 {/* 가로 스크롤 갤러리 */}
-                <div className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar px-6 space-x-4 pb-8">
-                    {images.map((img, idx) => (
-                        <div key={idx} className="flex-none w-[80vw] sm:w-[300px] snap-center">
-                            <div
-                                className="rounded-xl overflow-hidden shadow-sm aspect-[4/5] cursor-zoom-in group relative"
-                                onClick={() => setSelectedIdx(idx)}
-                            >
-                                <img src={img.src} alt={img.alt} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
+                <div className="relative group">
+                    {/* 모바일에서도 보이는 좌우 스크롤 화살표 버튼 */}
+                    <button
+                        className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-stone-600 z-10 active:bg-white select-none"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            if (scrollContainerRef.current) {
+                                const container = scrollContainerRef.current;
+                                container.scrollBy({ left: -container.clientWidth * 0.8, behavior: 'smooth' });
+                            }
+                        }}
+                    >
+                        <ChevronLeft size={24} />
+                    </button>
+
+                    <div
+                        ref={scrollContainerRef}
+                        onScroll={handleScroll}
+                        className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar px-6 space-x-4 pb-6"
+                    >
+                        {images.map((img, idx) => (
+                            <div key={idx} className="flex-none w-[80vw] sm:w-[300px] snap-center">
+                                <div
+                                    className="rounded-xl overflow-hidden shadow-sm aspect-[4/5] cursor-zoom-in group-hover:scale-105 transition-transform duration-500 relative"
+                                    onClick={() => setSelectedIdx(idx)}
+                                >
+                                    <img src={img.src} alt={img.alt} loading="lazy" decoding="async" className="w-full h-full object-cover" />
+                                    <div className="absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors"></div>
+                                </div>
                             </div>
-                        </div>
+                        ))}
+                    </div>
+
+                    <button
+                        className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-stone-600 z-10 active:bg-white select-none"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            if (scrollContainerRef.current) {
+                                const container = scrollContainerRef.current;
+                                container.scrollBy({ left: container.clientWidth * 0.8, behavior: 'smooth' });
+                            }
+                        }}
+                    >
+                        <ChevronRight size={24} />
+                    </button>
+                </div>
+
+                {/* 메인 갤러리 하단 분홍 도트 인디케이터 */}
+                <div className="flex justify-center items-center gap-2 mb-2">
+                    {images.map((_, i) => (
+                        <div
+                            key={i}
+                            className={`rounded-full transition-all duration-300 ${i === currentScrollIdx
+                                ? 'w-6 h-2 bg-rose-400'
+                                : 'w-2 h-2 bg-stone-200'
+                                }`}
+                        />
                     ))}
                 </div>
             </div>
@@ -113,11 +182,10 @@ export default function Gallery() {
                             <button
                                 key={i}
                                 onClick={(e) => { e.stopPropagation(); setSelectedIdx(i); }}
-                                className={`rounded-full transition-all duration-300 ${
-                                    i === selectedIdx
-                                        ? 'w-6 h-2.5 bg-rose-400'
-                                        : 'w-2.5 h-2.5 bg-white/30'
-                                }`}
+                                className={`rounded-full transition-all duration-300 ${i === selectedIdx
+                                    ? 'w-6 h-2.5 bg-rose-400'
+                                    : 'w-2.5 h-2.5 bg-white/30'
+                                    }`}
                             />
                         ))}
                     </div>

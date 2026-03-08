@@ -328,19 +328,19 @@ export default function Guestbook({ showToast }) {
                 </div>
 
                 <form onSubmit={handleSubmit} className="bg-white p-5 rounded-[1.25rem] shadow-sm border border-stone-100 mb-8 space-y-4 relative overflow-hidden">
-                    <div className="flex space-x-2 relative z-10">
-                        <input type="text" placeholder="성함" value={newName} onChange={(e) => setNewName(e.target.value)} className="w-1/3 bg-stone-50 border border-stone-100 rounded-xl px-4 py-3.5 text-[15px] font-medium text-stone-800 focus:ring-1 focus:ring-rose-200 outline-none placeholder:text-stone-400" maxLength={10} />
-                        <input type="password" placeholder="비번" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} className="flex-1 bg-stone-50 border border-stone-100 rounded-xl px-4 py-3.5 text-[15px] font-medium text-stone-800 focus:ring-1 focus:ring-rose-200 outline-none placeholder:text-stone-400" maxLength={10} />
+                    <div className="flex space-x-2 relative z-20">
+                        <input type="text" placeholder="성함" value={newName} onChange={(e) => setNewName(e.target.value)} className="w-1/2 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400" maxLength={10} />
+                        <input type="password" placeholder="비밀번호" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} className="w-1/2 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400" maxLength={10} />
                     </div>
-                    <textarea placeholder="축하의 한마디를 남겨주세요." value={newContent} onChange={(e) => setNewContent(e.target.value)} className="w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-3.5 text-[15px] font-medium text-stone-800 h-28 resize-none focus:ring-1 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-10" maxLength={100} />
+                    <textarea placeholder="축하의 한마디를 남겨주세요." value={newContent} onChange={(e) => setNewContent(e.target.value)} className="w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 h-28 resize-none focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20" maxLength={100} />
 
                     <div className="flex space-x-2 relative z-10">
-                        <button type="button" onClick={() => setReceiver('public')} style={{ touchAction: 'manipulation' }} className={`flex-1 py-3 rounded-xl border text-[13px] font-bold transition-all active:scale-95 ${receiver === 'public' ? 'bg-stone-100 border-stone-200 text-stone-700 shadow-sm' : 'bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50'}`}>모두에게</button>
-                        <button type="button" onClick={() => setReceiver('groom')} style={{ touchAction: 'manipulation' }} className={`flex-1 py-3 rounded-xl border text-[13px] font-bold transition-all active:scale-95 ${receiver === 'groom' ? 'bg-blue-50 border-blue-200 text-blue-700 shadow-sm' : 'bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50'}`}>신랑에게</button>
-                        <button type="button" onClick={() => setReceiver('bride')} style={{ touchAction: 'manipulation' }} className={`flex-1 py-3 rounded-xl border text-[13px] font-bold transition-all active:scale-95 ${receiver === 'bride' ? 'bg-rose-50 border-rose-200 text-rose-700 shadow-sm' : 'bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50'}`}>신부에게</button>
+                        <button type="button" onClick={() => setReceiver('public')} style={{ touchAction: 'manipulation' }} className={`flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-stone-100 select-none ${receiver === 'public' ? 'bg-stone-100 border-stone-200 text-stone-700 shadow-sm' : 'bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50'}`}>모두에게</button>
+                        <button type="button" onClick={() => setReceiver('groom')} style={{ touchAction: 'manipulation' }} className={`flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-blue-100 select-none ${receiver === 'groom' ? 'bg-blue-50 border-blue-200 text-blue-700 shadow-sm' : 'bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50'}`}>신랑에게</button>
+                        <button type="button" onClick={() => setReceiver('bride')} style={{ touchAction: 'manipulation' }} className={`flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-rose-100 select-none ${receiver === 'bride' ? 'bg-rose-50 border-rose-200 text-rose-700 shadow-sm' : 'bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50'}`}>신부에게</button>
                     </div>
 
-                    <button type="submit" disabled={loading} style={{ touchAction: 'manipulation' }} className="w-full bg-[#2A2626] hover:bg-[#1f1d1d] text-white font-bold py-4 rounded-xl text-[15px] disabled:bg-stone-400 flex items-center justify-center transition-all active:scale-95 relative z-10 mt-2">
+                    <button type="submit" disabled={loading} style={{ touchAction: 'manipulation' }} className="w-full bg-[#2A2626] active:bg-[#1f1d1d] text-white font-bold py-4 rounded-xl text-[15px] disabled:bg-stone-400 flex items-center justify-center relative z-10 mt-2 select-none">
                         <Send size={18} className="mr-2.5 opacity-90" /> {loading ? '전송 중...' : '메시지 남기기'}
                     </button>
                 </form>
@@ -353,10 +353,10 @@ export default function Guestbook({ showToast }) {
             </ModernModal>
             <ModernModal isOpen={isDeleteModalOpen} onClose={() => setIsDeleteModalOpen(false)} title="메시지 삭제" description="삭제하면 되돌릴 수 없습니다. 정말 삭제할까요?" onConfirm={confirmDelete} confirmLabel="삭제" isDestructive={true} />
             <ModernModal isOpen={isEditModalOpen} onClose={() => setIsEditModalOpen(false)} title="메시지 수정" onConfirm={confirmEdit} confirmLabel="수정완료">
-                <textarea value={modalEditText} onChange={(e) => setModalEditText(e.target.value)} className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-sm text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none" />
+                <textarea value={modalEditText} onChange={(e) => setModalEditText(e.target.value)} className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none" />
             </ModernModal>
             <ModernModal isOpen={isReplyInputModalOpen} onClose={() => setIsReplyInputModalOpen(false)} title="답글 남기기" description="게스트에게 전할 소중한 메시지를 입력하세요." onConfirm={confirmReply} confirmLabel="답글저장">
-                <textarea value={modalReplyText} onChange={(e) => setModalReplyText(e.target.value)} className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-sm text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none" placeholder="감사의 인사를 남겨주세요." />
+                <textarea value={modalReplyText} onChange={(e) => setModalReplyText(e.target.value)} className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none" placeholder="감사의 인사를 남겨주세요." />
             </ModernModal>
         </section>
     );

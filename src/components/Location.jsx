@@ -81,13 +81,13 @@ export default function Location() {
                                 <span className="w-1.5 h-1.5 bg-rose-400 rounded-full mr-2"></span> 자가용 이용 시
                             </h4>
                             <div className="flex space-x-2 pl-3.5 mt-4">
-                                <button onClick={openNaverMap} style={{ touchAction: 'manipulation' }} className="flex-1 py-4 bg-[#00C73C] text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:scale-95 transition-all shadow-sm">
+                                <button onClick={openNaverMap} style={{ touchAction: 'manipulation' }} className="flex-1 py-4 bg-[#00C73C] text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#009b2e] shadow-sm select-none">
                                     네이버 지도
                                 </button>
-                                <button onClick={openKakaoMap} style={{ touchAction: 'manipulation' }} className="flex-1 py-4 bg-[#FAE100] text-[#391B1B] text-[12px] font-bold rounded-xl flex justify-center items-center active:scale-95 transition-all shadow-sm">
+                                <button onClick={openKakaoMap} style={{ touchAction: 'manipulation' }} className="flex-1 py-4 bg-[#FAE100] text-[#391B1B] text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#e0c800] shadow-sm select-none">
                                     카카오맵
                                 </button>
-                                <button onClick={openTmap} style={{ touchAction: 'manipulation' }} className="flex-1 py-4 bg-stone-800 text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:scale-95 transition-all shadow-sm">
+                                <button onClick={openTmap} style={{ touchAction: 'manipulation' }} className="flex-1 py-4 bg-stone-800 text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-stone-900 shadow-sm select-none">
                                     티맵
                                 </button>
                             </div>

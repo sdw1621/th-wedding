@@ -7,15 +7,35 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function AccountInfo({ showToast }) {
     const [ref, isVisible] = useScrollReveal();
-    const [openGroom, setOpenGroom] = useState(false);
-    const [openBride, setOpenBride] = useState(false);
+    const [openGroom, setOpenGroom] = useState(true);
+    const [openBride, setOpenBride] = useState(true);
 
-    const handleCopy = (text) => {
-        // iFrame 환경을 고려한 복사 로직 (카카오톡 대응 등)
+    const handleCopy = async (text) => {
+        try {
+            if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(text);
+                showToast('계좌번호가 복사되었습니다.');
+                return;
+            }
+        } catch (err) {
+            console.warn('Clipboard API failed, falling back to execCommand', err);
+        }
+
+        // iFrame 환경 및 구형 기기를 고려한 복사 로직 (카카오톡 대응 등)
         const textArea = document.createElement("textarea");
         textArea.value = text;
+
+        // 보이지 않게 설정
+        textArea.style.position = "fixed";
+        textArea.style.left = "-9999px";
+        textArea.style.top = "-9999px";
         document.body.appendChild(textArea);
+
+        textArea.focus();
         textArea.select();
+        // iOS에서 전체 텍스트가 선택되도록 보장
+        textArea.setSelectionRange(0, 99999);
+
         try {
             document.execCommand('copy');
             showToast('계좌번호가 복사되었습니다.');
@@ -44,12 +64,12 @@ export default function AccountInfo({ showToast }) {
                         <button
                             onClick={() => setOpenGroom(!openGroom)}
                             style={{ touchAction: 'manipulation' }}
-                            className="w-full px-6 py-5 flex justify-between items-center text-left bg-blue-50/50 hover:bg-blue-50 active:bg-blue-100 transition-colors"
+                            className="w-full px-6 py-5 flex justify-between items-center text-left bg-blue-50/50 hover:bg-blue-50 active:bg-blue-100 transition-colors select-none cursor-pointer"
                         >
                             <span className="font-bold text-stone-800">신랑측 계좌번호</span>
                             {openGroom ? <ChevronUp size={20} className="text-stone-500" /> : <ChevronDown size={20} className="text-stone-500" />}
                         </button>
-                        <div className={`transition-all duration-300 ease-in-out ${openGroom ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'}`}>
+                        <div className={`transition-all duration-300 ease-in-out ${openGroom ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
                             <div className="p-6 border-t border-stone-100 space-y-4">
                                 <div className="flex justify-between items-center">
                                     <div>
@@ -59,7 +79,7 @@ export default function AccountInfo({ showToast }) {
                                     <button
                                         onClick={() => handleCopy("카카오뱅크 3333-01-5650207")}
                                         style={{ touchAction: 'manipulation' }}
-                                        className="text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 active:scale-95 transition-all"
+                                        className="text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none"
                                     >
                                         <Copy size={13} className="mr-1.5" /> 복사
                                     </button>
@@ -73,7 +93,7 @@ export default function AccountInfo({ showToast }) {
                                     <button
                                         onClick={() => handleCopy("농협 735080-51-036329")}
                                         style={{ touchAction: 'manipulation' }}
-                                        className="text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 active:scale-95 transition-all"
+                                        className="text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none"
                                     >
                                         <Copy size={13} className="mr-1.5" /> 복사
                                     </button>
@@ -87,12 +107,12 @@ export default function AccountInfo({ showToast }) {
                         <button
                             onClick={() => setOpenBride(!openBride)}
                             style={{ touchAction: 'manipulation' }}
-                            className="w-full px-6 py-5 flex justify-between items-center text-left bg-rose-50/50 hover:bg-rose-50 active:bg-rose-100 transition-colors"
+                            className="w-full px-6 py-5 flex justify-between items-center text-left bg-rose-50/50 hover:bg-rose-50 active:bg-rose-100 transition-colors select-none cursor-pointer"
                         >
                             <span className="font-bold text-stone-800">신부측 계좌번호</span>
                             {openBride ? <ChevronUp size={20} className="text-stone-500" /> : <ChevronDown size={20} className="text-stone-500" />}
                         </button>
-                        <div className={`transition-all duration-300 ease-in-out ${openBride ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'}`}>
+                        <div className={`transition-all duration-300 ease-in-out ${openBride ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
                             <div className="p-6 border-t border-stone-100 space-y-4">
                                 <div className="flex justify-between items-center">
                                     <div>
@@ -102,7 +122,7 @@ export default function AccountInfo({ showToast }) {
                                     <button
                                         onClick={() => handleCopy("우리은행 1002-837-547920")}
                                         style={{ touchAction: 'manipulation' }}
-                                        className="text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 active:scale-95 transition-all"
+                                        className="text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none"
                                     >
                                         <Copy size={13} className="mr-1.5" /> 복사
                                     </button>
@@ -116,7 +136,7 @@ export default function AccountInfo({ showToast }) {
                                     <button
                                         onClick={() => handleCopy("농협 352-0761-7396-23")}
                                         style={{ touchAction: 'manipulation' }}
-                                        className="text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 active:scale-95 transition-all"
+                                        className="text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none"
                                     >
                                         <Copy size={13} className="mr-1.5" /> 복사
                                     </button>
@@ -130,7 +150,7 @@ export default function AccountInfo({ showToast }) {
                                     <button
                                         onClick={() => handleCopy("우리은행 1002-734-796143")}
                                         style={{ touchAction: 'manipulation' }}
-                                        className="text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 active:scale-95 transition-all"
+                                        className="text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none"
                                     >
                                         <Copy size={13} className="mr-1.5" /> 복사
                                     </button>
