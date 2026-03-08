@@ -7535,6 +7535,16 @@ function Gallery() {
         /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "우리의 빛나는 순간" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-stone-500 mt-3 animate-pulse font-medium", children: "사진을 누르면 크게 보실 수 있어요 📸" })
       ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-6 mb-12", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-2xl overflow-hidden shadow-sm aspect-video bg-stone-100 border border-stone-200 relative group", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "iframe",
+        {
+          src: "https://www.youtube.com/embed/aBT0gHQ0AwE",
+          title: "Wedding Video",
+          className: "w-full h-full border-none",
+          allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
+          allowFullScreen: true
+        }
+      ) }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative group", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           "button",
@@ -7590,17 +7600,7 @@ function Gallery() {
           className: `rounded-full transition-all duration-300 ${i === currentScrollIdx ? "w-6 h-2 bg-rose-400" : "w-2 h-2 bg-stone-200"}`
         },
         i
-      )) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-6 pb-6", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-2xl overflow-hidden shadow-sm aspect-video bg-stone-100 border border-stone-200 relative group", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-        "iframe",
-        {
-          src: "https://www.youtube.com/embed/aBT0gHQ0AwE",
-          title: "Wedding Video",
-          className: "w-full h-full border-none",
-          allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
-          allowFullScreen: true
-        }
-      ) }) })
+      )) })
     ] }),
     selectedIdx !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs(
       "div",
