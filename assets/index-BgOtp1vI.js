@@ -7399,6 +7399,13 @@ const X = createLucideIcon("X", [
 function WeddingSchedule() {
   const [ref, isVisible] = useScrollReveal();
   const [isModalOpen, setIsModalOpen] = reactExports.useState(false);
+  React.useEffect(() => {
+    if (isModalOpen) {
+      document.body.classList.add("nav-hidden");
+    } else {
+      document.body.classList.remove("nav-hidden");
+    }
+  }, [isModalOpen]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "py-24 bg-stone-100/50 px-6", id: "schedule", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `max-w-md mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-8", children: [
@@ -19726,6 +19733,14 @@ function Guestbook({ showToast }) {
   const [selectedMsg, setSelectedMsg] = reactExports.useState(null);
   const [modalPurpose, setModalPurpose] = reactExports.useState("");
   const [unlockedMessages, setUnlockedMessages] = reactExports.useState({});
+  const isAnyModalOpen = isPasswordModalOpen || isDeleteModalOpen || isEditModalOpen || isReplyInputModalOpen;
+  reactExports.useEffect(() => {
+    if (isAnyModalOpen) {
+      document.body.classList.add("nav-hidden");
+    } else {
+      document.body.classList.remove("nav-hidden");
+    }
+  }, [isAnyModalOpen]);
   const fetchMessages = reactExports.useCallback(async (isAuto = false) => {
     try {
       const { data, error } = await supabase.from("guestbook").select("*").order("created_at", { ascending: false });
