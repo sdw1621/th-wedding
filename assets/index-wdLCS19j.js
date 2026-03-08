@@ -7521,8 +7521,10 @@ const ChevronRight = createLucideIcon("ChevronRight", [
 function Gallery() {
   const [ref, isVisible] = useScrollReveal();
   const [selectedIdx, setSelectedIdx] = reactExports.useState(null);
+  const [currentScrollIdx, setCurrentScrollIdx] = reactExports.useState(0);
   const touchStartX = reactExports.useRef(0);
   const touchEndX = reactExports.useRef(0);
+  const scrollContainerRef = reactExports.useRef(null);
   const images = [
     { src: `${"/th-wedding/"}img/pages/커플_꽃셔츠.webp`, alt: "커플 꽃무늬 셔츠" },
     { src: `${"/th-wedding/"}img/pages/커플_드레스업.webp`, alt: "커플 드레스업" },
@@ -7552,6 +7554,24 @@ function Gallery() {
       else goPrev();
     }
   };
+  const handleScroll = () => {
+    if (!scrollContainerRef.current) return;
+    const container = scrollContainerRef.current;
+    const scrollPosition = container.scrollLeft + container.clientWidth / 2;
+    let closestIndex = 0;
+    let minDistance = Infinity;
+    Array.from(container.children).forEach((child, idx) => {
+      const childCenter = child.offsetLeft + child.clientWidth / 2;
+      const distance = Math.abs(scrollPosition - childCenter);
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestIndex = idx;
+      }
+    });
+    if (closestIndex !== currentScrollIdx) {
+      setCurrentScrollIdx(closestIndex);
+    }
+  };
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "py-24 bg-white overflow-hidden", id: "gallery", ref, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-2xl mx-auto transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-8 px-6", children: [
@@ -7559,17 +7579,32 @@ function Gallery() {
         /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "우리의 빛나는 순간" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-stone-500 mt-3 animate-pulse font-medium", children: "사진을 누르면 크게 보실 수 있어요 📸" })
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex overflow-x-auto snap-x snap-mandatory hide-scrollbar px-6 space-x-4 pb-8", children: images.map((img, idx) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-none w-[80vw] sm:w-[300px] snap-center", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
         "div",
         {
-          className: "rounded-xl overflow-hidden shadow-sm aspect-[4/5] cursor-zoom-in group relative",
-          onClick: () => setSelectedIdx(idx),
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: img.src, alt: img.alt, loading: "lazy", decoding: "async", className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" })
-          ]
+          ref: scrollContainerRef,
+          onScroll: handleScroll,
+          className: "flex overflow-x-auto snap-x snap-mandatory hide-scrollbar px-6 space-x-4 pb-6",
+          children: images.map((img, idx) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-none w-[80vw] sm:w-[300px] snap-center", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            "div",
+            {
+              className: "rounded-xl overflow-hidden shadow-sm aspect-[4/5] cursor-zoom-in group relative",
+              onClick: () => setSelectedIdx(idx),
+              children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: img.src, alt: img.alt, loading: "lazy", decoding: "async", className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" })
+              ]
+            }
+          ) }, idx))
         }
-      ) }, idx)) })
+      ),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-center items-center gap-2 mb-2", children: images.map((_, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "div",
+        {
+          className: `rounded-full transition-all duration-300 ${i === currentScrollIdx ? "w-6 h-2 bg-rose-400" : "w-2 h-2 bg-stone-200"}`
+        },
+        i
+      )) })
     ] }),
     selectedIdx !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs(
       "div",
