@@ -7430,7 +7430,7 @@ function WeddingSchedule() {
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-full max-w-3xl flex-1 bg-white rounded-xl overflow-hidden relative shadow-2xl", onClick: (e) => e.stopPropagation(), children: /* @__PURE__ */ jsxRuntimeExports.jsx(
             "iframe",
             {
-              src: `${"/th-wedding/"}결혼식 식순 v3.pdf`,
+              src: window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" ? `${"/th-wedding/"}결혼식 식순 v3.pdf` : `https://docs.google.com/viewer?url=${encodeURIComponent("https://sdw1621.github.io/th-wedding/결혼식 식순 v3.pdf")}&embedded=true`,
               className: "absolute top-0 left-0 w-full h-full border-none",
               title: "Wedding Schedule"
             }
