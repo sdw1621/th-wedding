@@ -7193,7 +7193,7 @@ function IntroScreen({ onEnter, onStart }) {
           onClick: handleOpen,
           disabled: isProcessing,
           style: { touchAction: "manipulation" },
-          className: "group relative px-12 py-5 bg-stone-800 border border-stone-600 rounded-full overflow-hidden transition-all hover:bg-stone-700 active:scale-90 shadow-2xl shadow-black/50",
+          className: "group relative px-12 py-5 bg-stone-800 border border-stone-600 rounded-full overflow-hidden hover:bg-stone-700 active:bg-stone-700 shadow-2xl shadow-black/50 select-none",
           children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-rose-500/10 w-0 group-hover:w-full transition-all duration-500 ease-out" }),
             /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "relative flex items-center space-x-3 text-stone-200", children: [
@@ -7316,7 +7316,8 @@ function Hero() {
         "button",
         {
           onClick: addToCalendar,
-          className: "mt-10 flex items-center space-x-2 px-6 py-2.5 bg-white/90 border border-stone-200 rounded-full text-stone-600 text-[11px] font-bold hover:bg-white transition-all shadow-sm",
+          style: { touchAction: "manipulation" },
+          className: "mt-10 flex items-center space-x-2 px-6 py-2.5 bg-white/90 border border-stone-200 rounded-full text-stone-600 text-[11px] font-bold active:bg-stone-50 shadow-sm select-none",
           children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(Calendar, { size: 14 }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "캘린더에 일정 추가" })
@@ -7569,7 +7570,7 @@ function Gallery() {
             children: images.map((img, idx) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-none w-[80vw] sm:w-[300px] snap-center", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
               "div",
               {
-                className: "rounded-xl overflow-hidden shadow-sm aspect-[4/5] cursor-zoom-in group-hover:scale-105 transition-transform duration-500 relative",
+                className: "rounded-xl overflow-hidden shadow-sm aspect-[4/5] cursor-zoom-in relative active:opacity-90",
                 onClick: () => setSelectedIdx(idx),
                 children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: img.src, alt: img.alt, loading: "lazy", decoding: "async", className: "w-full h-full object-cover" }),
@@ -7610,7 +7611,7 @@ function Gallery() {
         onTouchStart: handleTouchStart,
         onTouchEnd: handleTouchEnd,
         children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { className: "absolute top-6 left-6 text-white/70 active:text-white p-3 z-10", onClick: (e) => {
+          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { className: "absolute top-4 left-4 text-white p-4 z-10 select-none active:opacity-50", onClick: (e) => {
             e.stopPropagation();
             setSelectedIdx(null);
           }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { size: 28 }) }),
@@ -7654,7 +7655,8 @@ function Gallery() {
                 e.stopPropagation();
                 setSelectedIdx(i);
               },
-              className: `rounded-full transition-all duration-300 ${i === selectedIdx ? "w-6 h-2.5 bg-rose-400" : "w-2.5 h-2.5 bg-white/30"}`
+              className: `rounded-full transition-all duration-300 ${i === selectedIdx ? "w-6 h-2.5 bg-rose-400" : "w-2.5 h-2.5 bg-white/30"} p-1 -m-1`,
+              style: { touchAction: "manipulation" }
             },
             i
           )) })
@@ -19595,14 +19597,14 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
         ] })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center space-x-1 -mr-2 mt-1 sm:mt-0", children: [
-        msg.is_secret && /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => isLocked ? openPasswordModal(msg, "unlock") : toggleUnlock(msg.id, false), className: "p-2 text-stone-300 active:text-stone-500 active:scale-95 transition-all", style: { touchAction: "manipulation" }, children: isLocked ? /* @__PURE__ */ jsxRuntimeExports.jsx(Lock, { size: 16 }) : /* @__PURE__ */ jsxRuntimeExports.jsx(LockOpen, { size: 16 }) }),
+        msg.is_secret && /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => isLocked ? openPasswordModal(msg, "unlock") : toggleUnlock(msg.id, false), className: "p-3 -m-1 text-stone-300 active:text-stone-600 select-none", style: { touchAction: "manipulation" }, children: isLocked ? /* @__PURE__ */ jsxRuntimeExports.jsx(Lock, { size: 16 }) : /* @__PURE__ */ jsxRuntimeExports.jsx(LockOpen, { size: 16 }) }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[11px] text-stone-400 font-medium px-1.5", children: msg.date }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => openPasswordModal(msg, "reply"), className: "p-2 text-stone-300 hover:text-stone-600 active:scale-95 transition-all", style: { touchAction: "manipulation" }, title: "답글 남기기", children: /* @__PURE__ */ jsxRuntimeExports.jsx(MessageSquare, { size: 16 }) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => openPasswordModal(msg, "edit"), className: "p-2 text-stone-300 hover:text-stone-600 active:scale-95 transition-all", style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Pencil, { size: 16 }) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => openPasswordModal(msg, "delete"), className: "p-2 text-stone-300 hover:text-rose-400 active:scale-95 transition-all", style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Trash2, { size: 16 }) })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => openPasswordModal(msg, "reply"), className: "p-3 -m-1 text-stone-300 active:text-stone-600 select-none", style: { touchAction: "manipulation" }, title: "답글 남기기", children: /* @__PURE__ */ jsxRuntimeExports.jsx(MessageSquare, { size: 16 }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => openPasswordModal(msg, "edit"), className: "p-3 -m-1 text-stone-300 active:text-stone-600 select-none", style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Pencil, { size: 16 }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => openPasswordModal(msg, "delete"), className: "p-3 -m-1 text-stone-300 active:text-rose-400 select-none", style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Trash2, { size: 16 }) })
       ] })
     ] }),
-    isLocked ? /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `text-sm italic flex items-center justify-center p-4 rounded-xl cursor-pointer active:scale-[0.98] transition-all ${msg.receiver === "groom" ? "text-blue-400 bg-blue-100/30" : msg.receiver === "bride" ? "text-rose-400 bg-rose-100/30" : "text-stone-400 bg-stone-50"}`, onClick: () => openPasswordModal(msg, "unlock"), children: [
+    isLocked ? /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `text-sm italic flex items-center justify-center p-4 rounded-xl cursor-pointer active:opacity-70 transition-opacity ${msg.receiver === "groom" ? "text-blue-400 bg-blue-100/30" : msg.receiver === "bride" ? "text-rose-400 bg-rose-100/30" : "text-stone-400 bg-stone-50"}`, onClick: () => openPasswordModal(msg, "unlock"), children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(Lock, { size: 14, className: "mr-2 opacity-50" }),
       " ",
       msg.receiver === "groom" ? "신랑" : msg.receiver === "bride" ? "신부" : "작성자",
@@ -19627,8 +19629,8 @@ const ModernModal = reactExports.memo(({ isOpen, onClose, title, description, ch
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-4", children })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col border-t border-stone-100", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: onConfirm, style: { touchAction: "manipulation" }, className: `py-4 text-[15px] font-bold border-b border-stone-100 transition-all active:bg-stone-50 active:scale-95 ${isDestructive ? "text-rose-500" : "text-blue-500"}`, children: confirmLabel }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: onClose, style: { touchAction: "manipulation" }, className: "py-4 text-[15px] font-medium text-stone-400 active:bg-stone-50 active:scale-95 transition-all", children: cancelLabel })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: onConfirm, style: { touchAction: "manipulation" }, className: `py-4 text-[15px] font-bold border-b border-stone-100 active:bg-stone-50 select-none ${isDestructive ? "text-rose-500" : "text-blue-500"}`, children: confirmLabel }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: onClose, style: { touchAction: "manipulation" }, className: "py-4 text-[15px] font-medium text-stone-400 active:bg-stone-50 select-none", children: cancelLabel })
       ] })
     ] })
   ] });
@@ -19952,7 +19954,7 @@ function Share() {
         {
           onClick: shareKakao,
           style: { touchAction: "manipulation" },
-          className: "flex-1 flex items-center justify-center space-x-2 bg-[#3B1E1E] text-white py-4 px-4 rounded-full active:bg-[#2A1515] transition-all shadow-md active:scale-95",
+          className: "flex-1 flex items-center justify-center space-x-2 bg-[#3B1E1E] text-white py-4 px-4 rounded-full active:bg-[#2A1515] shadow-md select-none",
           children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "bg-white rounded-full p-1.5 flex items-center justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("svg", { className: "w-3 h-3 text-[#3B1E1E] fill-current", viewBox: "0 0 24 24", children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M12 3c-4.97 0-9 3.116-9 7.124 0 2.508 1.637 4.706 4.156 5.96l-.78 2.85c-.122.454.156.44.331.328l3.193-2.128c.414.048.847.072 1.3.072 4.97 0 9-3.116 9-7.124S16.97 3 12 3z" }),
@@ -19967,7 +19969,7 @@ function Share() {
         {
           onClick: shareKakaoStory,
           style: { touchAction: "manipulation" },
-          className: "flex-1 flex items-center justify-center space-x-2 bg-[#3B1E1E] text-white py-4 px-4 rounded-full active:bg-[#2A1515] transition-all shadow-md active:scale-95",
+          className: "flex-1 flex items-center justify-center space-x-2 bg-[#3B1E1E] text-white py-4 px-4 rounded-full active:bg-[#2A1515] shadow-md select-none",
           children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "bg-white rounded-full p-1.5 flex items-center justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx("svg", { className: "w-3 h-3 text-[#3B1E1E] fill-current", viewBox: "0 0 24 24", children: /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10C22 6.477 17.523 2 12 2zm1.666 14.333c-.666 0-1.333-.333-1.666-1-.333.667-1 1-1.666 1-.667 0-1.334-.333-1.667-1V12h3.333v3.333h1.667v-3.333h1.667v3.333c0 .667-.667 1-1.334 1z" }) }) }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[13px] font-bold tracking-tight", children: "카카오 스토리 공유" })
@@ -19998,7 +20000,7 @@ function BottomNav() {
     {
       onClick: () => scrollTo(item.id),
       style: { touchAction: "manipulation" },
-      className: "flex flex-col items-center justify-center text-rose-300 hover:text-rose-500 transition-all active:scale-90 duration-75 w-[18%] py-3",
+      className: "flex flex-col items-center justify-center text-rose-300 hover:text-rose-500 active:bg-stone-50 select-none w-[18%] py-3 rounded-xl",
       children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(item.icon, { size: 20, strokeWidth: 1.5, className: "mb-1" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[9px] font-bold tracking-tight whitespace-nowrap text-stone-500 uppercase", children: item.label })
