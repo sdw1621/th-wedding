@@ -7553,9 +7553,9 @@ function Gallery() {
         /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "우리의 빛나는 순간" })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-6 space-y-1.5 px-6", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-stone-500 font-medium", children: "크게 보시고 싶으시면 영상 터치 후 Youtube 로고를 눌러주세요 👆" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-[11px] text-stone-400 font-medium flex items-center justify-center", children: [
-          "유튜브 영상 볼 때는 배경음(",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-stone-500 font-medium whitespace-nowrap", children: "크게 보시고 싶으시면 영상 터치 후 Youtube 로고를 눌러주세요 👆" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-[11px] text-stone-500 font-medium flex items-center justify-center whitespace-nowrap", children: [
+          "유튜브 영상 볼 때는 좌측 상단의 배경음(",
           /* @__PURE__ */ jsxRuntimeExports.jsx(Volume2, { size: 12, className: "mx-1 text-rose-300" }),
           ")을 잠시 꺼두세요"
         ] })
