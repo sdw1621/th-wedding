@@ -19953,23 +19953,7 @@ function Guestbook({ showToast }) {
 }
 function Share() {
   const [ref, isVisible] = useScrollReveal();
-  reactExports.useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://t1.kakaocdn.net/kakao_js_sdk/2.7.0/kakao.min.js";
-    script.async = true;
-    document.head.appendChild(script);
-    script.onload = () => {
-      if (window.Kakao && !window.Kakao.isInitialized()) {
-        window.Kakao.init("12ac19299b99684347781b0f51934980");
-      }
-    };
-    return () => {
-      if (document.head.contains(script)) {
-        document.head.removeChild(script);
-      }
-    };
-  }, []);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 bg-white", id: "share", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { ref, className: `max-w-md mx-auto text-center transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-6 pt-12", children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "pt-8 pb-24 bg-white", id: "share", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { ref, className: `max-w-md mx-auto text-center transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[28px] font-serif italic text-stone-800 tracking-wider", children: "Thank you!" }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-2xl text-stone-900", children: "🖤" })
   ] }) }) });
