@@ -7592,15 +7592,13 @@ function Gallery() {
         i
       )) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-6 pb-6", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-2xl overflow-hidden shadow-sm aspect-video bg-stone-100 border border-stone-200 relative group", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-        "video",
+        "iframe",
         {
-          src: `${"/th-wedding/"}결혼영상.mp4`,
-          className: "w-full h-full object-cover",
-          controls: true,
-          playsInline: true,
-          preload: "metadata",
-          poster: "",
-          children: "브라우저가 동영상을 지원하지 않습니다."
+          src: "https://www.youtube.com/embed/aBT0gHQ0AwE",
+          title: "Wedding Video",
+          className: "w-full h-full border-none",
+          allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
+          allowFullScreen: true
         }
       ) }) })
     ] }),
