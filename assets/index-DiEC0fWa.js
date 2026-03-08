@@ -7409,7 +7409,7 @@ function WeddingSchedule() {
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
         "button",
         {
-          onClick: () => setIsModalOpen(true),
+          onPointerDown: () => setIsModalOpen(true),
           style: { touchAction: "manipulation" },
           className: "bg-white/90 border border-stone-200 text-stone-700 px-8 py-3.5 rounded-full text-[14px] font-bold shadow-sm active:bg-stone-100 select-none flex items-center justify-center transform-none",
           children: [
@@ -7576,7 +7576,7 @@ function Gallery() {
           "button",
           {
             className: "absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-stone-600 z-10 active:bg-white select-none",
-            onClick: (e) => {
+            onPointerDown: (e) => {
               e.stopPropagation();
               if (scrollContainerRef.current) {
                 const container = scrollContainerRef.current;
@@ -7612,7 +7612,7 @@ function Gallery() {
           "button",
           {
             className: "absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-stone-600 z-10 active:bg-white select-none",
-            onClick: (e) => {
+            onPointerDown: (e) => {
               e.stopPropagation();
               if (scrollContainerRef.current) {
                 const container = scrollContainerRef.current;
@@ -7646,7 +7646,7 @@ function Gallery() {
             "button",
             {
               className: "absolute top-6 left-6 z-[510] flex items-center justify-center w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-stone-800 shadow-xl active:scale-95 active:bg-white transition-all select-none",
-              onClick: (e) => {
+              onPointerDown: (e) => {
                 e.stopPropagation();
                 document.body.classList.remove("music-hidden");
                 setSelectedIdx(null);
@@ -7659,7 +7659,7 @@ function Gallery() {
             {
               className: "absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/70 backdrop-blur-md text-stone-800 shadow-lg active:scale-90 active:bg-white/90 transition-all select-none",
               style: { touchAction: "manipulation" },
-              onClick: (e) => {
+              onPointerDown: (e) => {
                 e.stopPropagation();
                 goPrev();
               },
@@ -7671,7 +7671,7 @@ function Gallery() {
             {
               className: "absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/70 backdrop-blur-md text-stone-800 shadow-lg active:scale-90 active:bg-white/90 transition-all select-none",
               style: { touchAction: "manipulation" },
-              onClick: (e) => {
+              onPointerDown: (e) => {
                 e.stopPropagation();
                 goNext();
               },
@@ -7801,7 +7801,7 @@ function Location() {
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               "button",
               {
-                onClick: openNaverMap,
+                onPointerDown: openNaverMap,
                 style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
                 className: "flex-1 py-4 bg-[#00C73C] text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#009b2e] active:opacity-90 shadow-sm select-none",
                 children: "네이버 지도"
@@ -7810,7 +7810,7 @@ function Location() {
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               "button",
               {
-                onClick: openKakaoMap,
+                onPointerDown: openKakaoMap,
                 style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
                 className: "flex-1 py-4 bg-[#FAE100] text-[#391B1B] text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#e0c800] active:opacity-90 shadow-sm select-none",
                 children: "카카오맵"
@@ -7819,7 +7819,7 @@ function Location() {
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               "button",
               {
-                onClick: openTmap,
+                onPointerDown: openTmap,
                 style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
                 className: "flex-1 py-4 bg-stone-800 text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-stone-900 active:opacity-90 shadow-sm select-none",
                 children: "티맵"
@@ -7937,7 +7937,7 @@ function AccountInfo({ showToast }) {
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
           "button",
           {
-            onClick: () => setOpenGroom(!openGroom),
+            onPointerDown: () => setOpenGroom(!openGroom),
             style: { touchAction: "manipulation" },
             className: "w-full px-6 py-5 flex justify-between items-center text-left bg-blue-50/50 hover:bg-blue-50 active:bg-blue-100 transition-colors select-none cursor-pointer",
             children: [
@@ -7958,7 +7958,7 @@ function AccountInfo({ showToast }) {
             /* @__PURE__ */ jsxRuntimeExports.jsxs(
               "button",
               {
-                onClick: () => handleCopy("카카오뱅크 3333-01-5650207"),
+                onPointerDown: () => handleCopy("카카오뱅크 3333-01-5650207"),
                 style: { touchAction: "manipulation" },
                 className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
                 children: [
@@ -7980,7 +7980,7 @@ function AccountInfo({ showToast }) {
             /* @__PURE__ */ jsxRuntimeExports.jsxs(
               "button",
               {
-                onClick: () => handleCopy("농협 735080-51-036329"),
+                onPointerDown: () => handleCopy("농협 735080-51-036329"),
                 style: { touchAction: "manipulation" },
                 className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
                 children: [
@@ -7996,7 +7996,7 @@ function AccountInfo({ showToast }) {
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
           "button",
           {
-            onClick: () => setOpenBride(!openBride),
+            onPointerDown: () => setOpenBride(!openBride),
             style: { touchAction: "manipulation" },
             className: "w-full px-6 py-5 flex justify-between items-center text-left bg-rose-50/50 hover:bg-rose-50 active:bg-rose-100 transition-colors select-none cursor-pointer",
             children: [
@@ -8017,7 +8017,7 @@ function AccountInfo({ showToast }) {
             /* @__PURE__ */ jsxRuntimeExports.jsxs(
               "button",
               {
-                onClick: () => handleCopy("우리은행 1002-837-547920"),
+                onPointerDown: () => handleCopy("우리은행 1002-837-547920"),
                 style: { touchAction: "manipulation" },
                 className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
                 children: [
@@ -8039,7 +8039,7 @@ function AccountInfo({ showToast }) {
             /* @__PURE__ */ jsxRuntimeExports.jsxs(
               "button",
               {
-                onClick: () => handleCopy("농협 352-0761-7396-23"),
+                onPointerDown: () => handleCopy("농협 352-0761-7396-23"),
                 style: { touchAction: "manipulation" },
                 className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
                 children: [
@@ -8061,7 +8061,7 @@ function AccountInfo({ showToast }) {
             /* @__PURE__ */ jsxRuntimeExports.jsxs(
               "button",
               {
-                onClick: () => handleCopy("우리은행 1002-734-796143"),
+                onPointerDown: () => handleCopy("우리은행 1002-734-796143"),
                 style: { touchAction: "manipulation" },
                 className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
                 children: [
@@ -19940,9 +19940,9 @@ function Guestbook({ showToast }) {
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { placeholder: "축하의 한마디를 남겨주세요.", value: newContent, onChange: (e) => setNewContent(e.target.value), className: "w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 h-28 resize-none focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 100 }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex space-x-2 relative z-10", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onClick: () => setReceiver("public"), style: { touchAction: "manipulation" }, className: `flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-stone-100 select-none ${receiver === "public" ? "bg-stone-100 border-stone-200 text-stone-700 shadow-sm" : "bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50"}`, children: "모두에게" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onClick: () => setReceiver("groom"), style: { touchAction: "manipulation" }, className: `flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-blue-100 select-none ${receiver === "groom" ? "bg-blue-50 border-blue-200 text-blue-700 shadow-sm" : "bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50"}`, children: "신랑에게" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onClick: () => setReceiver("bride"), style: { touchAction: "manipulation" }, className: `flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-rose-100 select-none ${receiver === "bride" ? "bg-rose-50 border-rose-200 text-rose-700 shadow-sm" : "bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50"}`, children: "신부에게" })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onPointerDown: () => setReceiver("public"), style: { touchAction: "manipulation" }, className: `flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-stone-100 select-none ${receiver === "public" ? "bg-stone-100 border-stone-200 text-stone-700 shadow-sm" : "bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50"}`, children: "모두에게" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onPointerDown: () => setReceiver("groom"), style: { touchAction: "manipulation" }, className: `flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-blue-100 select-none ${receiver === "groom" ? "bg-blue-50 border-blue-200 text-blue-700 shadow-sm" : "bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50"}`, children: "신랑에게" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onPointerDown: () => setReceiver("bride"), style: { touchAction: "manipulation" }, className: `flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-rose-100 select-none ${receiver === "bride" ? "bg-rose-50 border-rose-200 text-rose-700 shadow-sm" : "bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50"}`, children: "신부에게" })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("button", { type: "submit", disabled: loading, style: { touchAction: "manipulation" }, className: "w-full bg-[#2A2626] active:bg-[#1f1d1d] text-white font-bold py-4 rounded-xl text-[15px] disabled:bg-stone-400 flex items-center justify-center relative z-10 mt-2 select-none", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(Send, { size: 18, className: "mr-2.5 opacity-90" }),
@@ -19980,9 +19980,11 @@ function BottomNav() {
   return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "fixed bottom-0 w-full max-w-[480px] bg-white/95 border-t border-stone-200 z-40 px-2 pt-1 pb-[max(24px,env(safe-area-inset-bottom))] flex justify-around items-center left-1/2 -translate-x-1/2 shadow-[0_-5px_20px_rgba(0,0,0,0.05)]", children: navItems.map((item) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
     "button",
     {
-      onClick: () => scrollTo(item.id),
+      onPointerDown: (e) => {
+        scrollTo(item.id);
+      },
       style: { touchAction: "manipulation" },
-      className: "flex flex-col items-center justify-center text-rose-300 hover:text-rose-500 active:bg-stone-50 select-none w-[18%] py-3 rounded-xl",
+      className: "flex flex-col items-center justify-center text-rose-300 hover:text-rose-500 active:bg-stone-50 select-none w-[18%] py-3 rounded-xl transition-colors",
       children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(item.icon, { size: 20, strokeWidth: 1.5, className: "mb-1" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[9px] font-bold tracking-tight whitespace-nowrap text-stone-500 uppercase", children: item.label })
@@ -20140,7 +20142,7 @@ function MusicPlayer({ forcePlay }) {
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           "button",
           {
-            onClick: () => setShowPlaylist(!showPlaylist),
+            onPointerDown: () => setShowPlaylist(!showPlaylist),
             className: `w-9 h-9 rounded-full flex items-center justify-center transition-all ${showPlaylist ? "bg-rose-100 text-rose-500" : "hover:bg-stone-100 text-stone-500"}`,
             title: "재생 목록",
             children: /* @__PURE__ */ jsxRuntimeExports.jsx(Music, { size: 18 })
@@ -20150,7 +20152,7 @@ function MusicPlayer({ forcePlay }) {
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
           "button",
           {
-            onClick: togglePlay,
+            onPointerDown: togglePlay,
             className: "w-9 h-9 rounded-full flex items-center justify-center transition-all hover:bg-stone-100 text-stone-600 relative overflow-hidden",
             title: isPlaying ? "음악 끄기" : "음악 켜기",
             children: [
