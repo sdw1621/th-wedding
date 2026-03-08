@@ -648,10 +648,6 @@ video {
   z-index: 20;
 }
 
-.z-30{
-  z-index: 30;
-}
-
 .z-40{
   z-index: 40;
 }
@@ -670,6 +666,14 @@ video {
 
 .z-\[300\]{
   z-index: 300;
+}
+
+.z-\[500\]{
+  z-index: 500;
+}
+
+.z-\[510\]{
+  z-index: 510;
 }
 
 .z-\[5\]{
@@ -839,10 +843,6 @@ video {
   height: 2.5rem;
 }
 
-.h-11{
-  height: 2.75rem;
-}
-
 .h-12{
   height: 3rem;
 }
@@ -949,10 +949,6 @@ video {
 
 .w-10{
   width: 2.5rem;
-}
-
-.w-11{
-  width: 2.75rem;
 }
 
 .w-12{

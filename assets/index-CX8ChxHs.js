@@ -7596,7 +7596,10 @@ function Gallery() {
               "div",
               {
                 className: "rounded-xl overflow-hidden shadow-sm aspect-[4/5] cursor-zoom-in relative active:opacity-90",
-                onClick: () => setSelectedIdx(idx),
+                onClick: () => {
+                  document.body.classList.add("music-hidden");
+                  setSelectedIdx(idx);
+                },
                 children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: img.src, alt: img.alt, loading: "lazy", decoding: "async", className: "w-full h-full object-cover" }),
                   /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors" })
@@ -7631,20 +7634,24 @@ function Gallery() {
     selectedIdx !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs(
       "div",
       {
-        className: "fixed inset-0 z-[200] bg-black/95 flex items-center justify-center p-4 animate-in fade-in duration-300",
-        onClick: () => setSelectedIdx(null),
+        className: "fixed inset-0 z-[500] bg-black/95 flex items-center justify-center p-4 animate-in fade-in duration-300",
+        onClick: () => {
+          document.body.classList.remove("music-hidden");
+          setSelectedIdx(null);
+        },
         onTouchStart: handleTouchStart,
         onTouchEnd: handleTouchEnd,
         children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             "button",
             {
-              className: "absolute top-6 left-6 z-30 flex items-center justify-center w-11 h-11 rounded-full bg-white/70 backdrop-blur-md text-stone-800 shadow-lg active:scale-95 active:bg-white/90 transition-all select-none",
+              className: "absolute top-6 left-6 z-[510] flex items-center justify-center w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-stone-800 shadow-xl active:scale-95 active:bg-white transition-all select-none",
               onClick: (e) => {
                 e.stopPropagation();
+                document.body.classList.remove("music-hidden");
                 setSelectedIdx(null);
               },
-              children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { size: 22 })
+              children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { size: 24 })
             }
           ),
           /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -20119,7 +20126,15 @@ function MusicPlayer({ forcePlay }) {
       }
     }
   }, [currentTrackIndex]);
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "fixed top-6 left-6 z-[100] flex flex-col items-start select-none", children: [
+  const [hidePlayer, setHidePlayer] = reactExports.useState(false);
+  reactExports.useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setHidePlayer(document.body.classList.contains("music-hidden"));
+    });
+    observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
+  }, []);
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `fixed top-6 left-6 z-[100] flex flex-col items-start select-none transition-opacity duration-300 ${hidePlayer ? "opacity-0 pointer-events-none" : "opacity-100"}`, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative group flex items-center bg-white/95 border border-stone-200 rounded-full shadow-md p-1 transition-all hover:shadow-lg", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(
