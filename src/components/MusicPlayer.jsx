@@ -115,8 +115,9 @@ export default function MusicPlayer({ forcePlay }) {
             <div className="flex items-center">
                 <div className="relative group flex items-center bg-white/95 border border-stone-200 rounded-full shadow-md p-1 transition-all hover:shadow-lg">
                     <button
-                        onPointerDown={() => setShowPlaylist(!showPlaylist)}
-                        className={`w-9 h-9 rounded-full flex items-center justify-center transition-all ${showPlaylist ? 'bg-rose-100 text-rose-500' : 'hover:bg-stone-100 text-stone-500'}`}
+                        onPointerDown={(e) => { e.stopPropagation(); setShowPlaylist(!showPlaylist); }}
+                        style={{ touchAction: 'manipulation' }}
+                        className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors ${showPlaylist ? 'bg-rose-100 text-rose-500' : 'hover:bg-stone-100 text-stone-500'}`}
                         title="재생 목록"
                     >
                         <Music size={18} />
@@ -126,7 +127,8 @@ export default function MusicPlayer({ forcePlay }) {
 
                     <button
                         onPointerDown={togglePlay}
-                        className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:bg-stone-100 text-stone-600 relative overflow-hidden"
+                        style={{ touchAction: 'manipulation' }}
+                        className="w-9 h-9 rounded-full flex items-center justify-center transition-colors hover:bg-stone-100 text-stone-600 relative overflow-hidden"
                         title={isPlaying ? "음악 끄기" : "음악 켜기"}
                     >
                         {isPlaying ? <Volume2 size={18} className="text-rose-400" /> : <VolumeX size={18} className="text-stone-300" />}
@@ -138,7 +140,8 @@ export default function MusicPlayer({ forcePlay }) {
 
                 {/* 곡 정보 알림 (Now Playing) */}
                 <div
-                    onClick={() => setShowPlaylist(!showPlaylist)}
+                    onPointerDown={(e) => { e.stopPropagation(); setShowPlaylist(!showPlaylist); }}
+                    style={{ touchAction: 'manipulation' }}
                     className={`ml-3 bg-white/95 px-5 py-2.5 rounded-full border border-rose-100 shadow-lg transition-all duration-700 ease-out flex items-center cursor-pointer hover:bg-rose-50/50 ${showInfo ? 'max-w-xs opacity-100 translate-x-0' : 'max-w-0 opacity-0 -translate-x-10 pointer-events-none px-0 overflow-hidden'}`}
                 >
                     <div className="bg-rose-100 p-1.5 rounded-full mr-3 flex-shrink-0 animate-pulse">
@@ -166,8 +169,9 @@ export default function MusicPlayer({ forcePlay }) {
                         return (
                             <button
                                 key={track.id}
-                                onClick={() => selectTrack(index)}
-                                className={`w-full flex items-center px-4 py-3 rounded-xl transition-all duration-300 group/item ${isCurrent ? 'bg-rose-50/80 text-rose-600' : 'hover:bg-stone-50 text-stone-600'}`}
+                                onPointerDown={() => selectTrack(index)}
+                                style={{ touchAction: 'manipulation' }}
+                                className={`w-full flex items-center px-4 py-3 rounded-xl transition-colors group/item ${isCurrent ? 'bg-rose-50/80 text-rose-600' : 'hover:bg-stone-50 text-stone-600'}`}
                             >
                                 <div className={`w-7 h-7 rounded-full flex items-center justify-center mr-3 transition-all ${isCurrent ? 'bg-rose-500 text-white shadow-md shadow-rose-200' : 'bg-stone-100 text-stone-400 group-hover/item:bg-rose-100 group-hover/item:text-rose-400'}`}>
                                     {isCurrent && isPlaying ? (

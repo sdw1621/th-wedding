@@ -128,6 +128,7 @@ export default function Gallery() {
                 <div className="relative group">
                     <button
                         className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-stone-600 z-10 active:bg-white select-none"
+                        style={{ touchAction: 'manipulation' }}
                         onPointerDown={(e) => {
                             e.stopPropagation();
                             if (scrollContainerRef.current) {
@@ -148,6 +149,7 @@ export default function Gallery() {
                             <div key={idx} className="flex-none w-[80vw] sm:w-[300px] snap-center">
                                 <div
                                     className="rounded-xl overflow-hidden shadow-sm aspect-[4/5] cursor-zoom-in relative active:opacity-90"
+                                    style={{ touchAction: 'manipulation' }}
                                     onClick={() => {
                                         document.body.classList.add('music-hidden');
                                         document.body.classList.add('nav-hidden');
@@ -163,6 +165,7 @@ export default function Gallery() {
 
                     <button
                         className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-stone-600 z-10 active:bg-white select-none"
+                        style={{ touchAction: 'manipulation' }}
                         onPointerDown={(e) => {
                             e.stopPropagation();
                             if (scrollContainerRef.current) {
@@ -208,34 +211,32 @@ export default function Gallery() {
                     onTouchEnd={handleTouchEnd}
                 >
                     <button
-                        className="absolute top-6 right-6 z-[510] flex items-center justify-center w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-stone-800 shadow-xl active:scale-95 active:bg-white transition-all select-none"
+                        className="absolute top-6 right-6 z-[510] flex items-center justify-center w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-stone-800 shadow-xl active:bg-white transition-colors select-none"
+                        style={{ touchAction: 'manipulation' }}
                         onPointerDown={(e) => {
                             e.stopPropagation();
                             document.body.classList.remove('music-hidden');
                             document.body.classList.remove('nav-hidden');
                             setSelectedIdx(null);
                         }}
-                        onClick={(e) => e.stopPropagation()} // 클릭 이벤트 전파 차단
                     >
                         <X size={24} />
                     </button>
 
                     {/* 이전 버튼 */}
                     <button
-                        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/70 backdrop-blur-md text-stone-800 shadow-lg active:scale-90 active:bg-white/90 transition-all select-none"
+                        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/70 backdrop-blur-md text-stone-800 shadow-lg active:bg-white/90 transition-colors select-none"
                         style={{ touchAction: 'manipulation' }}
                         onPointerDown={(e) => { e.stopPropagation(); goPrev(); }}
-                        onClick={(e) => e.stopPropagation()} // 클릭 이벤트 전파 차단
                     >
                         <ChevronLeft size={24} />
                     </button>
 
                     {/* 다음 버튼 */}
                     <button
-                        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/70 backdrop-blur-md text-stone-800 shadow-lg active:scale-90 active:bg-white/90 transition-all select-none"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/70 backdrop-blur-md text-stone-800 shadow-lg active:bg-white/90 transition-colors select-none"
                         style={{ touchAction: 'manipulation' }}
                         onPointerDown={(e) => { e.stopPropagation(); goNext(); }}
-                        onClick={(e) => e.stopPropagation()} // 클릭 이벤트 전파 차단
                     >
                         <ChevronRight size={24} />
                     </button>
