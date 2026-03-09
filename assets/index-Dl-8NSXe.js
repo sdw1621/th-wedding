@@ -7505,6 +7505,9 @@ function Gallery() {
   const [currentScrollIdx, setCurrentScrollIdx] = reactExports.useState(0);
   const touchStartX = reactExports.useRef(0);
   const touchEndX = reactExports.useRef(0);
+  const touchStartY = reactExports.useRef(0);
+  const isSwiping = reactExports.useRef(false);
+  const lightboxRef = reactExports.useRef(null);
   const scrollContainerRef = reactExports.useRef(null);
   const images = [
     { src: `${"/th-wedding/"}img/pages/커플_꽃셔츠.webp`, alt: "커플 꽃무늬 셔츠" },
@@ -7526,6 +7529,8 @@ function Gallery() {
   }, [images.length]);
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+    isSwiping.current = false;
   };
   const handleTouchEnd = (e) => {
     touchEndX.current = e.changedTouches[0].clientX;
@@ -7553,6 +7558,20 @@ function Gallery() {
       setCurrentScrollIdx(closestIndex);
     }
   };
+  reactExports.useEffect(() => {
+    const el = lightboxRef.current;
+    if (!el) return;
+    const onTouchMove = (e) => {
+      const dx = Math.abs(e.touches[0].clientX - touchStartX.current);
+      const dy = Math.abs(e.touches[0].clientY - touchStartY.current);
+      if (dx > dy && dx > 10) {
+        isSwiping.current = true;
+        e.preventDefault();
+      }
+    };
+    el.addEventListener("touchmove", onTouchMove, { passive: false });
+    return () => el.removeEventListener("touchmove", onTouchMove);
+  }, [selectedIdx]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "py-24 bg-white overflow-hidden", id: "gallery", ref, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-2xl mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-8 px-6", children: [
@@ -7643,8 +7662,11 @@ function Gallery() {
     selectedIdx !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs(
       "div",
       {
+        ref: lightboxRef,
         className: "fixed inset-0 z-[500] bg-black/95 flex items-center justify-center p-4 animate-in fade-in duration-300",
+        style: { touchAction: "none" },
         onClick: (e) => {
+          if (isSwiping.current) return;
           if (e.target === e.currentTarget) {
             document.body.classList.remove("music-hidden");
             document.body.classList.remove("nav-hidden");
@@ -19700,8 +19722,20 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
 });
 const ModernModal = reactExports.memo(({ isOpen, onClose, title, description, children, onConfirm, confirmLabel = "확인", cancelLabel = "취소", isDestructive = false }) => {
   if (!isOpen) return null;
+  const handleClose = () => {
+    if (document.activeElement && document.activeElement !== document.body) {
+      document.activeElement.blur();
+    }
+    onClose();
+  };
+  const handleConfirm = () => {
+    if (document.activeElement && document.activeElement !== document.body) {
+      document.activeElement.blur();
+    }
+    onConfirm();
+  };
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "fixed inset-0 z-[200] flex items-center justify-center px-4", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-stone-900/80 animate-in fade-in duration-300", onClick: onClose }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-stone-900/80 animate-in fade-in duration-300", onClick: handleClose }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative bg-white w-full max-w-[320px] rounded-[24px] shadow-2xl border border-white/20 overflow-hidden animate-in fade-in zoom-in duration-200", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 text-center", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-[17px] font-bold text-stone-900 mb-1", children: title }),
@@ -19709,8 +19743,8 @@ const ModernModal = reactExports.memo(({ isOpen, onClose, title, description, ch
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-4", children })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col border-t border-stone-100", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: onConfirm, style: { touchAction: "manipulation" }, className: `py-4 text-[15px] font-bold border-b border-stone-100 active:bg-stone-50 select-none ${isDestructive ? "text-rose-500" : "text-blue-500"}`, children: confirmLabel }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: onClose, style: { touchAction: "manipulation" }, className: "py-4 text-[15px] font-medium text-stone-400 active:bg-stone-50 select-none", children: cancelLabel })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: handleConfirm, style: { touchAction: "manipulation" }, className: `py-4 text-[15px] font-bold border-b border-stone-100 active:bg-stone-50 select-none ${isDestructive ? "text-rose-500" : "text-blue-500"}`, children: confirmLabel }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: handleClose, style: { touchAction: "manipulation" }, className: "py-4 text-[15px] font-medium text-stone-400 active:bg-stone-50 select-none", children: cancelLabel })
       ] })
     ] })
   ] });
@@ -19734,6 +19768,8 @@ function Guestbook({ showToast }) {
   const [selectedMsg, setSelectedMsg] = reactExports.useState(null);
   const [modalPurpose, setModalPurpose] = reactExports.useState("");
   const [unlockedMessages, setUnlockedMessages] = reactExports.useState({});
+  const [currentPage, setCurrentPage] = reactExports.useState(1);
+  const MESSAGES_PER_PAGE = 3;
   const isAnyModalOpen = isPasswordModalOpen || isDeleteModalOpen || isEditModalOpen || isReplyInputModalOpen;
   reactExports.useEffect(() => {
     if (isAnyModalOpen) {
@@ -19803,6 +19839,9 @@ function Guestbook({ showToast }) {
     setUnlockedMessages((prev) => ({ ...prev, [id]: status }));
   }, []);
   const handleModalConfirm = async () => {
+    if (document.activeElement && document.activeElement !== document.body) {
+      document.activeElement.blur();
+    }
     if (modalPurpose === "unlock") {
       if (modalPassword === selectedMsg.password || modalPassword === "0313") {
         toggleUnlock(selectedMsg.id, true);
@@ -19885,6 +19924,9 @@ function Guestbook({ showToast }) {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (document.activeElement && document.activeElement !== document.body) {
+      document.activeElement.blur();
+    }
     const trimmedName = newName.trim();
     const trimmedPassword = newPassword.trim();
     const trimmedContent = newContent.trim();
@@ -19934,14 +19976,68 @@ function Guestbook({ showToast }) {
       setLoading(false);
     }
   };
+  const totalPages = Math.max(1, Math.ceil(messages.length / MESSAGES_PER_PAGE));
+  const prevMsgCount = React.useRef(messages.length);
+  reactExports.useEffect(() => {
+    if (messages.length > prevMsgCount.current) {
+      setCurrentPage(1);
+    }
+    prevMsgCount.current = messages.length;
+  }, [messages.length]);
+  reactExports.useEffect(() => {
+    if (currentPage > totalPages) setCurrentPage(totalPages);
+  }, [currentPage, totalPages]);
+  const paginatedMessages = reactExports.useMemo(() => {
+    const start = (currentPage - 1) * MESSAGES_PER_PAGE;
+    return messages.slice(start, start + MESSAGES_PER_PAGE);
+  }, [messages, currentPage]);
   const messageListOutput = reactExports.useMemo(() => {
     if (initialLoading) return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center py-10 space-y-2", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-6 h-6 border-2 border-rose-200 border-t-rose-500 rounded-full animate-spin mx-auto" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-stone-400 text-xs text-center", children: "방명록을 불러오는 중입니다..." })
     ] });
     if (messages.length === 0) return /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-center py-10 text-stone-400 text-sm italic font-medium", children: "첫 번째 축하 메시지를 남겨주세요." });
-    return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "space-y-4", children: messages.map((msg, idx) => /* @__PURE__ */ jsxRuntimeExports.jsx(MessageItem, { msg, unlockedMessages, openPasswordModal, toggleUnlock }, msg.id || idx)) });
-  }, [messages, unlockedMessages, initialLoading, openPasswordModal, toggleUnlock]);
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4", children: [
+      paginatedMessages.map((msg, idx) => /* @__PURE__ */ jsxRuntimeExports.jsx(MessageItem, { msg, unlockedMessages, openPasswordModal, toggleUnlock }, msg.id || idx)),
+      totalPages > 1 && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-center space-x-3 pt-4 pb-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "button",
+          {
+            onClick: () => setCurrentPage((p) => Math.max(1, p - 1)),
+            disabled: currentPage === 1,
+            style: { touchAction: "manipulation" },
+            className: "p-2.5 rounded-xl bg-white border border-stone-200 text-stone-500 disabled:opacity-30 disabled:cursor-not-allowed active:bg-stone-50 select-none shadow-sm",
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { size: 18 })
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center space-x-1.5", children: Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "button",
+          {
+            onClick: () => setCurrentPage(page),
+            style: { touchAction: "manipulation" },
+            className: `w-8 h-8 rounded-lg text-xs font-bold select-none transition-all duration-200 ${page === currentPage ? "bg-rose-500 text-white shadow-sm" : "bg-white border border-stone-200 text-stone-400 active:bg-stone-50"}`,
+            children: page
+          },
+          page
+        )) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "button",
+          {
+            onClick: () => setCurrentPage((p) => Math.min(totalPages, p + 1)),
+            disabled: currentPage === totalPages,
+            style: { touchAction: "manipulation" },
+            className: "p-2.5 rounded-xl bg-white border border-stone-200 text-stone-500 disabled:opacity-30 disabled:cursor-not-allowed active:bg-stone-50 select-none shadow-sm",
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { size: 18 })
+          }
+        )
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-center text-[11px] text-stone-400 font-medium", children: [
+        "총 ",
+        messages.length,
+        "개의 메시지"
+      ] })
+    ] });
+  }, [messages, paginatedMessages, unlockedMessages, initialLoading, openPasswordModal, toggleUnlock, currentPage, totalPages]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "py-24 bg-[#FDFBF7]", id: "guestbook", ref, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-md mx-auto px-6 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-10 flex flex-col items-center", children: [
@@ -20001,7 +20097,7 @@ function BottomNav() {
     { id: "account", label: "마음전하기", icon: Gift },
     { id: "guestbook", label: "방명록", icon: MessageSquare }
   ];
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "fixed bottom-0 w-full max-w-[480px] bg-white/95 border-t border-stone-200 z-40 px-2 pt-1 pb-[max(24px,env(safe-area-inset-bottom))] flex justify-around items-center left-1/2 -translate-x-1/2 shadow-[0_-5px_20px_rgba(0,0,0,0.05)]", children: navItems.map((item) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "fixed bottom-0 w-full max-w-[480px] bg-white/95 border-t border-stone-200 z-40 px-2 pt-1 pb-[max(4px,env(safe-area-inset-bottom))] flex justify-around items-center left-1/2 -translate-x-1/2 shadow-[0_-5px_20px_rgba(0,0,0,0.05)]", children: navItems.map((item) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
     "button",
     {
       onPointerDown: (e) => {
@@ -20091,6 +20187,7 @@ function MusicPlayer({ forcePlay }) {
   const [showPlaylist, setShowPlaylist] = reactExports.useState(false);
   const audioRef = reactExports.useRef(null);
   const [showInfo, setShowInfo] = reactExports.useState(false);
+  const playerRef = reactExports.useRef(null);
   const PLAYLIST = [
     { id: 1, name: "Beautiful Day", url: `${"/th-wedding/"}bgm.mp3` },
     { id: 2, name: "Wedding Waltz", url: `${"/th-wedding/"}bgm2.mp3` },
@@ -20160,7 +20257,17 @@ function MusicPlayer({ forcePlay }) {
     observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
     return () => observer.disconnect();
   }, []);
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `fixed top-6 left-6 z-[100] flex flex-col items-start select-none transition-opacity duration-300 ${hidePlayer ? "opacity-0 pointer-events-none" : "opacity-100"}`, children: [
+  reactExports.useEffect(() => {
+    if (!showPlaylist) return;
+    const handler = (e) => {
+      if (playerRef.current && !playerRef.current.contains(e.target)) {
+        setShowPlaylist(false);
+      }
+    };
+    document.addEventListener("pointerdown", handler);
+    return () => document.removeEventListener("pointerdown", handler);
+  }, [showPlaylist]);
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref: playerRef, className: `fixed top-6 left-6 z-[100] flex flex-col items-start select-none transition-opacity duration-300 ${hidePlayer ? "opacity-0 pointer-events-none" : "opacity-100"}`, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative group flex items-center bg-white/95 border border-stone-200 rounded-full shadow-md p-1 transition-all hover:shadow-lg", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(

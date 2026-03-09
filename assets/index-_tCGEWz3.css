@@ -899,6 +899,10 @@ video {
   height: 1.75rem;
 }
 
+.h-8{
+  height: 2rem;
+}
+
 .h-9{
   height: 2.25rem;
 }
@@ -989,6 +993,10 @@ video {
 
 .w-7{
   width: 1.75rem;
+}
+
+.w-8{
+  width: 2rem;
 }
 
 .w-9{
@@ -1723,6 +1731,10 @@ video {
   padding: 0.5rem;
 }
 
+.p-2\.5{
+  padding: 0.625rem;
+}
+
 .p-3{
   padding: 0.75rem;
 }
@@ -1848,6 +1860,10 @@ video {
   padding-bottom: 0.125rem;
 }
 
+.pb-2{
+  padding-bottom: 0.5rem;
+}
+
 .pb-28{
   padding-bottom: 7rem;
 }
@@ -1864,8 +1880,8 @@ video {
   padding-bottom: 1.5rem;
 }
 
-.pb-\[max\(24px\2c env\(safe-area-inset-bottom\)\)\]{
-  padding-bottom: max(24px, env(safe-area-inset-bottom));
+.pb-\[max\(4px\2c env\(safe-area-inset-bottom\)\)\]{
+  padding-bottom: max(4px, env(safe-area-inset-bottom));
 }
 
 .pl-3\.5{
@@ -1878,6 +1894,10 @@ video {
 
 .pt-20{
   padding-top: 5rem;
+}
+
+.pt-4{
+  padding-top: 1rem;
 }
 
 .pt-6{
@@ -2273,6 +2293,11 @@ video {
   outline-offset: 2px;
 }
 
+.blur{
+  --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
 .blur-3xl{
   --tw-blur: blur(64px);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -2373,6 +2398,7 @@ video {
 
 html {
   scroll-behavior: smooth;
+  overscroll-behavior-y: contain;
 }
 
 body {
@@ -2395,7 +2421,7 @@ a,
   outline: none;
   cursor: pointer;
   touch-action: manipulation;
-  will-change: transform;
+  will-change: auto;
   transition-property: transform, opacity, background-color, border-color, color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
@@ -2409,6 +2435,39 @@ a:active {
 button svg,
 a svg {
   pointer-events: none;
+}
+
+/* 모바일 input/textarea 터치 반응성 개선 */
+
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: 16px !important; /* iOS 자동 줌 방지 */
+}
+
+/* 저사양 모바일 성능 최적화 - 불필요한 애니메이션 줄이기 */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 터치 디바이스에서 hover 상태 비활성화 (고스트 클릭 방지) */
+
+@media (hover: none) and (pointer: coarse) {
+  button:hover,
+  a:hover,
+  [role="button"]:hover {
+    transform: none !important;
+    box-shadow: inherit;
+  }
 }
 
 #root {
@@ -2865,9 +2924,17 @@ body.nav-hidden .fixed.bottom-0 {
   opacity: 0.9;
 }
 
+.disabled\:cursor-not-allowed:disabled{
+  cursor: not-allowed;
+}
+
 .disabled\:bg-stone-400:disabled{
   --tw-bg-opacity: 1;
   background-color: rgb(168 162 158 / var(--tw-bg-opacity, 1));
+}
+
+.disabled\:opacity-30:disabled{
+  opacity: 0.3;
 }
 
 .group:hover .group-hover\:w-full{
