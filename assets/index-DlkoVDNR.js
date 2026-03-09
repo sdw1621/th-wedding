@@ -7718,14 +7718,8 @@ const MapPin = createLucideIcon("MapPin", [
 ]);
 function Location() {
   const [ref, isVisible] = useScrollReveal();
-  const openNaverMap = () => {
-    window.open("https://map.naver.com/p/entry/place/11678840", "_blank");
-  };
-  const openKakaoMap = () => {
-    window.open("https://map.kakao.com/link/to/메이필드호텔 봉래헌,37.5478974,126.817971", "_blank");
-  };
   const openTmap = () => {
-    window.open("tmap://route?goalname=메이필드호텔%20봉래헌&goalx=126.817971&goaly=37.5478974", "_blank");
+    window.location.href = "tmap://route?goalname=메이필드호텔%20봉래헌&goalx=126.817971&goaly=37.5478974";
   };
   return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 bg-[#FDFBF7]", id: "location", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `max-w-lg mx-auto transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-10", children: [
@@ -7795,26 +7789,22 @@ function Location() {
           ] }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex space-x-2 pl-3.5 mt-4 relative z-20", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "button",
+              "a",
               {
-                onTouchEnd: (e) => {
-                  e.preventDefault();
-                  openNaverMap();
-                },
-                onClick: openNaverMap,
+                href: "https://map.naver.com/p/entry/place/11678840",
+                target: "_blank",
+                rel: "noopener noreferrer",
                 style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
                 className: "flex-1 py-4 bg-[#00C73C] text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#009b2e] active:opacity-90 shadow-sm select-none",
                 children: "네이버 지도"
               }
             ),
             /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "button",
+              "a",
               {
-                onTouchEnd: (e) => {
-                  e.preventDefault();
-                  openKakaoMap();
-                },
-                onClick: openKakaoMap,
+                href: "https://map.kakao.com/link/to/메이필드호텔 봉래헌,37.5478974,126.817971",
+                target: "_blank",
+                rel: "noopener noreferrer",
                 style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
                 className: "flex-1 py-4 bg-[#FAE100] text-[#391B1B] text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#e0c800] active:opacity-90 shadow-sm select-none",
                 children: "카카오맵"
@@ -7823,10 +7813,6 @@ function Location() {
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               "button",
               {
-                onTouchEnd: (e) => {
-                  e.preventDefault();
-                  openTmap();
-                },
                 onClick: openTmap,
                 style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
                 className: "flex-1 py-4 bg-stone-800 text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-stone-900 active:opacity-90 shadow-sm select-none",
@@ -20034,10 +20020,10 @@ function Guestbook({ showToast }) {
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("form", { onSubmit: handleSubmit, className: "bg-white p-5 rounded-[1.25rem] shadow-sm border border-stone-100 mb-8 space-y-4 relative z-20", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex space-x-2", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "text", placeholder: "성함", value: newName, onChange: (e) => setNewName(e.target.value), onTouchEnd: (e) => e.currentTarget.focus(), className: "w-1/2 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 10 }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "password", placeholder: "비밀번호", value: newPassword, onChange: (e) => setNewPassword(e.target.value), onTouchEnd: (e) => e.currentTarget.focus(), className: "w-1/2 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 10 })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "text", placeholder: "성함", value: newName, onChange: (e) => setNewName(e.target.value), className: "w-1/2 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 10 }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "password", placeholder: "비밀번호", value: newPassword, onChange: (e) => setNewPassword(e.target.value), className: "w-1/2 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 10 })
         ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { placeholder: "축하의 한마디를 남겨주세요.", value: newContent, onChange: (e) => setNewContent(e.target.value), onTouchEnd: (e) => e.currentTarget.focus(), className: "w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 h-28 resize-none focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 100 }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { placeholder: "축하의 한마디를 남겨주세요.", value: newContent, onChange: (e) => setNewContent(e.target.value), className: "w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 h-28 resize-none focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 100 }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex space-x-2 relative z-10", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onTouchEnd: (e) => {
             e.preventDefault();
