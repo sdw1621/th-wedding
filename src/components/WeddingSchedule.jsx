@@ -91,9 +91,12 @@ export default function WeddingSchedule() {
         flipBookRef.current?.pageFlip()?.flipPrev();
     };
 
-    // 책 크기 계산 (모바일 기준)
-    const bookWidth = Math.min(window.innerWidth - 40, 400);
-    const bookHeight = Math.round(bookWidth * 1.414); // A4 비율
+    // 책 크기 계산 - 화면 높이를 최대한 활용
+    const maxHeight = window.innerHeight - 120; // 상단 인디케이터 + 하단 버튼 공간
+    const widthFromScreen = Math.min(window.innerWidth - 24, 440);
+    const heightFromWidth = Math.round(widthFromScreen * 1.414);
+    const bookHeight = Math.min(heightFromWidth, maxHeight);
+    const bookWidth = Math.round(bookHeight / 1.414);
 
     return (
         <section className="py-24 bg-stone-100/50 px-6" id="schedule">
@@ -147,7 +150,7 @@ export default function WeddingSchedule() {
                     {!loading && pages.length > 0 && (
                         <div className="flex flex-col items-center w-full" onClick={(e) => e.stopPropagation()}>
                             {/* 페이지 인디케이터 */}
-                            <div className="text-white/60 text-xs font-medium mb-3 tracking-wider">
+                            <div className="text-white/60 text-xs font-medium mb-1 tracking-wider">
                                 {currentPage + 1} / {totalPages}
                             </div>
 
@@ -158,10 +161,10 @@ export default function WeddingSchedule() {
                                     width={bookWidth}
                                     height={bookHeight}
                                     size="stretch"
-                                    minWidth={280}
+                                    minWidth={250}
                                     maxWidth={500}
-                                    minHeight={396}
-                                    maxHeight={707}
+                                    minHeight={350}
+                                    maxHeight={maxHeight}
                                     showCover={true}
                                     mobileScrollSupport={false}
                                     usePortrait={true}
@@ -185,7 +188,7 @@ export default function WeddingSchedule() {
                             </div>
 
                             {/* 좌우 넘기기 버튼 */}
-                            <div className="flex items-center justify-center space-x-6 mt-4">
+                            <div className="flex items-center justify-center space-x-6 mt-2">
                                 <button
                                     onClick={goPrev}
                                     disabled={currentPage === 0}
