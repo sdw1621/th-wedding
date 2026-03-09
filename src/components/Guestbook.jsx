@@ -6,7 +6,7 @@ import Trash2 from 'lucide-react/dist/esm/icons/trash-2';
 import Pencil from 'lucide-react/dist/esm/icons/pencil';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp, deleteDoc, doc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp, deleteDoc, doc, updateDoc } from "firebase/firestore";
 
 // --- 서비스 설정 (나중에 발급받은 키값을 여기에 넣으시면 됩니다) ---
 const FIREBASE_CONFIG = {
@@ -40,10 +40,12 @@ export default function Guestbook({ showToast }) {
     const [newPassword, setNewPassword] = useState('');
     const [newContent, setNewContent] = useState('');
     const [editingId, setEditingId] = useState(null);
+    const [editContent, setEditContent] = useState('');
+    const [editPassword, setEditPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [aiLoading, setAiLoading] = useState(false);
     const [attendance, setAttendance] = useState('참석');
-    const [attendanceCount, setAttendanceCount] = useState('1명');
+    const [attendanceCount, setAttendanceCount] = useState('본인');
 
     // 1. 실시간 데이터 바인딩
     useEffect(() => {
@@ -52,11 +54,14 @@ export default function Guestbook({ showToast }) {
             const saved = localStorage.getItem('wedding_guestbook');
             let currentMessages = saved ? JSON.parse(saved) : [];
 
-            // 필수 예시 데이터 정의 (3월 13일 고정)
-            const mockMessages = [
+            // 필수 예시 데이터 정의 (3월 13일 고정) - 저장된 버전이 있으면 유지
+            const defaultMocks = [
                 { id: 'mock-1', name: '김철수', content: '두 분의 결혼을 진심으로 축하드립니다! 행복하게 잘 사세요! 💐', date: '2026.03.13', password: '0313' },
                 { id: 'mock-2', name: '이영희', content: '희영아 결혼 너무 축하해! 세상에서 가장 아름다운 신부가 될 거야. 💕', date: '2026.03.13', password: '0313' }
             ];
+            const mockMessages = defaultMocks.map(mock =>
+                currentMessages.find(m => m.id === mock.id) || mock
+            );
 
             // 기존 데이터에서 mock 데이터 제거 후 최신 모크 데이터를 맨 앞에 추가
             const filtered = currentMessages.filter(m => m.id !== 'mock-1' && m.id !== 'mock-2');
@@ -178,27 +183,42 @@ export default function Guestbook({ showToast }) {
         }
     };
 
-    const handleEdit = async (msg) => {
-        const password = prompt('비밀번호를 입력해주세요.');
-        if (password === null) return;
+    const startEdit = (msg) => {
+        setEditingId(msg.id);
+        setEditContent(msg.content);
+        setEditPassword('');
+    };
 
-        const isAdmin = password === '0313';
-        const isAuthor = msg.password ? (password === msg.password) : false;
+    const handleEditCancel = () => {
+        setEditingId(null);
+        setEditContent('');
+        setEditPassword('');
+    };
+
+    const handleEditSubmit = async (msg) => {
+        if (!editPassword.trim()) {
+            showToast('비밀번호를 입력해주세요.');
+            return;
+        }
+
+        const isAdmin = editPassword === '0313';
+        const isAuthor = msg.password ? (editPassword === msg.password) : false;
 
         if (!isAdmin && !isAuthor) {
             showToast('비밀번호가 틀렸습니다.');
             return;
         }
 
-        const newText = prompt('수정할 내용을 입력해주세요.', msg.content);
-        if (newText === null || newText === msg.content) return;
+        if (!editContent.trim()) {
+            showToast('내용을 입력해주세요.');
+            return;
+        }
 
         try {
             if (db && msg.id && !msg.id.startsWith('mock-')) {
-                const { updateDoc } = await import("firebase/firestore");
-                await updateDoc(doc(db, "guestbook", msg.id), { content: newText });
+                await updateDoc(doc(db, "guestbook", msg.id), { content: editContent.trim() });
             } else {
-                const updated = messages.map(m => m.id === msg.id ? { ...m, content: newText } : m);
+                const updated = messages.map(m => m.id === msg.id ? { ...m, content: editContent.trim() } : m);
                 setMessages(updated);
                 localStorage.setItem('wedding_guestbook', JSON.stringify(updated));
             }
@@ -211,13 +231,14 @@ export default function Guestbook({ showToast }) {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         name: msg.name,
-                        content: newText,
+                        content: editContent.trim(),
                         type: 'UPDATE'
                     })
                 }).catch(e => console.error('Sheet sync error', e));
             }
 
             showToast('메시지가 수정되었습니다.');
+            handleEditCancel();
         } catch (err) {
             console.error(err);
             showToast('수정 중 오류가 발생했습니다.');
@@ -423,23 +444,59 @@ export default function Guestbook({ showToast }) {
                                     </div>
                                     <div className="flex items-center space-x-1">
                                         <span className="text-[10px] text-stone-400 font-medium mr-1">{msg.date}</span>
-                                        <button
-                                            onClick={() => handleEdit(msg)}
-                                            className="p-1 text-stone-300 hover:text-stone-600 transition-colors"
-                                            title="수정"
-                                        >
-                                            <Pencil size={13} />
-                                        </button>
-                                        <button
-                                            onClick={() => handleDelete(msg)}
-                                            className="p-1 text-stone-300 hover:text-rose-400 transition-colors"
-                                            title="삭제"
-                                        >
-                                            <Trash2 size={13} />
-                                        </button>
+                                        {editingId !== msg.id && (
+                                            <>
+                                                <button
+                                                    onClick={() => startEdit(msg)}
+                                                    className="p-1 text-stone-300 hover:text-stone-600 transition-colors"
+                                                    title="수정"
+                                                >
+                                                    <Pencil size={13} />
+                                                </button>
+                                                <button
+                                                    onClick={() => handleDelete(msg)}
+                                                    className="p-1 text-stone-300 hover:text-rose-400 transition-colors"
+                                                    title="삭제"
+                                                >
+                                                    <Trash2 size={13} />
+                                                </button>
+                                            </>
+                                        )}
                                     </div>
                                 </div>
-                                <p className="text-sm text-stone-700 leading-relaxed font-medium whitespace-pre-wrap">{msg.content}</p>
+                                {editingId === msg.id ? (
+                                    <div className="space-y-2 mt-1">
+                                        <textarea
+                                            value={editContent}
+                                            onChange={(e) => setEditContent(e.target.value)}
+                                            className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-2 text-sm text-stone-800 h-20 resize-none focus:outline-none focus:ring-2 focus:ring-rose-200 transition-all"
+                                            maxLength={100}
+                                        />
+                                        <input
+                                            type="password"
+                                            placeholder="비밀번호 입력"
+                                            value={editPassword}
+                                            onChange={(e) => setEditPassword(e.target.value)}
+                                            className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-2 text-sm text-stone-800 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-rose-200 transition-all"
+                                        />
+                                        <div className="flex space-x-2">
+                                            <button
+                                                onClick={handleEditCancel}
+                                                className="flex-1 py-2 rounded-xl text-xs font-bold bg-stone-100 text-stone-500 hover:bg-stone-200 transition-all"
+                                            >
+                                                취소
+                                            </button>
+                                            <button
+                                                onClick={() => handleEditSubmit(msg)}
+                                                className="flex-1 py-2 rounded-xl text-xs font-bold bg-stone-800 text-white hover:bg-stone-700 transition-all"
+                                            >
+                                                저장
+                                            </button>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <p className="text-sm text-stone-700 leading-relaxed font-medium whitespace-pre-wrap">{msg.content}</p>
+                                )}
                             </div>
                         ))
                     )}
