@@ -7416,7 +7416,7 @@ function WeddingSchedule() {
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
         "button",
         {
-          onPointerDown: () => setIsModalOpen(true),
+          onClick: () => setIsModalOpen(true),
           style: { touchAction: "manipulation" },
           className: "bg-white/90 border border-stone-200 text-stone-700 px-8 py-3.5 rounded-full text-[14px] font-bold shadow-sm active:bg-stone-100 select-none flex items-center justify-center transform-none",
           children: [
@@ -7618,6 +7618,7 @@ function Gallery() {
           "button",
           {
             className: "absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-stone-600 z-10 active:bg-white select-none",
+            style: { touchAction: "manipulation" },
             onPointerDown: (e) => {
               e.stopPropagation();
               if (scrollContainerRef.current) {
@@ -7638,6 +7639,7 @@ function Gallery() {
               "div",
               {
                 className: "rounded-xl overflow-hidden shadow-sm aspect-[4/5] cursor-zoom-in relative active:opacity-90",
+                style: { touchAction: "manipulation" },
                 onClick: () => {
                   document.body.classList.add("music-hidden");
                   document.body.classList.add("nav-hidden");
@@ -7655,6 +7657,7 @@ function Gallery() {
           "button",
           {
             className: "absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-stone-600 z-10 active:bg-white select-none",
+            style: { touchAction: "manipulation" },
             onPointerDown: (e) => {
               e.stopPropagation();
               if (scrollContainerRef.current) {
@@ -7694,40 +7697,38 @@ function Gallery() {
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             "button",
             {
-              className: "absolute top-6 right-6 z-[510] flex items-center justify-center w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-stone-800 shadow-xl active:scale-95 active:bg-white transition-all select-none",
+              className: "absolute top-6 right-6 z-[510] flex items-center justify-center w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-stone-800 shadow-xl active:bg-white transition-colors select-none",
+              style: { touchAction: "manipulation" },
               onPointerDown: (e) => {
                 e.stopPropagation();
                 document.body.classList.remove("music-hidden");
                 document.body.classList.remove("nav-hidden");
                 setSelectedIdx(null);
               },
-              onClick: (e) => e.stopPropagation(),
               children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { size: 24 })
             }
           ),
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             "button",
             {
-              className: "absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/70 backdrop-blur-md text-stone-800 shadow-lg active:scale-90 active:bg-white/90 transition-all select-none",
+              className: "absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/70 backdrop-blur-md text-stone-800 shadow-lg active:bg-white/90 transition-colors select-none",
               style: { touchAction: "manipulation" },
               onPointerDown: (e) => {
                 e.stopPropagation();
                 goPrev();
               },
-              onClick: (e) => e.stopPropagation(),
               children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { size: 24 })
             }
           ),
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             "button",
             {
-              className: "absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/70 backdrop-blur-md text-stone-800 shadow-lg active:scale-90 active:bg-white/90 transition-all select-none",
+              className: "absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/70 backdrop-blur-md text-stone-800 shadow-lg active:bg-white/90 transition-colors select-none",
               style: { touchAction: "manipulation" },
               onPointerDown: (e) => {
                 e.stopPropagation();
                 goNext();
               },
-              onClick: (e) => e.stopPropagation(),
               children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { size: 24 })
             }
           ),
@@ -7854,7 +7855,7 @@ function Location() {
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               "button",
               {
-                onPointerDown: openNaverMap,
+                onClick: openNaverMap,
                 style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
                 className: "flex-1 py-4 bg-[#00C73C] text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#009b2e] active:opacity-90 shadow-sm select-none",
                 children: "네이버 지도"
@@ -7863,7 +7864,7 @@ function Location() {
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               "button",
               {
-                onPointerDown: openKakaoMap,
+                onClick: openKakaoMap,
                 style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
                 className: "flex-1 py-4 bg-[#FAE100] text-[#391B1B] text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#e0c800] active:opacity-90 shadow-sm select-none",
                 children: "카카오맵"
@@ -7872,7 +7873,7 @@ function Location() {
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               "button",
               {
-                onPointerDown: openTmap,
+                onClick: openTmap,
                 style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
                 className: "flex-1 py-4 bg-stone-800 text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-stone-900 active:opacity-90 shadow-sm select-none",
                 children: "티맵"
@@ -7990,7 +7991,7 @@ function AccountInfo({ showToast }) {
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
           "button",
           {
-            onPointerDown: () => setOpenGroom(!openGroom),
+            onClick: () => setOpenGroom(!openGroom),
             style: { touchAction: "manipulation" },
             className: "w-full px-6 py-5 flex justify-between items-center text-left bg-blue-50/50 hover:bg-blue-50 active:bg-blue-100 transition-colors select-none cursor-pointer",
             children: [
@@ -8011,7 +8012,7 @@ function AccountInfo({ showToast }) {
             /* @__PURE__ */ jsxRuntimeExports.jsxs(
               "button",
               {
-                onPointerDown: () => handleCopy("카카오뱅크 3333-01-5650207"),
+                onClick: () => handleCopy("카카오뱅크 3333-01-5650207"),
                 style: { touchAction: "manipulation" },
                 className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
                 children: [
@@ -8033,7 +8034,7 @@ function AccountInfo({ showToast }) {
             /* @__PURE__ */ jsxRuntimeExports.jsxs(
               "button",
               {
-                onPointerDown: () => handleCopy("농협 735080-51-036329"),
+                onClick: () => handleCopy("농협 735080-51-036329"),
                 style: { touchAction: "manipulation" },
                 className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
                 children: [
@@ -8049,7 +8050,7 @@ function AccountInfo({ showToast }) {
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
           "button",
           {
-            onPointerDown: () => setOpenBride(!openBride),
+            onClick: () => setOpenBride(!openBride),
             style: { touchAction: "manipulation" },
             className: "w-full px-6 py-5 flex justify-between items-center text-left bg-rose-50/50 hover:bg-rose-50 active:bg-rose-100 transition-colors select-none cursor-pointer",
             children: [
@@ -8070,7 +8071,7 @@ function AccountInfo({ showToast }) {
             /* @__PURE__ */ jsxRuntimeExports.jsxs(
               "button",
               {
-                onPointerDown: () => handleCopy("우리은행 1002-837-547920"),
+                onClick: () => handleCopy("우리은행 1002-837-547920"),
                 style: { touchAction: "manipulation" },
                 className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
                 children: [
@@ -8092,7 +8093,7 @@ function AccountInfo({ showToast }) {
             /* @__PURE__ */ jsxRuntimeExports.jsxs(
               "button",
               {
-                onPointerDown: () => handleCopy("농협 352-0761-7396-23"),
+                onClick: () => handleCopy("농협 352-0761-7396-23"),
                 style: { touchAction: "manipulation" },
                 className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
                 children: [
@@ -8114,7 +8115,7 @@ function AccountInfo({ showToast }) {
             /* @__PURE__ */ jsxRuntimeExports.jsxs(
               "button",
               {
-                onPointerDown: () => handleCopy("우리은행 1002-734-796143"),
+                onClick: () => handleCopy("우리은행 1002-734-796143"),
                 style: { touchAction: "manipulation" },
                 className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
                 children: [
@@ -20075,9 +20076,9 @@ function Guestbook({ showToast }) {
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { placeholder: "축하의 한마디를 남겨주세요.", value: newContent, onChange: (e) => setNewContent(e.target.value), className: "w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 h-28 resize-none focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 100 }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex space-x-2 relative z-10", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onPointerDown: () => setReceiver("public"), style: { touchAction: "manipulation" }, className: `flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-stone-100 select-none ${receiver === "public" ? "bg-stone-100 border-stone-200 text-stone-700 shadow-sm" : "bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50"}`, children: "모두에게" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onPointerDown: () => setReceiver("groom"), style: { touchAction: "manipulation" }, className: `flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-blue-100 select-none ${receiver === "groom" ? "bg-blue-50 border-blue-200 text-blue-700 shadow-sm" : "bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50"}`, children: "신랑에게" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onPointerDown: () => setReceiver("bride"), style: { touchAction: "manipulation" }, className: `flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-rose-100 select-none ${receiver === "bride" ? "bg-rose-50 border-rose-200 text-rose-700 shadow-sm" : "bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50"}`, children: "신부에게" })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onClick: () => setReceiver("public"), style: { touchAction: "manipulation" }, className: `flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-stone-100 select-none ${receiver === "public" ? "bg-stone-100 border-stone-200 text-stone-700 shadow-sm" : "bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50"}`, children: "모두에게" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onClick: () => setReceiver("groom"), style: { touchAction: "manipulation" }, className: `flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-blue-100 select-none ${receiver === "groom" ? "bg-blue-50 border-blue-200 text-blue-700 shadow-sm" : "bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50"}`, children: "신랑에게" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onClick: () => setReceiver("bride"), style: { touchAction: "manipulation" }, className: `flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-rose-100 select-none ${receiver === "bride" ? "bg-rose-50 border-rose-200 text-rose-700 shadow-sm" : "bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50"}`, children: "신부에게" })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("button", { type: "submit", disabled: loading, style: { touchAction: "manipulation" }, className: "w-full bg-[#2A2626] active:bg-[#1f1d1d] text-white font-bold py-4 rounded-xl text-[15px] disabled:bg-stone-400 flex items-center justify-center relative z-10 mt-2 select-none", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(Send, { size: 18, className: "mr-2.5 opacity-90" }),
@@ -20115,7 +20116,7 @@ function BottomNav() {
   return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "fixed bottom-0 w-full max-w-[480px] bg-white/95 border-t border-stone-200 z-40 px-2 pt-1 pb-[max(4px,env(safe-area-inset-bottom))] flex justify-around items-center left-1/2 -translate-x-1/2 shadow-[0_-5px_20px_rgba(0,0,0,0.05)]", children: navItems.map((item) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
     "button",
     {
-      onPointerDown: (e) => {
+      onClick: (e) => {
         scrollTo(item.id);
       },
       style: { touchAction: "manipulation" },
@@ -20131,7 +20132,7 @@ function BottomNav() {
 function Petals() {
   const [petals, setPetals] = reactExports.useState([]);
   reactExports.useEffect(() => {
-    const petalCount = 15;
+    const petalCount = 8;
     const newPetals = Array.from({ length: petalCount }).map((_, i) => ({
       id: i,
       left: Math.random() * 100 + "%",
@@ -20288,8 +20289,12 @@ function MusicPlayer({ forcePlay }) {
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           "button",
           {
-            onPointerDown: () => setShowPlaylist(!showPlaylist),
-            className: `w-9 h-9 rounded-full flex items-center justify-center transition-all ${showPlaylist ? "bg-rose-100 text-rose-500" : "hover:bg-stone-100 text-stone-500"}`,
+            onPointerDown: (e) => {
+              e.stopPropagation();
+              setShowPlaylist(!showPlaylist);
+            },
+            style: { touchAction: "manipulation" },
+            className: `w-9 h-9 rounded-full flex items-center justify-center transition-colors ${showPlaylist ? "bg-rose-100 text-rose-500" : "hover:bg-stone-100 text-stone-500"}`,
             title: "재생 목록",
             children: /* @__PURE__ */ jsxRuntimeExports.jsx(Music, { size: 18 })
           }
@@ -20299,7 +20304,8 @@ function MusicPlayer({ forcePlay }) {
           "button",
           {
             onPointerDown: togglePlay,
-            className: "w-9 h-9 rounded-full flex items-center justify-center transition-all hover:bg-stone-100 text-stone-600 relative overflow-hidden",
+            style: { touchAction: "manipulation" },
+            className: "w-9 h-9 rounded-full flex items-center justify-center transition-colors hover:bg-stone-100 text-stone-600 relative overflow-hidden",
             title: isPlaying ? "음악 끄기" : "음악 켜기",
             children: [
               isPlaying ? /* @__PURE__ */ jsxRuntimeExports.jsx(Volume2, { size: 18, className: "text-rose-400" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(VolumeX, { size: 18, className: "text-stone-300" }),
@@ -20312,7 +20318,11 @@ function MusicPlayer({ forcePlay }) {
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
         "div",
         {
-          onClick: () => setShowPlaylist(!showPlaylist),
+          onPointerDown: (e) => {
+            e.stopPropagation();
+            setShowPlaylist(!showPlaylist);
+          },
+          style: { touchAction: "manipulation" },
           className: `ml-3 bg-white/95 px-5 py-2.5 rounded-full border border-rose-100 shadow-lg transition-all duration-700 ease-out flex items-center cursor-pointer hover:bg-rose-50/50 ${showInfo ? "max-w-xs opacity-100 translate-x-0" : "max-w-0 opacity-0 -translate-x-10 pointer-events-none px-0 overflow-hidden"}`,
           children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "bg-rose-100 p-1.5 rounded-full mr-3 flex-shrink-0 animate-pulse", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Music, { size: 12, className: "text-rose-500" }) }),
@@ -20343,8 +20353,9 @@ function MusicPlayer({ forcePlay }) {
         return /* @__PURE__ */ jsxRuntimeExports.jsxs(
           "button",
           {
-            onClick: () => selectTrack(index),
-            className: `w-full flex items-center px-4 py-3 rounded-xl transition-all duration-300 group/item ${isCurrent ? "bg-rose-50/80 text-rose-600" : "hover:bg-stone-50 text-stone-600"}`,
+            onPointerDown: () => selectTrack(index),
+            style: { touchAction: "manipulation" },
+            className: `w-full flex items-center px-4 py-3 rounded-xl transition-colors group/item ${isCurrent ? "bg-rose-50/80 text-rose-600" : "hover:bg-stone-50 text-stone-600"}`,
             children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `w-7 h-7 rounded-full flex items-center justify-center mr-3 transition-all ${isCurrent ? "bg-rose-500 text-white shadow-md shadow-rose-200" : "bg-stone-100 text-stone-400 group-hover/item:bg-rose-100 group-hover/item:text-rose-400"}`, children: isCurrent && isPlaying ? /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-end space-x-0.5 h-3", children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-0.5 bg-current animate-[music-bar_0.6s_ease-in-out_infinite]" }),
