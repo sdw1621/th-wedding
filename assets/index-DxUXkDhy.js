@@ -7438,6 +7438,7 @@ function Gallery() {
   const [ref, isVisible] = useScrollReveal();
   const [selectedIdx, setSelectedIdx] = reactExports.useState(null);
   const [currentScrollIdx, setCurrentScrollIdx] = reactExports.useState(0);
+  const [youtubeActive, setYoutubeActive] = reactExports.useState(false);
   const touchStartX = reactExports.useRef(0);
   const touchEndX = reactExports.useRef(0);
   const touchStartY = reactExports.useRef(0);
@@ -7521,15 +7522,36 @@ function Gallery() {
           ")을 잠시 꺼두세요"
         ] })
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-6 mb-12 relative z-30", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-2xl overflow-hidden shadow-sm aspect-video bg-stone-100 border border-stone-200 relative z-30", style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-6 mb-12 relative z-30", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-2xl overflow-hidden shadow-sm aspect-video bg-stone-900 border border-stone-200 relative z-30", children: youtubeActive ? /* @__PURE__ */ jsxRuntimeExports.jsx(
         "iframe",
         {
-          src: "https://www.youtube.com/embed/aBT0gHQ0AwE?playsinline=1",
+          src: "https://www.youtube.com/embed/aBT0gHQ0AwE?autoplay=1&playsinline=1",
           title: "Wedding Video",
-          className: "w-full h-full border-none relative z-30",
-          style: { pointerEvents: "auto", touchAction: "manipulation" },
+          className: "w-full h-full border-none",
           allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
           allowFullScreen: true
+        }
+      ) : /* @__PURE__ */ jsxRuntimeExports.jsxs(
+        "div",
+        {
+          className: "w-full h-full relative cursor-pointer",
+          style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
+          onClick: () => setYoutubeActive(true),
+          onTouchEnd: (e) => {
+            e.preventDefault();
+            setYoutubeActive(true);
+          },
+          children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "img",
+              {
+                src: "https://img.youtube.com/vi/aBT0gHQ0AwE/maxresdefault.jpg",
+                alt: "Wedding Video",
+                className: "w-full h-full object-cover"
+              }
+            ),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 flex items-center justify-center bg-black/20", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-xl", children: /* @__PURE__ */ jsxRuntimeExports.jsx("svg", { viewBox: "0 0 24 24", fill: "white", className: "w-8 h-8 ml-1", children: /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M8 5v14l11-7z" }) }) }) })
+          ]
         }
       ) }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-center mb-4", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-stone-500 animate-pulse font-medium", children: "사진을 누르면 크게 보실 수 있어요 📸" }) }),
