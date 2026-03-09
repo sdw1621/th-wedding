@@ -41,7 +41,7 @@ a,
   outline: none;
   cursor: pointer;
   touch-action: manipulation;
-  will-change: transform;
+  will-change: auto;
   transition-property: transform, opacity, background-color, border-color, color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
@@ -55,6 +55,36 @@ a:active {
 button svg,
 a svg {
   pointer-events: none;
+}
+
+/* 모바일 input/textarea 터치 반응성 개선 */
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: 16px !important; /* iOS 자동 줌 방지 */
+}
+
+/* 저사양 모바일 성능 최적화 - 불필요한 애니메이션 줄이기 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 터치 디바이스에서 hover 상태 비활성화 (고스트 클릭 방지) */
+@media (hover: none) and (pointer: coarse) {
+  button:hover,
+  a:hover,
+  [role="button"]:hover {
+    transform: none !important;
+    box-shadow: inherit;
+  }
 }
 
 #root {

@@ -5,6 +5,8 @@ import Pencil from 'lucide-react/dist/esm/icons/pencil';
 import Lock from 'lucide-react/dist/esm/icons/lock';
 import Unlock from 'lucide-react/dist/esm/icons/unlock';
 import MessageSquare from 'lucide-react/dist/esm/icons/message-square';
+import ChevronLeft from 'lucide-react/dist/esm/icons/chevron-left';
+import ChevronRight from 'lucide-react/dist/esm/icons/chevron-right';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { supabase } from '../supabaseClient';
 
@@ -106,6 +108,8 @@ export default function Guestbook({ showToast }) {
     const [selectedMsg, setSelectedMsg] = useState(null);
     const [modalPurpose, setModalPurpose] = useState('');
     const [unlockedMessages, setUnlockedMessages] = useState({});
+    const [currentPage, setCurrentPage] = useState(1);
+    const MESSAGES_PER_PAGE = 3;
     const isAnyModalOpen = isPasswordModalOpen || isDeleteModalOpen || isEditModalOpen || isReplyInputModalOpen;
 
     useEffect(() => {
@@ -317,6 +321,27 @@ export default function Guestbook({ showToast }) {
         }
     };
 
+    const totalPages = Math.max(1, Math.ceil(messages.length / MESSAGES_PER_PAGE));
+
+    // 새 메시지 추가 시 1페이지로 리셋
+    const prevMsgCount = React.useRef(messages.length);
+    useEffect(() => {
+        if (messages.length > prevMsgCount.current) {
+            setCurrentPage(1);
+        }
+        prevMsgCount.current = messages.length;
+    }, [messages.length]);
+
+    // 페이지 범위 벗어나면 보정
+    useEffect(() => {
+        if (currentPage > totalPages) setCurrentPage(totalPages);
+    }, [currentPage, totalPages]);
+
+    const paginatedMessages = useMemo(() => {
+        const start = (currentPage - 1) * MESSAGES_PER_PAGE;
+        return messages.slice(start, start + MESSAGES_PER_PAGE);
+    }, [messages, currentPage]);
+
     const messageListOutput = useMemo(() => {
         if (initialLoading) return (
             <div className="text-center py-10 space-y-2">
@@ -327,12 +352,56 @@ export default function Guestbook({ showToast }) {
         if (messages.length === 0) return <p className="text-center py-10 text-stone-400 text-sm italic font-medium">첫 번째 축하 메시지를 남겨주세요.</p>;
         return (
             <div className="space-y-4">
-                {messages.map((msg, idx) => (
+                {paginatedMessages.map((msg, idx) => (
                     <MessageItem key={msg.id || idx} msg={msg} unlockedMessages={unlockedMessages} openPasswordModal={openPasswordModal} toggleUnlock={toggleUnlock} />
                 ))}
+
+                {/* 페이지네이션 */}
+                {totalPages > 1 && (
+                    <div className="flex items-center justify-center space-x-3 pt-4 pb-2">
+                        <button
+                            onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                            disabled={currentPage === 1}
+                            style={{ touchAction: 'manipulation' }}
+                            className="p-2.5 rounded-xl bg-white border border-stone-200 text-stone-500 disabled:opacity-30 disabled:cursor-not-allowed active:bg-stone-50 select-none shadow-sm"
+                        >
+                            <ChevronLeft size={18} />
+                        </button>
+
+                        <div className="flex items-center space-x-1.5">
+                            {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                                <button
+                                    key={page}
+                                    onClick={() => setCurrentPage(page)}
+                                    style={{ touchAction: 'manipulation' }}
+                                    className={`w-8 h-8 rounded-lg text-xs font-bold select-none transition-all duration-200 ${
+                                        page === currentPage
+                                            ? 'bg-rose-500 text-white shadow-sm'
+                                            : 'bg-white border border-stone-200 text-stone-400 active:bg-stone-50'
+                                    }`}
+                                >
+                                    {page}
+                                </button>
+                            ))}
+                        </div>
+
+                        <button
+                            onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                            disabled={currentPage === totalPages}
+                            style={{ touchAction: 'manipulation' }}
+                            className="p-2.5 rounded-xl bg-white border border-stone-200 text-stone-500 disabled:opacity-30 disabled:cursor-not-allowed active:bg-stone-50 select-none shadow-sm"
+                        >
+                            <ChevronRight size={18} />
+                        </button>
+                    </div>
+                )}
+
+                <p className="text-center text-[11px] text-stone-400 font-medium">
+                    총 {messages.length}개의 메시지
+                </p>
             </div>
         );
-    }, [messages, unlockedMessages, initialLoading, openPasswordModal, toggleUnlock]);
+    }, [messages, paginatedMessages, unlockedMessages, initialLoading, openPasswordModal, toggleUnlock, currentPage, totalPages]);
 
     return (
         <section className="py-24 bg-[#FDFBF7]" id="guestbook" ref={ref}>
