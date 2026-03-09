@@ -19744,23 +19744,17 @@ const ModernModal = reactExports.memo(({ isOpen, onClose, title, description, ch
     }
     onClose();
   };
-  const handleConfirm = () => {
-    if (document.activeElement && document.activeElement !== document.body) {
-      document.activeElement.blur();
-    }
-    onConfirm();
-  };
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "fixed inset-0 z-[200] flex items-center justify-center px-4", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-stone-900/80 animate-in fade-in duration-300", onClick: handleClose }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative bg-white w-full max-w-[320px] rounded-[24px] shadow-2xl border border-white/20 overflow-hidden animate-in fade-in zoom-in duration-200", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative bg-white w-full max-w-[320px] rounded-[24px] shadow-2xl border border-white/20 overflow-hidden animate-in fade-in zoom-in duration-200", onClick: (e) => e.stopPropagation(), children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 text-center", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-[17px] font-bold text-stone-900 mb-1", children: title }),
         description && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[13px] text-stone-500 font-medium leading-tight", children: description }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-4", children })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col border-t border-stone-100", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: handleConfirm, style: { touchAction: "manipulation" }, className: `py-4 text-[15px] font-bold border-b border-stone-100 active:bg-stone-50 select-none ${isDestructive ? "text-rose-500" : "text-blue-500"}`, children: confirmLabel }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: handleClose, style: { touchAction: "manipulation" }, className: "py-4 text-[15px] font-medium text-stone-400 active:bg-stone-50 select-none", children: cancelLabel })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onPointerDown: onConfirm, style: { touchAction: "manipulation" }, className: `py-4 text-[15px] font-bold border-b border-stone-100 active:bg-stone-50 select-none ${isDestructive ? "text-rose-500" : "text-blue-500"}`, children: confirmLabel }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onPointerDown: handleClose, style: { touchAction: "manipulation" }, className: "py-4 text-[15px] font-medium text-stone-400 active:bg-stone-50 select-none", children: cancelLabel })
       ] })
     ] })
   ] });
@@ -19781,6 +19775,7 @@ function Guestbook({ showToast }) {
   const [modalPassword, setModalPassword] = reactExports.useState("");
   const [modalEditText, setModalEditText] = reactExports.useState("");
   const [modalReplyText, setModalReplyText] = reactExports.useState("");
+  const passwordInputRef = reactExports.useRef(null);
   const [selectedMsg, setSelectedMsg] = reactExports.useState(null);
   const [modalPurpose, setModalPurpose] = reactExports.useState("");
   const [unlockedMessages, setUnlockedMessages] = reactExports.useState({});
@@ -19854,16 +19849,21 @@ function Guestbook({ showToast }) {
   const toggleUnlock = reactExports.useCallback((id, status) => {
     setUnlockedMessages((prev) => ({ ...prev, [id]: status }));
   }, []);
+  const refocusPasswordInput = () => {
+    setModalPassword("");
+    setTimeout(() => {
+      var _a;
+      return (_a = passwordInputRef.current) == null ? void 0 : _a.focus();
+    }, 50);
+  };
   const handleModalConfirm = async () => {
-    if (document.activeElement && document.activeElement !== document.body) {
-      document.activeElement.blur();
-    }
     if (modalPurpose === "unlock") {
       if (modalPassword === selectedMsg.password || modalPassword === "0313") {
         toggleUnlock(selectedMsg.id, true);
         setIsPasswordModalOpen(false);
       } else {
         showToast("비밀번호가 일치하지 않습니다.");
+        refocusPasswordInput();
       }
     } else if (modalPurpose === "delete") {
       if (modalPassword === selectedMsg.password || modalPassword === "0313") {
@@ -19871,6 +19871,7 @@ function Guestbook({ showToast }) {
         setIsDeleteModalOpen(true);
       } else {
         showToast("비밀번호가 틀렸습니다.");
+        refocusPasswordInput();
       }
     } else if (modalPurpose === "edit") {
       if (modalPassword === selectedMsg.password || modalPassword === "0313") {
@@ -19879,6 +19880,7 @@ function Guestbook({ showToast }) {
         setIsEditModalOpen(true);
       } else {
         showToast("비밀번호가 틀렸습니다.");
+        refocusPasswordInput();
       }
     } else if (modalPurpose === "reply") {
       if (modalPassword === "0313") {
@@ -19887,6 +19889,7 @@ function Guestbook({ showToast }) {
         setIsReplyInputModalOpen(true);
       } else {
         showToast("신랑/신부 전용 비밀번호가 아닙니다.");
+        refocusPasswordInput();
       }
     }
   };
@@ -20088,10 +20091,10 @@ function Guestbook({ showToast }) {
       ] }),
       messageListOutput
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isPasswordModalOpen, onClose: () => setIsPasswordModalOpen(false), title: "비밀번호 확인", description: "비밀번호를 입력해주세요.", onConfirm: handleModalConfirm, children: /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "password", value: modalPassword, onChange: (e) => setModalPassword(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-center text-lg tracking-[0.5em] focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "••••", autoFocus: true }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isPasswordModalOpen, onClose: () => setIsPasswordModalOpen(false), title: "비밀번호 확인", description: "비밀번호를 입력해주세요.", onConfirm: handleModalConfirm, children: /* @__PURE__ */ jsxRuntimeExports.jsx("input", { ref: passwordInputRef, type: "password", value: modalPassword, onChange: (e) => setModalPassword(e.target.value), onKeyDown: (e) => e.key === "Enter" && handleModalConfirm(), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-center text-lg tracking-[0.5em] focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "••••", autoFocus: true }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isDeleteModalOpen, onClose: () => setIsDeleteModalOpen(false), title: "메시지 삭제", description: "삭제하면 되돌릴 수 없습니다. 정말 삭제할까요?", onConfirm: confirmDelete, confirmLabel: "삭제", isDestructive: true }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isEditModalOpen, onClose: () => setIsEditModalOpen(false), title: "메시지 수정", onConfirm: confirmEdit, confirmLabel: "수정완료", children: /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalEditText, onChange: (e) => setModalEditText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none" }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isReplyInputModalOpen, onClose: () => setIsReplyInputModalOpen(false), title: "답글 남기기", description: "게스트에게 전할 소중한 메시지를 입력하세요.", onConfirm: confirmReply, confirmLabel: "답글저장", children: /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalReplyText, onChange: (e) => setModalReplyText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "감사의 인사를 남겨주세요." }) })
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isEditModalOpen, onClose: () => setIsEditModalOpen(false), title: "메시지 수정", onConfirm: confirmEdit, confirmLabel: "수정완료", children: /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalEditText, onChange: (e) => setModalEditText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none", autoFocus: true }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isReplyInputModalOpen, onClose: () => setIsReplyInputModalOpen(false), title: "답글 남기기", description: "게스트에게 전할 소중한 메시지를 입력하세요.", onConfirm: confirmReply, confirmLabel: "답글저장", children: /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalReplyText, onChange: (e) => setModalReplyText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "감사의 인사를 남겨주세요.", autoFocus: true }) })
   ] });
 }
 function Share() {
