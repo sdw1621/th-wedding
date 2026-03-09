@@ -7775,6 +7775,10 @@ function Location() {
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               "button",
               {
+                onTouchEnd: (e) => {
+                  e.preventDefault();
+                  openNaverMap();
+                },
                 onClick: openNaverMap,
                 style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
                 className: "flex-1 py-4 bg-[#00C73C] text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#009b2e] active:opacity-90 shadow-sm select-none",
@@ -7784,6 +7788,10 @@ function Location() {
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               "button",
               {
+                onTouchEnd: (e) => {
+                  e.preventDefault();
+                  openKakaoMap();
+                },
                 onClick: openKakaoMap,
                 style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
                 className: "flex-1 py-4 bg-[#FAE100] text-[#391B1B] text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#e0c800] active:opacity-90 shadow-sm select-none",
@@ -7793,6 +7801,10 @@ function Location() {
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               "button",
               {
+                onTouchEnd: (e) => {
+                  e.preventDefault();
+                  openTmap();
+                },
                 onClick: openTmap,
                 style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
                 className: "flex-1 py-4 bg-stone-800 text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-stone-900 active:opacity-90 shadow-sm select-none",
@@ -19673,8 +19685,14 @@ const ModernModal = reactExports.memo(({ isOpen, onClose, title, description, ch
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-4", children })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col border-t border-stone-100", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: onConfirm, style: { touchAction: "manipulation" }, className: `py-4 text-[15px] font-bold border-b border-stone-100 active:bg-stone-50 select-none ${isDestructive ? "text-rose-500" : "text-blue-500"}`, children: confirmLabel }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: handleClose, style: { touchAction: "manipulation" }, className: "py-4 text-[15px] font-medium text-stone-400 active:bg-stone-50 select-none", children: cancelLabel })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onTouchEnd: (e) => {
+          e.preventDefault();
+          onConfirm();
+        }, onClick: onConfirm, style: { touchAction: "manipulation" }, className: `py-4 text-[15px] font-bold border-b border-stone-100 active:bg-stone-50 select-none ${isDestructive ? "text-rose-500" : "text-blue-500"}`, children: confirmLabel }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onTouchEnd: (e) => {
+          e.preventDefault();
+          handleClose();
+        }, onClick: handleClose, style: { touchAction: "manipulation" }, className: "py-4 text-[15px] font-medium text-stone-400 active:bg-stone-50 select-none", children: cancelLabel })
       ] })
     ] })
   ] });
@@ -19994,14 +20012,23 @@ function Guestbook({ showToast }) {
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("form", { onSubmit: handleSubmit, className: "bg-white p-5 rounded-[1.25rem] shadow-sm border border-stone-100 mb-8 space-y-4 relative z-20", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex space-x-2", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "text", placeholder: "성함", value: newName, onChange: (e) => setNewName(e.target.value), className: "w-1/2 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 10 }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "password", placeholder: "비밀번호", value: newPassword, onChange: (e) => setNewPassword(e.target.value), className: "w-1/2 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 10 })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "text", placeholder: "성함", value: newName, onChange: (e) => setNewName(e.target.value), onTouchEnd: (e) => e.currentTarget.focus(), className: "w-1/2 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 10 }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "password", placeholder: "비밀번호", value: newPassword, onChange: (e) => setNewPassword(e.target.value), onTouchEnd: (e) => e.currentTarget.focus(), className: "w-1/2 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 10 })
         ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { placeholder: "축하의 한마디를 남겨주세요.", value: newContent, onChange: (e) => setNewContent(e.target.value), className: "w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 h-28 resize-none focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 100 }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { placeholder: "축하의 한마디를 남겨주세요.", value: newContent, onChange: (e) => setNewContent(e.target.value), onTouchEnd: (e) => e.currentTarget.focus(), className: "w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 h-28 resize-none focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 100 }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex space-x-2 relative z-10", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onClick: () => setReceiver("public"), style: { touchAction: "manipulation" }, className: `flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-stone-100 select-none ${receiver === "public" ? "bg-stone-100 border-stone-200 text-stone-700 shadow-sm" : "bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50"}`, children: "모두에게" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onClick: () => setReceiver("groom"), style: { touchAction: "manipulation" }, className: `flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-blue-100 select-none ${receiver === "groom" ? "bg-blue-50 border-blue-200 text-blue-700 shadow-sm" : "bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50"}`, children: "신랑에게" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onClick: () => setReceiver("bride"), style: { touchAction: "manipulation" }, className: `flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-rose-100 select-none ${receiver === "bride" ? "bg-rose-50 border-rose-200 text-rose-700 shadow-sm" : "bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50"}`, children: "신부에게" })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onTouchEnd: (e) => {
+            e.preventDefault();
+            setReceiver("public");
+          }, onClick: () => setReceiver("public"), style: { touchAction: "manipulation" }, className: `flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-stone-100 select-none ${receiver === "public" ? "bg-stone-100 border-stone-200 text-stone-700 shadow-sm" : "bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50"}`, children: "모두에게" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onTouchEnd: (e) => {
+            e.preventDefault();
+            setReceiver("groom");
+          }, onClick: () => setReceiver("groom"), style: { touchAction: "manipulation" }, className: `flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-blue-100 select-none ${receiver === "groom" ? "bg-blue-50 border-blue-200 text-blue-700 shadow-sm" : "bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50"}`, children: "신랑에게" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onTouchEnd: (e) => {
+            e.preventDefault();
+            setReceiver("bride");
+          }, onClick: () => setReceiver("bride"), style: { touchAction: "manipulation" }, className: `flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-rose-100 select-none ${receiver === "bride" ? "bg-rose-50 border-rose-200 text-rose-700 shadow-sm" : "bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50"}`, children: "신부에게" })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("button", { type: "submit", disabled: loading, style: { touchAction: "manipulation" }, className: "w-full bg-[#2A2626] active:bg-[#1f1d1d] text-white font-bold py-4 rounded-xl text-[15px] disabled:bg-stone-400 flex items-center justify-center relative z-10 mt-2 select-none", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(Send, { size: 18, className: "mr-2.5 opacity-90" }),
