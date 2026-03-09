@@ -7329,7 +7329,7 @@ function Hero() {
 }
 function Greeting() {
   const [ref, isVisible] = useScrollReveal();
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 text-center", id: "greeting", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `transition-all duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 text-center", id: "greeting", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(Heart, { className: "mx-auto text-rose-200 mb-8", size: 28, strokeWidth: 1.5 }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest mb-12 text-stone-800 font-bold", children: "결혼합니다" }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-6 text-stone-700 leading-relaxed text-[15px] break-keep font-medium", children: [
@@ -7508,7 +7508,7 @@ function Gallery() {
     return () => el.removeEventListener("touchmove", onTouchMove);
   }, [selectedIdx]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "py-24 bg-white overflow-hidden", id: "gallery", ref, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-2xl mx-auto transition-all duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-2xl mx-auto transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-8 px-6", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(Camera, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "우리의 빛나는 순간" })
@@ -7705,7 +7705,7 @@ function Location() {
   const openTmap = () => {
     window.open("tmap://route?goalname=메이필드호텔%20봉래헌&goalx=126.817971&goaly=37.5478974", "_blank");
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 bg-[#FDFBF7]", id: "location", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `max-w-lg mx-auto transition-all duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 bg-[#FDFBF7]", id: "location", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `max-w-lg mx-auto transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-10", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(MapPin, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "식사 자리 안내" })
@@ -7896,7 +7896,7 @@ function AccountInfo({ showToast }) {
     }
     document.body.removeChild(textArea);
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 bg-stone-50", id: "account", ref, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-md mx-auto transition-all duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 bg-stone-50", id: "account", ref, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-md mx-auto transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-10", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(Gift, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "마음 전하실 곳" }),
@@ -19978,7 +19978,7 @@ function Guestbook({ showToast }) {
     ] });
   }, [messages, paginatedMessages, unlockedMessages, initialLoading, openPasswordModal, toggleUnlock, currentPage, totalPages]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "py-24 bg-[#FDFBF7]", id: "guestbook", ref, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-md mx-auto px-6 transition-all duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-md mx-auto px-6 transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-10 flex flex-col items-center", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx(MessageSquare, { className: "mx-auto text-rose-200", size: 28, strokeWidth: 1.5 }) }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "text-2xl font-serif tracking-[0.2em] text-stone-900 font-bold mb-3 relative", children: [
@@ -20019,7 +20019,7 @@ function Guestbook({ showToast }) {
 }
 function Share() {
   const [ref, isVisible] = useScrollReveal();
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "pt-8 pb-4 bg-white", id: "share", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { ref, className: `max-w-md mx-auto text-center transition-all duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4", children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "pt-8 pb-4 bg-white", id: "share", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { ref, className: `max-w-md mx-auto text-center transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[28px] font-serif italic text-stone-800 tracking-wider", children: "Thank you!" }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-2xl text-stone-900", children: "🖤" })
   ] }) }) });
