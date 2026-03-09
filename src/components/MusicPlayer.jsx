@@ -10,6 +10,7 @@ export default function MusicPlayer({ forcePlay }) {
     const [showPlaylist, setShowPlaylist] = useState(false);
     const audioRef = useRef(null);
     const [showInfo, setShowInfo] = useState(false);
+    const playerRef = useRef(null);
 
     // BGM 리스트 정의
     const PLAYLIST = [
@@ -87,12 +88,34 @@ export default function MusicPlayer({ forcePlay }) {
         }
     }, [currentTrackIndex]);
 
+    const [hidePlayer, setHidePlayer] = useState(false);
+
+    useEffect(() => {
+        const observer = new MutationObserver(() => {
+            setHidePlayer(document.body.classList.contains('music-hidden'));
+        });
+        observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+        return () => observer.disconnect();
+    }, []);
+
+    // 플레이리스트 외부 터치/클릭 시 닫기
+    useEffect(() => {
+        if (!showPlaylist) return;
+        const handler = (e) => {
+            if (playerRef.current && !playerRef.current.contains(e.target)) {
+                setShowPlaylist(false);
+            }
+        };
+        document.addEventListener('pointerdown', handler);
+        return () => document.removeEventListener('pointerdown', handler);
+    }, [showPlaylist]);
+
     return (
-        <div className="fixed top-6 left-6 z-[100] flex flex-col items-start select-none">
+        <div ref={playerRef} className={`fixed top-6 left-6 z-[100] flex flex-col items-start select-none transition-opacity duration-300 ${hidePlayer ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
             <div className="flex items-center">
                 <div className="relative group flex items-center bg-white/95 border border-stone-200 rounded-full shadow-md p-1 transition-all hover:shadow-lg">
                     <button
-                        onClick={() => setShowPlaylist(!showPlaylist)}
+                        onPointerDown={() => setShowPlaylist(!showPlaylist)}
                         className={`w-9 h-9 rounded-full flex items-center justify-center transition-all ${showPlaylist ? 'bg-rose-100 text-rose-500' : 'hover:bg-stone-100 text-stone-500'}`}
                         title="재생 목록"
                     >
@@ -102,7 +125,7 @@ export default function MusicPlayer({ forcePlay }) {
                     <div className="w-[1px] h-4 bg-stone-200 mx-1"></div>
 
                     <button
-                        onClick={togglePlay}
+                        onPointerDown={togglePlay}
                         className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:bg-stone-100 text-stone-600 relative overflow-hidden"
                         title={isPlaying ? "음악 끄기" : "음악 켜기"}
                     >

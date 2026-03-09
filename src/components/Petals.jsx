@@ -17,7 +17,7 @@ export default function Petals() {
     }, []);
 
     return (
-        <div className="fixed inset-0 pointer-events-none overflow-hidden z-10">
+        <div className="fixed inset-0 pointer-events-none overflow-hidden z-[5]">
             {petals.map(petal => (
                 <div
                     key={petal.id}

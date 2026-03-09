@@ -36,7 +36,7 @@ export default function IntroScreen({ onEnter, onStart }) {
                     onClick={handleOpen}
                     disabled={isProcessing}
                     style={{ touchAction: 'manipulation' }}
-                    className="group relative px-12 py-5 bg-stone-800 border border-stone-600 rounded-full overflow-hidden transition-all hover:bg-stone-700 active:scale-90 shadow-2xl shadow-black/50"
+                    className="group relative px-12 py-5 bg-stone-800 border border-stone-600 rounded-full overflow-hidden hover:bg-stone-700 active:bg-stone-700 shadow-2xl shadow-black/50 select-none"
                 >
                     <div className="absolute inset-0 bg-rose-500/10 w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
                     <span className="relative flex items-center space-x-3 text-stone-200">

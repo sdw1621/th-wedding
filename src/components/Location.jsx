@@ -20,7 +20,7 @@ export default function Location() {
 
     return (
         <section className="py-24 px-6 bg-[#FDFBF7]" id="location">
-            <div ref={ref} className={`max-w-lg mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div ref={ref} className={`max-w-lg mx-auto transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
                 <div className="text-center mb-10">
                     <MapPin className="mx-auto text-rose-200 mb-4" size={28} strokeWidth={1.5} />
                     <h2 className="text-xl font-serif tracking-widest text-stone-800 font-bold">식사 자리 안내</h2>
@@ -32,14 +32,15 @@ export default function Location() {
                         <img
                             src={`${import.meta.env.BASE_URL}img/봉래헌.png`}
                             alt="Mayfield Hotel Bongrae-heon"
-                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 sm:group-hover:scale-110"
                         />
                         <div className="absolute inset-0 bg-black/10"></div>
                         <a
                             href="https://www.mayfield.co.kr/restaurant/bongraeheon"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="relative bg-white/95 px-5 py-2.5 rounded-full text-sm font-bold text-stone-800 shadow-lg flex items-center border border-stone-100 hover:bg-stone-50 transition-colors cursor-pointer"
+                            style={{ touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent' }}
+                            className="relative z-20 bg-white/95 px-5 py-2.5 rounded-full text-sm font-bold text-stone-800 shadow-lg flex items-center border border-stone-100 active:bg-stone-50 active:opacity-90 select-none cursor-pointer"
                         >
                             <MapPin size={16} className="text-rose-500 mr-2" /> 메이필드 호텔 봉래헌
                         </a>
@@ -80,14 +81,26 @@ export default function Location() {
                             <h4 className="text-[13px] font-bold text-stone-800 mb-3 flex items-center">
                                 <span className="w-1.5 h-1.5 bg-rose-400 rounded-full mr-2"></span> 자가용 이용 시
                             </h4>
-                            <div className="flex space-x-2 pl-3.5 mt-4">
-                                <button onClick={openNaverMap} style={{ touchAction: 'manipulation' }} className="flex-1 py-4 bg-[#00C73C] text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#009b2e] shadow-sm select-none">
+                            <div className="flex space-x-2 pl-3.5 mt-4 relative z-20">
+                                <button
+                                    onPointerDown={openNaverMap}
+                                    style={{ touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent' }}
+                                    className="flex-1 py-4 bg-[#00C73C] text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#009b2e] active:opacity-90 shadow-sm select-none"
+                                >
                                     네이버 지도
                                 </button>
-                                <button onClick={openKakaoMap} style={{ touchAction: 'manipulation' }} className="flex-1 py-4 bg-[#FAE100] text-[#391B1B] text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#e0c800] shadow-sm select-none">
+                                <button
+                                    onPointerDown={openKakaoMap}
+                                    style={{ touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent' }}
+                                    className="flex-1 py-4 bg-[#FAE100] text-[#391B1B] text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#e0c800] active:opacity-90 shadow-sm select-none"
+                                >
                                     카카오맵
                                 </button>
-                                <button onClick={openTmap} style={{ touchAction: 'manipulation' }} className="flex-1 py-4 bg-stone-800 text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-stone-900 shadow-sm select-none">
+                                <button
+                                    onPointerDown={openTmap}
+                                    style={{ touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent' }}
+                                    className="flex-1 py-4 bg-stone-800 text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-stone-900 active:opacity-90 shadow-sm select-none"
+                                >
                                     티맵
                                 </button>
                             </div>

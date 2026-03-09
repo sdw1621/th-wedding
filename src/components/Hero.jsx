@@ -51,7 +51,8 @@ export default function Hero() {
 
                 <button
                     onClick={addToCalendar}
-                    className="mt-10 flex items-center space-x-2 px-6 py-2.5 bg-white/90 border border-stone-200 rounded-full text-stone-600 text-[11px] font-bold hover:bg-white transition-all shadow-sm"
+                    style={{ touchAction: 'manipulation' }}
+                    className="mt-10 flex items-center space-x-2 px-6 py-2.5 bg-white/90 border border-stone-200 rounded-full text-stone-600 text-[11px] font-bold active:bg-stone-50 shadow-sm select-none"
                 >
                     <Calendar size={14} />
                     <span>캘린더에 일정 추가</span>

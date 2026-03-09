@@ -4,11 +4,12 @@ import CheckCircle2 from 'lucide-react/dist/esm/icons/check-circle-2';
 import IntroScreen from './components/IntroScreen';
 import Hero from './components/Hero';
 import Greeting from './components/Greeting';
-import CoupleQuiz from './components/CoupleQuiz';
+import WeddingSchedule from './components/WeddingSchedule';
 import Gallery from './components/Gallery';
 import Location from './components/Location';
 import AccountInfo from './components/AccountInfo';
 import Guestbook from './components/Guestbook';
+import Share from './components/Share';
 import BottomNav from './components/BottomNav';
 import Petals from './components/Petals';
 import MusicPlayer from './components/MusicPlayer';
@@ -37,14 +38,15 @@ export default function App() {
                 />
             ) : (
                 <>
-                    <div className="pb-36 animate-in fade-in duration-1000">
+                    <div className="pb-28 animate-in fade-in duration-500 relative z-10">
                         <Hero />
                         <Greeting />
-                        <CoupleQuiz />
+                        <WeddingSchedule />
                         <Gallery />
                         <Location />
                         <AccountInfo showToast={showToast} />
                         <Guestbook showToast={showToast} />
+                        <Share />
                     </div>
                     <BottomNav />
                 </>

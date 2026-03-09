@@ -24,18 +24,18 @@ const MessageItem = memo(({ msg, unlockedMessages, openPasswordModal, toggleUnlo
                 </div>
                 <div className="flex items-center space-x-1 -mr-2 mt-1 sm:mt-0">
                     {msg.is_secret && (
-                        <button onClick={() => isLocked ? openPasswordModal(msg, 'unlock') : toggleUnlock(msg.id, false)} className="p-2 text-stone-300 active:text-stone-500 active:scale-95 transition-all" style={{ touchAction: 'manipulation' }}>
+                        <button onClick={() => isLocked ? openPasswordModal(msg, 'unlock') : toggleUnlock(msg.id, false)} className="p-3 -m-1 text-stone-300 active:text-stone-600 select-none" style={{ touchAction: 'manipulation' }}>
                             {isLocked ? <Lock size={16} /> : <Unlock size={16} />}
                         </button>
                     )}
                     <span className="text-[11px] text-stone-400 font-medium px-1.5">{msg.date}</span>
-                    <button onClick={() => openPasswordModal(msg, 'reply')} className="p-2 text-stone-300 hover:text-stone-600 active:scale-95 transition-all" style={{ touchAction: 'manipulation' }} title="답글 남기기"><MessageSquare size={16} /></button>
-                    <button onClick={() => openPasswordModal(msg, 'edit')} className="p-2 text-stone-300 hover:text-stone-600 active:scale-95 transition-all" style={{ touchAction: 'manipulation' }}><Pencil size={16} /></button>
-                    <button onClick={() => openPasswordModal(msg, 'delete')} className="p-2 text-stone-300 hover:text-rose-400 active:scale-95 transition-all" style={{ touchAction: 'manipulation' }}><Trash2 size={16} /></button>
+                    <button onClick={() => openPasswordModal(msg, 'reply')} className="p-3 -m-1 text-stone-300 active:text-stone-600 select-none" style={{ touchAction: 'manipulation' }} title="답글 남기기"><MessageSquare size={16} /></button>
+                    <button onClick={() => openPasswordModal(msg, 'edit')} className="p-3 -m-1 text-stone-300 active:text-stone-600 select-none" style={{ touchAction: 'manipulation' }}><Pencil size={16} /></button>
+                    <button onClick={() => openPasswordModal(msg, 'delete')} className="p-3 -m-1 text-stone-300 active:text-rose-400 select-none" style={{ touchAction: 'manipulation' }}><Trash2 size={16} /></button>
                 </div>
             </div>
             {isLocked ? (
-                <div className={`text-sm italic flex items-center justify-center p-4 rounded-xl cursor-pointer active:scale-[0.98] transition-all ${msg.receiver === 'groom' ? 'text-blue-400 bg-blue-100/30' : msg.receiver === 'bride' ? 'text-rose-400 bg-rose-100/30' : 'text-stone-400 bg-stone-50'}`} onClick={() => openPasswordModal(msg, 'unlock')}>
+                <div className={`text-sm italic flex items-center justify-center p-4 rounded-xl cursor-pointer active:opacity-70 transition-opacity ${msg.receiver === 'groom' ? 'text-blue-400 bg-blue-100/30' : msg.receiver === 'bride' ? 'text-rose-400 bg-rose-100/30' : 'text-stone-400 bg-stone-50'}`} onClick={() => openPasswordModal(msg, 'unlock')}>
                     <Lock size={14} className="mr-2 opacity-50" /> {msg.receiver === 'groom' ? '신랑' : msg.receiver === 'bride' ? '신부' : '작성자'}만 확인 가능
                 </div>
             ) : (
@@ -65,8 +65,8 @@ const ModernModal = memo(({ isOpen, onClose, title, description, children, onCon
                     <div className="mt-4">{children}</div>
                 </div>
                 <div className="flex flex-col border-t border-stone-100">
-                    <button onClick={onConfirm} style={{ touchAction: 'manipulation' }} className={`py-4 text-[15px] font-bold border-b border-stone-100 transition-all active:bg-stone-50 active:scale-95 ${isDestructive ? 'text-rose-500' : 'text-blue-500'}`}>{confirmLabel}</button>
-                    <button onClick={onClose} style={{ touchAction: 'manipulation' }} className="py-4 text-[15px] font-medium text-stone-400 active:bg-stone-50 active:scale-95 transition-all">{cancelLabel}</button>
+                    <button onClick={onConfirm} style={{ touchAction: 'manipulation' }} className={`py-4 text-[15px] font-bold border-b border-stone-100 active:bg-stone-50 select-none ${isDestructive ? 'text-rose-500' : 'text-blue-500'}`}>{confirmLabel}</button>
+                    <button onClick={onClose} style={{ touchAction: 'manipulation' }} className="py-4 text-[15px] font-medium text-stone-400 active:bg-stone-50 select-none">{cancelLabel}</button>
                 </div>
             </div>
         </div>
@@ -94,6 +94,15 @@ export default function Guestbook({ showToast }) {
     const [selectedMsg, setSelectedMsg] = useState(null);
     const [modalPurpose, setModalPurpose] = useState('');
     const [unlockedMessages, setUnlockedMessages] = useState({});
+    const isAnyModalOpen = isPasswordModalOpen || isDeleteModalOpen || isEditModalOpen || isReplyInputModalOpen;
+
+    useEffect(() => {
+        if (isAnyModalOpen) {
+            document.body.classList.add('nav-hidden');
+        } else {
+            document.body.classList.remove('nav-hidden');
+        }
+    }, [isAnyModalOpen]);
 
     const fetchMessages = useCallback(async (isAuto = false) => {
         try {
@@ -306,8 +315,8 @@ export default function Guestbook({ showToast }) {
     }, [messages, unlockedMessages, initialLoading, openPasswordModal, toggleUnlock]);
 
     return (
-        <section className="py-24 px-6 bg-[#FDFBF7]" id="guestbook" ref={ref}>
-            <div className={`max-w-md mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <section className="py-24 bg-[#FDFBF7]" id="guestbook" ref={ref}>
+            <div className={`max-w-md mx-auto px-6 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
 
                 {/* 1. 디자인 반영: 방명록 아이콘, 빨간색 보더 라인 추가 */}
                 <div className="text-center mb-10 flex flex-col items-center">
@@ -320,24 +329,24 @@ export default function Guestbook({ showToast }) {
                     </h2>
 
                     {/* 2. 요청된 방명록 하단 문구 + 메일 애니메이션 이모지 추가 */}
-                    <p className="text-[14px] text-stone-600 font-medium leading-relaxed break-keep mt-7 animate-fade-in-up" style={{ animationFillMode: 'both', animationDelay: '300ms' }}>
+                    <p className="text-[14px] text-stone-600 font-medium leading-relaxed break-keep mt-7">
                         가족식으로 진행되어 하객 초청은 하지 않습니다.<br />
                         축하 방명록만 남겨주시면 됩니다.
-                        <span className="inline-block animate-bounce-soft text-base ml-1.5" style={{ verticalAlign: 'middle' }}>💌</span>
+                        <span className="inline-block text-base ml-1.5" style={{ verticalAlign: 'middle' }}>💌</span>
                     </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="bg-white p-5 rounded-[1.25rem] shadow-sm border border-stone-100 mb-8 space-y-4 relative overflow-hidden">
-                    <div className="flex space-x-2 relative z-20">
-                        <input type="text" placeholder="성함" value={newName} onChange={(e) => setNewName(e.target.value)} className="w-1/2 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400" maxLength={10} />
-                        <input type="password" placeholder="비밀번호" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} className="w-1/2 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400" maxLength={10} />
+                <form onSubmit={handleSubmit} className="bg-white p-5 rounded-[1.25rem] shadow-sm border border-stone-100 mb-8 space-y-4 relative z-20">
+                    <div className="flex space-x-2">
+                        <input type="text" placeholder="성함" value={newName} onChange={(e) => setNewName(e.target.value)} className="w-1/2 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20" maxLength={10} />
+                        <input type="password" placeholder="비밀번호" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} className="w-1/2 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20" maxLength={10} />
                     </div>
                     <textarea placeholder="축하의 한마디를 남겨주세요." value={newContent} onChange={(e) => setNewContent(e.target.value)} className="w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 h-28 resize-none focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20" maxLength={100} />
 
                     <div className="flex space-x-2 relative z-10">
-                        <button type="button" onClick={() => setReceiver('public')} style={{ touchAction: 'manipulation' }} className={`flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-stone-100 select-none ${receiver === 'public' ? 'bg-stone-100 border-stone-200 text-stone-700 shadow-sm' : 'bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50'}`}>모두에게</button>
-                        <button type="button" onClick={() => setReceiver('groom')} style={{ touchAction: 'manipulation' }} className={`flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-blue-100 select-none ${receiver === 'groom' ? 'bg-blue-50 border-blue-200 text-blue-700 shadow-sm' : 'bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50'}`}>신랑에게</button>
-                        <button type="button" onClick={() => setReceiver('bride')} style={{ touchAction: 'manipulation' }} className={`flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-rose-100 select-none ${receiver === 'bride' ? 'bg-rose-50 border-rose-200 text-rose-700 shadow-sm' : 'bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50'}`}>신부에게</button>
+                        <button type="button" onPointerDown={() => setReceiver('public')} style={{ touchAction: 'manipulation' }} className={`flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-stone-100 select-none ${receiver === 'public' ? 'bg-stone-100 border-stone-200 text-stone-700 shadow-sm' : 'bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50'}`}>모두에게</button>
+                        <button type="button" onPointerDown={() => setReceiver('groom')} style={{ touchAction: 'manipulation' }} className={`flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-blue-100 select-none ${receiver === 'groom' ? 'bg-blue-50 border-blue-200 text-blue-700 shadow-sm' : 'bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50'}`}>신랑에게</button>
+                        <button type="button" onPointerDown={() => setReceiver('bride')} style={{ touchAction: 'manipulation' }} className={`flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-rose-100 select-none ${receiver === 'bride' ? 'bg-rose-50 border-rose-200 text-rose-700 shadow-sm' : 'bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50'}`}>신부에게</button>
                     </div>
 
                     <button type="submit" disabled={loading} style={{ touchAction: 'manipulation' }} className="w-full bg-[#2A2626] active:bg-[#1f1d1d] text-white font-bold py-4 rounded-xl text-[15px] disabled:bg-stone-400 flex items-center justify-center relative z-10 mt-2 select-none">

@@ -48,7 +48,7 @@ export default function AccountInfo({ showToast }) {
 
     return (
         <section className="py-24 px-6 bg-stone-50" id="account" ref={ref}>
-            <div className={`max-w-md mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div className={`max-w-md mx-auto transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
                 <div className="text-center mb-10">
                     <Gift className="mx-auto text-rose-200 mb-4" size={28} strokeWidth={1.5} />
                     <h2 className="text-xl font-serif tracking-widest text-stone-800 font-bold">마음 전하실 곳</h2>
@@ -62,7 +62,7 @@ export default function AccountInfo({ showToast }) {
                     {/* 신랑측 */}
                     <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-stone-200">
                         <button
-                            onClick={() => setOpenGroom(!openGroom)}
+                            onPointerDown={() => setOpenGroom(!openGroom)}
                             style={{ touchAction: 'manipulation' }}
                             className="w-full px-6 py-5 flex justify-between items-center text-left bg-blue-50/50 hover:bg-blue-50 active:bg-blue-100 transition-colors select-none cursor-pointer"
                         >
@@ -77,7 +77,7 @@ export default function AccountInfo({ showToast }) {
                                         <p className="text-sm font-bold text-stone-800">예금주: 강태구<span style={{ color: '#2563eb' }} className="ml-1">(신랑)</span></p>
                                     </div>
                                     <button
-                                        onClick={() => handleCopy("카카오뱅크 3333-01-5650207")}
+                                        onPointerDown={() => handleCopy("카카오뱅크 3333-01-5650207")}
                                         style={{ touchAction: 'manipulation' }}
                                         className="text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none"
                                     >
@@ -91,7 +91,7 @@ export default function AccountInfo({ showToast }) {
                                         <p className="text-sm font-bold text-stone-800">예금주: 김경자<span style={{ color: '#2563eb' }} className="ml-1">(신랑 어머니)</span></p>
                                     </div>
                                     <button
-                                        onClick={() => handleCopy("농협 735080-51-036329")}
+                                        onPointerDown={() => handleCopy("농협 735080-51-036329")}
                                         style={{ touchAction: 'manipulation' }}
                                         className="text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none"
                                     >
@@ -105,7 +105,7 @@ export default function AccountInfo({ showToast }) {
                     {/* 신부측 */}
                     <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-stone-200">
                         <button
-                            onClick={() => setOpenBride(!openBride)}
+                            onPointerDown={() => setOpenBride(!openBride)}
                             style={{ touchAction: 'manipulation' }}
                             className="w-full px-6 py-5 flex justify-between items-center text-left bg-rose-50/50 hover:bg-rose-50 active:bg-rose-100 transition-colors select-none cursor-pointer"
                         >
@@ -120,7 +120,7 @@ export default function AccountInfo({ showToast }) {
                                         <p className="text-sm font-bold text-stone-800">예금주: 신희영<span style={{ color: '#e11d48' }} className="ml-1">(신부)</span></p>
                                     </div>
                                     <button
-                                        onClick={() => handleCopy("우리은행 1002-837-547920")}
+                                        onPointerDown={() => handleCopy("우리은행 1002-837-547920")}
                                         style={{ touchAction: 'manipulation' }}
                                         className="text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none"
                                     >
@@ -134,7 +134,7 @@ export default function AccountInfo({ showToast }) {
                                         <p className="text-sm font-bold text-stone-800">예금주: 신현갑<span style={{ color: '#e11d48' }} className="ml-1">(신부 아버지)</span></p>
                                     </div>
                                     <button
-                                        onClick={() => handleCopy("농협 352-0761-7396-23")}
+                                        onPointerDown={() => handleCopy("농협 352-0761-7396-23")}
                                         style={{ touchAction: 'manipulation' }}
                                         className="text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none"
                                     >
@@ -148,7 +148,7 @@ export default function AccountInfo({ showToast }) {
                                         <p className="text-sm font-bold text-stone-800">예금주: 송현숙<span style={{ color: '#e11d48' }} className="ml-1">(신부 어머니)</span></p>
                                     </div>
                                     <button
-                                        onClick={() => handleCopy("우리은행 1002-734-796143")}
+                                        onPointerDown={() => handleCopy("우리은행 1002-734-796143")}
                                         style={{ touchAction: 'manipulation' }}
                                         className="text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none"
                                     >

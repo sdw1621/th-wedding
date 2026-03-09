@@ -7,7 +7,7 @@ export default function Greeting() {
 
     return (
         <section className="py-24 px-6 text-center" id="greeting">
-            <div ref={ref} className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div ref={ref} className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
                 <Heart className="mx-auto text-rose-200 mb-8" size={28} strokeWidth={1.5} />
                 <h2 className="text-xl font-serif tracking-widest mb-12 text-stone-800 font-bold">결혼합니다</h2>
                 <div className="space-y-6 text-stone-700 leading-relaxed text-[15px] break-keep font-medium">
