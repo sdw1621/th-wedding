@@ -7298,7 +7298,7 @@ function Hero() {
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-gradient-to-b from-[#FDFBF7] via-white/40 to-white/10 opacity-90" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-white/5" })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `relative z-10 text-center flex flex-col items-center px-4 max-w-full transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `relative z-10 text-center flex flex-col items-center px-4 max-w-full transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0 -translate-y-4"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs md:text-sm tracking-[0.4em] text-stone-700 mb-6 font-medium", children: "WE ARE GETTING MARRIED" }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "text-4xl sm:text-5xl md:text-6xl font-serif text-stone-900 mb-3 drop-shadow-sm font-light tracking-widest whitespace-nowrap", children: [
         "강태구 ",
@@ -7310,7 +7310,7 @@ function Hero() {
         /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "https://www.mayfield.co.kr/restaurant/bongraeheon", target: "_blank", rel: "noopener noreferrer", className: "text-sm md:text-base text-stone-800 font-medium tracking-wide underline underline-offset-4 decoration-stone-800/30 active:text-rose-500 pb-0.5 mt-0.5", children: "메이필드 호텔 봉래헌" })
       ] })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `relative z-10 flex flex-col items-center transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `relative z-10 flex flex-col items-center transition-all duration-1000 delay-300 ${isVisible ? "opacity-100" : "opacity-0 translate-y-10"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(Countdown, {}),
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
         "button",
@@ -7329,7 +7329,7 @@ function Hero() {
 }
 function Greeting() {
   const [ref, isVisible] = useScrollReveal();
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 text-center", id: "greeting", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 text-center", id: "greeting", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `transition-all duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(Heart, { className: "mx-auto text-rose-200 mb-8", size: 28, strokeWidth: 1.5 }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest mb-12 text-stone-800 font-bold", children: "결혼합니다" }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-6 text-stone-700 leading-relaxed text-[15px] break-keep font-medium", children: [
@@ -7379,12 +7379,15 @@ function Greeting() {
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const FileText = createLucideIcon("FileText", [
-  ["path", { d: "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z", key: "1rqfz7" }],
-  ["path", { d: "M14 2v4a2 2 0 0 0 2 2h4", key: "tnqrlb" }],
-  ["path", { d: "M10 9H8", key: "b1mrlr" }],
-  ["path", { d: "M16 13H8", key: "t4e002" }],
-  ["path", { d: "M16 17H8", key: "z1uh3a" }]
+const Camera = createLucideIcon("Camera", [
+  [
+    "path",
+    {
+      d: "M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z",
+      key: "1tc9qg"
+    }
+  ],
+  ["circle", { cx: "12", cy: "13", r: "3", key: "1vg3eu" }]
 ]);
 /**
  * @license lucide-react v0.460.0 - ISC
@@ -7395,89 +7398,6 @@ const FileText = createLucideIcon("FileText", [
 const X = createLucideIcon("X", [
   ["path", { d: "M18 6 6 18", key: "1bl5f8" }],
   ["path", { d: "m6 6 12 12", key: "d8bk6v" }]
-]);
-function WeddingSchedule() {
-  const [ref, isVisible] = useScrollReveal();
-  const [isModalOpen, setIsModalOpen] = reactExports.useState(false);
-  React.useEffect(() => {
-    if (isModalOpen) {
-      document.body.classList.add("nav-hidden");
-    } else {
-      document.body.classList.remove("nav-hidden");
-    }
-  }, [isModalOpen]);
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "py-24 bg-stone-100/50 px-6", id: "schedule", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `max-w-md mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-8", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(FileText, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif text-stone-800 font-bold", children: "결혼식 식순" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-stone-600 text-sm mt-2 font-medium", children: "따뜻하고 경건한 예식을 준비했습니다." })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "button",
-        {
-          onClick: () => setIsModalOpen(true),
-          style: { touchAction: "manipulation" },
-          className: "bg-white/90 border border-stone-200 text-stone-700 px-8 py-3.5 rounded-full text-[14px] font-bold shadow-sm active:bg-stone-100 select-none flex items-center justify-center transform-none",
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(FileText, { size: 16, className: "mr-2 text-rose-400" }),
-            "결혼식 식순 미리보기"
-          ]
-        }
-      ) })
-    ] }),
-    isModalOpen && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-      "div",
-      {
-        className: "fixed inset-0 z-[200] bg-black/95 flex flex-col items-center justify-center p-4 animate-in fade-in duration-300",
-        onClick: (e) => {
-          if (e.target === e.currentTarget) setIsModalOpen(false);
-        },
-        children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-full max-w-3xl flex justify-end mb-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "button",
-            {
-              className: "text-white/70 active:text-white p-2 select-none",
-              style: { touchAction: "manipulation" },
-              onClick: () => setIsModalOpen(false),
-              children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { size: 32 })
-            }
-          ) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "div",
-            {
-              className: "w-full max-w-3xl flex-1 bg-white rounded-xl overflow-hidden relative shadow-2xl",
-              onClick: (e) => e.stopPropagation(),
-              children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                "iframe",
-                {
-                  src: window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" ? `${"/th-wedding/"}결혼식 식순 v3.pdf` : `https://docs.google.com/viewer?url=${encodeURIComponent("https://sdw1621.github.io/th-wedding/결혼식 식순 v3.pdf")}&embedded=true`,
-                  className: "absolute top-0 left-0 w-full h-full border-none",
-                  title: "Wedding Schedule"
-                }
-              )
-            }
-          )
-        ]
-      }
-    )
-  ] });
-}
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const Camera = createLucideIcon("Camera", [
-  [
-    "path",
-    {
-      d: "M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z",
-      key: "1tc9qg"
-    }
-  ],
-  ["circle", { cx: "12", cy: "13", r: "3", key: "1vg3eu" }]
 ]);
 /**
  * @license lucide-react v0.460.0 - ISC
@@ -7588,7 +7508,7 @@ function Gallery() {
     return () => el.removeEventListener("touchmove", onTouchMove);
   }, [selectedIdx]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "py-24 bg-white overflow-hidden", id: "gallery", ref, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-2xl mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-2xl mx-auto transition-all duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-8 px-6", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(Camera, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "우리의 빛나는 순간" })
@@ -7601,13 +7521,13 @@ function Gallery() {
           ")을 잠시 꺼두세요"
         ] })
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-6 mb-12 relative z-30", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-2xl overflow-hidden shadow-sm aspect-video bg-stone-100 border border-stone-200 relative z-30", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-6 mb-12 relative z-30", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-2xl overflow-hidden shadow-sm aspect-video bg-stone-100 border border-stone-200 relative z-30", style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
         "iframe",
         {
-          src: "https://www.youtube.com/embed/aBT0gHQ0AwE",
+          src: "https://www.youtube.com/embed/aBT0gHQ0AwE?playsinline=1",
           title: "Wedding Video",
           className: "w-full h-full border-none relative z-30",
-          style: { pointerEvents: "auto" },
+          style: { pointerEvents: "auto", touchAction: "manipulation" },
           allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
           allowFullScreen: true
         }
@@ -7619,7 +7539,7 @@ function Gallery() {
           {
             className: "absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-stone-600 z-10 active:bg-white select-none",
             style: { touchAction: "manipulation" },
-            onPointerDown: (e) => {
+            onClick: (e) => {
               e.stopPropagation();
               if (scrollContainerRef.current) {
                 const container = scrollContainerRef.current;
@@ -7658,7 +7578,7 @@ function Gallery() {
           {
             className: "absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-stone-600 z-10 active:bg-white select-none",
             style: { touchAction: "manipulation" },
-            onPointerDown: (e) => {
+            onClick: (e) => {
               e.stopPropagation();
               if (scrollContainerRef.current) {
                 const container = scrollContainerRef.current;
@@ -7699,7 +7619,7 @@ function Gallery() {
             {
               className: "absolute top-6 right-6 z-[510] flex items-center justify-center w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-stone-800 shadow-xl active:bg-white transition-colors select-none",
               style: { touchAction: "manipulation" },
-              onPointerDown: (e) => {
+              onClick: (e) => {
                 e.stopPropagation();
                 document.body.classList.remove("music-hidden");
                 document.body.classList.remove("nav-hidden");
@@ -7713,7 +7633,7 @@ function Gallery() {
             {
               className: "absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/70 backdrop-blur-md text-stone-800 shadow-lg active:bg-white/90 transition-colors select-none",
               style: { touchAction: "manipulation" },
-              onPointerDown: (e) => {
+              onClick: (e) => {
                 e.stopPropagation();
                 goPrev();
               },
@@ -7725,7 +7645,7 @@ function Gallery() {
             {
               className: "absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/70 backdrop-blur-md text-stone-800 shadow-lg active:bg-white/90 transition-colors select-none",
               style: { touchAction: "manipulation" },
-              onPointerDown: (e) => {
+              onClick: (e) => {
                 e.stopPropagation();
                 goNext();
               },
@@ -7785,7 +7705,7 @@ function Location() {
   const openTmap = () => {
     window.open("tmap://route?goalname=메이필드호텔%20봉래헌&goalx=126.817971&goaly=37.5478974", "_blank");
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 bg-[#FDFBF7]", id: "location", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `max-w-lg mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 bg-[#FDFBF7]", id: "location", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `max-w-lg mx-auto transition-all duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-10", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(MapPin, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "식사 자리 안내" })
@@ -7976,7 +7896,7 @@ function AccountInfo({ showToast }) {
     }
     document.body.removeChild(textArea);
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 bg-stone-50", id: "account", ref, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-md mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 bg-stone-50", id: "account", ref, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-md mx-auto transition-all duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-10", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(Gift, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "마음 전하실 곳" }),
@@ -19753,8 +19673,8 @@ const ModernModal = reactExports.memo(({ isOpen, onClose, title, description, ch
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-4", children })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col border-t border-stone-100", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onPointerDown: onConfirm, style: { touchAction: "manipulation" }, className: `py-4 text-[15px] font-bold border-b border-stone-100 active:bg-stone-50 select-none ${isDestructive ? "text-rose-500" : "text-blue-500"}`, children: confirmLabel }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onPointerDown: handleClose, style: { touchAction: "manipulation" }, className: "py-4 text-[15px] font-medium text-stone-400 active:bg-stone-50 select-none", children: cancelLabel })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: onConfirm, style: { touchAction: "manipulation" }, className: `py-4 text-[15px] font-bold border-b border-stone-100 active:bg-stone-50 select-none ${isDestructive ? "text-rose-500" : "text-blue-500"}`, children: confirmLabel }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: handleClose, style: { touchAction: "manipulation" }, className: "py-4 text-[15px] font-medium text-stone-400 active:bg-stone-50 select-none", children: cancelLabel })
       ] })
     ] })
   ] });
@@ -20058,7 +19978,7 @@ function Guestbook({ showToast }) {
     ] });
   }, [messages, paginatedMessages, unlockedMessages, initialLoading, openPasswordModal, toggleUnlock, currentPage, totalPages]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "py-24 bg-[#FDFBF7]", id: "guestbook", ref, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-md mx-auto px-6 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-md mx-auto px-6 transition-all duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-10 flex flex-col items-center", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx(MessageSquare, { className: "mx-auto text-rose-200", size: 28, strokeWidth: 1.5 }) }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "text-2xl font-serif tracking-[0.2em] text-stone-900 font-bold mb-3 relative", children: [
@@ -20099,7 +20019,7 @@ function Guestbook({ showToast }) {
 }
 function Share() {
   const [ref, isVisible] = useScrollReveal();
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "pt-8 pb-4 bg-white", id: "share", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { ref, className: `max-w-md mx-auto text-center transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4", children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "pt-8 pb-4 bg-white", id: "share", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { ref, className: `max-w-md mx-auto text-center transition-all duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[28px] font-serif italic text-stone-800 tracking-wider", children: "Thank you!" }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-2xl text-stone-900", children: "🖤" })
   ] }) }) });
@@ -20292,7 +20212,7 @@ function MusicPlayer({ forcePlay }) {
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           "button",
           {
-            onPointerDown: (e) => {
+            onClick: (e) => {
               e.stopPropagation();
               setShowPlaylist(!showPlaylist);
             },
@@ -20306,7 +20226,7 @@ function MusicPlayer({ forcePlay }) {
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
           "button",
           {
-            onPointerDown: togglePlay,
+            onClick: togglePlay,
             style: { touchAction: "manipulation" },
             className: "w-9 h-9 rounded-full flex items-center justify-center transition-colors hover:bg-stone-100 text-stone-600 relative overflow-hidden",
             title: isPlaying ? "음악 끄기" : "음악 켜기",
@@ -20321,7 +20241,7 @@ function MusicPlayer({ forcePlay }) {
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
         "div",
         {
-          onPointerDown: (e) => {
+          onClick: (e) => {
             e.stopPropagation();
             setShowPlaylist(!showPlaylist);
           },
@@ -20356,7 +20276,7 @@ function MusicPlayer({ forcePlay }) {
         return /* @__PURE__ */ jsxRuntimeExports.jsxs(
           "button",
           {
-            onPointerDown: () => selectTrack(index),
+            onClick: () => selectTrack(index),
             style: { touchAction: "manipulation" },
             className: `w-full flex items-center px-4 py-3 rounded-xl transition-colors group/item ${isCurrent ? "bg-rose-50/80 text-rose-600" : "hover:bg-stone-50 text-stone-600"}`,
             children: [
@@ -20433,7 +20353,6 @@ function App() {
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "pb-28 animate-in fade-in duration-500 relative z-10", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(Hero, {}),
         /* @__PURE__ */ jsxRuntimeExports.jsx(Greeting, {}),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(WeddingSchedule, {}),
         /* @__PURE__ */ jsxRuntimeExports.jsx(Gallery, {}),
         /* @__PURE__ */ jsxRuntimeExports.jsx(Location, {}),
         /* @__PURE__ */ jsxRuntimeExports.jsx(AccountInfo, { showToast }),
@@ -20442,7 +20361,7 @@ function App() {
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(BottomNav, {})
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `fixed bottom-24 left-1/2 -translate-x-1/2 bg-stone-800 text-white px-6 py-3 rounded-full shadow-xl transition-all duration-300 z-[300] flex items-center space-x-2 ${toast.show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `fixed top-20 left-1/2 -translate-x-1/2 bg-stone-800 text-white px-6 py-3 rounded-full shadow-xl transition-all duration-300 z-[300] flex items-center space-x-2 ${toast.show ? "opacity-100" : "opacity-0 -translate-y-4 pointer-events-none"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { size: 18, className: "text-emerald-400" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm font-medium", children: toast.message })
     ] })
