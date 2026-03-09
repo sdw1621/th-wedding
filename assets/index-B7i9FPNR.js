@@ -7567,12 +7567,13 @@ function Gallery() {
           ")을 잠시 꺼두세요"
         ] })
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-6 mb-12", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-2xl overflow-hidden shadow-sm aspect-video bg-stone-100 border border-stone-200 relative group", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-6 mb-12 relative z-30", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-2xl overflow-hidden shadow-sm aspect-video bg-stone-100 border border-stone-200 relative z-30", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
         "iframe",
         {
           src: "https://www.youtube.com/embed/aBT0gHQ0AwE",
           title: "Wedding Video",
-          className: "w-full h-full border-none",
+          className: "w-full h-full border-none relative z-30",
+          style: { pointerEvents: "auto" },
           allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
           allowFullScreen: true
         }
