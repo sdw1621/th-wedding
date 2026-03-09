@@ -8594,7 +8594,7 @@ function WeddingSchedule() {
     if (pages.length > 0) return;
     setLoading(true);
     try {
-      const pdfjsLib = await __vitePreload(() => import("./pdf-XJGVO1w_.js"), true ? [] : void 0);
+      const pdfjsLib = await __vitePreload(() => import("./pdf-D9ZlSiwe.js"), true ? [] : void 0);
       pdfjsLib.GlobalWorkerOptions.workerSrc = new URL("/th-wedding/assets/pdf.worker.min-GB3t0DcA.mjs", import.meta.url).toString();
       const pdf = await pdfjsLib.getDocument(PDF_URL).promise;
       const numPages = pdf.numPages;
@@ -8634,8 +8634,11 @@ function WeddingSchedule() {
     var _a, _b;
     (_b = (_a = flipBookRef.current) == null ? void 0 : _a.pageFlip()) == null ? void 0 : _b.flipPrev();
   };
-  const bookWidth = Math.min(window.innerWidth - 40, 400);
-  const bookHeight = Math.round(bookWidth * 1.414);
+  const maxHeight = window.innerHeight - 120;
+  const widthFromScreen = Math.min(window.innerWidth - 24, 440);
+  const heightFromWidth = Math.round(widthFromScreen * 1.414);
+  const bookHeight = Math.min(heightFromWidth, maxHeight);
+  const bookWidth = Math.round(bookHeight / 1.414);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "py-24 bg-stone-100/50 px-6", id: "schedule", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `max-w-md mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-8", children: [
@@ -8678,7 +8681,7 @@ function WeddingSchedule() {
             /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-white/70 text-sm font-medium", children: "식순을 불러오는 중..." })
           ] }),
           !loading && pages.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center w-full", onClick: (e) => e.stopPropagation(), children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-white/60 text-xs font-medium mb-3 tracking-wider", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-white/60 text-xs font-medium mb-1 tracking-wider", children: [
               currentPage + 1,
               " / ",
               totalPages
@@ -8690,10 +8693,10 @@ function WeddingSchedule() {
                 width: bookWidth,
                 height: bookHeight,
                 size: "stretch",
-                minWidth: 280,
+                minWidth: 250,
                 maxWidth: 500,
-                minHeight: 396,
-                maxHeight: 707,
+                minHeight: 350,
+                maxHeight,
                 showCover: true,
                 mobileScrollSupport: false,
                 usePortrait: true,
@@ -8712,7 +8715,7 @@ function WeddingSchedule() {
                 children: pages.map((src, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(Page, { src, pageNum: i + 1 }, i))
               }
             ) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-center space-x-6 mt-4", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-center space-x-6 mt-2", children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx(
                 "button",
                 {
