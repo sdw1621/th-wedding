@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback, memo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, memo, useRef } from 'react';
 import Send from 'lucide-react/dist/esm/icons/send';
 import Trash2 from 'lucide-react/dist/esm/icons/trash-2';
 import Pencil from 'lucide-react/dist/esm/icons/pencil';
@@ -63,24 +63,18 @@ const ModernModal = memo(({ isOpen, onClose, title, description, children, onCon
         }
         onClose();
     };
-    const handleConfirm = () => {
-        if (document.activeElement && document.activeElement !== document.body) {
-            document.activeElement.blur();
-        }
-        onConfirm();
-    };
     return (
         <div className="fixed inset-0 z-[200] flex items-center justify-center px-4">
             <div className="absolute inset-0 bg-stone-900/80 animate-in fade-in duration-300" onClick={handleClose}></div>
-            <div className="relative bg-white w-full max-w-[320px] rounded-[24px] shadow-2xl border border-white/20 overflow-hidden animate-in fade-in zoom-in duration-200">
+            <div className="relative bg-white w-full max-w-[320px] rounded-[24px] shadow-2xl border border-white/20 overflow-hidden animate-in fade-in zoom-in duration-200" onClick={(e) => e.stopPropagation()}>
                 <div className="p-6 text-center">
                     <h3 className="text-[17px] font-bold text-stone-900 mb-1">{title}</h3>
                     {description && <p className="text-[13px] text-stone-500 font-medium leading-tight">{description}</p>}
                     <div className="mt-4">{children}</div>
                 </div>
                 <div className="flex flex-col border-t border-stone-100">
-                    <button onClick={handleConfirm} style={{ touchAction: 'manipulation' }} className={`py-4 text-[15px] font-bold border-b border-stone-100 active:bg-stone-50 select-none ${isDestructive ? 'text-rose-500' : 'text-blue-500'}`}>{confirmLabel}</button>
-                    <button onClick={handleClose} style={{ touchAction: 'manipulation' }} className="py-4 text-[15px] font-medium text-stone-400 active:bg-stone-50 select-none">{cancelLabel}</button>
+                    <button onPointerDown={onConfirm} style={{ touchAction: 'manipulation' }} className={`py-4 text-[15px] font-bold border-b border-stone-100 active:bg-stone-50 select-none ${isDestructive ? 'text-rose-500' : 'text-blue-500'}`}>{confirmLabel}</button>
+                    <button onPointerDown={handleClose} style={{ touchAction: 'manipulation' }} className="py-4 text-[15px] font-medium text-stone-400 active:bg-stone-50 select-none">{cancelLabel}</button>
                 </div>
             </div>
         </div>
@@ -105,6 +99,7 @@ export default function Guestbook({ showToast }) {
     const [modalPassword, setModalPassword] = useState('');
     const [modalEditText, setModalEditText] = useState('');
     const [modalReplyText, setModalReplyText] = useState('');
+    const passwordInputRef = useRef(null);
     const [selectedMsg, setSelectedMsg] = useState(null);
     const [modalPurpose, setModalPurpose] = useState('');
     const [unlockedMessages, setUnlockedMessages] = useState({});
@@ -184,33 +179,34 @@ export default function Guestbook({ showToast }) {
         setUnlockedMessages(prev => ({ ...prev, [id]: status }));
     }, []);
 
+    const refocusPasswordInput = () => {
+        setModalPassword('');
+        setTimeout(() => passwordInputRef.current?.focus(), 50);
+    };
+
     const handleModalConfirm = async () => {
-        // 모바일: 모달 내 input blur 처리 (키보드 닫기)
-        if (document.activeElement && document.activeElement !== document.body) {
-            document.activeElement.blur();
-        }
         if (modalPurpose === 'unlock') {
             if (modalPassword === selectedMsg.password || modalPassword === '0313') {
                 toggleUnlock(selectedMsg.id, true);
                 setIsPasswordModalOpen(false);
-            } else { showToast('비밀번호가 일치하지 않습니다.'); }
+            } else { showToast('비밀번호가 일치하지 않습니다.'); refocusPasswordInput(); }
         } else if (modalPurpose === 'delete') {
             if (modalPassword === selectedMsg.password || modalPassword === '0313') {
                 setIsPasswordModalOpen(false);
                 setIsDeleteModalOpen(true);
-            } else { showToast('비밀번호가 틀렸습니다.'); }
+            } else { showToast('비밀번호가 틀렸습니다.'); refocusPasswordInput(); }
         } else if (modalPurpose === 'edit') {
             if (modalPassword === selectedMsg.password || modalPassword === '0313') {
                 setModalEditText(selectedMsg.content);
                 setIsPasswordModalOpen(false);
                 setIsEditModalOpen(true);
-            } else { showToast('비밀번호가 틀렸습니다.'); }
+            } else { showToast('비밀번호가 틀렸습니다.'); refocusPasswordInput(); }
         } else if (modalPurpose === 'reply') {
             if (modalPassword === '0313') {
                 setModalReplyText(selectedMsg.reply || '');
                 setIsPasswordModalOpen(false);
                 setIsReplyInputModalOpen(true);
-            } else { showToast('신랑/신부 전용 비밀번호가 아닙니다.'); }
+            } else { showToast('신랑/신부 전용 비밀번호가 아닙니다.'); refocusPasswordInput(); }
         }
     };
 
@@ -374,11 +370,10 @@ export default function Guestbook({ showToast }) {
                                     key={page}
                                     onClick={() => setCurrentPage(page)}
                                     style={{ touchAction: 'manipulation' }}
-                                    className={`w-8 h-8 rounded-lg text-xs font-bold select-none transition-all duration-200 ${
-                                        page === currentPage
+                                    className={`w-8 h-8 rounded-lg text-xs font-bold select-none transition-all duration-200 ${page === currentPage
                                             ? 'bg-rose-500 text-white shadow-sm'
                                             : 'bg-white border border-stone-200 text-stone-400 active:bg-stone-50'
-                                    }`}
+                                        }`}
                                 >
                                     {page}
                                 </button>
@@ -433,9 +428,9 @@ export default function Guestbook({ showToast }) {
                     <textarea placeholder="축하의 한마디를 남겨주세요." value={newContent} onChange={(e) => setNewContent(e.target.value)} className="w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 h-28 resize-none focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20" maxLength={100} />
 
                     <div className="flex space-x-2 relative z-10">
-                        <button type="button" onPointerDown={() => setReceiver('public')} style={{ touchAction: 'manipulation' }} className={`flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-stone-100 select-none ${receiver === 'public' ? 'bg-stone-100 border-stone-200 text-stone-700 shadow-sm' : 'bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50'}`}>모두에게</button>
-                        <button type="button" onPointerDown={() => setReceiver('groom')} style={{ touchAction: 'manipulation' }} className={`flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-blue-100 select-none ${receiver === 'groom' ? 'bg-blue-50 border-blue-200 text-blue-700 shadow-sm' : 'bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50'}`}>신랑에게</button>
-                        <button type="button" onPointerDown={() => setReceiver('bride')} style={{ touchAction: 'manipulation' }} className={`flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-rose-100 select-none ${receiver === 'bride' ? 'bg-rose-50 border-rose-200 text-rose-700 shadow-sm' : 'bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50'}`}>신부에게</button>
+                        <button type="button" onClick={() => setReceiver('public')} style={{ touchAction: 'manipulation' }} className={`flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-stone-100 select-none ${receiver === 'public' ? 'bg-stone-100 border-stone-200 text-stone-700 shadow-sm' : 'bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50'}`}>모두에게</button>
+                        <button type="button" onClick={() => setReceiver('groom')} style={{ touchAction: 'manipulation' }} className={`flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-blue-100 select-none ${receiver === 'groom' ? 'bg-blue-50 border-blue-200 text-blue-700 shadow-sm' : 'bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50'}`}>신랑에게</button>
+                        <button type="button" onClick={() => setReceiver('bride')} style={{ touchAction: 'manipulation' }} className={`flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-rose-100 select-none ${receiver === 'bride' ? 'bg-rose-50 border-rose-200 text-rose-700 shadow-sm' : 'bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50'}`}>신부에게</button>
                     </div>
 
                     <button type="submit" disabled={loading} style={{ touchAction: 'manipulation' }} className="w-full bg-[#2A2626] active:bg-[#1f1d1d] text-white font-bold py-4 rounded-xl text-[15px] disabled:bg-stone-400 flex items-center justify-center relative z-10 mt-2 select-none">
@@ -447,14 +442,14 @@ export default function Guestbook({ showToast }) {
             </div>
 
             <ModernModal isOpen={isPasswordModalOpen} onClose={() => setIsPasswordModalOpen(false)} title="비밀번호 확인" description="비밀번호를 입력해주세요." onConfirm={handleModalConfirm}>
-                <input type="password" value={modalPassword} onChange={(e) => setModalPassword(e.target.value)} className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-center text-lg tracking-[0.5em] focus:ring-2 focus:ring-stone-100 outline-none" placeholder="••••" autoFocus />
+                <input ref={passwordInputRef} type="password" value={modalPassword} onChange={(e) => setModalPassword(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleModalConfirm()} className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-center text-lg tracking-[0.5em] focus:ring-2 focus:ring-stone-100 outline-none" placeholder="••••" autoFocus />
             </ModernModal>
             <ModernModal isOpen={isDeleteModalOpen} onClose={() => setIsDeleteModalOpen(false)} title="메시지 삭제" description="삭제하면 되돌릴 수 없습니다. 정말 삭제할까요?" onConfirm={confirmDelete} confirmLabel="삭제" isDestructive={true} />
             <ModernModal isOpen={isEditModalOpen} onClose={() => setIsEditModalOpen(false)} title="메시지 수정" onConfirm={confirmEdit} confirmLabel="수정완료">
-                <textarea value={modalEditText} onChange={(e) => setModalEditText(e.target.value)} className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none" />
+                <textarea value={modalEditText} onChange={(e) => setModalEditText(e.target.value)} className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none" autoFocus />
             </ModernModal>
             <ModernModal isOpen={isReplyInputModalOpen} onClose={() => setIsReplyInputModalOpen(false)} title="답글 남기기" description="게스트에게 전할 소중한 메시지를 입력하세요." onConfirm={confirmReply} confirmLabel="답글저장">
-                <textarea value={modalReplyText} onChange={(e) => setModalReplyText(e.target.value)} className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none" placeholder="감사의 인사를 남겨주세요." />
+                <textarea value={modalReplyText} onChange={(e) => setModalReplyText(e.target.value)} className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none" placeholder="감사의 인사를 남겨주세요." autoFocus />
             </ModernModal>
         </section>
     );
