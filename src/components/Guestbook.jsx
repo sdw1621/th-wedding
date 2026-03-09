@@ -55,9 +55,21 @@ const MessageItem = memo(({ msg, unlockedMessages, openPasswordModal, toggleUnlo
 
 const ModernModal = memo(({ isOpen, onClose, title, description, children, onConfirm, confirmLabel = "확인", cancelLabel = "취소", isDestructive = false }) => {
     if (!isOpen) return null;
+    const handleClose = () => {
+        if (document.activeElement && document.activeElement !== document.body) {
+            document.activeElement.blur();
+        }
+        onClose();
+    };
+    const handleConfirm = () => {
+        if (document.activeElement && document.activeElement !== document.body) {
+            document.activeElement.blur();
+        }
+        onConfirm();
+    };
     return (
         <div className="fixed inset-0 z-[200] flex items-center justify-center px-4">
-            <div className="absolute inset-0 bg-stone-900/80 animate-in fade-in duration-300" onClick={onClose}></div>
+            <div className="absolute inset-0 bg-stone-900/80 animate-in fade-in duration-300" onClick={handleClose}></div>
             <div className="relative bg-white w-full max-w-[320px] rounded-[24px] shadow-2xl border border-white/20 overflow-hidden animate-in fade-in zoom-in duration-200">
                 <div className="p-6 text-center">
                     <h3 className="text-[17px] font-bold text-stone-900 mb-1">{title}</h3>
@@ -65,8 +77,8 @@ const ModernModal = memo(({ isOpen, onClose, title, description, children, onCon
                     <div className="mt-4">{children}</div>
                 </div>
                 <div className="flex flex-col border-t border-stone-100">
-                    <button onClick={onConfirm} style={{ touchAction: 'manipulation' }} className={`py-4 text-[15px] font-bold border-b border-stone-100 active:bg-stone-50 select-none ${isDestructive ? 'text-rose-500' : 'text-blue-500'}`}>{confirmLabel}</button>
-                    <button onClick={onClose} style={{ touchAction: 'manipulation' }} className="py-4 text-[15px] font-medium text-stone-400 active:bg-stone-50 select-none">{cancelLabel}</button>
+                    <button onClick={handleConfirm} style={{ touchAction: 'manipulation' }} className={`py-4 text-[15px] font-bold border-b border-stone-100 active:bg-stone-50 select-none ${isDestructive ? 'text-rose-500' : 'text-blue-500'}`}>{confirmLabel}</button>
+                    <button onClick={handleClose} style={{ touchAction: 'manipulation' }} className="py-4 text-[15px] font-medium text-stone-400 active:bg-stone-50 select-none">{cancelLabel}</button>
                 </div>
             </div>
         </div>
@@ -169,6 +181,10 @@ export default function Guestbook({ showToast }) {
     }, []);
 
     const handleModalConfirm = async () => {
+        // 모바일: 모달 내 input blur 처리 (키보드 닫기)
+        if (document.activeElement && document.activeElement !== document.body) {
+            document.activeElement.blur();
+        }
         if (modalPurpose === 'unlock') {
             if (modalPassword === selectedMsg.password || modalPassword === '0313') {
                 toggleUnlock(selectedMsg.id, true);
@@ -247,6 +263,10 @@ export default function Guestbook({ showToast }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        // 모바일: 키보드 닫기 + 뷰포트 복원 (터치 대상 위치 어긋남 방지)
+        if (document.activeElement && document.activeElement !== document.body) {
+            document.activeElement.blur();
+        }
         const trimmedName = newName.trim();
         const trimmedPassword = newPassword.trim();
         const trimmedContent = newContent.trim();
