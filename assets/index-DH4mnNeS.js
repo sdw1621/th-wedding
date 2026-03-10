@@ -19919,10 +19919,12 @@ function Location() {
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "w-1.5 h-1.5 bg-rose-400 rounded-full mr-2" }),
             " 지하철 이용 시"
           ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-[13px] text-stone-600 leading-relaxed pl-3.5", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[11.5px] text-stone-800 font-bold", children: "5호선 마곡역 / 9호선 · 공항철도 마곡나루역" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-[11.5px] text-stone-600 leading-relaxed pl-3.5", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-800 font-bold", children: "5호선 마곡역 / 9호선 · 공항철도 마곡나루역" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-            "하차 후 호텔 셔틀버스 또는 택시 이용 (약 5~10분 소요)"
+            "하차 후 호텔 셔틀버스 또는 택시 이용",
+            /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+            "(약 5~10분 소요)"
           ] })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
@@ -19930,11 +19932,11 @@ function Location() {
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "w-1.5 h-1.5 bg-rose-400 rounded-full mr-2" }),
             " 버스 이용 시"
           ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-[13px] text-stone-600 leading-relaxed pl-3.5", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-[11.5px] text-stone-600 leading-relaxed pl-3.5", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-800 font-bold", children: "강서면허시험장 · 메이필드호텔" }),
             " 정류장 하차",
             /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-            "지선: 6628, 6632 / 간선: 651 / 일반: 6014"
+            "지선 6628, 6632 / 간선 651 / 일반 6014"
           ] })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
@@ -21237,7 +21239,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "164"
+        "165"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
