@@ -21181,7 +21181,8 @@ function App() {
   const [galleryFullscreen, setGalleryFullscreen] = reactExports.useState(false);
   const galleryCloseRef = reactExports.useRef(null);
   reactExports.useEffect(() => {
-    const today = (/* @__PURE__ */ new Date()).toISOString().split("T")[0];
+    const kst = new Date(Date.now() + 9 * 60 * 60 * 1e3);
+    const today = kst.toISOString().split("T")[0];
     const trackAndFetch = async () => {
       try {
         if (!sessionStorage.getItem("v_tracked")) {
@@ -21234,7 +21235,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "161"
+        "162"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
