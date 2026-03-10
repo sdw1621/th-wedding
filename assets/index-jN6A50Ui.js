@@ -20426,6 +20426,7 @@ function App() {
   const [toast, setToast] = reactExports.useState({ show: false, message: "" });
   const [shouldMusicPlay, setShouldMusicPlay] = reactExports.useState(false);
   const [todayVisitors, setTodayVisitors] = reactExports.useState(null);
+  const [totalVisitors, setTotalVisitors] = reactExports.useState(null);
   reactExports.useEffect(() => {
     const today = (/* @__PURE__ */ new Date()).toISOString().split("T")[0];
     const trackAndFetch = async () => {
@@ -20441,6 +20442,8 @@ function App() {
         }
         const { data } = await supabase.from("visitors").select("count").eq("date", today).maybeSingle();
         if (data) setTodayVisitors(data.count);
+        const { data: all } = await supabase.from("visitors").select("count");
+        if (all) setTotalVisitors(all.reduce((sum, row) => sum + (row.count || 0), 0));
       } catch (e) {
       }
     };
@@ -20453,10 +20456,15 @@ function App() {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-h-screen bg-[#FDFBF7] text-stone-800 font-sans selection:bg-rose-200 relative", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(Petals, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(MusicPlayer, { forcePlay: shouldMusicPlay }),
+    totalVisitors !== null && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "fixed top-3 left-3 z-[400] flex items-center gap-1 text-[10px] text-stone-400 font-mono bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100 select-none pointer-events-none", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
+      "총 ",
+      totalVisitors,
+      "명"
+    ] }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "fixed top-3 right-3 z-[400] flex items-center gap-1.5 text-[10px] text-stone-400 font-mono bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100 select-none pointer-events-none", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "101"
+        "102"
       ] }),
       todayVisitors !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-300", children: "·" }),
