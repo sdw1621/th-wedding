@@ -18707,26 +18707,31 @@ function IntroScreen({ onEnter, onStart }) {
                     75% { transform: translateY(-3px) rotate(8deg); }
                 }
                 .icon-shake { animation: icon-shake 1.1s ease-in-out infinite; }
+                @keyframes text-blink {
+                    0%, 80%, 100% { opacity: 1; }
+                    40% { opacity: 0.35; }
+                }
+                .text-blink { animation: text-blink 2.2s ease-in-out infinite; }
             ` }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute inset-0 overflow-hidden", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-1/4 left-1/4 w-64 h-64 bg-rose-900/20 rounded-full blur-3xl opacity-50" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute bottom-1/4 right-1/4 w-64 h-64 bg-stone-700/30 rounded-full blur-3xl opacity-50" })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "warning-flash z-10 w-full flex flex-col items-center pt-14 pb-5 px-4 bg-amber-950/30 border-b border-amber-700/40 space-y-2", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "warning-flash z-10 w-full flex flex-col items-center pt-24 pb-6 px-4 bg-amber-950/30 border-b border-amber-700/40 space-y-3", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(TriangleAlert, { size: 26, className: "text-amber-400 icon-shake" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-stone-200 text-[17px] font-bold tracking-wide text-center leading-loose", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-stone-200 text-[17px] font-bold tracking-wide text-center leading-loose text-blink", children: [
         "가족식이라 하객 없이 진행됩니다.",
         /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-        "축하 방명록만 남겨주세요."
+        "축하 방명록만 남겨주세요. 💌"
       ] })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `z-10 flex-1 flex flex-col items-center justify-center transition-all duration-1000 transform ${isOpen ? "scale-110 translate-y-[-30px]" : "scale-100"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `z-10 flex-1 flex flex-col items-center justify-start pt-10 transition-all duration-1000 transform ${isOpen ? "scale-110 translate-y-[-30px]" : "scale-100"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "text-4xl md:text-5xl font-serif text-stone-200 mb-6 tracking-widest text-center px-6", children: [
         "태구 ",
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-rose-400 mx-2", children: "&" }),
         " 희영"
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-stone-400 text-sm tracking-[0.3em] mb-12 font-light", children: "2026. 03. 13. FRI 11:30 AM" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-stone-400 text-sm tracking-[0.3em] mb-10 font-light", children: "2026. 03. 13. FRI 11:30 AM" }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
         "button",
         {
@@ -20469,7 +20474,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "117"
+        "118"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
