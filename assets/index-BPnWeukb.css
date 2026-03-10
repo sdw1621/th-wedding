@@ -963,10 +963,6 @@ video {
   width: 0.375rem;
 }
 
-.w-1\/2{
-  width: 50%;
-}
-
 .w-10{
   width: 2.5rem;
 }
@@ -981,6 +977,10 @@ video {
 
 .w-2\.5{
   width: 0.625rem;
+}
+
+.w-24{
+  width: 6rem;
 }
 
 .w-4{
@@ -1064,6 +1064,10 @@ video {
 }
 
 .flex-shrink-0{
+  flex-shrink: 0;
+}
+
+.shrink-0{
   flex-shrink: 0;
 }
 
