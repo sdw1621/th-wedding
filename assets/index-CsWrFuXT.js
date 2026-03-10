@@ -20111,8 +20111,8 @@ function Guestbook({ showToast }) {
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("form", { onSubmit: handleSubmit, className: "bg-white p-5 rounded-[1.25rem] shadow-sm border border-stone-100 mb-8 space-y-4 relative z-20", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex space-x-2", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "text", placeholder: "성함", value: newName, onChange: (e) => setNewName(e.target.value), className: "w-1/2 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 10 }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "password", inputMode: "numeric", pattern: "[0-9]*", placeholder: "전화번호 뒷 4자리", value: newPassword, onChange: (e) => setNewPassword(e.target.value), className: "w-1/2 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 4 })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "text", placeholder: "성함", value: newName, onChange: (e) => setNewName(e.target.value), className: "w-2/5 bg-stone-50 border border-stone-100 rounded-xl px-3 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 10 }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "password", inputMode: "numeric", pattern: "[0-9]*", placeholder: "전화번호 뒷 4자리", value: newPassword, onChange: (e) => setNewPassword(e.target.value), className: "w-3/5 bg-stone-50 border border-stone-100 rounded-xl px-3 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 4 })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { placeholder: "축하의 한마디를 남겨주세요.", value: newContent, onChange: (e) => setNewContent(e.target.value), className: "w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 h-28 resize-none focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 100 }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex space-x-2 relative z-10", children: [
@@ -20456,7 +20456,7 @@ function App() {
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "fixed top-3 right-3 z-[400] flex items-center gap-1.5 text-[10px] text-stone-400 font-mono bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100 select-none pointer-events-none", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "100"
+        "101"
       ] }),
       todayVisitors !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-300", children: "·" }),
