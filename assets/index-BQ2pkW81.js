@@ -19072,7 +19072,7 @@ function Gallery({ onFullscreenChange }) {
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-6 mb-12 relative z-30", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-2xl overflow-hidden shadow-sm aspect-video bg-stone-100 border border-stone-200 relative z-30", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
         "iframe",
         {
-          src: "https://www.youtube.com/embed/aBT0gHQ0AwE",
+          src: "https://www.youtube.com/embed/aBT0gHQ0AwE?autoplay=1&mute=1",
           title: "Wedding Video",
           className: "w-full h-full border-none relative z-30",
           style: { pointerEvents: "auto" },
@@ -19678,20 +19678,22 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
   const isLocked = msg.is_secret && !unlockedMessages[msg.id];
   let cardColorClass = msg.receiver === "groom" ? "bg-blue-50/60 border-blue-100" : msg.receiver === "bride" ? "bg-rose-50/60 border-rose-100" : "bg-white border-stone-100";
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `${cardColorClass} p-5 rounded-2xl shadow-sm border flex flex-col relative group transition-all duration-300`, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between items-center mb-3", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-3", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between items-center mb-1.5", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[11px] text-stone-400 font-medium", children: msg.date }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center space-x-1 -mr-2", children: [
+          msg.is_secret && /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => isLocked ? openPasswordModal(msg, "unlock") : toggleUnlock(msg.id, false), className: "p-3 -m-1 text-stone-300 active:text-stone-600 select-none", style: { touchAction: "manipulation" }, children: isLocked ? /* @__PURE__ */ jsxRuntimeExports.jsx(Lock, { size: 16 }) : /* @__PURE__ */ jsxRuntimeExports.jsx(LockOpen, { size: 16 }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => openPasswordModal(msg, "reply"), className: "p-3 -m-1 text-stone-300 active:text-stone-600 select-none", style: { touchAction: "manipulation" }, title: "답글 남기기", children: /* @__PURE__ */ jsxRuntimeExports.jsx(MessageSquare, { size: 16 }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => openPasswordModal(msg, "edit"), className: "p-3 -m-1 text-stone-300 active:text-stone-600 select-none", style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Pencil, { size: 16 }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => openPasswordModal(msg, "delete"), className: "p-3 -m-1 text-stone-300 active:text-rose-400 select-none", style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Trash2, { size: 16 }) })
+        ] })
+      ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center space-x-2", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `font-bold text-sm bg-white/80 px-2.5 py-1 rounded-md ${msg.receiver === "groom" ? "text-blue-700" : msg.receiver === "bride" ? "text-rose-700" : "text-stone-800"}`, children: msg.name }),
         msg.receiver !== "public" && /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: `text-[9px] font-bold px-1.5 py-0.5 rounded ${msg.receiver === "groom" ? "bg-blue-200/50 text-blue-600" : "bg-rose-200/50 text-rose-600"}`, children: [
           "To. ",
           msg.receiver === "groom" ? "신랑" : "신부"
         ] })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center space-x-1 -mr-2 mt-1 sm:mt-0", children: [
-        msg.is_secret && /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => isLocked ? openPasswordModal(msg, "unlock") : toggleUnlock(msg.id, false), className: "p-3 -m-1 text-stone-300 active:text-stone-600 select-none", style: { touchAction: "manipulation" }, children: isLocked ? /* @__PURE__ */ jsxRuntimeExports.jsx(Lock, { size: 16 }) : /* @__PURE__ */ jsxRuntimeExports.jsx(LockOpen, { size: 16 }) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[11px] text-stone-400 font-medium px-1.5", children: msg.date }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => openPasswordModal(msg, "reply"), className: "p-3 -m-1 text-stone-300 active:text-stone-600 select-none", style: { touchAction: "manipulation" }, title: "답글 남기기", children: /* @__PURE__ */ jsxRuntimeExports.jsx(MessageSquare, { size: 16 }) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => openPasswordModal(msg, "edit"), className: "p-3 -m-1 text-stone-300 active:text-stone-600 select-none", style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Pencil, { size: 16 }) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => openPasswordModal(msg, "delete"), className: "p-3 -m-1 text-stone-300 active:text-rose-400 select-none", style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Trash2, { size: 16 }) })
       ] })
     ] }),
     isLocked ? /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `text-sm italic flex items-center justify-center p-4 rounded-xl cursor-pointer active:opacity-70 transition-opacity ${msg.receiver === "groom" ? "text-blue-400 bg-blue-100/30" : msg.receiver === "bride" ? "text-rose-400 bg-rose-100/30" : "text-stone-400 bg-stone-50"}`, onClick: () => openPasswordModal(msg, "unlock"), children: [
@@ -20474,7 +20476,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "121"
+        "122"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(

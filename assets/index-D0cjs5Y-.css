@@ -735,6 +735,10 @@ video {
   margin-bottom: 0.25rem;
 }
 
+.mb-1\.5{
+  margin-bottom: 0.375rem;
+}
+
 .mb-10{
   margin-bottom: 2.5rem;
 }
@@ -2934,10 +2938,6 @@ body.nav-hidden .fixed.bottom-0 {
 }
 
 @media (min-width: 640px){
-
-  .sm\:mt-0{
-    margin-top: 0px;
-  }
 
   .sm\:w-\[300px\]{
     width: 300px;
