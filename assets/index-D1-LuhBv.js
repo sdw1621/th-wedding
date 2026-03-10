@@ -20351,7 +20351,7 @@ const ModernModal = reactExports.memo(({ isOpen, onClose, title, description, ch
   return reactDomExports.createPortal(
     /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "fixed inset-0 z-[599] bg-stone-900/80 animate-in fade-in duration-300", onClick: handleClose }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: vpStyle, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative bg-white w-full max-w-[320px] rounded-[24px] shadow-2xl border border-white/20 animate-in fade-in zoom-in duration-200 pointer-events-auto flex flex-col", style: { fontFamily: "'Noto Serif KR', serif", maxHeight: "100%", overflowY: "auto" }, onClick: (e) => e.stopPropagation(), children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: vpStyle, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative bg-white w-full max-w-[320px] rounded-[24px] shadow-2xl border border-white/20 animate-in fade-in zoom-in duration-200 pointer-events-auto flex flex-col font-sans", style: { maxHeight: "100%", overflowY: "auto" }, onClick: (e) => e.stopPropagation(), children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 text-center", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-[17px] font-bold text-stone-900 mb-1", children: title }),
           description && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[13px] text-stone-500 font-medium leading-tight", children: description }),
@@ -20734,8 +20734,8 @@ function Guestbook({ showToast }) {
       }
     ),
     /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isDeleteModalOpen, onClose: () => setIsDeleteModalOpen(false), title: "메시지 삭제", description: "삭제하면 되돌릴 수 없습니다. 정말 삭제할까요?", onConfirm: confirmDelete, confirmLabel: "삭제", isDestructive: true }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isEditModalOpen, onClose: () => setIsEditModalOpen(false), title: "메시지 수정", onConfirm: confirmEdit, confirmLabel: "수정완료", children: /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalEditText, onChange: (e) => setModalEditText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none", autoFocus: true }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isReplyInputModalOpen, onClose: () => setIsReplyInputModalOpen(false), title: "답글 남기기", description: "게스트에게 전할 소중한 메시지를 입력하세요.", onConfirm: confirmReply, confirmLabel: "답글저장", children: /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalReplyText, onChange: (e) => setModalReplyText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "감사의 인사를 남겨주세요.", autoFocus: true }) })
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isEditModalOpen, onClose: () => setIsEditModalOpen(false), title: "메시지 수정", onConfirm: confirmEdit, confirmLabel: "수정완료", children: /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalEditText, onChange: (e) => setModalEditText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none" }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isReplyInputModalOpen, onClose: () => setIsReplyInputModalOpen(false), title: "답글 남기기", description: "게스트에게 전할 소중한 메시지를 입력하세요.", onConfirm: confirmReply, confirmLabel: "답글저장", children: /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalReplyText, onChange: (e) => setModalReplyText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "감사의 인사를 남겨주세요." }) })
   ] });
 }
 function Share() {
@@ -21262,7 +21262,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "173"
+        "174"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
