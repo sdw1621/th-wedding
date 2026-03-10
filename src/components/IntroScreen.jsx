@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Heart from 'lucide-react/dist/esm/icons/heart';
+import TriangleAlert from 'lucide-react/dist/esm/icons/triangle-alert';
 
 export default function IntroScreen({ onEnter, onStart }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -20,13 +21,29 @@ export default function IntroScreen({ onEnter, onStart }) {
     };
 
     return (
-        <div className={`fixed inset-0 bg-stone-900 flex flex-col items-center justify-center transition-opacity duration-1000 z-[150] ${isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+        <div className={`fixed inset-0 bg-stone-900 flex flex-col transition-opacity duration-1000 z-[150] ${isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+            <style>{`
+                @keyframes icon-shake {
+                    0%, 100% { transform: translateY(0) rotate(0deg); }
+                    25% { transform: translateY(-3px) rotate(-8deg); }
+                    75% { transform: translateY(-3px) rotate(8deg); }
+                }
+                .icon-shake { animation: icon-shake 1.1s ease-in-out infinite; }
+            `}</style>
             <div className="absolute inset-0 overflow-hidden">
                 <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-rose-900/20 rounded-full blur-3xl opacity-50"></div>
                 <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-stone-700/30 rounded-full blur-3xl opacity-50"></div>
             </div>
 
-            <div className={`z-10 flex flex-col items-center transition-all duration-1000 transform ${isOpen ? 'scale-110 translate-y-[-30px]' : 'scale-100'}`}>
+            <div className="warning-flash z-10 w-full flex flex-col items-center pt-14 pb-5 px-4 bg-amber-950/30 border-b border-amber-700/40 space-y-2">
+                <TriangleAlert size={26} className="text-amber-400 icon-shake" />
+                <p className="text-stone-200 text-[17px] font-bold tracking-wide text-center leading-loose">
+                    가족식이라 하객 없이 진행됩니다.<br />
+                    축하 방명록만 남겨주세요.
+                </p>
+            </div>
+
+            <div className={`z-10 flex-1 flex flex-col items-center justify-center transition-all duration-1000 transform ${isOpen ? 'scale-110 translate-y-[-30px]' : 'scale-100'}`}>
                 <h1 className="text-4xl md:text-5xl font-serif text-stone-200 mb-6 tracking-widest text-center px-6">
                     태구 <span className="text-rose-400 mx-2">&</span> 희영
                 </h1>

@@ -64,7 +64,7 @@ const ModernModal = memo(({ isOpen, onClose, title, description, children, onCon
         onClose();
     };
     return (
-        <div className="fixed inset-0 z-[200] flex items-center justify-center px-4">
+        <div className="fixed inset-0 z-[200] flex items-start justify-center px-4 pt-[15vh] overflow-y-auto">
             <div className="absolute inset-0 bg-stone-900/80 animate-in fade-in duration-300" onClick={handleClose}></div>
             <div className="relative bg-white w-full max-w-[320px] rounded-[24px] shadow-2xl border border-white/20 overflow-hidden animate-in fade-in zoom-in duration-200" onClick={(e) => e.stopPropagation()}>
                 <div className="p-6 text-center">

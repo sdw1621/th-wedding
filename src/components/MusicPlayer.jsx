@@ -111,7 +111,7 @@ export default function MusicPlayer({ forcePlay }) {
     }, [showPlaylist]);
 
     return (
-        <div ref={playerRef} className={`fixed top-6 left-6 z-[100] flex flex-col items-start select-none transition-opacity duration-300 ${hidePlayer ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+        <div ref={playerRef} className={`fixed top-3 left-3 z-[160] flex flex-col items-start select-none transition-opacity duration-300 ${hidePlayer ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
             <div className="flex items-center">
                 <div className="relative group flex items-center bg-white/95 border border-stone-200 rounded-full shadow-md p-1 transition-all hover:shadow-lg">
                     <button
