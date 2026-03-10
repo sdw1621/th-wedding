@@ -19979,14 +19979,16 @@ function Location() {
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "w-1.5 h-1.5 bg-rose-400 rounded-full mr-2" }),
             " 주차 안내"
           ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-[13px] text-stone-600 leading-relaxed pl-3.5", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-[11.5px] text-stone-600 leading-relaxed pl-3.5", children: [
             "호텔 내 ",
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-800 font-bold", children: "봉래헌 전용 주차 구역" }),
             " 또는",
             /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
             "호텔 통합 주차장을 ",
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-rose-400 font-bold", children: "무료" }),
-            "로 이용하실 수 있습니다."
+            "로",
+            /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+            "이용하실 수 있습니다."
           ] })
         ] })
       ] })
@@ -21239,7 +21241,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "165"
+        "166"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
