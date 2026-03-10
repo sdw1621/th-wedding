@@ -60,22 +60,16 @@ export default function App() {
             {/* MusicPlayer는 항상 존재하며, 인트로에서 버튼 클릭 시 소리가 남 */}
             <MusicPlayer forcePlay={shouldMusicPlay} />
 
-            {/* 누적 방문자 (좌상단) */}
+            {/* 누적 방문자 (우상단) */}
             {totalVisitors !== null && (
-                <div className="fixed top-3 left-3 z-[400] flex items-center gap-1 text-[10px] text-stone-400 font-serif bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100 select-none pointer-events-none">
+                <div className="fixed top-3 right-3 z-[400] flex items-center gap-1 text-[10px] text-stone-400 font-serif bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100 select-none pointer-events-none">
                     <span>total : {totalVisitors}</span>
                 </div>
             )}
 
-            {/* 버전 + 오늘 방문자 (우상단) */}
-            <div className="fixed top-3 right-3 z-[400] flex items-center gap-1.5 text-[10px] text-stone-400 font-mono bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100 select-none pointer-events-none">
+            {/* 버전 (우하단) */}
+            <div className="fixed bottom-3 right-3 z-[400] flex items-center gap-1.5 text-[10px] text-stone-400 font-mono bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100 select-none pointer-events-none">
                 <span>gh-pages #{__COMMIT_HASH__}</span>
-                {todayVisitors !== null && (
-                    <>
-                        <span className="text-stone-300">·</span>
-                        <span>오늘 {todayVisitors}명</span>
-                    </>
-                )}
             </div>
 
             {!isEntered ? (
