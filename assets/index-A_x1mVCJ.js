@@ -20523,16 +20523,16 @@ function Share() {
         draggable: false
       }
     ),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-4 mt-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-white rounded-2xl border border-stone-100 shadow-sm overflow-hidden", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-6 mt-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-white rounded-2xl border border-stone-200 shadow-sm overflow-hidden", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
         "button",
         {
           onPointerDown: () => setExpanded((v) => !v),
           style: { touchAction: "manipulation" },
-          className: "w-full flex items-center justify-between px-5 py-4 select-none active:bg-stone-50",
+          className: "w-full flex items-center justify-between px-6 py-5 bg-stone-900 select-none active:bg-stone-800",
           children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-bold text-stone-800 text-[15px]", children: "Made by Developer" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-stone-400 text-sm transition-transform duration-300 ${expanded ? "rotate-180" : ""}`, children: "∧" })
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-bold text-white text-[15px]", children: "Made by Developer" }),
+            expanded ? /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronUp, { size: 20, className: "text-white/70" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronDown, { size: 20, className: "text-white/70" })
           ]
         }
       ),
@@ -20978,7 +20978,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "150"
+        "151"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
