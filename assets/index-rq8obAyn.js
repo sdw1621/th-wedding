@@ -18849,7 +18849,7 @@ function IntroScreen({ onEnter, onStart }) {
             ]
           }
         ) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `relative z-10 flex-1 flex flex-col items-center justify-center pb-24 transition-all duration-1000 ${isOpen ? "scale-105 opacity-0 -translate-y-4" : "scale-100 opacity-100"}`, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `relative z-10 flex-1 flex flex-col items-center justify-center pb-40 transition-all duration-1000 ${isOpen ? "scale-105 opacity-0 -translate-y-4" : "scale-100 opacity-100"}`, children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 mb-7 opacity-55", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-px w-14", style: { background: "linear-gradient(to right, transparent, #c4a080)" } }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-1.5 h-1.5 rounded-full bg-rose-300" }),
@@ -20451,8 +20451,8 @@ function Guestbook({ showToast }) {
       ] })
     ] });
   }, [messages, paginatedMessages, unlockedMessages, initialLoading, openPasswordModal, toggleUnlock, currentPage, totalPages]);
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "py-24 bg-[#FDFBF7]", id: "guestbook", ref, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-md mx-auto px-6 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "py-24 px-6 bg-[#FDFBF7]", id: "guestbook", ref, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-md mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-10 flex flex-col items-center", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx(MessageSquare, { className: "mx-auto text-rose-200", size: 28, strokeWidth: 1.5 }) }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "text-2xl font-serif tracking-[0.2em] text-stone-900 font-bold mb-3 relative", children: [
@@ -21032,7 +21032,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "158"
+        "159"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
