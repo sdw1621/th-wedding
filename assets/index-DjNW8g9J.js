@@ -20732,15 +20732,15 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "140"
+        "141"
       ] }) })
     ] }),
     isEntered && /* @__PURE__ */ jsxRuntimeExports.jsx(
       "div",
       {
         className: "fixed bottom-24 left-3 z-[90] pointer-events-none select-none",
-        style: { fontSize: "2.2rem", animation: "bouquet-breathe 3.5s ease-in-out infinite", transform: "rotate(-30deg)", transformOrigin: "center" },
-        children: "💐"
+        style: { fontSize: "4.5rem", animation: "bouquet-breathe 2.8s ease-in-out infinite", transform: "rotate(30deg)", transformOrigin: "center" },
+        children: "🪷"
       }
     ),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
