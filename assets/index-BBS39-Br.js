@@ -18687,6 +18687,25 @@ const TriangleAlert = createLucideIcon("TriangleAlert", [
   ["path", { d: "M12 9v4", key: "juzpu7" }],
   ["path", { d: "M12 17h.01", key: "p32p05" }]
 ]);
+const Blossom = ({ cx, cy, s = 1, op = 0.85, r = 0 }) => /* @__PURE__ */ jsxRuntimeExports.jsxs("g", { transform: `translate(${cx},${cy}) scale(${s}) rotate(${r})`, children: [
+  [0, 72, 144, 216, 288].map((a, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "ellipse",
+    {
+      cx: "0",
+      cy: "-7.5",
+      rx: "4.8",
+      ry: "7",
+      fill: i % 2 === 0 ? "#fcd8e8" : "#f8c8df",
+      transform: `rotate(${a})`,
+      opacity: op
+    },
+    i
+  )),
+  /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "0", cy: "0", r: "3.2", fill: "#fef0b0", opacity: "0.95" }),
+  /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "0", cy: "-1.6", r: "0.7", fill: "#c87010", opacity: "0.6" }),
+  /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "1.4", cy: "-0.7", r: "0.7", fill: "#c87010", opacity: "0.6" }),
+  /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "-1.4", cy: "-0.7", r: "0.7", fill: "#c87010", opacity: "0.6" })
+] });
 function IntroScreen({ onEnter, onStart }) {
   const [isOpen, setIsOpen] = reactExports.useState(false);
   const [isProcessing, setIsProcessing] = reactExports.useState(false);
@@ -18699,71 +18718,192 @@ function IntroScreen({ onEnter, onStart }) {
       onEnter();
     }, 1200);
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `fixed inset-0 flex flex-col transition-opacity duration-1000 z-[150] ${isOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`, style: { background: "linear-gradient(160deg, #1a1015 0%, #12090e 60%, #0e0810 100%)" }, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("style", { children: `
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    "div",
+    {
+      className: `fixed inset-0 flex flex-col z-[150] overflow-hidden transition-opacity duration-1000 ${isOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`,
+      style: { background: "linear-gradient(160deg, #fef0f5 0%, #fdfcf9 45%, #fdf7f0 100%)" },
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("style", { children: `
                 @keyframes icon-shake {
                     0%, 100% { transform: translateY(0) rotate(0deg); }
-                    25% { transform: translateY(-3px) rotate(-8deg); }
-                    75% { transform: translateY(-3px) rotate(8deg); }
+                    25% { transform: translateY(-2px) rotate(-6deg); }
+                    75% { transform: translateY(-2px) rotate(6deg); }
                 }
-                .icon-shake { animation: icon-shake 1.1s ease-in-out infinite; }
+                .icon-shake { animation: icon-shake 1.2s ease-in-out infinite; }
                 @keyframes text-warn-pop {
-                    0% { transform: scale(1); filter: brightness(1); }
-                    35% { transform: scale(1.55); filter: brightness(1.6); }
-                    70% { transform: scale(1.05); filter: brightness(1.1); }
-                    100% { transform: scale(1); filter: brightness(0.6); }
+                    0% { transform: scale(1); }
+                    35% { transform: scale(1.35); color: #e03060; }
+                    100% { transform: scale(1); }
                 }
                 @keyframes text-warn {
-                    0%, 100% { filter: brightness(0.6); transform: scale(1); }
-                    40% { filter: brightness(1.35); transform: scale(1.22); }
+                    0%, 100% { transform: scale(1); }
+                    50% { transform: scale(1.1); }
                 }
                 .text-warn {
-                    animation: text-warn-pop 1.3s ease-in-out 1,
-                               text-warn 1.1s ease-in-out 1.3s infinite;
+                    animation: text-warn-pop 1.1s ease-in-out 1,
+                               text-warn 1.3s ease-in-out 1.1s infinite;
+                    display: inline-block;
                 }
+                @keyframes intro-scale-fade {
+                    to { transform: scale(1.06) translateY(-20px); opacity: 0; }
+                }
+                .intro-open { animation: intro-scale-fade 1.1s ease-in forwards; }
             ` }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute inset-0 overflow-hidden", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-1/4 left-1/4 w-64 h-64 bg-rose-900/25 rounded-full blur-3xl opacity-60" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-900/20 rounded-full blur-3xl opacity-50" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-1/2 right-1/3 w-48 h-48 bg-rose-800/15 rounded-full blur-3xl opacity-40" })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "warning-flash z-10 w-full flex flex-col items-center pt-24 pb-6 px-4 border-b space-y-3", style: { background: "rgba(80, 20, 35, 0.3)", borderColor: "rgba(120, 40, 60, 0.3)" }, children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(TriangleAlert, { size: 26, className: "text-rose-300 icon-shake" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-stone-200 text-[16px] font-bold tracking-wide text-center leading-loose", children: [
-        "가족식(스몰웨딩)이라",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-warn", children: "하객 없이" }),
-        " 진행됩니다.",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-        "축하 방명록만 남겨주세요. 💌"
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `z-10 flex-1 flex flex-col items-center justify-start pt-10 transition-all duration-1000 transform ${isOpen ? "scale-110 translate-y-[-30px]" : "scale-100"}`, children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "text-4xl md:text-5xl font-serif text-stone-200 mb-6 tracking-widest text-center px-6", children: [
-        "태구 ",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-rose-400 mx-2", children: "&" }),
-        " 희영"
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-stone-400 text-sm tracking-[0.3em] mb-10 font-light", children: "2026. 03. 13. FRI 11:30 AM" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "button",
-        {
-          onPointerDown: handleOpen,
-          disabled: isProcessing,
-          style: { touchAction: "manipulation" },
-          className: "group relative px-12 py-5 rounded-full overflow-hidden shadow-2xl shadow-black/50 select-none active:opacity-90",
-          style: { background: "linear-gradient(135deg, #2d1a24 0%, #3d2230 100%)", border: "1px solid rgba(180, 100, 130, 0.3)" },
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-rose-500/10 w-0 group-hover:w-full transition-all duration-500 ease-out" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "relative flex items-center space-x-3 text-stone-200", children: [
-              isProcessing ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-4 h-4 border-2 border-rose-200 border-t-rose-500 rounded-full animate-spin" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Heart, { size: 20, className: "text-rose-400 animate-pulse fill-rose-400/20" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "tracking-[0.2em] text-base font-medium", children: isProcessing ? "열리는 중..." : "초대장 열어보기" })
-            ] })
-          ]
-        }
-      )
-    ] })
-  ] });
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute inset-0 pointer-events-none", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "div",
+            {
+              className: "absolute w-80 h-80 rounded-full",
+              style: { top: "-8%", left: "-18%", background: "radial-gradient(circle, rgba(255,185,210,0.32) 0%, transparent 70%)", filter: "blur(40px)" }
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "div",
+            {
+              className: "absolute w-72 h-72 rounded-full",
+              style: { top: "3%", right: "-15%", background: "radial-gradient(circle, rgba(255,195,215,0.28) 0%, transparent 70%)", filter: "blur(38px)" }
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "div",
+            {
+              className: "absolute w-96 h-96 rounded-full",
+              style: { bottom: "10%", left: "50%", transform: "translateX(-50%)", background: "radial-gradient(circle, rgba(255,225,195,0.22) 0%, transparent 70%)", filter: "blur(48px)" }
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "div",
+            {
+              className: "absolute w-56 h-56 rounded-full",
+              style: { bottom: "30%", right: "-8%", background: "radial-gradient(circle, rgba(248,200,218,0.25) 0%, transparent 70%)", filter: "blur(28px)" }
+            }
+          )
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          "svg",
+          {
+            viewBox: "0 0 380 225",
+            fill: "none",
+            xmlns: "http://www.w3.org/2000/svg",
+            style: { position: "absolute", top: 0, left: 0, width: "100%", height: "225px", pointerEvents: "none", overflow: "visible" },
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M-5 -5 C12 28 25 65 36 145", stroke: "#7a9860", strokeWidth: "1.9", fill: "none", opacity: "0.68", strokeLinecap: "round" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M17 42 C44 27 78 35 99 54", stroke: "#7a9860", strokeWidth: "1.35", fill: "none", opacity: "0.6", strokeLinecap: "round" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M29 88 C54 74 82 82 104 98", stroke: "#7a9860", strokeWidth: "1.05", fill: "none", opacity: "0.54", strokeLinecap: "round" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M21 55 C29 46 37 49 41 59", stroke: "#7a9860", strokeWidth: "0.85", fill: "none", opacity: "0.5", strokeLinecap: "round" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M19 46 C24 37 33 40 29 46 C27 50 19 50 19 46Z", fill: "#93b87a", opacity: "0.54" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M27 72 C32 63 41 66 37 72 C35 76 27 76 27 72Z", fill: "#93b87a", opacity: "0.5" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M62 33 C67 25 75 29 71 35 C69 39 62 38 62 34Z", fill: "#93b87a", opacity: "0.46" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Blossom, { cx: 99, cy: 54, s: 1.18, op: 0.92, r: 15 }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Blossom, { cx: 81, cy: 46, s: 0.9, op: 0.8, r: -20 }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Blossom, { cx: 104, cy: 98, s: 1.08, op: 0.88, r: 5 }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Blossom, { cx: 85, cy: 91, s: 0.8, op: 0.74, r: 30 }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Blossom, { cx: 41, cy: 59, s: 0.74, op: 0.7, r: -10 }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Blossom, { cx: 25, cy: 32, s: 0.84, op: 0.74, r: 20 }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Blossom, { cx: 36, cy: 145, s: 0.97, op: 0.82, r: -5 }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Blossom, { cx: 54, cy: 138, s: 0.72, op: 0.65, r: 18 }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M385 -5 C368 28 355 65 344 145", stroke: "#7a9860", strokeWidth: "1.9", fill: "none", opacity: "0.68", strokeLinecap: "round" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M363 42 C336 27 302 35 281 54", stroke: "#7a9860", strokeWidth: "1.35", fill: "none", opacity: "0.6", strokeLinecap: "round" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M351 88 C326 74 298 82 276 98", stroke: "#7a9860", strokeWidth: "1.05", fill: "none", opacity: "0.54", strokeLinecap: "round" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M359 55 C351 46 343 49 339 59", stroke: "#7a9860", strokeWidth: "0.85", fill: "none", opacity: "0.5", strokeLinecap: "round" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M361 46 C356 37 347 40 351 46 C353 50 361 50 361 46Z", fill: "#93b87a", opacity: "0.54" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M353 72 C348 63 339 66 343 72 C345 76 353 76 353 72Z", fill: "#93b87a", opacity: "0.5" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M318 33 C313 25 305 29 309 35 C311 39 318 38 318 34Z", fill: "#93b87a", opacity: "0.46" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Blossom, { cx: 281, cy: 54, s: 1.18, op: 0.92, r: -15 }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Blossom, { cx: 299, cy: 46, s: 0.9, op: 0.8, r: 20 }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Blossom, { cx: 276, cy: 98, s: 1.08, op: 0.88, r: -5 }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Blossom, { cx: 295, cy: 91, s: 0.8, op: 0.74, r: -30 }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Blossom, { cx: 339, cy: 59, s: 0.74, op: 0.7, r: 10 }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Blossom, { cx: 355, cy: 32, s: 0.84, op: 0.74, r: -20 }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Blossom, { cx: 344, cy: 145, s: 0.97, op: 0.82, r: 5 }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Blossom, { cx: 326, cy: 138, s: 0.72, op: 0.65, r: -18 }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M106 52 C145 22 175 16 190 14 C205 12 235 16 274 50", stroke: "#7a9860", strokeWidth: "0.9", fill: "none", opacity: "0.36", strokeLinecap: "round" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Blossom, { cx: 164, cy: 19, s: 0.88, op: 0.74, r: 0 }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Blossom, { cx: 190, cy: 13, s: 0.8, op: 0.67, r: 5 }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Blossom, { cx: 216, cy: 17, s: 0.85, op: 0.7, r: -8 }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "130", cy: "170", rx: "4.5", ry: "2.8", fill: "#fcd8e8", opacity: "0.42", transform: "rotate(28 130 170)" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "250", cy: "158", rx: "4", ry: "2.6", fill: "#f8c5de", opacity: "0.38", transform: "rotate(-32 250 158)" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "170", cy: "195", rx: "3.5", ry: "2.2", fill: "#fcd8e8", opacity: "0.35", transform: "rotate(48 170 195)" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "215", cy: "182", rx: "4", ry: "2.5", fill: "#f8c5de", opacity: "0.35", transform: "rotate(-18 215 182)" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "80", cy: "155", rx: "3.2", ry: "2", fill: "#fce0ec", opacity: "0.32", transform: "rotate(15 80 155)" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "302", cy: "150", rx: "3", ry: "2", fill: "#fce0ec", opacity: "0.32", transform: "rotate(-15 302 150)" })
+            ]
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { height: "220px" }, className: "flex-shrink-0" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "relative z-10 flex justify-center px-6 mb-1", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          "div",
+          {
+            className: "flex items-start gap-2.5 px-4 py-2.5 rounded-2xl",
+            style: { background: "rgba(255, 238, 248, 0.88)", border: "1px solid rgba(200, 148, 170, 0.28)", backdropFilter: "blur(6px)" },
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(TriangleAlert, { size: 14, className: "text-rose-400 mt-0.5 flex-shrink-0 icon-shake" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-stone-600 text-[12.5px] leading-relaxed", children: [
+                "가족식(스몰웨딩)이라",
+                " ",
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-warn text-rose-500 font-semibold", children: "하객 없이" }),
+                " ",
+                "진행됩니다. 축하 방명록만 남겨주세요. 💌"
+              ] })
+            ]
+          }
+        ) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `relative z-10 flex-1 flex flex-col items-center justify-center pb-24 transition-all duration-1000 ${isOpen ? "scale-105 opacity-0 -translate-y-4" : "scale-100 opacity-100"}`, children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 mb-7 opacity-55", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-px w-14", style: { background: "linear-gradient(to right, transparent, #c4a080)" } }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-1.5 h-1.5 rounded-full bg-rose-300" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-px w-14", style: { background: "linear-gradient(to left, transparent, #c4a080)" } })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "text-5xl font-serif text-stone-700 mb-4 tracking-widest text-center px-8", children: [
+            "태구 ",
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "mx-1", style: { color: "#bf7a9a" }, children: "&" }),
+            " 희영"
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-stone-400 text-sm tracking-[0.3em] mb-2 font-light", children: "2026. 03. 13. FRI" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-stone-300 text-xs tracking-[0.25em] mb-12 font-light", children: "11:30 AM" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            "button",
+            {
+              onPointerDown: handleOpen,
+              disabled: isProcessing,
+              style: {
+                touchAction: "manipulation",
+                background: "linear-gradient(135deg, #6b3a4a 0%, #4a2535 100%)",
+                border: "1px solid rgba(200, 148, 168, 0.38)"
+              },
+              className: "group relative px-12 py-4 rounded-full overflow-hidden shadow-lg shadow-rose-900/20 select-none active:opacity-88",
+              children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-rose-300/10 w-0 group-hover:w-full transition-all duration-500 ease-out rounded-full" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "relative flex items-center space-x-3 text-stone-100", children: [
+                  isProcessing ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-4 h-4 border-2 border-rose-200 border-t-rose-400 rounded-full animate-spin" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Heart, { size: 18, className: "text-rose-300 animate-pulse fill-rose-300/20" }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "tracking-[0.2em] text-[15px] font-medium", children: isProcessing ? "열리는 중..." : "초대장 열어보기" })
+                ] })
+              ]
+            }
+          )
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          "svg",
+          {
+            viewBox: "0 0 380 88",
+            fill: "none",
+            xmlns: "http://www.w3.org/2000/svg",
+            style: { position: "absolute", bottom: 0, left: 0, width: "100%", height: "88px", pointerEvents: "none", overflow: "visible" },
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M-10 64 C55 46 125 40 190 42 C255 44 325 50 390 64", stroke: "#7a9860", strokeWidth: "1.25", fill: "none", opacity: "0.44", strokeLinecap: "round" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Blossom, { cx: 88, cy: 49, s: 0.8, op: 0.65, r: 10 }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Blossom, { cx: 152, cy: 43, s: 0.74, op: 0.6, r: -15 }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Blossom, { cx: 228, cy: 43, s: 0.8, op: 0.65, r: 8 }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Blossom, { cx: 288, cy: 48, s: 0.74, op: 0.6, r: -12 }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M176 45 C180 36 188 40 184 46 C182 50 176 49 176 45Z", fill: "#93b87a", opacity: "0.44" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M252 43 C256 35 264 38 260 44 C258 48 252 47 252 43Z", fill: "#93b87a", opacity: "0.41" })
+            ]
+          }
+        )
+      ]
+    }
+  );
 }
 /**
  * @license lucide-react v0.460.0 - ISC
@@ -20670,6 +20810,74 @@ function MusicPlayer({ forcePlay }) {
     } })
   ] });
 }
+const DaisyCouple = () => {
+  const petals = [0, 45, 90, 135, 180, 225, 270, 315];
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("svg", { width: "100", height: "90", viewBox: "0 0 100 90", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "22", cy: "55", rx: "19", ry: "22", fill: "#1d3a72" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "15", cy: "34", r: "5", fill: "#162e5a" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "29", cy: "34", r: "5", fill: "#162e5a" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "22", cy: "36", rx: "9.5", ry: "5", fill: "#1d3a72" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M13 32 L15 34 L17 32 M13 32 L15 30 L17 32", stroke: "#ffb0c8", strokeWidth: "1.2", fill: "none", strokeLinecap: "round" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M27 32 L29 34 L31 32 M27 32 L29 30 L31 32", stroke: "#ffb0c8", strokeWidth: "1.2", fill: "none", strokeLinecap: "round" }),
+    petals.map((a, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "ellipse",
+      {
+        cx: "22",
+        cy: "47",
+        rx: "3",
+        ry: "8",
+        fill: "white",
+        opacity: "0.93",
+        transform: `rotate(${a} 22 55)`
+      },
+      i
+    )),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "22", cy: "55", r: "7", fill: "#f5c340" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "20", cy: "54", r: "1.1", fill: "#3a1a00" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "24", cy: "54", r: "1.1", fill: "#3a1a00" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M19.5 57 Q22 59.5 24.5 57", stroke: "#3a1a00", strokeWidth: "1", fill: "none", strokeLinecap: "round" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "18", cy: "57", rx: "2.5", ry: "1.5", fill: "#ff9eb5", opacity: "0.45" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "26", cy: "57", rx: "2.5", ry: "1.5", fill: "#ff9eb5", opacity: "0.45" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M4 57 Q1 63 3 66", stroke: "#1d3a72", strokeWidth: "5.5", strokeLinecap: "round", fill: "none" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M40 58 Q45 66 50 66", stroke: "#1d3a72", strokeWidth: "4.8", strokeLinecap: "round", fill: "none" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "78", cy: "55", rx: "19", ry: "22", fill: "#f2f2f2", stroke: "#e0e0e0", strokeWidth: "0.8" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "71", cy: "34", r: "5", fill: "#e5e5e5", stroke: "#d5d5d5", strokeWidth: "0.6" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "85", cy: "34", r: "5", fill: "#e5e5e5", stroke: "#d5d5d5", strokeWidth: "0.6" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "78", cy: "36", rx: "9.5", ry: "5", fill: "#f2f2f2" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M69 32 L71 34 L73 32 M69 32 L71 30 L73 32", stroke: "#ffb0c8", strokeWidth: "1.2", fill: "none", strokeLinecap: "round" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M83 32 L85 34 L87 32 M83 32 L85 30 L87 32", stroke: "#ffb0c8", strokeWidth: "1.2", fill: "none", strokeLinecap: "round" }),
+    petals.map((a, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "ellipse",
+      {
+        cx: "78",
+        cy: "47",
+        rx: "3",
+        ry: "8",
+        fill: "#1a68c8",
+        opacity: "0.88",
+        transform: `rotate(${a} 78 55)`
+      },
+      i
+    )),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "78", cy: "55", r: "7", fill: "#f5c340" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "76", cy: "54", r: "1.1", fill: "#3a1a00" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "80", cy: "54", r: "1.1", fill: "#3a1a00" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M75.5 57 Q78 59.5 80.5 57", stroke: "#3a1a00", strokeWidth: "1", fill: "none", strokeLinecap: "round" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "74", cy: "57", rx: "2.5", ry: "1.5", fill: "#ff9eb5", opacity: "0.45" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "82", cy: "57", rx: "2.5", ry: "1.5", fill: "#ff9eb5", opacity: "0.45" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M96 57 Q99 63 97 66", stroke: "#d8d8d8", strokeWidth: "5.5", strokeLinecap: "round", fill: "none" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M60 58 Q55 66 50 66", stroke: "#d8d8d8", strokeWidth: "4.8", strokeLinecap: "round", fill: "none" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "50", cy: "66", r: "5.5", fill: "#1d3a72" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "50", cy: "66", r: "4", fill: "#f5c340" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "path",
+      {
+        d: "M50,60 C46,56 43,54 43.5,52 C44,50 46,49 48,50.5 C49,51.2 50,53 50,53 C50,53 51,51.2 52,50.5 C54,49 56,50 56.5,52 C57,54 54,56 50,60 Z",
+        fill: "#ff5c80"
+      }
+    )
+  ] });
+};
 function App() {
   const [isEntered, setIsEntered] = reactExports.useState(false);
   const [toast, setToast] = reactExports.useState({ show: false, message: "" });
@@ -20732,15 +20940,15 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "141"
+        "142"
       ] }) })
     ] }),
     isEntered && /* @__PURE__ */ jsxRuntimeExports.jsx(
       "div",
       {
-        className: "fixed bottom-24 left-3 z-[90] pointer-events-none select-none",
-        style: { fontSize: "4.5rem", animation: "bouquet-breathe 2.8s ease-in-out infinite", transform: "rotate(30deg)", transformOrigin: "center" },
-        children: "🪷"
+        className: "fixed bottom-20 left-1 z-[90] pointer-events-none select-none",
+        style: { animation: "couple-float 3s ease-in-out infinite" },
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx(DaisyCouple, {})
       }
     ),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
