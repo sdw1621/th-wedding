@@ -17,56 +17,109 @@ import MusicPlayer from './components/MusicPlayer';
 
 /* global __COMMIT_HASH__ */
 
-// VENHT 스타일 데이지 커플 캐릭터 SVG (꽃만, 배경 원 없음)
+// VENHT 스타일 데이지 커플 + 강아지 SVG
 const DaisyCouple = () => {
     const petals = [0, 45, 90, 135, 180, 225, 270, 315];
     return (
-        <svg width="100" height="72" viewBox="0 0 100 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-            {/* ── 왼쪽: 흰 꽃잎 (배경 없음) ── */}
+        <svg width="110" height="100" viewBox="0 0 110 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+            {/* ── 강아지 (중앙 상단) ── */}
+            {/* 귀 (뒤에) */}
+            <ellipse cx="38" cy="24" rx="7" ry="11" fill="#a05828" transform="rotate(15 38 24)" />
+            <ellipse cx="72" cy="24" rx="7" ry="11" fill="#a05828" transform="rotate(-15 72 24)" />
+            {/* 귀 안쪽 */}
+            <ellipse cx="38.5" cy="25" rx="4" ry="7.5" fill="#c47a3a" opacity="0.6" transform="rotate(15 38.5 25)" />
+            <ellipse cx="71.5" cy="25" rx="4" ry="7.5" fill="#c47a3a" opacity="0.6" transform="rotate(-15 71.5 25)" />
+
+            {/* 몸 */}
+            <ellipse cx="55" cy="52" rx="11" ry="9" fill="#c47a3a" />
+            {/* 앞발 */}
+            <ellipse cx="47" cy="59" rx="5.5" ry="4" fill="#c47a3a" />
+            <ellipse cx="63" cy="59" rx="5.5" ry="4" fill="#c47a3a" />
+            {/* 발톱 */}
+            <ellipse cx="44.5" cy="62" rx="2" ry="1.2" fill="#9a4e1a" opacity="0.7" />
+            <ellipse cx="47" cy="62.5" rx="2" ry="1.2" fill="#9a4e1a" opacity="0.7" />
+            <ellipse cx="49.5" cy="62" rx="2" ry="1.2" fill="#9a4e1a" opacity="0.7" />
+            <ellipse cx="60.5" cy="62" rx="2" ry="1.2" fill="#9a4e1a" opacity="0.7" />
+            <ellipse cx="63" cy="62.5" rx="2" ry="1.2" fill="#9a4e1a" opacity="0.7" />
+            <ellipse cx="65.5" cy="62" rx="2" ry="1.2" fill="#9a4e1a" opacity="0.7" />
+            {/* 꼬리 */}
+            <path d="M66 49 Q76 42 74 36 Q72 32 68 34" stroke="#c47a3a" strokeWidth="4.5" fill="none" strokeLinecap="round" />
+
+            {/* 곱슬 털 (머리) */}
+            <circle cx="44" cy="22" r="6" fill="#c47a3a" />
+            <circle cx="49" cy="16" r="6.5" fill="#c47a3a" />
+            <circle cx="55" cy="13" r="7" fill="#c47a3a" />
+            <circle cx="61" cy="16" r="6.5" fill="#c47a3a" />
+            <circle cx="66" cy="22" r="6" fill="#c47a3a" />
+            {/* 곱슬 털 하이라이트 */}
+            <circle cx="46" cy="20" r="2.5" fill="#d98a45" opacity="0.5" />
+            <circle cx="55" cy="12" r="2.5" fill="#d98a45" opacity="0.5" />
+            <circle cx="63" cy="21" r="2.5" fill="#d98a45" opacity="0.5" />
+
+            {/* 머리 */}
+            <circle cx="55" cy="30" r="13" fill="#c47a3a" />
+            {/* 머리 음영 */}
+            <circle cx="55" cy="32" r="11" fill="#be722f" opacity="0.35" />
+
+            {/* 주둥이 */}
+            <ellipse cx="55" cy="35" rx="6" ry="4.5" fill="#b86820" opacity="0.7" />
+            {/* 코 */}
+            <ellipse cx="55" cy="33" rx="2.5" ry="1.8" fill="#3a1500" />
+            {/* 콧구멍 */}
+            <ellipse cx="53.5" cy="33.2" rx="0.6" ry="0.5" fill="#5a2500" opacity="0.7" />
+            <ellipse cx="56.5" cy="33.2" rx="0.6" ry="0.5" fill="#5a2500" opacity="0.7" />
+            {/* 입 */}
+            <path d="M52 36 Q55 39.5 58 36" stroke="#3a1500" strokeWidth="1" fill="none" strokeLinecap="round" />
+            {/* 혀 */}
+            <ellipse cx="55" cy="38.5" rx="2.5" ry="2" fill="#ff7a9a" />
+            {/* 눈 */}
+            <circle cx="49.5" cy="28" r="2.5" fill="#1a0800" />
+            <circle cx="60.5" cy="28" r="2.5" fill="#1a0800" />
+            {/* 눈 하이라이트 */}
+            <circle cx="50.3" cy="27.2" r="0.8" fill="white" opacity="0.9" />
+            <circle cx="61.3" cy="27.2" r="0.8" fill="white" opacity="0.9" />
+            {/* 뺨 홍조 */}
+            <ellipse cx="45.5" cy="33" rx="3" ry="2" fill="#ff9eb5" opacity="0.45" />
+            <ellipse cx="64.5" cy="33" rx="3" ry="2" fill="#ff9eb5" opacity="0.45" />
+
+            {/* 💕 */}
+            <text x="81" y="16" fontSize="9" textAnchor="middle">💕</text>
+
+            {/* ── 왼쪽 흰꽃 (22, 82 중심) ── */}
             {petals.map((a, i) => (
-                <ellipse key={`lp${i}`} cx="22" cy="28" rx="3.5" ry="9"
+                <ellipse key={`lp${i}`} cx="22" cy="72" rx="3.5" ry="9"
                     fill="white" stroke="#e0ccd8" strokeWidth="0.6" opacity="0.97"
-                    transform={`rotate(${a} 22 38)`} />
+                    transform={`rotate(${a} 22 82)`} />
             ))}
-            {/* 꽃 중심 */}
-            <circle cx="22" cy="38" r="9" fill="#f5c340" />
-            {/* 눈 */}
-            <circle cx="19.8" cy="37" r="1.2" fill="#3a1a00" />
-            <circle cx="24.2" cy="37" r="1.2" fill="#3a1a00" />
-            {/* 웃음 */}
-            <path d="M19.2 40.5 Q22 43.5 24.8 40.5" stroke="#3a1a00" strokeWidth="1.1" fill="none" strokeLinecap="round" />
-            {/* 뺨 홍조 */}
-            <ellipse cx="17.5" cy="40" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
-            <ellipse cx="26.5" cy="40" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
-            {/* 왼쪽 줄기 팔 */}
-            <path d="M4 40 Q0 47 2 51" stroke="#a8c890" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-            {/* 오른쪽 줄기 팔 (손잡기) */}
-            <path d="M40 41 Q45 50 49 52" stroke="#a8c890" strokeWidth="2.2" strokeLinecap="round" fill="none" />
+            <circle cx="22" cy="82" r="9" fill="#f5c340" />
+            <circle cx="19.8" cy="81" r="1.2" fill="#3a1a00" />
+            <circle cx="24.2" cy="81" r="1.2" fill="#3a1a00" />
+            <path d="M19.2 84.5 Q22 87.5 24.8 84.5" stroke="#3a1a00" strokeWidth="1.1" fill="none" strokeLinecap="round" />
+            <ellipse cx="17.5" cy="84" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
+            <ellipse cx="26.5" cy="84" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
+            {/* 왼쪽 꽃 팔 → 강아지 받치기 */}
+            <path d="M30 76 Q36 66 47 59" stroke="#a8c890" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+            {/* 왼쪽 바깥 팔 */}
+            <path d="M7 78 Q3 85 5 90" stroke="#a8c890" strokeWidth="2" strokeLinecap="round" fill="none" />
 
-            {/* ── 오른쪽: 파란 꽃잎 (배경 없음) ── */}
+            {/* ── 오른쪽 파란꽃 (88, 82 중심) ── */}
             {petals.map((a, i) => (
-                <ellipse key={`rp${i}`} cx="78" cy="28" rx="3.5" ry="9"
+                <ellipse key={`rp${i}`} cx="88" cy="72" rx="3.5" ry="9"
                     fill="#2272d8" opacity="0.9"
-                    transform={`rotate(${a} 78 38)`} />
+                    transform={`rotate(${a} 88 82)`} />
             ))}
-            {/* 꽃 중심 */}
-            <circle cx="78" cy="38" r="9" fill="#f5c340" />
-            {/* 눈 */}
-            <circle cx="75.8" cy="37" r="1.2" fill="#3a1a00" />
-            <circle cx="80.2" cy="37" r="1.2" fill="#3a1a00" />
-            {/* 웃음 */}
-            <path d="M75.2 40.5 Q78 43.5 80.8 40.5" stroke="#3a1a00" strokeWidth="1.1" fill="none" strokeLinecap="round" />
-            {/* 뺨 홍조 */}
-            <ellipse cx="73.5" cy="40" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
-            <ellipse cx="82.5" cy="40" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
-            {/* 오른쪽 줄기 팔 */}
-            <path d="M96 40 Q100 47 98 51" stroke="#a8c890" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-            {/* 왼쪽 줄기 팔 (손잡기) */}
-            <path d="M60 41 Q55 50 51 52" stroke="#a8c890" strokeWidth="2.2" strokeLinecap="round" fill="none" />
+            <circle cx="88" cy="82" r="9" fill="#f5c340" />
+            <circle cx="85.8" cy="81" r="1.2" fill="#3a1a00" />
+            <circle cx="90.2" cy="81" r="1.2" fill="#3a1a00" />
+            <path d="M85.2 84.5 Q88 87.5 90.8 84.5" stroke="#3a1a00" strokeWidth="1.1" fill="none" strokeLinecap="round" />
+            <ellipse cx="83.5" cy="84" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
+            <ellipse cx="92.5" cy="84" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
+            {/* 오른쪽 꽃 팔 → 강아지 받치기 */}
+            <path d="M80 76 Q74 66 63 59" stroke="#a8c890" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+            {/* 오른쪽 바깥 팔 */}
+            <path d="M103 78 Q107 85 105 90" stroke="#a8c890" strokeWidth="2" strokeLinecap="round" fill="none" />
 
-            {/* ── 가운데 하트 ── */}
-            <path d="M50,58 C46,54 43,51 43.5,49 C44,47 46.5,46 48.5,47.5 C49.5,48.2 50,50 50,50 C50,50 50.5,48.2 51.5,47.5 C53.5,46 56,47 56.5,49 C57,51 54,54 50,58 Z"
-                fill="#ff5c80" />
         </svg>
     );
 };
@@ -149,7 +202,7 @@ export default function App() {
                 </div>
             </div>
 
-            {/* 떠다니는 커플 캐릭터 (왼쪽 하단) */}
+            {/* 떠다니는 커플 + 강아지 캐릭터 (왼쪽 하단) */}
             {isEntered && (
                 <div
                     className="fixed bottom-20 left-1 z-[90] pointer-events-none select-none"
