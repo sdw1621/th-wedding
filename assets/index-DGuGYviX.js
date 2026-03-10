@@ -20323,17 +20323,35 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
   ] });
 });
 const ModernModal = reactExports.memo(({ isOpen, onClose, title, description, children, onConfirm, confirmLabel = "확인", cancelLabel = "취소", isDestructive = false }) => {
+  const [vpStyle, setVpStyle] = reactExports.useState({});
+  reactExports.useEffect(() => {
+    var _a, _b;
+    if (!isOpen) return;
+    const HEADER = 56, BOTTOM_NAV = 80;
+    const update = () => {
+      const vv = window.visualViewport;
+      const top = (vv ? vv.offsetTop : 0) + HEADER;
+      const height = (vv ? vv.height : window.innerHeight) - HEADER - BOTTOM_NAV;
+      setVpStyle({ position: "fixed", left: 0, right: 0, top, height, zIndex: 600, display: "flex", alignItems: "center", justifyContent: "center", padding: "0 16px", pointerEvents: "none" });
+    };
+    update();
+    (_a = window.visualViewport) == null ? void 0 : _a.addEventListener("resize", update);
+    (_b = window.visualViewport) == null ? void 0 : _b.addEventListener("scroll", update);
+    return () => {
+      var _a2, _b2;
+      (_a2 = window.visualViewport) == null ? void 0 : _a2.removeEventListener("resize", update);
+      (_b2 = window.visualViewport) == null ? void 0 : _b2.removeEventListener("scroll", update);
+    };
+  }, [isOpen]);
   if (!isOpen) return null;
   const handleClose = () => {
-    if (document.activeElement && document.activeElement !== document.body) {
-      document.activeElement.blur();
-    }
+    if (document.activeElement && document.activeElement !== document.body) document.activeElement.blur();
     onClose();
   };
   return reactDomExports.createPortal(
     /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "fixed inset-0 z-[599] bg-stone-900/80 animate-in fade-in duration-300", onClick: handleClose }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "fixed inset-x-0 top-14 bottom-20 z-[600] flex items-center justify-center px-4 pointer-events-none", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative bg-white w-full max-w-[320px] rounded-[24px] shadow-2xl border border-white/20 overflow-hidden animate-in fade-in zoom-in duration-200 pointer-events-auto", onClick: (e) => e.stopPropagation(), children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: vpStyle, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative bg-white w-full max-w-[320px] rounded-[24px] shadow-2xl border border-white/20 overflow-hidden animate-in fade-in zoom-in duration-200 pointer-events-auto", onClick: (e) => e.stopPropagation(), children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 text-center", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-[17px] font-bold text-stone-900 mb-1", children: title }),
           description && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[13px] text-stone-500 font-medium leading-tight", children: description }),
@@ -21244,7 +21262,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "170"
+        "171"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(

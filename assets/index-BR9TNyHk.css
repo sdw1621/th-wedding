@@ -600,11 +600,6 @@ video {
   inset: 0px;
 }
 
-.inset-x-0{
-  left: 0px;
-  right: 0px;
-}
-
 .-bottom-3{
   bottom: -0.75rem;
 }
@@ -675,10 +670,6 @@ video {
 
 .top-1\/2{
   top: 50%;
-}
-
-.top-14{
-  top: 3.5rem;
 }
 
 .top-20{
@@ -1319,6 +1310,10 @@ video {
 
 .resize-none{
   resize: none;
+}
+
+.resize{
+  resize: both;
 }
 
 .snap-x{
