@@ -20239,8 +20239,8 @@ function MusicPlayer({ forcePlay }) {
     document.addEventListener("pointerdown", handler);
     return () => document.removeEventListener("pointerdown", handler);
   }, [showPlaylist]);
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref: playerRef, className: `fixed top-3 left-1/2 -translate-x-1/2 z-[160] flex flex-col items-center select-none transition-opacity duration-300 ${hidePlayer ? "opacity-0 pointer-events-none" : "opacity-100"}`, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative group flex items-center bg-white/95 border border-stone-200 rounded-full shadow-md p-1 transition-all hover:shadow-lg", children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref: playerRef, className: `fixed top-3 left-1/2 -translate-x-1/2 z-[160] flex flex-col items-center select-none transition-opacity duration-300 pointer-events-none ${hidePlayer ? "opacity-0" : "opacity-100"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "pointer-events-auto relative group flex items-center bg-white/95 border border-stone-200 rounded-full shadow-md p-1 transition-all hover:shadow-lg", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(
         "button",
         {
@@ -20275,7 +20275,7 @@ function MusicPlayer({ forcePlay }) {
           setShowPlaylist(!showPlaylist);
         },
         style: { touchAction: "manipulation" },
-        className: `mt-2 bg-white/95 px-5 py-2.5 rounded-full border border-rose-100 shadow-lg transition-all duration-700 ease-out flex items-center cursor-pointer hover:bg-rose-50/50 ${showInfo ? "opacity-100 translate-y-0 scale-100" : "opacity-0 -translate-y-2 scale-95 pointer-events-none"}`,
+        className: `mt-2 bg-white/95 px-5 py-2.5 rounded-full border border-rose-100 shadow-lg transition-all duration-700 ease-out flex items-center cursor-pointer hover:bg-rose-50/50 ${showInfo ? "opacity-100 translate-y-0 scale-100 pointer-events-auto" : "opacity-0 -translate-y-2 scale-95 pointer-events-none"}`,
         children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "bg-rose-100 p-1.5 rounded-full mr-3 flex-shrink-0 thump-icon", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Music, { size: 12, className: "text-rose-500" }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col min-w-0", children: [
@@ -20290,7 +20290,7 @@ function MusicPlayer({ forcePlay }) {
         ]
       }
     ),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `mt-2 w-64 bg-white rounded-2xl border border-rose-100 shadow-2xl transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] origin-top overflow-hidden ${showPlaylist ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-90 -translate-y-4 pointer-events-none"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `mt-2 w-64 bg-white rounded-2xl border border-rose-100 shadow-2xl transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] origin-top overflow-hidden ${showPlaylist ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" : "opacity-0 scale-90 -translate-y-4 pointer-events-none"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-5 py-4 border-b border-stone-100 flex justify-between items-center bg-stone-50", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-[11px] font-bold text-stone-400 uppercase tracking-widest", children: "Playlist" }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-[10px] text-rose-400 font-bold bg-rose-50 px-2 py-0.5 rounded-full", children: [
@@ -20422,7 +20422,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "111"
+        "112"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
