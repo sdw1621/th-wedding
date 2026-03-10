@@ -2083,6 +2083,10 @@ video {
   padding-top: 2rem;
 }
 
+.pt-\[12vh\]{
+  padding-top: 12vh;
+}
+
 .text-left{
   text-align: left;
 }
