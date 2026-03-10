@@ -2083,10 +2083,6 @@ video {
   padding-top: 2rem;
 }
 
-.pt-\[15vh\]{
-  padding-top: 15vh;
-}
-
 .text-left{
   text-align: left;
 }
@@ -2119,6 +2115,10 @@ video {
 
 .text-\[10px\]{
   font-size: 10px;
+}
+
+.text-\[11\.5px\]{
+  font-size: 11.5px;
 }
 
 .text-\[11px\]{
@@ -2987,6 +2987,14 @@ body.nav-hidden .fixed.bottom-0 {
 .selection\:bg-rose-200::selection{
   --tw-bg-opacity: 1;
   background-color: rgb(254 205 211 / var(--tw-bg-opacity, 1));
+}
+
+.placeholder\:text-\[13px\]::-moz-placeholder{
+  font-size: 13px;
+}
+
+.placeholder\:text-\[13px\]::placeholder{
+  font-size: 13px;
 }
 
 .placeholder\:text-stone-400::-moz-placeholder{
