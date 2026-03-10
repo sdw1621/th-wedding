@@ -18840,7 +18840,7 @@ function Hero() {
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `relative z-10 text-center flex flex-col items-center px-4 max-w-full transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs md:text-sm tracking-[0.4em] text-stone-700 mb-6 font-medium", children: "WE ARE GETTING MARRIED" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "text-[8.5vw] sm:text-5xl md:text-6xl font-serif text-stone-900 mb-5 drop-shadow-sm font-light tracking-widest px-4", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "text-[8.5vw] sm:text-5xl md:text-6xl font-serif text-stone-900 mb-5 drop-shadow-sm font-light tracking-widest px-4 whitespace-nowrap", children: [
         "강태구 ",
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-rose-400 text-[6.5vw] sm:text-4xl mx-2 font-light", children: "&" }),
         " 신희영"
@@ -19160,7 +19160,7 @@ function Gallery({ onFullscreenChange }) {
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             "button",
             {
-              className: "absolute top-3 right-3 z-[510] flex items-center justify-center w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-stone-800 shadow-xl active:bg-white transition-colors select-none",
+              className: "absolute top-3 right-3 z-[510] flex items-center bg-white/95 border border-stone-200 rounded-full shadow-md p-1 active:shadow-lg transition-all select-none",
               style: { touchAction: "manipulation" },
               onPointerDown: (e) => {
                 e.stopPropagation();
@@ -19168,7 +19168,7 @@ function Gallery({ onFullscreenChange }) {
                 document.body.classList.remove("nav-hidden");
                 setSelectedIdx(null);
               },
-              children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { size: 24 })
+              children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-9 h-9 rounded-full flex items-center justify-center text-stone-500", children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { size: 18 }) })
             }
           ),
           /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -19827,7 +19827,7 @@ function Guestbook({ showToast }) {
         toggleUnlock(selectedMsg.id, true);
         setIsPasswordModalOpen(false);
       } else {
-        showToast("비밀번호가 일치하지 않습니다.");
+        showToast("전화번호 뒷 4자리가 일치하지 않습니다.");
         refocusPasswordInput();
       }
     } else if (modalPurpose === "delete") {
@@ -19835,7 +19835,7 @@ function Guestbook({ showToast }) {
         setIsPasswordModalOpen(false);
         setIsDeleteModalOpen(true);
       } else {
-        showToast("비밀번호가 틀렸습니다.");
+        showToast("전화번호 뒷 4자리가 틀렸습니다.");
         refocusPasswordInput();
       }
     } else if (modalPurpose === "edit") {
@@ -19844,7 +19844,7 @@ function Guestbook({ showToast }) {
         setIsPasswordModalOpen(false);
         setIsEditModalOpen(true);
       } else {
-        showToast("비밀번호가 틀렸습니다.");
+        showToast("전화번호 뒷 4자리가 틀렸습니다.");
         refocusPasswordInput();
       }
     } else if (modalPurpose === "reply") {
@@ -19916,17 +19916,15 @@ function Guestbook({ showToast }) {
     const trimmedContent = newContent.trim();
     if (!trimmedName || !trimmedContent || !trimmedPassword) return showToast("필수 정보를 입력해주세요.");
     setLoading(true);
-    const existingMsg = messages.find((m) => m.name === trimmedName);
+    const existingMsg = messages.find(
+      (m) => m.name === trimmedName && (m.password === trimmedPassword || trimmedPassword === "0313")
+    );
     try {
       const dateStr = (/* @__PURE__ */ new Date()).toLocaleDateString("ko-KR").replace(/\. /g, ".").replace(/\.$/, "");
       const dbContent = JSON.stringify({ text: trimmedContent, receiver, reply: existingMsg ? existingMsg.reply : "" });
       const messageDataDB = { name: trimmedName, content: dbContent, password: trimmedPassword, is_secret: receiver !== "public" };
       const messageDataLocal = { name: trimmedName, content: trimmedContent, password: trimmedPassword, is_secret: receiver !== "public", receiver };
       if (existingMsg) {
-        if (existingMsg.password && trimmedPassword !== existingMsg.password && trimmedPassword !== "0313") {
-          setLoading(false);
-          return showToast("비밀번호가 일치하지 않습니다.");
-        }
         const { error: upError } = await supabase.from("guestbook").update(messageDataDB).eq("id", existingMsg.id);
         if (upError || typeof existingMsg.id === "string" && (existingMsg.id.startsWith("mock-") || existingMsg.id.startsWith("local-"))) {
           const updated = messages.map((m) => m.id === existingMsg.id ? { ...m, ...messageDataLocal, date: dateStr } : m);
@@ -20040,7 +20038,7 @@ function Guestbook({ showToast }) {
       /* @__PURE__ */ jsxRuntimeExports.jsxs("form", { onSubmit: handleSubmit, className: "bg-white p-5 rounded-[1.25rem] shadow-sm border border-stone-100 mb-8 space-y-4 relative z-20", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex space-x-2", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "text", placeholder: "성함", value: newName, onChange: (e) => setNewName(e.target.value), className: "w-1/2 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 10 }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "password", placeholder: "비밀번호", value: newPassword, onChange: (e) => setNewPassword(e.target.value), className: "w-1/2 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 10 })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "password", placeholder: "전화번호 뒷 4자리", value: newPassword, onChange: (e) => setNewPassword(e.target.value), className: "w-1/2 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 10 })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { placeholder: "축하의 한마디를 남겨주세요.", value: newContent, onChange: (e) => setNewContent(e.target.value), className: "w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 h-28 resize-none focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 100 }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex space-x-2 relative z-10", children: [
@@ -20056,7 +20054,7 @@ function Guestbook({ showToast }) {
       ] }),
       messageListOutput
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isPasswordModalOpen, onClose: () => setIsPasswordModalOpen(false), title: "비밀번호 확인", description: "비밀번호를 입력해주세요.", onConfirm: handleModalConfirm, children: /* @__PURE__ */ jsxRuntimeExports.jsx("input", { ref: passwordInputRef, type: "password", value: modalPassword, onChange: (e) => setModalPassword(e.target.value), onKeyDown: (e) => e.key === "Enter" && handleModalConfirm(), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-center text-lg tracking-[0.5em] focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "••••", autoFocus: true }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isPasswordModalOpen, onClose: () => setIsPasswordModalOpen(false), title: modalPurpose === "reply" ? "관리자 확인" : "전화번호 확인", description: modalPurpose === "reply" ? "신랑/신부 전용 비밀번호를 입력해주세요." : "전화번호 뒷 4자리를 입력해주세요.", onConfirm: handleModalConfirm, children: /* @__PURE__ */ jsxRuntimeExports.jsx("input", { ref: passwordInputRef, type: "password", value: modalPassword, onChange: (e) => setModalPassword(e.target.value), onKeyDown: (e) => e.key === "Enter" && handleModalConfirm(), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-center text-lg tracking-[0.5em] focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "••••", autoFocus: true }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isDeleteModalOpen, onClose: () => setIsDeleteModalOpen(false), title: "메시지 삭제", description: "삭제하면 되돌릴 수 없습니다. 정말 삭제할까요?", onConfirm: confirmDelete, confirmLabel: "삭제", isDestructive: true }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isEditModalOpen, onClose: () => setIsEditModalOpen(false), title: "메시지 수정", onConfirm: confirmEdit, confirmLabel: "수정완료", children: /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalEditText, onChange: (e) => setModalEditText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none", autoFocus: true }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isReplyInputModalOpen, onClose: () => setIsReplyInputModalOpen(false), title: "답글 남기기", description: "게스트에게 전할 소중한 메시지를 입력하세요.", onConfirm: confirmReply, confirmLabel: "답글저장", children: /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalReplyText, onChange: (e) => setModalReplyText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "감사의 인사를 남겨주세요.", autoFocus: true }) })
@@ -20442,7 +20440,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "113"
+        "114"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
