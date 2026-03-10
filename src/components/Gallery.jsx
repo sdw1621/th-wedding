@@ -206,7 +206,7 @@ export default function Gallery({ onFullscreenChange }) {
                 <div className="text-center mb-4 px-6">
                     <p className="text-[11px] text-stone-500 font-medium whitespace-nowrap">크게 보시고 싶으시면 영상 터치 후 Youtube 로고를 눌러주세요 👆</p>
                 </div>
-                <div className="px-6 mb-40 relative z-30" ref={ytContainerRef}>
+                <div className="px-6 mb-6 relative z-30" ref={ytContainerRef}>
                     {/* 웨딩 엔빌로프 프레임 */}
                     <div className="relative">
                         {/* 로즈골드 그라디언트 테두리 */}
@@ -234,6 +234,62 @@ export default function Gallery({ onFullscreenChange }) {
                         <p className="text-[12px] tracking-[0.25em] text-stone-500 font-medium">강태구 ♥ 신희영</p>
                         <p className="text-[10px] tracking-[0.3em] text-stone-300">2 0 2 6 · 0 3 · 1 3</p>
                     </div>
+                </div>
+
+                {/* 강아지 + 꽃 캐릭터 */}
+                <div className="flex justify-center mb-8 select-none pointer-events-none"
+                    style={{ animation: 'couple-float 3s ease-in-out infinite' }}>
+                    <svg width="180" height="160" viewBox="0 0 110 98" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        {/* 강아지 팔 */}
+                        <path d="M44 52 Q32 60 26 67" stroke="#c47a3a" strokeWidth="5" strokeLinecap="round" fill="none" />
+                        <path d="M66 52 Q78 60 84 67" stroke="#c47a3a" strokeWidth="5" strokeLinecap="round" fill="none" />
+                        {/* 왼쪽 흰꽃 */}
+                        {[0,45,90,135,180,225,270,315].map((a, i) => (
+                            <ellipse key={`lp${i}`} cx="26" cy="70" rx="3.5" ry="9" fill="white" stroke="#e0ccd8" strokeWidth="0.6" opacity="0.97" transform={`rotate(${a} 26 80)`} />
+                        ))}
+                        <circle cx="26" cy="80" r="9" fill="#f5c340" />
+                        <circle cx="23.8" cy="79" r="1.2" fill="#3a1a00" /><circle cx="28.2" cy="79" r="1.2" fill="#3a1a00" />
+                        <path d="M23.5 82.5 Q26 85.5 28.5 82.5" stroke="#3a1a00" strokeWidth="1.1" fill="none" strokeLinecap="round" />
+                        <ellipse cx="21.5" cy="82" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
+                        <ellipse cx="30.5" cy="82" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
+                        <line x1="26" y1="70" x2="26" y2="67" stroke="#a8c890" strokeWidth="2.5" strokeLinecap="round" />
+                        {/* 오른쪽 파란꽃 */}
+                        {[0,45,90,135,180,225,270,315].map((a, i) => (
+                            <ellipse key={`rp${i}`} cx="84" cy="70" rx="3.5" ry="9" fill="#2272d8" opacity="0.9" transform={`rotate(${a} 84 80)`} />
+                        ))}
+                        <circle cx="84" cy="80" r="9" fill="#f5c340" />
+                        <circle cx="81.8" cy="79" r="1.2" fill="#3a1a00" /><circle cx="86.2" cy="79" r="1.2" fill="#3a1a00" />
+                        <path d="M81.5 82.5 Q84 85.5 86.5 82.5" stroke="#3a1a00" strokeWidth="1.1" fill="none" strokeLinecap="round" />
+                        <ellipse cx="79.5" cy="82" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
+                        <ellipse cx="88.5" cy="82" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
+                        <line x1="84" y1="70" x2="84" y2="67" stroke="#a8c890" strokeWidth="2.5" strokeLinecap="round" />
+                        {/* 귀 */}
+                        <ellipse cx="40" cy="20" rx="8" ry="12" fill="#a05828" transform="rotate(18 40 20)" />
+                        <ellipse cx="70" cy="20" rx="8" ry="12" fill="#a05828" transform="rotate(-18 70 20)" />
+                        <ellipse cx="40.5" cy="21" rx="4.5" ry="8" fill="#d4874a" opacity="0.55" transform="rotate(18 40.5 21)" />
+                        <ellipse cx="69.5" cy="21" rx="4.5" ry="8" fill="#d4874a" opacity="0.55" transform="rotate(-18 69.5 21)" />
+                        {/* 몸 */}
+                        <ellipse cx="55" cy="51" rx="13" ry="11" fill="#c47a3a" />
+                        <ellipse cx="55" cy="53" rx="8" ry="7" fill="#d4874a" opacity="0.5" />
+                        {/* 곱슬 털 */}
+                        <circle cx="43" cy="23" r="6.5" fill="#c47a3a" /><circle cx="48" cy="16" r="7" fill="#c47a3a" />
+                        <circle cx="55" cy="13" r="7.5" fill="#c47a3a" /><circle cx="62" cy="16" r="7" fill="#c47a3a" /><circle cx="67" cy="23" r="6.5" fill="#c47a3a" />
+                        <circle cx="46" cy="19" r="2.8" fill="#d98a45" opacity="0.45" /><circle cx="55" cy="12" r="2.8" fill="#d98a45" opacity="0.45" /><circle cx="64" cy="20" r="2.8" fill="#d98a45" opacity="0.45" />
+                        {/* 머리 */}
+                        <circle cx="55" cy="32" r="15" fill="#c47a3a" />
+                        <circle cx="55" cy="34" r="13" fill="#be722f" opacity="0.3" />
+                        {/* 주둥이 */}
+                        <ellipse cx="55" cy="38" rx="7" ry="5.5" fill="#b86820" opacity="0.65" />
+                        <ellipse cx="55" cy="35.5" rx="3" ry="2.2" fill="#2a0f00" />
+                        <path d="M51.5 39.5 Q55 43.5 58.5 39.5" stroke="#2a0f00" strokeWidth="1.2" fill="none" strokeLinecap="round" />
+                        <ellipse cx="55" cy="42" rx="3" ry="2.4" fill="#ff7a9a" />
+                        {/* 눈 */}
+                        <circle cx="48.5" cy="29" r="3" fill="#1a0800" /><circle cx="61.5" cy="29" r="3" fill="#1a0800" />
+                        <circle cx="49.5" cy="28" r="1" fill="white" opacity="0.9" /><circle cx="62.5" cy="28" r="1" fill="white" opacity="0.9" />
+                        {/* 뺨 */}
+                        <ellipse cx="44" cy="36" rx="3.5" ry="2.2" fill="#ff9eb5" opacity="0.45" />
+                        <ellipse cx="66" cy="36" rx="3.5" ry="2.2" fill="#ff9eb5" opacity="0.45" />
+                    </svg>
                 </div>
 
                 <div className="text-center mb-6">

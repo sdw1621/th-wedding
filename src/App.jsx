@@ -17,99 +17,145 @@ import MusicPlayer from './components/MusicPlayer';
 
 /* global __COMMIT_HASH__ */
 
-// 강아지가 양쪽 꽃 캐릭터를 들고 있는 SVG
-const DaisyCouple = () => {
-    const petals = [0, 45, 90, 135, 180, 225, 270, 315];
-    return (
-        <svg width="110" height="98" viewBox="0 0 110 98" fill="none" xmlns="http://www.w3.org/2000/svg">
+// 웨딩 커플 SVG (갤러리 섹션에서 사용)
+const _WeddingCouple = () => (
+    <svg width="124" height="108" viewBox="0 0 124 108" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-            {/* ── 강아지 팔 (꽃보다 뒤에 그리기) ── */}
-            {/* 왼쪽 팔: 몸 → 왼쪽 꽃 줄기 */}
-            <path d="M44 52 Q32 60 26 67" stroke="#c47a3a" strokeWidth="5" strokeLinecap="round" fill="none" />
-            {/* 오른쪽 팔: 몸 → 오른쪽 꽃 줄기 */}
-            <path d="M66 52 Q78 60 84 67" stroke="#c47a3a" strokeWidth="5" strokeLinecap="round" fill="none" />
+        {/* ══════════ 왼쪽: 신부 푸들 ══════════ */}
 
-            {/* ── 왼쪽 흰꽃 (26, 80 중심) ── */}
-            {petals.map((a, i) => (
-                <ellipse key={`lp${i}`} cx="26" cy="70" rx="3.5" ry="9"
-                    fill="white" stroke="#e0ccd8" strokeWidth="0.6" opacity="0.97"
-                    transform={`rotate(${a} 26 80)`} />
-            ))}
-            <circle cx="26" cy="80" r="9" fill="#f5c340" />
-            <circle cx="23.8" cy="79" r="1.2" fill="#3a1a00" />
-            <circle cx="28.2" cy="79" r="1.2" fill="#3a1a00" />
-            <path d="M23.5 82.5 Q26 85.5 28.5 82.5" stroke="#3a1a00" strokeWidth="1.1" fill="none" strokeLinecap="round" />
-            <ellipse cx="21.5" cy="82" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
-            <ellipse cx="30.5" cy="82" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
-            {/* 꽃 줄기 끝 (팔 연결 부분) */}
-            <line x1="26" y1="70" x2="26" y2="67" stroke="#a8c890" strokeWidth="2.5" strokeLinecap="round" />
+        {/* 베일 (머리 뒤) */}
+        <path d="M16 46 Q22 22 38 20 Q54 22 58 46 Q50 36 38 35 Q26 36 16 46Z" fill="white" opacity="0.88" />
+        <path d="M18 50 Q23 28 38 24 Q53 28 58 50" stroke="#e8ddd0" strokeWidth="0.7" fill="none" opacity="0.6" />
 
-            {/* ── 오른쪽 파란꽃 (84, 80 중심) ── */}
-            {petals.map((a, i) => (
-                <ellipse key={`rp${i}`} cx="84" cy="70" rx="3.5" ry="9"
-                    fill="#2272d8" opacity="0.9"
-                    transform={`rotate(${a} 84 80)`} />
-            ))}
-            <circle cx="84" cy="80" r="9" fill="#f5c340" />
-            <circle cx="81.8" cy="79" r="1.2" fill="#3a1a00" />
-            <circle cx="86.2" cy="79" r="1.2" fill="#3a1a00" />
-            <path d="M81.5 82.5 Q84 85.5 86.5 82.5" stroke="#3a1a00" strokeWidth="1.1" fill="none" strokeLinecap="round" />
-            <ellipse cx="79.5" cy="82" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
-            <ellipse cx="88.5" cy="82" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
-            {/* 꽃 줄기 끝 (팔 연결 부분) */}
-            <line x1="84" y1="70" x2="84" y2="67" stroke="#a8c890" strokeWidth="2.5" strokeLinecap="round" />
+        {/* 귀 */}
+        <ellipse cx="24" cy="60" rx="6" ry="10" fill="#a05828" transform="rotate(-8 24 60)" />
+        <ellipse cx="52" cy="60" rx="6" ry="10" fill="#a05828" transform="rotate(8 52 60)" />
+        <ellipse cx="24.5" cy="61" rx="3.5" ry="7" fill="#c47a3a" opacity="0.5" transform="rotate(-8 24.5 61)" />
+        <ellipse cx="51.5" cy="61" rx="3.5" ry="7" fill="#c47a3a" opacity="0.5" transform="rotate(8 51.5 61)" />
 
-            {/* ── 강아지 본체 ── */}
-            {/* 귀 (뒤에) */}
-            <ellipse cx="40" cy="20" rx="8" ry="12" fill="#a05828" transform="rotate(18 40 20)" />
-            <ellipse cx="70" cy="20" rx="8" ry="12" fill="#a05828" transform="rotate(-18 70 20)" />
-            {/* 귀 안쪽 */}
-            <ellipse cx="40.5" cy="21" rx="4.5" ry="8" fill="#d4874a" opacity="0.55" transform="rotate(18 40.5 21)" />
-            <ellipse cx="69.5" cy="21" rx="4.5" ry="8" fill="#d4874a" opacity="0.55" transform="rotate(-18 69.5 21)" />
+        {/* 곱슬 털 */}
+        <circle cx="22" cy="50" r="8" fill="#c47a3a" />
+        <circle cx="28" cy="40" r="8.5" fill="#c47a3a" />
+        <circle cx="38" cy="37" r="9" fill="#c47a3a" />
+        <circle cx="48" cy="40" r="8.5" fill="#c47a3a" />
+        <circle cx="54" cy="50" r="8" fill="#c47a3a" />
+        {/* 하이라이트 */}
+        <circle cx="26" cy="44" r="3" fill="#d98a45" opacity="0.4" />
+        <circle cx="38" cy="37" r="3.2" fill="#d98a45" opacity="0.4" />
+        <circle cx="50" cy="44" r="3" fill="#d98a45" opacity="0.4" />
 
-            {/* 몸 */}
-            <ellipse cx="55" cy="51" rx="13" ry="11" fill="#c47a3a" />
-            {/* 배 */}
-            <ellipse cx="55" cy="53" rx="8" ry="7" fill="#d4874a" opacity="0.5" />
+        {/* 머리 */}
+        <circle cx="38" cy="58" r="16" fill="#c47a3a" />
+        <circle cx="38" cy="60" r="13.5" fill="#be722f" opacity="0.28" />
 
-            {/* 곱슬 털 (머리) */}
-            <circle cx="43" cy="23" r="6.5" fill="#c47a3a" />
-            <circle cx="48" cy="16" r="7" fill="#c47a3a" />
-            <circle cx="55" cy="13" r="7.5" fill="#c47a3a" />
-            <circle cx="62" cy="16" r="7" fill="#c47a3a" />
-            <circle cx="67" cy="23" r="6.5" fill="#c47a3a" />
-            {/* 하이라이트 */}
-            <circle cx="46" cy="19" r="2.8" fill="#d98a45" opacity="0.45" />
-            <circle cx="55" cy="12" r="2.8" fill="#d98a45" opacity="0.45" />
-            <circle cx="64" cy="20" r="2.8" fill="#d98a45" opacity="0.45" />
+        {/* 꽃 화관 */}
+        <circle cx="22" cy="43" r="4" fill="#ffb3cc" />
+        <circle cx="28" cy="35" r="4" fill="#ffd6e7" />
+        <circle cx="38" cy="32" r="4.5" fill="#ffb3cc" />
+        <circle cx="48" cy="35" r="4" fill="#ffd6e7" />
+        <circle cx="54" cy="43" r="4" fill="#ffb3cc" />
+        <circle cx="22" cy="43" r="2" fill="#fef0b0" />
+        <circle cx="28" cy="35" r="2" fill="#fef0b0" />
+        <circle cx="38" cy="32" r="2.2" fill="#fef0b0" />
+        <circle cx="48" cy="35" r="2" fill="#fef0b0" />
+        <circle cx="54" cy="43" r="2" fill="#fef0b0" />
 
-            {/* 머리 */}
-            <circle cx="55" cy="32" r="15" fill="#c47a3a" />
-            <circle cx="55" cy="34" r="13" fill="#be722f" opacity="0.3" />
+        {/* 주둥이 */}
+        <ellipse cx="38" cy="64" rx="7.5" ry="6" fill="#b86820" opacity="0.55" />
+        {/* 코 */}
+        <ellipse cx="38" cy="61" rx="3" ry="2.2" fill="#1a0800" />
+        {/* 눈 */}
+        <circle cx="30.5" cy="54" r="3.2" fill="#1a0800" />
+        <circle cx="45.5" cy="54" r="3.2" fill="#1a0800" />
+        <circle cx="31.5" cy="52.8" r="1.1" fill="white" />
+        <circle cx="46.5" cy="52.8" r="1.1" fill="white" />
+        {/* 뺨 홍조 */}
+        <ellipse cx="27" cy="63" rx="3.5" ry="2.2" fill="#ff9eb5" opacity="0.5" />
+        <ellipse cx="49" cy="63" rx="3.5" ry="2.2" fill="#ff9eb5" opacity="0.5" />
+        {/* 입+혀 */}
+        <path d="M35 66 Q38 70 41 66" stroke="#1a0800" strokeWidth="1.2" fill="none" strokeLinecap="round" />
+        <ellipse cx="38" cy="69.5" rx="2.8" ry="2.2" fill="#ff7a9a" />
 
-            {/* 주둥이 */}
-            <ellipse cx="55" cy="38" rx="7" ry="5.5" fill="#b86820" opacity="0.65" />
-            {/* 코 */}
-            <ellipse cx="55" cy="35.5" rx="3" ry="2.2" fill="#2a0f00" />
-            <ellipse cx="53.5" cy="35.7" rx="0.7" ry="0.55" fill="#5a2500" opacity="0.6" />
-            <ellipse cx="56.5" cy="35.7" rx="0.7" ry="0.55" fill="#5a2500" opacity="0.6" />
-            {/* 입 */}
-            <path d="M51.5 39.5 Q55 43.5 58.5 39.5" stroke="#2a0f00" strokeWidth="1.2" fill="none" strokeLinecap="round" />
-            {/* 혀 */}
-            <ellipse cx="55" cy="42" rx="3" ry="2.4" fill="#ff7a9a" />
-            {/* 눈 */}
-            <circle cx="48.5" cy="29" r="3" fill="#1a0800" />
-            <circle cx="61.5" cy="29" r="3" fill="#1a0800" />
-            <circle cx="49.5" cy="28" r="1" fill="white" opacity="0.9" />
-            <circle cx="62.5" cy="28" r="1" fill="white" opacity="0.9" />
-            {/* 뺨 홍조 */}
-            <ellipse cx="44" cy="36" rx="3.5" ry="2.2" fill="#ff9eb5" opacity="0.45" />
-            <ellipse cx="66" cy="36" rx="3.5" ry="2.2" fill="#ff9eb5" opacity="0.45" />
+        {/* 드레스 몸통 */}
+        <ellipse cx="38" cy="88" rx="18" ry="16" fill="#f8f4ef" />
+        <ellipse cx="38" cy="82" rx="13" ry="10" fill="white" />
+        {/* 드레스 레이스 라인 */}
+        <path d="M22 88 Q30 80 38 78 Q46 80 54 88" stroke="#e8d8c8" strokeWidth="0.8" fill="none" opacity="0.7" />
+        <path d="M20 93 Q29 84 38 82 Q47 84 56 93" stroke="#e8d8c8" strokeWidth="0.8" fill="none" opacity="0.5" />
+        {/* 앞발 */}
+        <ellipse cx="26" cy="100" rx="7" ry="5" fill="#c47a3a" />
+        <ellipse cx="50" cy="100" rx="7" ry="5" fill="#c47a3a" />
+        {/* 부케 */}
+        <circle cx="22" cy="93" r="5.5" fill="#ffb3cc" />
+        <circle cx="17" cy="89" r="4.5" fill="#ffd6e7" />
+        <circle cx="24" cy="87" r="4.5" fill="#ff9eb5" />
+        <circle cx="19" cy="84" r="3.5" fill="#ffd6e7" />
+        <circle cx="25" cy="82" r="3" fill="#ffb3cc" />
+        <circle cx="22" cy="93" r="2.2" fill="#fef0b0" />
+        <circle cx="17" cy="89" r="1.8" fill="#fef0b0" />
+        <circle cx="24" cy="87" r="1.8" fill="#fef0b0" />
 
+        {/* ══════════ 오른쪽: 신랑 골든리트리버 ══════════ */}
 
-        </svg>
-    );
-};
+        {/* 귀 */}
+        <ellipse cx="78" cy="48" rx="8" ry="15" fill="#d4a050" transform="rotate(-15 78 48)" />
+        <ellipse cx="116" cy="48" rx="8" ry="15" fill="#d4a050" transform="rotate(15 116 48)" />
+        <ellipse cx="79" cy="50" rx="4.5" ry="10.5" fill="#e8c070" opacity="0.5" transform="rotate(-15 79 50)" />
+        <ellipse cx="115" cy="50" rx="4.5" ry="10.5" fill="#e8c070" opacity="0.5" transform="rotate(15 115 50)" />
+
+        {/* 몸 (턱시도) */}
+        <ellipse cx="97" cy="85" rx="19" ry="21" fill="#d4a050" />
+        <ellipse cx="97" cy="87" rx="14" ry="17" fill="#1a1a2e" />
+        {/* 와이셔츠 */}
+        <ellipse cx="97" cy="84" rx="6" ry="11" fill="white" opacity="0.95" />
+        {/* 단추 */}
+        <circle cx="97" cy="76" r="0.9" fill="#9a9ab0" />
+        <circle cx="97" cy="80" r="0.9" fill="#9a9ab0" />
+        <circle cx="97" cy="84" r="0.9" fill="#9a9ab0" />
+        {/* 앞발 */}
+        <ellipse cx="82" cy="103" rx="8" ry="5" fill="#1a1a2e" />
+        <ellipse cx="112" cy="103" rx="8" ry="5" fill="#1a1a2e" />
+        <ellipse cx="82" cy="105" rx="6" ry="3.5" fill="#c49040" />
+        <ellipse cx="112" cy="105" rx="6" ry="3.5" fill="#c49040" />
+
+        {/* 머리 */}
+        <circle cx="97" cy="42" r="20" fill="#d4a050" />
+        <circle cx="97" cy="45" r="17" fill="#dba850" opacity="0.28" />
+
+        {/* 주둥이 */}
+        <ellipse cx="97" cy="52" rx="10" ry="8" fill="#c49040" opacity="0.6" />
+        {/* 코 */}
+        <ellipse cx="97" cy="48.5" rx="4" ry="3" fill="#1a0800" />
+        {/* 눈 */}
+        <circle cx="88" cy="38" r="4" fill="#1a0800" />
+        <circle cx="106" cy="38" r="4" fill="#1a0800" />
+        <circle cx="89.2" cy="36.5" r="1.3" fill="white" />
+        <circle cx="107.2" cy="36.5" r="1.3" fill="white" />
+        {/* 뺨 홍조 */}
+        <ellipse cx="84" cy="50" rx="4.5" ry="2.8" fill="#ff9eb5" opacity="0.38" />
+        <ellipse cx="110" cy="50" rx="4.5" ry="2.8" fill="#ff9eb5" opacity="0.38" />
+        {/* 입+혀 */}
+        <path d="M92.5 55 Q97 60 101.5 55" stroke="#1a0800" strokeWidth="1.4" fill="none" strokeLinecap="round" />
+        <ellipse cx="97" cy="59.5" rx="3.5" ry="3" fill="#ff7a9a" />
+
+        {/* 보타이 */}
+        <path d="M93 68 L89 64.5 L93 61 Z" fill="#0d0d1a" />
+        <path d="M101 68 L105 64.5 L101 61 Z" fill="#0d0d1a" />
+        <ellipse cx="97" cy="64.5" rx="3.5" ry="3.5" fill="#1a1a3e" />
+        <ellipse cx="97" cy="64.5" rx="2" ry="2" fill="#2a2a50" />
+
+        {/* 표지판 */}
+        <rect x="74" y="5" width="46" height="26" rx="4" fill="#7a4a28" />
+        <rect x="75.5" y="6.5" width="43" height="23" rx="3" fill="#9a6038" opacity="0.8" />
+        {/* 표지판 목걸이 줄 */}
+        <path d="M85 30 Q97 36 97 64" stroke="#7a4a28" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M109 30 Q97 36 97 64" stroke="#7a4a28" strokeWidth="1.5" strokeLinecap="round" />
+        {/* 표지판 텍스트 */}
+        <text x="97" y="18" fontSize="7" fill="white" textAnchor="middle" fontWeight="bold" fontFamily="sans-serif">태구♥희영</text>
+        <text x="97" y="27" fontSize="6.5" fill="#ffd0a0" textAnchor="middle" fontFamily="sans-serif">축하해요!</text>
+
+    </svg>
+);
 
 export default function App() {
     const [isEntered, setIsEntered] = useState(false);
@@ -189,15 +235,6 @@ export default function App() {
                 </div>
             </div>
 
-            {/* 떠다니는 커플 + 강아지 캐릭터 (왼쪽 하단) */}
-            {isEntered && (
-                <div
-                    className="fixed bottom-20 left-1 z-[90] pointer-events-none select-none"
-                    style={{ animation: 'couple-float 3s ease-in-out infinite' }}
-                >
-                    <DaisyCouple />
-                </div>
-            )}
 
             {!isEntered ? (
                 <IntroScreen
