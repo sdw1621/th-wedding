@@ -72,7 +72,7 @@ export default function Location() {
                 {unlocked && (
                     <div className="mb-4 flex items-center justify-center gap-1.5 text-[11px] text-emerald-500 font-bold">
                         <Unlock size={12} />
-                        직계가족막 공개됨
+                        직계가족만 공개됨
                     </div>
                 )}
 
