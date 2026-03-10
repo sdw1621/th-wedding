@@ -58,11 +58,12 @@ export default function Location() {
                         <button
                             onPointerDown={handleUnlockClick}
                             style={{ touchAction: 'manipulation' }}
-                            className="flex items-center gap-2.5 px-6 py-3.5 bg-stone-800 text-white rounded-2xl shadow-md active:bg-stone-900 select-none font-bold text-[15px] tracking-wide"
+                            className="flex items-center gap-2.5 px-6 py-3.5 text-white rounded-2xl shadow-md active:opacity-85 select-none font-bold text-[15px] tracking-wide"
+                            style={{ background: 'linear-gradient(135deg, #5c3446 0%, #3d2030 100%)', touchAction: 'manipulation' }}
                         >
                             <Users size={18} />
                             직계가족만
-                            <Lock size={16} className="text-stone-400 ml-1" />
+                            <Lock size={16} className="text-rose-200/60 ml-1" />
                         </button>
                         <p className="text-[11px] text-stone-400">가족 전용 공간 안내입니다.</p>
                     </div>

@@ -5,6 +5,39 @@ import ChevronLeft from 'lucide-react/dist/esm/icons/chevron-left';
 import ChevronRight from 'lucide-react/dist/esm/icons/chevron-right';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
+// 웨딩 보태니컬 SVG 코너 장식 (흰 모란 + 초록 잎)
+const BotCorner = ({ flipX = false, flipY = false, size = 58 }) => (
+    <svg width={size} height={size} viewBox="0 0 60 60" fill="none"
+        style={{ transform: `scale(${flipX ? -1 : 1}, ${flipY ? -1 : 1})` }}
+        xmlns="http://www.w3.org/2000/svg">
+        {/* 줄기 */}
+        <path d="M4 4 C16 17 26 26 38 36" stroke="#8ab086" strokeWidth="1.3" strokeLinecap="round" fill="none" opacity="0.85"/>
+        <path d="M4 4 C18 10 30 13 42 15" stroke="#8ab086" strokeWidth="1" strokeLinecap="round" fill="none" opacity="0.7"/>
+        <path d="M4 4 C10 18 13 30 15 42" stroke="#8ab086" strokeWidth="1" strokeLinecap="round" fill="none" opacity="0.7"/>
+        {/* 잎 */}
+        <path d="M15 13 C8 7 13 2 17 5 C16 10 15 13 15 13Z" fill="#a8cea0" opacity="0.8"/>
+        <path d="M11 18 C4 12 7 6 11 9 C11 14 11 18 11 18Z" fill="#bddab4" opacity="0.7"/>
+        <path d="M20 9 C24 3 29 6 27 10 C23 12 20 9 20 9Z" fill="#a0c898" opacity="0.75"/>
+        <path d="M24 21 C17 14 22 9 25 12 C24 17 24 21 24 21Z" fill="#9ec494" opacity="0.68"/>
+        <path d="M10 27 C4 21 6 15 10 18 C10 23 10 27 10 27Z" fill="#b4d4ac" opacity="0.62"/>
+        <path d="M14 5 C18 1 23 3 21 7 C18 8 14 5 14 5Z" fill="#a8c8a0" opacity="0.7"/>
+        {/* 메인 모란 – 겹겹 꽃잎 */}
+        <ellipse cx="6" cy="6" rx="8" ry="5" fill="#faf2f5" opacity="0.88" transform="rotate(-45 6 6)"/>
+        <ellipse cx="6" cy="6" rx="5" ry="8" fill="#f7eef4" opacity="0.84" transform="rotate(45 6 6)"/>
+        <ellipse cx="6" cy="6" rx="7" ry="4" fill="#f3e9f1" opacity="0.8"/>
+        <circle cx="6" cy="6" r="3.5" fill="#e8d0de" opacity="0.92"/>
+        <circle cx="6" cy="6" r="1.8" fill="#dbbfcf"/>
+        {/* 보조 꽃 */}
+        <ellipse cx="35" cy="11" rx="4.5" ry="3.5" fill="#faf0f4" opacity="0.85" transform="rotate(15 35 11)"/>
+        <ellipse cx="35" cy="11" rx="3" ry="4.5" fill="#f6ecf2" opacity="0.78" transform="rotate(-15 35 11)"/>
+        <circle cx="35" cy="11" r="2.2" fill="#e6cedd"/>
+        <circle cx="35" cy="11" r="1.1" fill="#d8beca"/>
+        {/* 작은 봉오리 */}
+        <ellipse cx="12" cy="37" rx="3" ry="3.8" fill="#f8f0f4" opacity="0.78"/>
+        <ellipse cx="12" cy="34" rx="2" ry="1.5" fill="#e4d0dc" opacity="0.85"/>
+    </svg>
+);
+
 export default function Gallery({ onFullscreenChange }) {
     const [ref, isVisible] = useScrollReveal();
     const [selectedIdx, setSelectedIdx] = useState(null);
@@ -190,14 +223,11 @@ export default function Gallery({ onFullscreenChange }) {
                                 ></iframe>
                             </div>
                         </div>
-                        {/* 꽃 코너 장식 */}
-                        <div className="absolute -top-3 -left-3 text-xl select-none pointer-events-none">🌸</div>
-                        <div className="absolute -top-3 -right-3 text-xl select-none pointer-events-none">🌸</div>
-                        <div className="absolute -bottom-3 -left-3 text-xl select-none pointer-events-none">🌸</div>
-                        <div className="absolute -bottom-3 -right-3 text-xl select-none pointer-events-none">🌸</div>
-                        {/* 상·하단 중앙 꽃 */}
-                        <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-base select-none pointer-events-none">🌷</div>
-                        <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 text-base select-none pointer-events-none">🌷</div>
+                        {/* 보태니컬 코너 장식 */}
+                        <div className="absolute -top-5 -left-5 pointer-events-none select-none"><BotCorner size={58}/></div>
+                        <div className="absolute -top-5 -right-5 pointer-events-none select-none"><BotCorner flipX size={58}/></div>
+                        <div className="absolute -bottom-5 -left-5 pointer-events-none select-none"><BotCorner flipY size={58}/></div>
+                        <div className="absolute -bottom-5 -right-5 pointer-events-none select-none"><BotCorner flipX flipY size={58}/></div>
                     </div>
                     {/* 하단 라벨 */}
                     <div className="text-center mt-5 space-y-1">
@@ -213,7 +243,7 @@ export default function Gallery({ onFullscreenChange }) {
                 {/* 가로 스크롤 갤러리 */}
                 <div className="relative group">
                     <button
-                        className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-stone-600 z-10 active:bg-white select-none"
+                        className={`absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-stone-600 z-10 active:bg-white select-none transition-opacity duration-200 ${currentScrollIdx === 0 ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
                         style={{ touchAction: 'manipulation' }}
                         onPointerDown={(e) => {
                             e.stopPropagation();
@@ -234,11 +264,11 @@ export default function Gallery({ onFullscreenChange }) {
                         {images.map((img, idx) => (
                             <div key={idx} className="flex-none w-[80vw] sm:w-[300px] snap-center">
                                 <div className="relative">
-                                    {/* 꽃 코너 장식 */}
-                                    <div className="absolute -top-2.5 -left-2.5 text-base select-none pointer-events-none z-10">🌸</div>
-                                    <div className="absolute -top-2.5 -right-2.5 text-base select-none pointer-events-none z-10">🌸</div>
-                                    <div className="absolute -bottom-2.5 -left-2.5 text-base select-none pointer-events-none z-10">🌸</div>
-                                    <div className="absolute -bottom-2.5 -right-2.5 text-base select-none pointer-events-none z-10">🌸</div>
+                                    {/* 보태니컬 코너 장식 */}
+                                    <div className="absolute -top-4 -left-4 pointer-events-none select-none z-10"><BotCorner size={44}/></div>
+                                    <div className="absolute -top-4 -right-4 pointer-events-none select-none z-10"><BotCorner flipX size={44}/></div>
+                                    <div className="absolute -bottom-4 -left-4 pointer-events-none select-none z-10"><BotCorner flipY size={44}/></div>
+                                    <div className="absolute -bottom-4 -right-4 pointer-events-none select-none z-10"><BotCorner flipX flipY size={44}/></div>
                                     {/* 로즈골드 그라디언트 테두리 */}
                                     <div className="p-[2px] rounded-xl" style={{ background: 'linear-gradient(135deg, #e8b4b8 0%, #f5dcc8 50%, #d4a8c0 100%)' }}>
                                         <div
@@ -260,7 +290,7 @@ export default function Gallery({ onFullscreenChange }) {
                     </div>
 
                     <button
-                        className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-stone-600 z-10 active:bg-white select-none"
+                        className={`absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-stone-600 z-10 active:bg-white select-none transition-opacity duration-200 ${currentScrollIdx === images.length - 1 ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
                         style={{ touchAction: 'manipulation' }}
                         onPointerDown={(e) => {
                             e.stopPropagation();

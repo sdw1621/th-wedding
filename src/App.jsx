@@ -95,6 +95,16 @@ export default function App() {
                 </div>
             </div>
 
+            {/* 떠다니는 부케 이모지 (왼쪽 하단, 숨쉬기 애니메이션) */}
+            {isEntered && (
+                <div
+                    className="fixed bottom-24 left-3 z-[90] pointer-events-none select-none"
+                    style={{ fontSize: '2.2rem', animation: 'bouquet-breathe 3.5s ease-in-out infinite', transform: 'rotate(-30deg)', transformOrigin: 'center' }}
+                >
+                    💐
+                </div>
+            )}
+
             {!isEntered ? (
                 <IntroScreen
                     onStart={() => setShouldMusicPlay(true)} // 클릭 즉시 소리 재생 시작 명령
