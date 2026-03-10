@@ -18707,11 +18707,12 @@ function IntroScreen({ onEnter, onStart }) {
                     75% { transform: translateY(-3px) rotate(8deg); }
                 }
                 .icon-shake { animation: icon-shake 1.1s ease-in-out infinite; }
-                @keyframes text-blink {
-                    0%, 80%, 100% { opacity: 1; }
-                    40% { opacity: 0.35; }
+                @keyframes text-warn {
+                    0%, 100% { opacity: 1; color: rgb(231, 229, 228); }
+                    30% { opacity: 0.9; color: rgb(251, 191, 36); letter-spacing: 0.06em; }
+                    60% { opacity: 1; color: rgb(231, 229, 228); }
                 }
-                .text-blink { animation: text-blink 2.2s ease-in-out infinite; }
+                .text-warn { animation: text-warn 1.1s ease-in-out infinite; }
             ` }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute inset-0 overflow-hidden", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-1/4 left-1/4 w-64 h-64 bg-rose-900/20 rounded-full blur-3xl opacity-50" }),
@@ -18719,7 +18720,7 @@ function IntroScreen({ onEnter, onStart }) {
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "warning-flash z-10 w-full flex flex-col items-center pt-24 pb-6 px-4 bg-amber-950/30 border-b border-amber-700/40 space-y-3", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(TriangleAlert, { size: 26, className: "text-amber-400 icon-shake" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-stone-200 text-[17px] font-bold tracking-wide text-center leading-loose text-blink", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-stone-200 text-[17px] font-bold tracking-wide text-center leading-loose text-warn", children: [
         "가족식이라 하객 없이 진행됩니다.",
         /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
         "축하 방명록만 남겨주세요. 💌"
@@ -20070,7 +20071,7 @@ function Guestbook({ showToast }) {
         isOpen: isPasswordModalOpen,
         onClose: () => setIsPasswordModalOpen(false),
         title: modalPurpose === "reply" ? "관리자 확인" : modalPurpose === "unlock" && ((selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" || (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride") ? "생일 확인" : "전화번호 확인",
-        description: modalPurpose === "reply" ? "신랑/신부 전용 비밀번호를 입력해주세요." : modalPurpose === "unlock" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑의 생일을 입력해주세요. (예: 0806)" : modalPurpose === "unlock" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부의 생일을 입력해주세요. (예: 0407)" : "전화번호 뒷 4자리를 입력해주세요.",
+        description: modalPurpose === "reply" ? "신랑/신부 전용 비밀번호를 입력해주세요." : modalPurpose === "unlock" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑의 생일을 입력해주세요. (예: 0108)" : modalPurpose === "unlock" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부의 생일을 입력해주세요. (예: 0315)" : "전화번호 뒷 4자리를 입력해주세요.",
         onConfirm: handleModalConfirm,
         children: /* @__PURE__ */ jsxRuntimeExports.jsx(
           "input",
@@ -20474,7 +20475,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "118"
+        "119"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
