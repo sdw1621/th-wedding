@@ -190,15 +190,18 @@ export default function Gallery({ onFullscreenChange }) {
                                 ></iframe>
                             </div>
                         </div>
-                        {/* 코너 장식 */}
-                        <div className="absolute -top-2 -left-2 w-6 h-6 border-l-2 border-t-2 border-rose-300/70 rounded-tl-md pointer-events-none"></div>
-                        <div className="absolute -top-2 -right-2 w-6 h-6 border-r-2 border-t-2 border-rose-300/70 rounded-tr-md pointer-events-none"></div>
-                        <div className="absolute -bottom-2 -left-2 w-6 h-6 border-l-2 border-b-2 border-rose-300/70 rounded-bl-md pointer-events-none"></div>
-                        <div className="absolute -bottom-2 -right-2 w-6 h-6 border-r-2 border-b-2 border-rose-300/70 rounded-br-md pointer-events-none"></div>
+                        {/* 꽃 코너 장식 */}
+                        <div className="absolute -top-3 -left-3 text-xl select-none pointer-events-none">🌸</div>
+                        <div className="absolute -top-3 -right-3 text-xl select-none pointer-events-none">🌸</div>
+                        <div className="absolute -bottom-3 -left-3 text-xl select-none pointer-events-none">🌸</div>
+                        <div className="absolute -bottom-3 -right-3 text-xl select-none pointer-events-none">🌸</div>
+                        {/* 상·하단 중앙 꽃 */}
+                        <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-base select-none pointer-events-none">🌷</div>
+                        <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 text-base select-none pointer-events-none">🌷</div>
                     </div>
                     {/* 하단 라벨 */}
-                    <div className="text-center mt-4 space-y-1">
-                        <p className="text-[11px] tracking-[0.45em] text-stone-400 font-light">T H  ♥  S H Y</p>
+                    <div className="text-center mt-5 space-y-1">
+                        <p className="text-[12px] tracking-[0.25em] text-stone-500 font-medium">강태구 ♥ 신희영</p>
                         <p className="text-[10px] tracking-[0.3em] text-stone-300">2 0 2 6 · 0 3 · 1 3</p>
                     </div>
                 </div>
@@ -230,17 +233,27 @@ export default function Gallery({ onFullscreenChange }) {
                     >
                         {images.map((img, idx) => (
                             <div key={idx} className="flex-none w-[80vw] sm:w-[300px] snap-center">
-                                <div
-                                    className="rounded-xl overflow-hidden shadow-sm aspect-[4/5] cursor-zoom-in relative active:opacity-90"
-                                    style={{ touchAction: 'manipulation' }}
-                                    onPointerDown={() => {
-                                        document.body.classList.add('music-hidden');
-                                        document.body.classList.add('nav-hidden');
-                                        setSelectedIdx(idx);
-                                    }}
-                                >
-                                    <img src={img.src} alt={img.alt} loading="lazy" decoding="async" className="w-full h-full object-cover" />
-                                    <div className="absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors"></div>
+                                <div className="relative">
+                                    {/* 꽃 코너 장식 */}
+                                    <div className="absolute -top-2.5 -left-2.5 text-base select-none pointer-events-none z-10">🌸</div>
+                                    <div className="absolute -top-2.5 -right-2.5 text-base select-none pointer-events-none z-10">🌸</div>
+                                    <div className="absolute -bottom-2.5 -left-2.5 text-base select-none pointer-events-none z-10">🌸</div>
+                                    <div className="absolute -bottom-2.5 -right-2.5 text-base select-none pointer-events-none z-10">🌸</div>
+                                    {/* 로즈골드 그라디언트 테두리 */}
+                                    <div className="p-[2px] rounded-xl" style={{ background: 'linear-gradient(135deg, #e8b4b8 0%, #f5dcc8 50%, #d4a8c0 100%)' }}>
+                                        <div
+                                            className="rounded-[10px] overflow-hidden shadow-sm aspect-[4/5] cursor-zoom-in relative active:opacity-90"
+                                            style={{ touchAction: 'manipulation' }}
+                                            onPointerDown={() => {
+                                                document.body.classList.add('music-hidden');
+                                                document.body.classList.add('nav-hidden');
+                                                setSelectedIdx(idx);
+                                            }}
+                                        >
+                                            <img src={img.src} alt={img.alt} loading="lazy" decoding="async" className="w-full h-full object-cover" />
+                                            <div className="absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         ))}
