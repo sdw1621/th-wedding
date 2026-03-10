@@ -3,7 +3,6 @@ import Camera from 'lucide-react/dist/esm/icons/camera';
 import X from 'lucide-react/dist/esm/icons/x';
 import ChevronLeft from 'lucide-react/dist/esm/icons/chevron-left';
 import ChevronRight from 'lucide-react/dist/esm/icons/chevron-right';
-import Volume2 from 'lucide-react/dist/esm/icons/volume-2';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function Gallery({ onFullscreenChange }) {
@@ -16,6 +15,8 @@ export default function Gallery({ onFullscreenChange }) {
     const isSwiping = useRef(false);
     const lightboxRef = useRef(null);
     const scrollContainerRef = useRef(null);
+    const ytPlayerRef = useRef(null);
+    const ytContainerRef = useRef(null);
 
     const images = [
         { src: `${import.meta.env.BASE_URL}img/pages/커플_꽃셔츠.webp`, alt: '커플 꽃무늬 셔츠' },
@@ -88,11 +89,11 @@ export default function Gallery({ onFullscreenChange }) {
         }
     }, [selectedIdx !== null]);
 
-    // YouTube IFrame API: 재생 시 BGM 뮤트, 종료 시 복원
+    // YouTube IFrame API: 플레이어 초기화 + BGM 연동
     useEffect(() => {
         const initYT = () => {
             if (!window.YT || !window.YT.Player) return;
-            new window.YT.Player('yt-wedding', {
+            ytPlayerRef.current = new window.YT.Player('yt-wedding', {
                 events: {
                     onStateChange: (e) => {
                         if (e.data === 1) { // PLAYING
@@ -116,6 +117,30 @@ export default function Gallery({ onFullscreenChange }) {
                 document.head.appendChild(tag);
             }
         }
+    }, []);
+
+    // IntersectionObserver: 화면에 들어오면 자동 재생, 벗어나면 일시정지
+    useEffect(() => {
+        const container = ytContainerRef.current;
+        if (!container) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    const player = ytPlayerRef.current;
+                    if (!player || typeof player.playVideo !== 'function') return;
+                    if (entry.isIntersecting) {
+                        player.playVideo();
+                    } else {
+                        player.pauseVideo();
+                    }
+                });
+            },
+            { threshold: 0.4 }
+        );
+
+        observer.observe(container);
+        return () => observer.disconnect();
     }, []);
 
     // 라이트박스 스와이프 시 페이지 스크롤 방지 (non-passive touchmove 필요)
@@ -144,14 +169,11 @@ export default function Gallery({ onFullscreenChange }) {
                     <h2 className="text-xl font-serif tracking-widest text-stone-800 font-bold">우리의 빛나는 순간</h2>
                 </div>
 
-                {/* 영상 영역 (위치 변경) */}
-                <div className="text-center mb-6 space-y-1.5 px-6">
+                {/* 영상 영역 */}
+                <div className="text-center mb-4 px-6">
                     <p className="text-[11px] text-stone-500 font-medium whitespace-nowrap">크게 보시고 싶으시면 영상 터치 후 Youtube 로고를 눌러주세요 👆</p>
-                    <p className="text-[11px] text-stone-500 font-medium flex items-center justify-center whitespace-nowrap">
-                        유튜브 영상 볼 때는 상단의 배경음(<Volume2 size={12} className="mx-1 text-rose-300" />)을 잠시 꺼두세요
-                    </p>
                 </div>
-                <div className="px-6 mb-12 relative z-30">
+                <div className="px-6 mb-12 relative z-30" ref={ytContainerRef}>
                     <div className="rounded-2xl overflow-hidden shadow-sm aspect-video bg-stone-100 border border-stone-200 relative z-30">
                         <iframe
                             id="yt-wedding"
