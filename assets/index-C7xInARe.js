@@ -7144,235 +7144,12 @@ const createLucideIcon = (iconName, iconNode) => {
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const CircleCheck = createLucideIcon("CircleCheck", [
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const Heart = createLucideIcon("Heart", [
-  [
-    "path",
-    {
-      d: "M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z",
-      key: "c3ymky"
-    }
-  ]
-]);
-function IntroScreen({ onEnter, onStart }) {
-  const [isOpen, setIsOpen] = reactExports.useState(false);
-  const [isProcessing, setIsProcessing] = reactExports.useState(false);
-  const handleOpen = () => {
-    if (isProcessing) return;
-    setIsProcessing(true);
-    if (onStart) onStart();
-    setIsOpen(true);
-    setTimeout(() => {
-      onEnter();
-    }, 1200);
-  };
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `fixed inset-0 bg-stone-900 flex flex-col items-center justify-center transition-opacity duration-1000 z-[150] ${isOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute inset-0 overflow-hidden", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-1/4 left-1/4 w-64 h-64 bg-rose-900/20 rounded-full blur-3xl opacity-50" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute bottom-1/4 right-1/4 w-64 h-64 bg-stone-700/30 rounded-full blur-3xl opacity-50" })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `z-10 flex flex-col items-center transition-all duration-1000 transform ${isOpen ? "scale-110 translate-y-[-30px]" : "scale-100"}`, children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "text-4xl md:text-5xl font-serif text-stone-200 mb-6 tracking-widest text-center px-6", children: [
-        "태구 ",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-rose-400 mx-2", children: "&" }),
-        " 희영"
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-stone-400 text-sm tracking-[0.3em] mb-12 font-light", children: "2026. 03. 13. FRI 11:30 AM" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "button",
-        {
-          onClick: handleOpen,
-          disabled: isProcessing,
-          style: { touchAction: "manipulation" },
-          className: "group relative px-12 py-5 bg-stone-800 border border-stone-600 rounded-full overflow-hidden hover:bg-stone-700 active:bg-stone-700 shadow-2xl shadow-black/50 select-none",
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-rose-500/10 w-0 group-hover:w-full transition-all duration-500 ease-out" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "relative flex items-center space-x-3 text-stone-200", children: [
-              isProcessing ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-4 h-4 border-2 border-rose-200 border-t-rose-500 rounded-full animate-spin" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Heart, { size: 20, className: "text-rose-400 animate-pulse fill-rose-400/20" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "tracking-[0.2em] text-base font-medium", children: isProcessing ? "열리는 중..." : "초대장 열어보기" })
-            ] })
-          ]
-        }
-      )
-    ] })
-  ] });
-}
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
 const Calendar = createLucideIcon("Calendar", [
   ["path", { d: "M8 2v4", key: "1cmpym" }],
   ["path", { d: "M16 2v4", key: "4m81vk" }],
   ["rect", { width: "18", height: "18", x: "3", y: "4", rx: "2", key: "1hopcy" }],
   ["path", { d: "M3 10h18", key: "8toen8" }]
 ]);
-const useScrollReveal = () => {
-  const [isVisible, setIsVisible] = reactExports.useState(false);
-  const ref = reactExports.useRef(null);
-  reactExports.useEffect(() => {
-    const fallbackTimer = setTimeout(() => setIsVisible(true), 800);
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          clearTimeout(fallbackTimer);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.05 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => {
-      observer.disconnect();
-      clearTimeout(fallbackTimer);
-    };
-  }, []);
-  return [ref, isVisible];
-};
-function Countdown() {
-  const [timeLeft, setTimeLeft] = reactExports.useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  reactExports.useEffect(() => {
-    const targetDate = /* @__PURE__ */ new Date("2026-03-13T11:30:00");
-    const timer = setInterval(() => {
-      const now = /* @__PURE__ */ new Date();
-      const difference = targetDate - now;
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1e3 * 60 * 60 * 24)),
-          hours: Math.floor(difference / (1e3 * 60 * 60) % 24),
-          minutes: Math.floor(difference / 1e3 / 60 % 60),
-          seconds: Math.floor(difference / 1e3 % 60)
-        });
-      } else {
-        clearInterval(timer);
-      }
-    }, 1e3);
-    return () => clearInterval(timer);
-  }, []);
-  const units = [
-    { label: "DAYS", value: timeLeft.days },
-    { label: "HOURS", value: timeLeft.hours },
-    { label: "MIN", value: timeLeft.minutes },
-    { label: "SEC", value: timeLeft.seconds }
-  ];
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex space-x-4 mt-8", children: units.map((unit, idx) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "bg-white/80 border border-white/20 w-12 h-12 rounded-lg flex items-center justify-center shadow-sm mb-1", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg font-serif text-stone-800", children: String(unit.value).padStart(2, "0") }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] tracking-widest text-stone-800 font-black", children: unit.label })
-  ] }, idx)) });
-}
-function Hero() {
-  const [ref, isVisible] = useScrollReveal();
-  const addToCalendar = () => {
-    const title = "강태구 & 신희영 결혼식";
-    const location = "메이필드 호텔 봉래헌";
-    const details = "두 사람의 소중한 시작을 축복해 주세요.";
-    const startDate = "20260313T113000";
-    const endDate = "20260313T143000";
-    const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
-    window.open(googleCalendarUrl, "_blank");
-  };
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative w-full h-screen overflow-hidden flex flex-col items-center justify-between pb-32 pt-20", id: "home", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute inset-0", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        "img",
-        {
-          src: `${"/th-wedding/"}img/메인이미지.webp`,
-          alt: "Wedding Hero",
-          fetchpriority: "high",
-          decoding: "async",
-          className: "w-full h-full object-cover object-[center_top] opacity-90"
-        }
-      ),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-gradient-to-b from-[#FDFBF7] via-white/40 to-white/10 opacity-90" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-white/5" })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `relative z-10 text-center flex flex-col items-center px-4 max-w-full transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0 -translate-y-4"}`, children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs md:text-sm tracking-[0.4em] text-stone-700 mb-6 font-medium", children: "WE ARE GETTING MARRIED" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "text-4xl sm:text-5xl md:text-6xl font-serif text-stone-900 mb-3 drop-shadow-sm font-light tracking-widest whitespace-nowrap", children: [
-        "강태구 ",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-rose-400 text-3xl sm:text-4xl mx-2 font-light", children: "&" }),
-        " 신희영"
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center gap-1", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm md:text-base tracking-[0.1em] text-stone-800 font-medium", children: "2026년 3월 13일 금요일 오전 11시 30분" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "https://www.mayfield.co.kr/restaurant/bongraeheon", target: "_blank", rel: "noopener noreferrer", className: "text-sm md:text-base text-stone-800 font-medium tracking-wide underline underline-offset-4 decoration-stone-800/30 active:text-rose-500 pb-0.5 mt-0.5", children: "메이필드 호텔 봉래헌" })
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `relative z-10 flex flex-col items-center transition-all duration-1000 delay-300 ${isVisible ? "opacity-100" : "opacity-0 translate-y-10"}`, children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Countdown, {}),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "button",
-        {
-          onClick: addToCalendar,
-          style: { touchAction: "manipulation" },
-          className: "mt-10 flex items-center space-x-2 px-6 py-2.5 bg-white/90 border border-stone-200 rounded-full text-stone-600 text-[11px] font-bold active:bg-stone-50 shadow-sm select-none",
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Calendar, { size: 14 }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "캘린더에 일정 추가" })
-          ]
-        }
-      )
-    ] })
-  ] });
-}
-function Greeting() {
-  const [ref, isVisible] = useScrollReveal();
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 text-center", id: "greeting", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx(Heart, { className: "mx-auto text-rose-200 mb-8", size: 28, strokeWidth: 1.5 }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest mb-12 text-stone-800 font-bold", children: "결혼합니다" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-6 text-stone-700 leading-relaxed text-[15px] break-keep font-medium", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { children: [
-        "서로를 마주 보며 다져온 인연을",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-        "이제는 함께 같은 곳을 바라보며",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-        "걸어가려 합니다."
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { children: [
-        "화려하고 거창한 예식보다는",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-        "진실한 약속을 나누는 자리가 더 뜻깊다고 생각하여,",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-        "가족분들만 모시고 조촐한 식사 자리로",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-        "결혼식을 대신하게 되었습니다."
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { children: [
-        "부득이하게 많은 분들을 모시지 못해",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-        "송구하고 아쉬운 마음이 크지만,",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-        "멀리서나마 저희의 새로운 출발을 축복해 주신다면",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-        "그 마음 깊이 간직하며 예쁘게 잘 살겠습니다."
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-16 space-y-4 text-[15px] text-stone-800 font-bold", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { children: [
-        "강영태 · 김경자 ",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-500 font-normal mx-2", children: "의 아들" }),
-        " 강태구"
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { children: [
-        "신현갑 · 송현숙 ",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-500 font-normal mx-2", children: "의 딸" }),
-        " 신희영"
-      ] })
-    ] })
-  ] }) });
-}
 /**
  * @license lucide-react v0.460.0 - ISC
  *
@@ -7395,9 +7172,8 @@ const Camera = createLucideIcon("Camera", [
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const X = createLucideIcon("X", [
-  ["path", { d: "M18 6 6 18", key: "1bl5f8" }],
-  ["path", { d: "m6 6 12 12", key: "d8bk6v" }]
+const ChevronDown = createLucideIcon("ChevronDown", [
+  ["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]
 ]);
 /**
  * @license lucide-react v0.460.0 - ISC
@@ -7423,423 +7199,27 @@ const ChevronRight = createLucideIcon("ChevronRight", [
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const Volume2 = createLucideIcon("Volume2", [
-  [
-    "path",
-    {
-      d: "M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z",
-      key: "uqj9uw"
-    }
-  ],
-  ["path", { d: "M16 9a5 5 0 0 1 0 6", key: "1q6k2b" }],
-  ["path", { d: "M19.364 18.364a9 9 0 0 0 0-12.728", key: "ijwkga" }]
-]);
-function Gallery() {
-  const [ref, isVisible] = useScrollReveal();
-  const [selectedIdx, setSelectedIdx] = reactExports.useState(null);
-  const [currentScrollIdx, setCurrentScrollIdx] = reactExports.useState(0);
-  const [youtubeActive, setYoutubeActive] = reactExports.useState(false);
-  const touchStartX = reactExports.useRef(0);
-  const touchEndX = reactExports.useRef(0);
-  const touchStartY = reactExports.useRef(0);
-  const isSwiping = reactExports.useRef(false);
-  const lightboxRef = reactExports.useRef(null);
-  const scrollContainerRef = reactExports.useRef(null);
-  const images = [
-    { src: `${"/th-wedding/"}img/pages/커플_꽃셔츠.webp`, alt: "커플 꽃무늬 셔츠" },
-    { src: `${"/th-wedding/"}img/pages/커플_드레스업.webp`, alt: "커플 드레스업" },
-    { src: `${"/th-wedding/"}img/pages/한복_전통혼례.webp`, alt: "한복 전통혼례" },
-    { src: `${"/th-wedding/"}img/pages/정원_산책.webp`, alt: "정원 산책" },
-    { src: `${"/th-wedding/"}img/pages/가을_은행나무.webp`, alt: "가을 은행나무" },
-    { src: `${"/th-wedding/"}img/pages/한옥_정면컷.webp`, alt: "한옥 정면컷" },
-    { src: `${"/th-wedding/"}img/pages/한옥_마주보기.webp`, alt: "한옥 마주보기" },
-    { src: `${"/th-wedding/"}img/pages/신랑_솔로컷.webp`, alt: "신랑 솔로컷" },
-    { src: `${"/th-wedding/"}img/pages/신부_솔로컷.webp`, alt: "신부 솔로컷" },
-    { src: `${"/th-wedding/"}img/pages/정원_로맨틱.webp`, alt: "정원 로맨틱" }
-  ];
-  const goNext = reactExports.useCallback(() => {
-    setSelectedIdx((prev) => (prev + 1) % images.length);
-  }, [images.length]);
-  const goPrev = reactExports.useCallback(() => {
-    setSelectedIdx((prev) => (prev - 1 + images.length) % images.length);
-  }, [images.length]);
-  const handleTouchStart = (e) => {
-    touchStartX.current = e.touches[0].clientX;
-    touchStartY.current = e.touches[0].clientY;
-    isSwiping.current = false;
-  };
-  const handleTouchEnd = (e) => {
-    touchEndX.current = e.changedTouches[0].clientX;
-    const diff = touchStartX.current - touchEndX.current;
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) goNext();
-      else goPrev();
-    }
-  };
-  const handleScroll = () => {
-    if (!scrollContainerRef.current) return;
-    const container = scrollContainerRef.current;
-    const scrollPosition = container.scrollLeft + container.clientWidth / 2;
-    let closestIndex = 0;
-    let minDistance = Infinity;
-    Array.from(container.children).forEach((child, idx) => {
-      const childCenter = child.offsetLeft + child.clientWidth / 2;
-      const distance = Math.abs(scrollPosition - childCenter);
-      if (distance < minDistance) {
-        minDistance = distance;
-        closestIndex = idx;
-      }
-    });
-    if (closestIndex !== currentScrollIdx) {
-      setCurrentScrollIdx(closestIndex);
-    }
-  };
-  reactExports.useEffect(() => {
-    const el = lightboxRef.current;
-    if (!el) return;
-    const onTouchMove = (e) => {
-      const dx = Math.abs(e.touches[0].clientX - touchStartX.current);
-      const dy = Math.abs(e.touches[0].clientY - touchStartY.current);
-      if (dx > dy && dx > 10) {
-        isSwiping.current = true;
-        e.preventDefault();
-      }
-    };
-    el.addEventListener("touchmove", onTouchMove, { passive: false });
-    return () => el.removeEventListener("touchmove", onTouchMove);
-  }, [selectedIdx]);
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "py-24 bg-white overflow-hidden", id: "gallery", ref, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-2xl mx-auto transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-8 px-6", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Camera, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "우리의 빛나는 순간" })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-6 space-y-1.5 px-6", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-stone-500 font-medium whitespace-nowrap", children: "크게 보시고 싶으시면 영상 터치 후 Youtube 로고를 눌러주세요 👆" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-[11px] text-stone-500 font-medium flex items-center justify-center whitespace-nowrap", children: [
-          "유튜브 영상 볼 때는 좌측 상단의 배경음(",
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Volume2, { size: 12, className: "mx-1 text-rose-300" }),
-          ")을 잠시 꺼두세요"
-        ] })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-6 mb-12 relative z-30", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-2xl overflow-hidden shadow-sm aspect-video bg-stone-900 border border-stone-200 relative z-30", children: youtubeActive ? /* @__PURE__ */ jsxRuntimeExports.jsx(
-        "iframe",
-        {
-          src: "https://www.youtube.com/embed/aBT0gHQ0AwE?autoplay=1&playsinline=1",
-          title: "Wedding Video",
-          className: "w-full h-full border-none",
-          allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
-          allowFullScreen: true
-        }
-      ) : /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "div",
-        {
-          className: "w-full h-full relative cursor-pointer",
-          style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
-          onClick: () => setYoutubeActive(true),
-          onTouchEnd: (e) => {
-            e.preventDefault();
-            setYoutubeActive(true);
-          },
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "img",
-              {
-                src: "https://img.youtube.com/vi/aBT0gHQ0AwE/maxresdefault.jpg",
-                alt: "Wedding Video",
-                className: "w-full h-full object-cover"
-              }
-            ),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 flex items-center justify-center bg-black/20", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-xl", children: /* @__PURE__ */ jsxRuntimeExports.jsx("svg", { viewBox: "0 0 24 24", fill: "white", className: "w-8 h-8 ml-1", children: /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M8 5v14l11-7z" }) }) }) })
-          ]
-        }
-      ) }) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-center mb-4", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-stone-500 animate-pulse font-medium", children: "사진을 누르면 크게 보실 수 있어요 📸" }) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative group", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "button",
-          {
-            className: "absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-stone-600 z-10 active:bg-white select-none",
-            style: { touchAction: "manipulation" },
-            onClick: (e) => {
-              e.stopPropagation();
-              if (scrollContainerRef.current) {
-                const container = scrollContainerRef.current;
-                container.scrollBy({ left: -container.clientWidth * 0.8, behavior: "smooth" });
-              }
-            },
-            children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { size: 24 })
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "div",
-          {
-            ref: scrollContainerRef,
-            onScroll: handleScroll,
-            className: "flex overflow-x-auto snap-x snap-mandatory hide-scrollbar px-6 space-x-4 pb-6",
-            children: images.map((img, idx) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-none w-[80vw] sm:w-[300px] snap-center", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
-              "div",
-              {
-                className: "rounded-xl overflow-hidden shadow-sm aspect-[4/5] cursor-zoom-in relative active:opacity-90",
-                style: { touchAction: "manipulation" },
-                onClick: () => {
-                  document.body.classList.add("music-hidden");
-                  document.body.classList.add("nav-hidden");
-                  setSelectedIdx(idx);
-                },
-                children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: img.src, alt: img.alt, loading: "lazy", decoding: "async", className: "w-full h-full object-cover" }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors" })
-                ]
-              }
-            ) }, idx))
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "button",
-          {
-            className: "absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-stone-600 z-10 active:bg-white select-none",
-            style: { touchAction: "manipulation" },
-            onClick: (e) => {
-              e.stopPropagation();
-              if (scrollContainerRef.current) {
-                const container = scrollContainerRef.current;
-                container.scrollBy({ left: container.clientWidth * 0.8, behavior: "smooth" });
-              }
-            },
-            children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { size: 24 })
-          }
-        )
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-center items-center gap-2 mb-8", children: images.map((_, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-        "div",
-        {
-          className: `rounded-full transition-all duration-300 ${i === currentScrollIdx ? "w-6 h-2 bg-rose-400" : "w-2 h-2 bg-stone-200"}`
-        },
-        i
-      )) })
-    ] }),
-    selectedIdx !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-      "div",
-      {
-        ref: lightboxRef,
-        className: "fixed inset-0 z-[500] bg-black/95 flex items-center justify-center p-4 animate-in fade-in duration-300",
-        style: { touchAction: "none" },
-        onClick: (e) => {
-          if (isSwiping.current) return;
-          if (e.target === e.currentTarget) {
-            document.body.classList.remove("music-hidden");
-            document.body.classList.remove("nav-hidden");
-            setSelectedIdx(null);
-          }
-        },
-        onTouchStart: handleTouchStart,
-        onTouchEnd: handleTouchEnd,
-        children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "button",
-            {
-              className: "absolute top-6 right-6 z-[510] flex items-center justify-center w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-stone-800 shadow-xl active:bg-white transition-colors select-none",
-              style: { touchAction: "manipulation" },
-              onClick: (e) => {
-                e.stopPropagation();
-                document.body.classList.remove("music-hidden");
-                document.body.classList.remove("nav-hidden");
-                setSelectedIdx(null);
-              },
-              children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { size: 24 })
-            }
-          ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "button",
-            {
-              className: "absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/70 backdrop-blur-md text-stone-800 shadow-lg active:bg-white/90 transition-colors select-none",
-              style: { touchAction: "manipulation" },
-              onClick: (e) => {
-                e.stopPropagation();
-                goPrev();
-              },
-              children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { size: 24 })
-            }
-          ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "button",
-            {
-              className: "absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/70 backdrop-blur-md text-stone-800 shadow-lg active:bg-white/90 transition-colors select-none",
-              style: { touchAction: "manipulation" },
-              onClick: (e) => {
-                e.stopPropagation();
-                goNext();
-              },
-              children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { size: 24 })
-            }
-          ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "img",
-            {
-              src: images[selectedIdx].src,
-              alt: images[selectedIdx].alt,
-              className: "max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl animate-in zoom-in-95 duration-300",
-              onClick: (e) => e.stopPropagation()
-            }
-          ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2", children: images.map((_, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "button",
-            {
-              onClick: (e) => {
-                e.stopPropagation();
-                setSelectedIdx(i);
-              },
-              className: `rounded-full transition-all duration-300 ${i === selectedIdx ? "w-6 h-2.5 bg-rose-400" : "w-2.5 h-2.5 bg-white/30"} p-1 -m-1`,
-              style: { touchAction: "manipulation" }
-            },
-            i
-          )) })
-        ]
-      }
-    )
-  ] });
-}
+const ChevronUp = createLucideIcon("ChevronUp", [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]]);
 /**
  * @license lucide-react v0.460.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const MapPin = createLucideIcon("MapPin", [
-  [
-    "path",
-    {
-      d: "M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0",
-      key: "1r0f0z"
-    }
-  ],
-  ["circle", { cx: "12", cy: "10", r: "3", key: "ilqhr7" }]
+const CircleCheck = createLucideIcon("CircleCheck", [
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
 ]);
-function Location() {
-  const [ref, isVisible] = useScrollReveal();
-  const openTmap = () => {
-    window.location.href = "tmap://route?goalname=메이필드호텔%20봉래헌&goalx=126.817971&goaly=37.5478974";
-  };
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 bg-[#FDFBF7]", id: "location", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `max-w-lg mx-auto transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-10", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(MapPin, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "식사 자리 안내" })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-white p-4 rounded-2xl shadow-sm border border-stone-100 mb-6", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "w-full h-56 bg-stone-100 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden group", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "img",
-          {
-            src: `${"/th-wedding/"}img/봉래헌.png`,
-            alt: "Mayfield Hotel Bongrae-heon",
-            className: "absolute inset-0 w-full h-full object-cover transition-transform duration-700 sm:group-hover:scale-110"
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-black/10" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          "a",
-          {
-            href: "https://www.mayfield.co.kr/restaurant/bongraeheon",
-            target: "_blank",
-            rel: "noopener noreferrer",
-            style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
-            className: "relative z-20 bg-white/95 px-5 py-2.5 rounded-full text-sm font-bold text-stone-800 shadow-lg flex items-center border border-stone-100 active:bg-stone-50 active:opacity-90 select-none cursor-pointer",
-            children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(MapPin, { size: 16, className: "text-rose-500 mr-2" }),
-              " 메이필드 호텔 봉래헌"
-            ]
-          }
-        )
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center space-y-2 mb-6", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-bold text-stone-800 text-lg", children: "메이필드 호텔 봉래헌" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-stone-500", children: "서울 강서구 방화대로 94 메이필드호텔" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-stone-500", children: "02-2660-9020" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-stone-400 mt-1", children: "(주차: 메이필드 호텔 내 전용 주차장 이용 가능)" })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "border-t border-stone-50 pt-6 space-y-8 text-left px-2", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("h4", { className: "text-[13px] font-bold text-stone-800 mb-2.5 flex items-center", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "w-1.5 h-1.5 bg-rose-400 rounded-full mr-2" }),
-            " 지하철 이용 시"
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-[13px] text-stone-600 leading-relaxed pl-3.5", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-800 font-bold", children: "5호선 마곡역 / 9호선 · 공항철도 마곡나루역" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-            "하차 후 호텔 셔틀버스 또는 택시 이용 (약 5~10분 소요)"
-          ] })
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("h4", { className: "text-[13px] font-bold text-stone-800 mb-2.5 flex items-center", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "w-1.5 h-1.5 bg-rose-400 rounded-full mr-2" }),
-            " 버스 이용 시"
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-[13px] text-stone-600 leading-relaxed pl-3.5", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-800 font-bold", children: "강서면허시험장 · 메이필드호텔" }),
-            " 정류장 하차",
-            /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-            "지선: 6628, 6632 / 간선: 651 / 일반: 6014"
-          ] })
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("h4", { className: "text-[13px] font-bold text-stone-800 mb-3 flex items-center", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "w-1.5 h-1.5 bg-rose-400 rounded-full mr-2" }),
-            " 자가용 이용 시"
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex space-x-2 pl-3.5 mt-4 relative z-20", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "a",
-              {
-                href: "https://map.naver.com/p/entry/place/11678840",
-                target: "_blank",
-                rel: "noopener noreferrer",
-                style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
-                className: "flex-1 py-4 bg-[#00C73C] text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#009b2e] active:opacity-90 shadow-sm select-none",
-                children: "네이버 지도"
-              }
-            ),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "a",
-              {
-                href: "https://map.kakao.com/link/to/메이필드호텔 봉래헌,37.5478974,126.817971",
-                target: "_blank",
-                rel: "noopener noreferrer",
-                style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
-                className: "flex-1 py-4 bg-[#FAE100] text-[#391B1B] text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#e0c800] active:opacity-90 shadow-sm select-none",
-                children: "카카오맵"
-              }
-            ),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "button",
-              {
-                onClick: openTmap,
-                style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
-                className: "flex-1 py-4 bg-stone-800 text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-stone-900 active:opacity-90 shadow-sm select-none",
-                children: "티맵"
-              }
-            )
-          ] })
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("h4", { className: "text-[13px] font-bold text-stone-800 mb-2.5 flex items-center", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "w-1.5 h-1.5 bg-rose-400 rounded-full mr-2" }),
-            " 주차 안내"
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-[13px] text-stone-600 leading-relaxed pl-3.5", children: [
-            "호텔 내 ",
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-800 font-bold", children: "봉래헌 전용 주차 구역" }),
-            " 또는",
-            /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-            "호텔 통합 주차장을 ",
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-rose-400 font-bold", children: "무료" }),
-            "로 이용하실 수 있습니다."
-          ] })
-        ] })
-      ] })
-    ] })
-  ] }) });
-}
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const Copy = createLucideIcon("Copy", [
+  ["rect", { width: "14", height: "14", x: "8", y: "8", rx: "2", ry: "2", key: "17jyea" }],
+  ["path", { d: "M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2", key: "zix9uf" }]
+]);
 /**
  * @license lucide-react v0.460.0 - ISC
  *
@@ -7864,8 +7244,14 @@ const Gift = createLucideIcon("Gift", [
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const ChevronDown = createLucideIcon("ChevronDown", [
-  ["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]
+const Heart = createLucideIcon("Heart", [
+  [
+    "path",
+    {
+      d: "M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z",
+      key: "c3ymky"
+    }
+  ]
 ]);
 /**
  * @license lucide-react v0.460.0 - ISC
@@ -7873,203 +7259,81 @@ const ChevronDown = createLucideIcon("ChevronDown", [
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const ChevronUp = createLucideIcon("ChevronUp", [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]]);
+const LockOpen = createLucideIcon("LockOpen", [
+  ["rect", { width: "18", height: "11", x: "3", y: "11", rx: "2", ry: "2", key: "1w4ew1" }],
+  ["path", { d: "M7 11V7a5 5 0 0 1 9.9-1", key: "1mm8w8" }]
+]);
 /**
  * @license lucide-react v0.460.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const Copy = createLucideIcon("Copy", [
-  ["rect", { width: "14", height: "14", x: "8", y: "8", rx: "2", ry: "2", key: "17jyea" }],
-  ["path", { d: "M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2", key: "zix9uf" }]
+const Lock = createLucideIcon("Lock", [
+  ["rect", { width: "18", height: "11", x: "3", y: "11", rx: "2", ry: "2", key: "1w4ew1" }],
+  ["path", { d: "M7 11V7a5 5 0 0 1 10 0v4", key: "fwvmzm" }]
 ]);
-function AccountInfo({ showToast }) {
-  const [ref, isVisible] = useScrollReveal();
-  const [openGroom, setOpenGroom] = reactExports.useState(true);
-  const [openBride, setOpenBride] = reactExports.useState(true);
-  const handleCopy = async (text) => {
-    try {
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(text);
-        showToast("계좌번호가 복사되었습니다.");
-        return;
-      }
-    } catch (err) {
-      console.warn("Clipboard API failed, falling back to execCommand", err);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const MapPin = createLucideIcon("MapPin", [
+  [
+    "path",
+    {
+      d: "M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0",
+      key: "1r0f0z"
     }
-    const textArea = document.createElement("textarea");
-    textArea.value = text;
-    textArea.style.position = "fixed";
-    textArea.style.left = "-9999px";
-    textArea.style.top = "-9999px";
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
-    textArea.setSelectionRange(0, 99999);
-    try {
-      document.execCommand("copy");
-      showToast("계좌번호가 복사되었습니다.");
-    } catch (err) {
-      console.error("Copy failed", err);
-      showToast("복사에 실패했습니다. 직접 입력해주세요.");
+  ],
+  ["circle", { cx: "12", cy: "10", r: "3", key: "ilqhr7" }]
+]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const MessageSquare = createLucideIcon("MessageSquare", [
+  ["path", { d: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z", key: "1lielz" }]
+]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const Music = createLucideIcon("Music", [
+  ["path", { d: "M9 18V5l12-2v13", key: "1jmyc2" }],
+  ["circle", { cx: "6", cy: "18", r: "3", key: "fqmcym" }],
+  ["circle", { cx: "18", cy: "16", r: "3", key: "1hluhg" }]
+]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const Pencil = createLucideIcon("Pencil", [
+  [
+    "path",
+    {
+      d: "M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z",
+      key: "1a8usu"
     }
-    document.body.removeChild(textArea);
-  };
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 bg-stone-50", id: "account", ref, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-md mx-auto transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-10", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Gift, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "마음 전하실 곳" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm text-stone-600 mt-4 leading-relaxed font-medium", children: [
-        "따뜻한 마음으로 축하해 주시는 모든 분들께 감사드립니다.",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-        "바르고 지혜롭게 잘 살겠습니다."
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-white rounded-2xl overflow-hidden shadow-sm border border-stone-200", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          "button",
-          {
-            onClick: () => setOpenGroom(!openGroom),
-            style: { touchAction: "manipulation" },
-            className: "w-full px-6 py-5 flex justify-between items-center text-left bg-blue-50/50 hover:bg-blue-50 active:bg-blue-100 transition-colors select-none cursor-pointer",
-            children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-bold text-stone-800", children: "신랑측 계좌번호" }),
-              openGroom ? /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronUp, { size: 20, className: "text-stone-500" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronDown, { size: 20, className: "text-stone-500" })
-            ]
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `transition-all duration-300 ease-in-out ${openGroom ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 border-t border-stone-100 space-y-4", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between items-center", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-stone-600 mb-1 font-medium", children: "카카오뱅크 3333-01-5650207" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm font-bold text-stone-800", children: [
-                "예금주: 강태구",
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { color: "#2563eb" }, className: "ml-1", children: "(신랑)" })
-              ] })
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs(
-              "button",
-              {
-                onClick: () => handleCopy("카카오뱅크 3333-01-5650207"),
-                style: { touchAction: "manipulation" },
-                className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
-                children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(Copy, { size: 13, className: "mr-1.5" }),
-                  " 복사"
-                ]
-              }
-            )
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-full h-px bg-stone-100" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between items-center", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-stone-600 mb-1 font-medium", children: "농협 735080-51-036329" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm font-bold text-stone-800", children: [
-                "예금주: 김경자",
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { color: "#2563eb" }, className: "ml-1", children: "(신랑 어머니)" })
-              ] })
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs(
-              "button",
-              {
-                onClick: () => handleCopy("농협 735080-51-036329"),
-                style: { touchAction: "manipulation" },
-                className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
-                children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(Copy, { size: 13, className: "mr-1.5" }),
-                  " 복사"
-                ]
-              }
-            )
-          ] })
-        ] }) })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-white rounded-2xl overflow-hidden shadow-sm border border-stone-200", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          "button",
-          {
-            onClick: () => setOpenBride(!openBride),
-            style: { touchAction: "manipulation" },
-            className: "w-full px-6 py-5 flex justify-between items-center text-left bg-rose-50/50 hover:bg-rose-50 active:bg-rose-100 transition-colors select-none cursor-pointer",
-            children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-bold text-stone-800", children: "신부측 계좌번호" }),
-              openBride ? /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronUp, { size: 20, className: "text-stone-500" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronDown, { size: 20, className: "text-stone-500" })
-            ]
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `transition-all duration-300 ease-in-out ${openBride ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 border-t border-stone-100 space-y-4", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between items-center", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-stone-600 mb-1 font-medium", children: "우리은행 1002-837-547920" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm font-bold text-stone-800", children: [
-                "예금주: 신희영",
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { color: "#e11d48" }, className: "ml-1", children: "(신부)" })
-              ] })
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs(
-              "button",
-              {
-                onClick: () => handleCopy("우리은행 1002-837-547920"),
-                style: { touchAction: "manipulation" },
-                className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
-                children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(Copy, { size: 13, className: "mr-1.5" }),
-                  " 복사"
-                ]
-              }
-            )
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-full h-px bg-stone-100" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between items-center", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-stone-600 mb-1 font-medium", children: "농협 352-0761-7396-23" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm font-bold text-stone-800", children: [
-                "예금주: 신현갑",
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { color: "#e11d48" }, className: "ml-1", children: "(신부 아버지)" })
-              ] })
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs(
-              "button",
-              {
-                onClick: () => handleCopy("농협 352-0761-7396-23"),
-                style: { touchAction: "manipulation" },
-                className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
-                children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(Copy, { size: 13, className: "mr-1.5" }),
-                  " 복사"
-                ]
-              }
-            )
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-full h-px bg-stone-100" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between items-center", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-stone-600 mb-1 font-medium", children: "우리은행 1002-734-796143" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm font-bold text-stone-800", children: [
-                "예금주: 송현숙",
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { color: "#e11d48" }, className: "ml-1", children: "(신부 어머니)" })
-              ] })
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs(
-              "button",
-              {
-                onClick: () => handleCopy("우리은행 1002-734-796143"),
-                style: { touchAction: "manipulation" },
-                className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
-                children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(Copy, { size: 13, className: "mr-1.5" }),
-                  " 복사"
-                ]
-              }
-            )
-          ] })
-        ] }) })
-      ] })
-    ] })
-  ] }) });
-}
+  ],
+  ["path", { d: "m15 5 4 4", key: "1mk7zo" }]
+]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const Play = createLucideIcon("Play", [
+  ["polygon", { points: "6 3 20 12 6 21 6 3", key: "1oa8hb" }]
+]);
 /**
  * @license lucide-react v0.460.0 - ISC
  *
@@ -8105,15 +7369,16 @@ const Trash2 = createLucideIcon("Trash2", [
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const Pencil = createLucideIcon("Pencil", [
+const Volume2 = createLucideIcon("Volume2", [
   [
     "path",
     {
-      d: "M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z",
-      key: "1a8usu"
+      d: "M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z",
+      key: "uqj9uw"
     }
   ],
-  ["path", { d: "m15 5 4 4", key: "1mk7zo" }]
+  ["path", { d: "M16 9a5 5 0 0 1 0 6", key: "1q6k2b" }],
+  ["path", { d: "M19.364 18.364a9 9 0 0 0 0-12.728", key: "ijwkga" }]
 ]);
 /**
  * @license lucide-react v0.460.0 - ISC
@@ -8121,9 +7386,16 @@ const Pencil = createLucideIcon("Pencil", [
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const Lock = createLucideIcon("Lock", [
-  ["rect", { width: "18", height: "11", x: "3", y: "11", rx: "2", ry: "2", key: "1w4ew1" }],
-  ["path", { d: "M7 11V7a5 5 0 0 1 10 0v4", key: "fwvmzm" }]
+const VolumeX = createLucideIcon("VolumeX", [
+  [
+    "path",
+    {
+      d: "M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z",
+      key: "uqj9uw"
+    }
+  ],
+  ["line", { x1: "22", x2: "16", y1: "9", y2: "15", key: "1ewh16" }],
+  ["line", { x1: "16", x2: "22", y1: "9", y2: "15", key: "5ykzw1" }]
 ]);
 /**
  * @license lucide-react v0.460.0 - ISC
@@ -8131,18 +7403,9 @@ const Lock = createLucideIcon("Lock", [
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const LockOpen = createLucideIcon("LockOpen", [
-  ["rect", { width: "18", height: "11", x: "3", y: "11", rx: "2", ry: "2", key: "1w4ew1" }],
-  ["path", { d: "M7 11V7a5 5 0 0 1 9.9-1", key: "1mm8w8" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const MessageSquare = createLucideIcon("MessageSquare", [
-  ["path", { d: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z", key: "1lielz" }]
+const X = createLucideIcon("X", [
+  ["path", { d: "M18 6 6 18", key: "1bl5f8" }],
+  ["path", { d: "m6 6 12 12", key: "d8bk6v" }]
 ]);
 function __rest(s, e) {
   var t = {};
@@ -19642,6 +18905,780 @@ if (shouldShowDeprecationWarning()) console.warn("⚠️  Node.js 18 and below a
 const supabaseUrl = "https://hdbbpwcixfcgfmwucuqd.supabase.co";
 const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhkYmJwd2NpeGZjZ2Ztd3VjdXFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI5NzE1MDgsImV4cCI6MjA4ODU0NzUwOH0.fs9qIjA7QjpvKqONApEToZ6Pk8wBP1YsrmlraxZjKfk";
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
+function IntroScreen({ onEnter, onStart }) {
+  const [isOpen, setIsOpen] = reactExports.useState(false);
+  const [isProcessing, setIsProcessing] = reactExports.useState(false);
+  const handleOpen = () => {
+    if (isProcessing) return;
+    setIsProcessing(true);
+    if (onStart) onStart();
+    setIsOpen(true);
+    setTimeout(() => {
+      onEnter();
+    }, 1200);
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `fixed inset-0 bg-stone-900 flex flex-col items-center justify-center transition-opacity duration-1000 z-[150] ${isOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute inset-0 overflow-hidden", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-1/4 left-1/4 w-64 h-64 bg-rose-900/20 rounded-full blur-3xl opacity-50" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute bottom-1/4 right-1/4 w-64 h-64 bg-stone-700/30 rounded-full blur-3xl opacity-50" })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `z-10 flex flex-col items-center transition-all duration-1000 transform ${isOpen ? "scale-110 translate-y-[-30px]" : "scale-100"}`, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "text-4xl md:text-5xl font-serif text-stone-200 mb-6 tracking-widest text-center px-6", children: [
+        "태구 ",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-rose-400 mx-2", children: "&" }),
+        " 희영"
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-stone-400 text-sm tracking-[0.3em] mb-12 font-light", children: "2026. 03. 13. FRI 11:30 AM" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(
+        "button",
+        {
+          onClick: handleOpen,
+          disabled: isProcessing,
+          style: { touchAction: "manipulation" },
+          className: "group relative px-12 py-5 bg-stone-800 border border-stone-600 rounded-full overflow-hidden hover:bg-stone-700 active:bg-stone-700 shadow-2xl shadow-black/50 select-none",
+          children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-rose-500/10 w-0 group-hover:w-full transition-all duration-500 ease-out" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "relative flex items-center space-x-3 text-stone-200", children: [
+              isProcessing ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-4 h-4 border-2 border-rose-200 border-t-rose-500 rounded-full animate-spin" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Heart, { size: 20, className: "text-rose-400 animate-pulse fill-rose-400/20" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "tracking-[0.2em] text-base font-medium", children: isProcessing ? "열리는 중..." : "초대장 열어보기" })
+            ] })
+          ]
+        }
+      )
+    ] })
+  ] });
+}
+const useScrollReveal = () => {
+  const [isVisible, setIsVisible] = reactExports.useState(false);
+  const ref = reactExports.useRef(null);
+  reactExports.useEffect(() => {
+    const fallbackTimer = setTimeout(() => setIsVisible(true), 800);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          clearTimeout(fallbackTimer);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.05 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => {
+      observer.disconnect();
+      clearTimeout(fallbackTimer);
+    };
+  }, []);
+  return [ref, isVisible];
+};
+function Countdown() {
+  const [timeLeft, setTimeLeft] = reactExports.useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  reactExports.useEffect(() => {
+    const targetDate = /* @__PURE__ */ new Date("2026-03-13T11:30:00");
+    const timer = setInterval(() => {
+      const now = /* @__PURE__ */ new Date();
+      const difference = targetDate - now;
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1e3 * 60 * 60 * 24)),
+          hours: Math.floor(difference / (1e3 * 60 * 60) % 24),
+          minutes: Math.floor(difference / 1e3 / 60 % 60),
+          seconds: Math.floor(difference / 1e3 % 60)
+        });
+      } else {
+        clearInterval(timer);
+      }
+    }, 1e3);
+    return () => clearInterval(timer);
+  }, []);
+  const units = [
+    { label: "DAYS", value: timeLeft.days },
+    { label: "HOURS", value: timeLeft.hours },
+    { label: "MIN", value: timeLeft.minutes },
+    { label: "SEC", value: timeLeft.seconds }
+  ];
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex space-x-4 mt-8", children: units.map((unit, idx) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "bg-white/80 border border-white/20 w-12 h-12 rounded-lg flex items-center justify-center shadow-sm mb-1", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg font-serif text-stone-800", children: String(unit.value).padStart(2, "0") }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] tracking-widest text-stone-800 font-black", children: unit.label })
+  ] }, idx)) });
+}
+function Hero() {
+  const [ref, isVisible] = useScrollReveal();
+  const addToCalendar = () => {
+    const title = "강태구 & 신희영 결혼식";
+    const location = "메이필드 호텔 봉래헌";
+    const details = "두 사람의 소중한 시작을 축복해 주세요.";
+    const startDate = "20260313T113000";
+    const endDate = "20260313T143000";
+    const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
+    window.open(googleCalendarUrl, "_blank");
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative w-full h-screen overflow-hidden flex flex-col items-center justify-between pb-32 pt-20", id: "home", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute inset-0", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "img",
+        {
+          src: `${"/th-wedding/"}img/메인이미지.webp`,
+          alt: "Wedding Hero",
+          fetchpriority: "high",
+          decoding: "async",
+          className: "w-full h-full object-cover object-[center_top] opacity-90"
+        }
+      ),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-gradient-to-b from-[#FDFBF7] via-white/40 to-white/10 opacity-90" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-white/5" })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `relative z-10 text-center flex flex-col items-center px-4 max-w-full transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0 -translate-y-4"}`, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs md:text-sm tracking-[0.4em] text-stone-700 mb-6 font-medium", children: "WE ARE GETTING MARRIED" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "text-4xl sm:text-5xl md:text-6xl font-serif text-stone-900 mb-3 drop-shadow-sm font-light tracking-widest whitespace-nowrap", children: [
+        "강태구 ",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-rose-400 text-3xl sm:text-4xl mx-2 font-light", children: "&" }),
+        " 신희영"
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center gap-1", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm md:text-base tracking-[0.1em] text-stone-800 font-medium", children: "2026년 3월 13일 금요일 오전 11시 30분" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "https://www.mayfield.co.kr/restaurant/bongraeheon", target: "_blank", rel: "noopener noreferrer", className: "text-sm md:text-base text-stone-800 font-medium tracking-wide underline underline-offset-4 decoration-stone-800/30 active:text-rose-500 pb-0.5 mt-0.5", children: "메이필드 호텔 봉래헌" })
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `relative z-10 flex flex-col items-center transition-all duration-1000 delay-300 ${isVisible ? "opacity-100" : "opacity-0 translate-y-10"}`, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Countdown, {}),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(
+        "button",
+        {
+          onClick: addToCalendar,
+          style: { touchAction: "manipulation" },
+          className: "mt-10 flex items-center space-x-2 px-6 py-2.5 bg-white/90 border border-stone-200 rounded-full text-stone-600 text-[11px] font-bold active:bg-stone-50 shadow-sm select-none",
+          children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Calendar, { size: 14 }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "캘린더에 일정 추가" })
+          ]
+        }
+      )
+    ] })
+  ] });
+}
+function Greeting() {
+  const [ref, isVisible] = useScrollReveal();
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 text-center", id: "greeting", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Heart, { className: "mx-auto text-rose-200 mb-8", size: 28, strokeWidth: 1.5 }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest mb-12 text-stone-800 font-bold", children: "결혼합니다" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-6 text-stone-700 leading-relaxed text-[15px] break-keep font-medium", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { children: [
+        "서로를 마주 보며 다져온 인연을",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+        "이제는 함께 같은 곳을 바라보며",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+        "걸어가려 합니다."
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { children: [
+        "화려하고 거창한 예식보다는",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+        "진실한 약속을 나누는 자리가 더 뜻깊다고 생각하여,",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+        "가족분들만 모시고 조촐한 식사 자리로",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+        "결혼식을 대신하게 되었습니다."
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { children: [
+        "부득이하게 많은 분들을 모시지 못해",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+        "송구하고 아쉬운 마음이 크지만,",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+        "멀리서나마 저희의 새로운 출발을 축복해 주신다면",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+        "그 마음 깊이 간직하며 예쁘게 잘 살겠습니다."
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-16 space-y-4 text-[15px] text-stone-800 font-bold", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { children: [
+        "강영태 · 김경자 ",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-500 font-normal mx-2", children: "의 아들" }),
+        " 강태구"
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { children: [
+        "신현갑 · 송현숙 ",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-500 font-normal mx-2", children: "의 딸" }),
+        " 신희영"
+      ] })
+    ] })
+  ] }) });
+}
+function Gallery() {
+  const [ref, isVisible] = useScrollReveal();
+  const [selectedIdx, setSelectedIdx] = reactExports.useState(null);
+  const [currentScrollIdx, setCurrentScrollIdx] = reactExports.useState(0);
+  const [youtubeActive, setYoutubeActive] = reactExports.useState(false);
+  const touchStartX = reactExports.useRef(0);
+  const touchEndX = reactExports.useRef(0);
+  const touchStartY = reactExports.useRef(0);
+  const isSwiping = reactExports.useRef(false);
+  const lightboxRef = reactExports.useRef(null);
+  const scrollContainerRef = reactExports.useRef(null);
+  const images = [
+    { src: `${"/th-wedding/"}img/pages/커플_꽃셔츠.webp`, alt: "커플 꽃무늬 셔츠" },
+    { src: `${"/th-wedding/"}img/pages/커플_드레스업.webp`, alt: "커플 드레스업" },
+    { src: `${"/th-wedding/"}img/pages/한복_전통혼례.webp`, alt: "한복 전통혼례" },
+    { src: `${"/th-wedding/"}img/pages/정원_산책.webp`, alt: "정원 산책" },
+    { src: `${"/th-wedding/"}img/pages/가을_은행나무.webp`, alt: "가을 은행나무" },
+    { src: `${"/th-wedding/"}img/pages/한옥_정면컷.webp`, alt: "한옥 정면컷" },
+    { src: `${"/th-wedding/"}img/pages/한옥_마주보기.webp`, alt: "한옥 마주보기" },
+    { src: `${"/th-wedding/"}img/pages/신랑_솔로컷.webp`, alt: "신랑 솔로컷" },
+    { src: `${"/th-wedding/"}img/pages/신부_솔로컷.webp`, alt: "신부 솔로컷" },
+    { src: `${"/th-wedding/"}img/pages/정원_로맨틱.webp`, alt: "정원 로맨틱" }
+  ];
+  const goNext = reactExports.useCallback(() => {
+    setSelectedIdx((prev) => (prev + 1) % images.length);
+  }, [images.length]);
+  const goPrev = reactExports.useCallback(() => {
+    setSelectedIdx((prev) => (prev - 1 + images.length) % images.length);
+  }, [images.length]);
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+    isSwiping.current = false;
+  };
+  const handleTouchEnd = (e) => {
+    touchEndX.current = e.changedTouches[0].clientX;
+    const diff = touchStartX.current - touchEndX.current;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) goNext();
+      else goPrev();
+    }
+  };
+  const handleScroll = () => {
+    if (!scrollContainerRef.current) return;
+    const container = scrollContainerRef.current;
+    const scrollPosition = container.scrollLeft + container.clientWidth / 2;
+    let closestIndex = 0;
+    let minDistance = Infinity;
+    Array.from(container.children).forEach((child, idx) => {
+      const childCenter = child.offsetLeft + child.clientWidth / 2;
+      const distance = Math.abs(scrollPosition - childCenter);
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestIndex = idx;
+      }
+    });
+    if (closestIndex !== currentScrollIdx) {
+      setCurrentScrollIdx(closestIndex);
+    }
+  };
+  reactExports.useEffect(() => {
+    const el = lightboxRef.current;
+    if (!el) return;
+    const onTouchMove = (e) => {
+      const dx = Math.abs(e.touches[0].clientX - touchStartX.current);
+      const dy = Math.abs(e.touches[0].clientY - touchStartY.current);
+      if (dx > dy && dx > 10) {
+        isSwiping.current = true;
+        e.preventDefault();
+      }
+    };
+    el.addEventListener("touchmove", onTouchMove, { passive: false });
+    return () => el.removeEventListener("touchmove", onTouchMove);
+  }, [selectedIdx]);
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "py-24 bg-white overflow-hidden", id: "gallery", ref, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-2xl mx-auto transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-8 px-6", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Camera, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "우리의 빛나는 순간" })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-6 space-y-1.5 px-6", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-stone-500 font-medium whitespace-nowrap", children: "크게 보시고 싶으시면 영상 터치 후 Youtube 로고를 눌러주세요 👆" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-[11px] text-stone-500 font-medium flex items-center justify-center whitespace-nowrap", children: [
+          "유튜브 영상 볼 때는 좌측 상단의 배경음(",
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Volume2, { size: 12, className: "mx-1 text-rose-300" }),
+          ")을 잠시 꺼두세요"
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-6 mb-12 relative z-30", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-2xl overflow-hidden shadow-sm aspect-video bg-stone-900 border border-stone-200 relative z-30", children: youtubeActive ? /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "iframe",
+        {
+          src: "https://www.youtube.com/embed/aBT0gHQ0AwE?autoplay=1&playsinline=1",
+          title: "Wedding Video",
+          className: "w-full h-full border-none",
+          allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
+          allowFullScreen: true
+        }
+      ) : /* @__PURE__ */ jsxRuntimeExports.jsxs(
+        "div",
+        {
+          className: "w-full h-full relative cursor-pointer",
+          style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
+          onClick: () => setYoutubeActive(true),
+          onTouchEnd: (e) => {
+            e.preventDefault();
+            setYoutubeActive(true);
+          },
+          children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "img",
+              {
+                src: "https://img.youtube.com/vi/aBT0gHQ0AwE/maxresdefault.jpg",
+                alt: "Wedding Video",
+                className: "w-full h-full object-cover"
+              }
+            ),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 flex items-center justify-center bg-black/20", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-xl", children: /* @__PURE__ */ jsxRuntimeExports.jsx("svg", { viewBox: "0 0 24 24", fill: "white", className: "w-8 h-8 ml-1", children: /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M8 5v14l11-7z" }) }) }) })
+          ]
+        }
+      ) }) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-center mb-4", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-stone-500 animate-pulse font-medium", children: "사진을 누르면 크게 보실 수 있어요 📸" }) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative group", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "button",
+          {
+            className: "absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-stone-600 z-10 active:bg-white select-none",
+            style: { touchAction: "manipulation" },
+            onClick: (e) => {
+              e.stopPropagation();
+              if (scrollContainerRef.current) {
+                const container = scrollContainerRef.current;
+                container.scrollBy({ left: -container.clientWidth * 0.8, behavior: "smooth" });
+              }
+            },
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { size: 24 })
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "div",
+          {
+            ref: scrollContainerRef,
+            onScroll: handleScroll,
+            className: "flex overflow-x-auto snap-x snap-mandatory hide-scrollbar px-6 space-x-4 pb-6",
+            children: images.map((img, idx) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-none w-[80vw] sm:w-[300px] snap-center", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+              "div",
+              {
+                className: "rounded-xl overflow-hidden shadow-sm aspect-[4/5] cursor-zoom-in relative active:opacity-90",
+                style: { touchAction: "manipulation" },
+                onClick: () => {
+                  document.body.classList.add("music-hidden");
+                  document.body.classList.add("nav-hidden");
+                  setSelectedIdx(idx);
+                },
+                children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: img.src, alt: img.alt, loading: "lazy", decoding: "async", className: "w-full h-full object-cover" }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors" })
+                ]
+              }
+            ) }, idx))
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "button",
+          {
+            className: "absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-stone-600 z-10 active:bg-white select-none",
+            style: { touchAction: "manipulation" },
+            onClick: (e) => {
+              e.stopPropagation();
+              if (scrollContainerRef.current) {
+                const container = scrollContainerRef.current;
+                container.scrollBy({ left: container.clientWidth * 0.8, behavior: "smooth" });
+              }
+            },
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { size: 24 })
+          }
+        )
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-center items-center gap-2 mb-8", children: images.map((_, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "div",
+        {
+          className: `rounded-full transition-all duration-300 ${i === currentScrollIdx ? "w-6 h-2 bg-rose-400" : "w-2 h-2 bg-stone-200"}`
+        },
+        i
+      )) })
+    ] }),
+    selectedIdx !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      "div",
+      {
+        ref: lightboxRef,
+        className: "fixed inset-0 z-[500] bg-black/95 flex items-center justify-center p-4 animate-in fade-in duration-300",
+        style: { touchAction: "none" },
+        onClick: (e) => {
+          if (isSwiping.current) return;
+          if (e.target === e.currentTarget) {
+            document.body.classList.remove("music-hidden");
+            document.body.classList.remove("nav-hidden");
+            setSelectedIdx(null);
+          }
+        },
+        onTouchStart: handleTouchStart,
+        onTouchEnd: handleTouchEnd,
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
+            {
+              className: "absolute top-6 right-6 z-[510] flex items-center justify-center w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-stone-800 shadow-xl active:bg-white transition-colors select-none",
+              style: { touchAction: "manipulation" },
+              onClick: (e) => {
+                e.stopPropagation();
+                document.body.classList.remove("music-hidden");
+                document.body.classList.remove("nav-hidden");
+                setSelectedIdx(null);
+              },
+              children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { size: 24 })
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
+            {
+              className: "absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/70 backdrop-blur-md text-stone-800 shadow-lg active:bg-white/90 transition-colors select-none",
+              style: { touchAction: "manipulation" },
+              onClick: (e) => {
+                e.stopPropagation();
+                goPrev();
+              },
+              children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { size: 24 })
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
+            {
+              className: "absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/70 backdrop-blur-md text-stone-800 shadow-lg active:bg-white/90 transition-colors select-none",
+              style: { touchAction: "manipulation" },
+              onClick: (e) => {
+                e.stopPropagation();
+                goNext();
+              },
+              children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { size: 24 })
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "img",
+            {
+              src: images[selectedIdx].src,
+              alt: images[selectedIdx].alt,
+              className: "max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl animate-in zoom-in-95 duration-300",
+              onClick: (e) => e.stopPropagation()
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2", children: images.map((_, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
+            {
+              onClick: (e) => {
+                e.stopPropagation();
+                setSelectedIdx(i);
+              },
+              className: `rounded-full transition-all duration-300 ${i === selectedIdx ? "w-6 h-2.5 bg-rose-400" : "w-2.5 h-2.5 bg-white/30"} p-1 -m-1`,
+              style: { touchAction: "manipulation" }
+            },
+            i
+          )) })
+        ]
+      }
+    )
+  ] });
+}
+function Location() {
+  const [ref, isVisible] = useScrollReveal();
+  const openTmap = () => {
+    window.location.href = "tmap://route?goalname=메이필드호텔%20봉래헌&goalx=126.817971&goaly=37.5478974";
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 bg-[#FDFBF7]", id: "location", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `max-w-lg mx-auto transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-10", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(MapPin, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "식사 자리 안내" })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-white p-4 rounded-2xl shadow-sm border border-stone-100 mb-6", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "w-full h-56 bg-stone-100 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden group", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "img",
+          {
+            src: `${"/th-wedding/"}img/봉래헌.png`,
+            alt: "Mayfield Hotel Bongrae-heon",
+            className: "absolute inset-0 w-full h-full object-cover transition-transform duration-700 sm:group-hover:scale-110"
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-black/10" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          "a",
+          {
+            href: "https://www.mayfield.co.kr/restaurant/bongraeheon",
+            target: "_blank",
+            rel: "noopener noreferrer",
+            style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
+            className: "relative z-20 bg-white/95 px-5 py-2.5 rounded-full text-sm font-bold text-stone-800 shadow-lg flex items-center border border-stone-100 active:bg-stone-50 active:opacity-90 select-none cursor-pointer",
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(MapPin, { size: 16, className: "text-rose-500 mr-2" }),
+              " 메이필드 호텔 봉래헌"
+            ]
+          }
+        )
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center space-y-2 mb-6", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-bold text-stone-800 text-lg", children: "메이필드 호텔 봉래헌" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-stone-500", children: "서울 강서구 방화대로 94 메이필드호텔" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-stone-500", children: "02-2660-9020" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-stone-400 mt-1", children: "(주차: 메이필드 호텔 내 전용 주차장 이용 가능)" })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "border-t border-stone-50 pt-6 space-y-8 text-left px-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("h4", { className: "text-[13px] font-bold text-stone-800 mb-2.5 flex items-center", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "w-1.5 h-1.5 bg-rose-400 rounded-full mr-2" }),
+            " 지하철 이용 시"
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-[13px] text-stone-600 leading-relaxed pl-3.5", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-800 font-bold", children: "5호선 마곡역 / 9호선 · 공항철도 마곡나루역" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+            "하차 후 호텔 셔틀버스 또는 택시 이용 (약 5~10분 소요)"
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("h4", { className: "text-[13px] font-bold text-stone-800 mb-2.5 flex items-center", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "w-1.5 h-1.5 bg-rose-400 rounded-full mr-2" }),
+            " 버스 이용 시"
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-[13px] text-stone-600 leading-relaxed pl-3.5", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-800 font-bold", children: "강서면허시험장 · 메이필드호텔" }),
+            " 정류장 하차",
+            /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+            "지선: 6628, 6632 / 간선: 651 / 일반: 6014"
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("h4", { className: "text-[13px] font-bold text-stone-800 mb-3 flex items-center", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "w-1.5 h-1.5 bg-rose-400 rounded-full mr-2" }),
+            " 자가용 이용 시"
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex space-x-2 pl-3.5 mt-4 relative z-20", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "a",
+              {
+                href: "https://map.naver.com/p/entry/place/11678840",
+                target: "_blank",
+                rel: "noopener noreferrer",
+                style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
+                className: "flex-1 py-4 bg-[#00C73C] text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#009b2e] active:opacity-90 shadow-sm select-none",
+                children: "네이버 지도"
+              }
+            ),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "a",
+              {
+                href: "https://map.kakao.com/link/to/메이필드호텔 봉래헌,37.5478974,126.817971",
+                target: "_blank",
+                rel: "noopener noreferrer",
+                style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
+                className: "flex-1 py-4 bg-[#FAE100] text-[#391B1B] text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#e0c800] active:opacity-90 shadow-sm select-none",
+                children: "카카오맵"
+              }
+            ),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "button",
+              {
+                onClick: openTmap,
+                style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
+                className: "flex-1 py-4 bg-stone-800 text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-stone-900 active:opacity-90 shadow-sm select-none",
+                children: "티맵"
+              }
+            )
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("h4", { className: "text-[13px] font-bold text-stone-800 mb-2.5 flex items-center", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "w-1.5 h-1.5 bg-rose-400 rounded-full mr-2" }),
+            " 주차 안내"
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-[13px] text-stone-600 leading-relaxed pl-3.5", children: [
+            "호텔 내 ",
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-800 font-bold", children: "봉래헌 전용 주차 구역" }),
+            " 또는",
+            /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+            "호텔 통합 주차장을 ",
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-rose-400 font-bold", children: "무료" }),
+            "로 이용하실 수 있습니다."
+          ] })
+        ] })
+      ] })
+    ] })
+  ] }) });
+}
+function AccountInfo({ showToast }) {
+  const [ref, isVisible] = useScrollReveal();
+  const [openGroom, setOpenGroom] = reactExports.useState(true);
+  const [openBride, setOpenBride] = reactExports.useState(true);
+  const handleCopy = async (text) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        showToast("계좌번호가 복사되었습니다.");
+        return;
+      }
+    } catch (err) {
+      console.warn("Clipboard API failed, falling back to execCommand", err);
+    }
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.position = "fixed";
+    textArea.style.left = "-9999px";
+    textArea.style.top = "-9999px";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    textArea.setSelectionRange(0, 99999);
+    try {
+      document.execCommand("copy");
+      showToast("계좌번호가 복사되었습니다.");
+    } catch (err) {
+      console.error("Copy failed", err);
+      showToast("복사에 실패했습니다. 직접 입력해주세요.");
+    }
+    document.body.removeChild(textArea);
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 bg-stone-50", id: "account", ref, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-md mx-auto transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-10", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Gift, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "마음 전하실 곳" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm text-stone-600 mt-4 leading-relaxed font-medium", children: [
+        "따뜻한 마음으로 축하해 주시는 모든 분들께 감사드립니다.",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+        "바르고 지혜롭게 잘 살겠습니다."
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-white rounded-2xl overflow-hidden shadow-sm border border-stone-200", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          "button",
+          {
+            onClick: () => setOpenGroom(!openGroom),
+            style: { touchAction: "manipulation" },
+            className: "w-full px-6 py-5 flex justify-between items-center text-left bg-blue-50/50 hover:bg-blue-50 active:bg-blue-100 transition-colors select-none cursor-pointer",
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-bold text-stone-800", children: "신랑측 계좌번호" }),
+              openGroom ? /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronUp, { size: 20, className: "text-stone-500" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronDown, { size: 20, className: "text-stone-500" })
+            ]
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `transition-all duration-300 ease-in-out ${openGroom ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 border-t border-stone-100 space-y-4", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between items-center", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-stone-600 mb-1 font-medium", children: "카카오뱅크 3333-01-5650207" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm font-bold text-stone-800", children: [
+                "예금주: 강태구",
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { color: "#2563eb" }, className: "ml-1", children: "(신랑)" })
+              ] })
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs(
+              "button",
+              {
+                onClick: () => handleCopy("카카오뱅크 3333-01-5650207"),
+                style: { touchAction: "manipulation" },
+                className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
+                children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(Copy, { size: 13, className: "mr-1.5" }),
+                  " 복사"
+                ]
+              }
+            )
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-full h-px bg-stone-100" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between items-center", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-stone-600 mb-1 font-medium", children: "농협 735080-51-036329" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm font-bold text-stone-800", children: [
+                "예금주: 김경자",
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { color: "#2563eb" }, className: "ml-1", children: "(신랑 어머니)" })
+              ] })
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs(
+              "button",
+              {
+                onClick: () => handleCopy("농협 735080-51-036329"),
+                style: { touchAction: "manipulation" },
+                className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
+                children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(Copy, { size: 13, className: "mr-1.5" }),
+                  " 복사"
+                ]
+              }
+            )
+          ] })
+        ] }) })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-white rounded-2xl overflow-hidden shadow-sm border border-stone-200", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          "button",
+          {
+            onClick: () => setOpenBride(!openBride),
+            style: { touchAction: "manipulation" },
+            className: "w-full px-6 py-5 flex justify-between items-center text-left bg-rose-50/50 hover:bg-rose-50 active:bg-rose-100 transition-colors select-none cursor-pointer",
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-bold text-stone-800", children: "신부측 계좌번호" }),
+              openBride ? /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronUp, { size: 20, className: "text-stone-500" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronDown, { size: 20, className: "text-stone-500" })
+            ]
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `transition-all duration-300 ease-in-out ${openBride ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 border-t border-stone-100 space-y-4", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between items-center", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-stone-600 mb-1 font-medium", children: "우리은행 1002-837-547920" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm font-bold text-stone-800", children: [
+                "예금주: 신희영",
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { color: "#e11d48" }, className: "ml-1", children: "(신부)" })
+              ] })
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs(
+              "button",
+              {
+                onClick: () => handleCopy("우리은행 1002-837-547920"),
+                style: { touchAction: "manipulation" },
+                className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
+                children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(Copy, { size: 13, className: "mr-1.5" }),
+                  " 복사"
+                ]
+              }
+            )
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-full h-px bg-stone-100" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between items-center", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-stone-600 mb-1 font-medium", children: "농협 352-0761-7396-23" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm font-bold text-stone-800", children: [
+                "예금주: 신현갑",
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { color: "#e11d48" }, className: "ml-1", children: "(신부 아버지)" })
+              ] })
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs(
+              "button",
+              {
+                onClick: () => handleCopy("농협 352-0761-7396-23"),
+                style: { touchAction: "manipulation" },
+                className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
+                children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(Copy, { size: 13, className: "mr-1.5" }),
+                  " 복사"
+                ]
+              }
+            )
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-full h-px bg-stone-100" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between items-center", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-stone-600 mb-1 font-medium", children: "우리은행 1002-734-796143" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm font-bold text-stone-800", children: [
+                "예금주: 송현숙",
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { color: "#e11d48" }, className: "ml-1", children: "(신부 어머니)" })
+              ] })
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs(
+              "button",
+              {
+                onClick: () => handleCopy("우리은행 1002-734-796143"),
+                style: { touchAction: "manipulation" },
+                className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
+                children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(Copy, { size: 13, className: "mr-1.5" }),
+                  " 복사"
+                ]
+              }
+            )
+          ] })
+        ] }) })
+      ] })
+    ] })
+  ] }) });
+}
 const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModal, toggleUnlock }) => {
   const isLocked = msg.is_secret && !unlockedMessages[msg.id];
   let cardColorClass = msg.receiver === "groom" ? "bg-blue-50/60 border-blue-100" : msg.receiver === "bride" ? "bg-rose-50/60 border-rose-100" : "bg-white border-stone-100";
@@ -20119,43 +20156,6 @@ function Petals() {
     petal.id
   )) });
 }
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const Music = createLucideIcon("Music", [
-  ["path", { d: "M9 18V5l12-2v13", key: "1jmyc2" }],
-  ["circle", { cx: "6", cy: "18", r: "3", key: "fqmcym" }],
-  ["circle", { cx: "18", cy: "16", r: "3", key: "1hluhg" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const VolumeX = createLucideIcon("VolumeX", [
-  [
-    "path",
-    {
-      d: "M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z",
-      key: "uqj9uw"
-    }
-  ],
-  ["line", { x1: "22", x2: "16", y1: "9", y2: "15", key: "1ewh16" }],
-  ["line", { x1: "16", x2: "22", y1: "9", y2: "15", key: "5ykzw1" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const Play = createLucideIcon("Play", [
-  ["polygon", { points: "6 3 20 12 6 21 6 3", key: "1oa8hb" }]
-]);
 function MusicPlayer({ forcePlay }) {
   const [isPlaying, setIsPlaying] = reactExports.useState(false);
   const [showPlaylist, setShowPlaylist] = reactExports.useState(false);
@@ -20241,8 +20241,8 @@ function MusicPlayer({ forcePlay }) {
     document.addEventListener("pointerdown", handler);
     return () => document.removeEventListener("pointerdown", handler);
   }, [showPlaylist]);
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref: playerRef, className: `fixed top-6 left-6 z-[100] flex flex-col items-start select-none transition-opacity duration-300 ${hidePlayer ? "opacity-0 pointer-events-none" : "opacity-100"}`, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center", children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref: playerRef, className: `fixed top-6 left-6 z-[100] flex flex-col items-start select-none pointer-events-none transition-opacity duration-300 ${hidePlayer ? "opacity-0" : "opacity-100"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center pointer-events-auto", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative group flex items-center bg-white/95 border border-stone-200 rounded-full shadow-md p-1 transition-all hover:shadow-lg", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           "button",
@@ -20297,7 +20297,7 @@ function MusicPlayer({ forcePlay }) {
         }
       )
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `mt-3 w-64 bg-white rounded-2xl border border-rose-100 shadow-2xl transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] origin-top-left overflow-hidden ${showPlaylist ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-90 -translate-y-4 pointer-events-none"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `mt-3 w-64 bg-white rounded-2xl border border-rose-100 shadow-2xl transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] origin-top-left overflow-hidden ${showPlaylist ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" : "opacity-0 scale-90 -translate-y-4 pointer-events-none"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-5 py-4 border-b border-stone-100 flex justify-between items-center bg-stone-50", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-[11px] font-bold text-stone-400 uppercase tracking-widest", children: "Playlist" }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-[10px] text-rose-400 font-bold bg-rose-50 px-2 py-0.5 rounded-full", children: [
@@ -20370,14 +20370,49 @@ function MusicPlayer({ forcePlay }) {
 function App() {
   const [isEntered, setIsEntered] = reactExports.useState(false);
   const [toast, setToast] = reactExports.useState({ show: false, message: "" });
+  const [shouldMusicPlay, setShouldMusicPlay] = reactExports.useState(false);
+  const [todayVisitors, setTodayVisitors] = reactExports.useState(null);
+  reactExports.useEffect(() => {
+    const today = (/* @__PURE__ */ new Date()).toISOString().split("T")[0];
+    const trackAndFetch = async () => {
+      try {
+        if (!sessionStorage.getItem("v_tracked")) {
+          sessionStorage.setItem("v_tracked", "1");
+          const { data: existing } = await supabase.from("visitors").select("count").eq("date", today).maybeSingle();
+          if (existing) {
+            await supabase.from("visitors").update({ count: existing.count + 1 }).eq("date", today);
+          } else {
+            await supabase.from("visitors").insert([{ date: today, count: 1 }]);
+          }
+        }
+        const { data } = await supabase.from("visitors").select("count").eq("date", today).maybeSingle();
+        if (data) setTodayVisitors(data.count);
+      } catch (e) {
+      }
+    };
+    trackAndFetch();
+  }, []);
   const showToast = (message) => {
     setToast({ show: true, message });
     setTimeout(() => setToast({ show: false, message: "" }), 3e3);
   };
-  const [shouldMusicPlay, setShouldMusicPlay] = reactExports.useState(false);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-h-screen bg-[#FDFBF7] text-stone-800 font-sans selection:bg-rose-200 relative", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(Petals, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(MusicPlayer, { forcePlay: shouldMusicPlay }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "fixed top-3 right-3 z-[400] flex items-center gap-1.5 text-[10px] text-stone-400 font-mono bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100 select-none pointer-events-none", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
+        "gh-pages #",
+        "90"
+      ] }),
+      todayVisitors !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-300", children: "·" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
+          "오늘 ",
+          todayVisitors,
+          "명"
+        ] })
+      ] })
+    ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
       IntroScreen,
       {

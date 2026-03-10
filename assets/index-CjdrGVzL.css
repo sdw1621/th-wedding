@@ -552,6 +552,10 @@ video {
   pointer-events: none;
 }
 
+.pointer-events-auto{
+  pointer-events: auto;
+}
+
 .fixed{
   position: fixed;
 }
@@ -616,6 +620,10 @@ video {
   right: 0.5rem;
 }
 
+.right-3{
+  right: 0.75rem;
+}
+
 .right-4{
   right: 1rem;
 }
@@ -638,6 +646,10 @@ video {
 
 .top-20{
   top: 5rem;
+}
+
+.top-3{
+  top: 0.75rem;
 }
 
 .top-6{
@@ -674,6 +686,10 @@ video {
 
 .z-\[300\]{
   z-index: 300;
+}
+
+.z-\[400\]{
+  z-index: 400;
 }
 
 .z-\[500\]{
@@ -1906,6 +1922,10 @@ video {
 
 .text-center{
   text-align: center;
+}
+
+.font-mono{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 .font-sans{
