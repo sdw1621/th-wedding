@@ -173,7 +173,7 @@ export default function Gallery({ onFullscreenChange }) {
                 <div className="text-center mb-4 px-6">
                     <p className="text-[11px] text-stone-500 font-medium whitespace-nowrap">크게 보시고 싶으시면 영상 터치 후 Youtube 로고를 눌러주세요 👆</p>
                 </div>
-                <div className="px-6 mb-20 relative z-30" ref={ytContainerRef}>
+                <div className="px-6 mb-40 relative z-30" ref={ytContainerRef}>
                     <div className="rounded-2xl overflow-hidden shadow-sm aspect-video bg-stone-100 border border-stone-200 relative z-30">
                         <iframe
                             id="yt-wedding"

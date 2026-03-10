@@ -29,11 +29,20 @@ export default function IntroScreen({ onEnter, onStart }) {
                     75% { transform: translateY(-3px) rotate(8deg); }
                 }
                 .icon-shake { animation: icon-shake 1.1s ease-in-out infinite; }
+                @keyframes text-warn-pop {
+                    0% { transform: scale(1); filter: brightness(1); }
+                    35% { transform: scale(1.55); filter: brightness(1.6); }
+                    70% { transform: scale(1.05); filter: brightness(1.1); }
+                    100% { transform: scale(1); filter: brightness(0.6); }
+                }
                 @keyframes text-warn {
                     0%, 100% { filter: brightness(0.6); transform: scale(1); }
                     40% { filter: brightness(1.35); transform: scale(1.22); }
                 }
-                .text-warn { animation: text-warn 1.1s ease-in-out infinite; }
+                .text-warn {
+                    animation: text-warn-pop 1.3s ease-in-out 1,
+                               text-warn 1.1s ease-in-out 1.3s infinite;
+                }
             `}</style>
             <div className="absolute inset-0 overflow-hidden">
                 <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-rose-900/20 rounded-full blur-3xl opacity-50"></div>
