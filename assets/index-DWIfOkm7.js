@@ -19274,8 +19274,67 @@ const MapPin = createLucideIcon("MapPin", [
   ],
   ["circle", { cx: "12", cy: "10", r: "3", key: "ilqhr7" }]
 ]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const Lock = createLucideIcon("Lock", [
+  ["rect", { width: "18", height: "11", x: "3", y: "11", rx: "2", ry: "2", key: "1w4ew1" }],
+  ["path", { d: "M7 11V7a5 5 0 0 1 10 0v4", key: "fwvmzm" }]
+]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const LockOpen = createLucideIcon("LockOpen", [
+  ["rect", { width: "18", height: "11", x: "3", y: "11", rx: "2", ry: "2", key: "1w4ew1" }],
+  ["path", { d: "M7 11V7a5 5 0 0 1 9.9-1", key: "1mm8w8" }]
+]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const Users = createLucideIcon("Users", [
+  ["path", { d: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2", key: "1yyitq" }],
+  ["circle", { cx: "9", cy: "7", r: "4", key: "nufk8" }],
+  ["path", { d: "M22 21v-2a4 4 0 0 0-3-3.87", key: "kshegd" }],
+  ["path", { d: "M16 3.13a4 4 0 0 1 0 7.75", key: "1da9ce" }]
+]);
 function Location() {
   const [ref, isVisible] = useScrollReveal();
+  const [unlocked, setUnlocked] = reactExports.useState(false);
+  const [showModal, setShowModal] = reactExports.useState(false);
+  const [pw, setPw] = reactExports.useState("");
+  const [pwError, setPwError] = reactExports.useState("");
+  const pwInputRef = reactExports.useRef(null);
+  const handleUnlockClick = () => {
+    setPw("");
+    setPwError("");
+    setShowModal(true);
+    setTimeout(() => {
+      var _a;
+      return (_a = pwInputRef.current) == null ? void 0 : _a.focus();
+    }, 100);
+  };
+  const handleConfirm = () => {
+    if (pw === "0313") {
+      setUnlocked(true);
+      setShowModal(false);
+    } else {
+      setPwError("비밀번호가 틀렸습니다.");
+      setPw("");
+      setTimeout(() => {
+        var _a;
+        return (_a = pwInputRef.current) == null ? void 0 : _a.focus();
+      }, 50);
+    }
+  };
   const openNaverMap = () => {
     window.open("https://map.naver.com/p/entry/place/11678840", "_blank");
   };
@@ -19290,7 +19349,81 @@ function Location() {
       /* @__PURE__ */ jsxRuntimeExports.jsx(MapPin, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "식사 자리 안내" })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-white p-4 rounded-2xl shadow-sm border border-stone-100 mb-6", children: [
+    !unlocked && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-6 flex flex-col items-center gap-3", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(
+        "button",
+        {
+          onPointerDown: handleUnlockClick,
+          style: { touchAction: "manipulation" },
+          className: "flex items-center gap-2.5 px-6 py-3.5 bg-stone-800 text-white rounded-2xl shadow-md active:bg-stone-900 select-none font-bold text-[15px] tracking-wide",
+          children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Users, { size: 18 }),
+            "직계가족만",
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Lock, { size: 16, className: "text-stone-400 ml-1" })
+          ]
+        }
+      ),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-stone-400", children: "가족 전용 공간 안내입니다." })
+    ] }),
+    unlocked && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-4 flex items-center justify-center gap-1.5 text-[11px] text-emerald-500 font-bold", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(LockOpen, { size: 12 }),
+      "직계가족막 공개됨"
+    ] }),
+    showModal && /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "div",
+      {
+        className: "fixed inset-0 z-[600] flex items-center justify-center bg-black/40 backdrop-blur-sm",
+        onPointerDown: (e) => {
+          if (e.target === e.currentTarget) setShowModal(false);
+        },
+        children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-white rounded-3xl shadow-2xl p-7 mx-6 w-full max-w-xs animate-in zoom-in-95 duration-200", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-5", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-12 h-12 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-3", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Lock, { size: 22, className: "text-stone-600" }) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-base font-bold text-stone-800", children: "직계가족만 확인" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[12px] text-stone-400 mt-1", children: "결혼식 날짜를 입력해주세요." })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "input",
+            {
+              ref: pwInputRef,
+              type: "password",
+              inputMode: "numeric",
+              value: pw,
+              onChange: (e) => {
+                setPw(e.target.value);
+                setPwError("");
+              },
+              onKeyDown: (e) => e.key === "Enter" && handleConfirm(),
+              className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-center text-lg tracking-[0.5em] focus:ring-2 focus:ring-stone-200 outline-none mb-1",
+              placeholder: "••••",
+              maxLength: 6
+            }
+          ),
+          pwError && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-rose-400 text-center mb-2", children: pwError }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-2 mt-4", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "button",
+              {
+                onPointerDown: () => setShowModal(false),
+                style: { touchAction: "manipulation" },
+                className: "flex-1 py-3 rounded-xl bg-stone-100 text-stone-600 font-bold text-[13px] active:bg-stone-200",
+                children: "취소"
+              }
+            ),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "button",
+              {
+                onPointerDown: handleConfirm,
+                style: { touchAction: "manipulation" },
+                className: "flex-1 py-3 rounded-xl bg-stone-800 text-white font-bold text-[13px] active:bg-stone-900",
+                children: "확인"
+              }
+            )
+          ] })
+        ] })
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `transition-all duration-500 overflow-hidden ${unlocked ? "opacity-100 max-h-[9999px]" : "opacity-0 max-h-0 pointer-events-none"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-white p-4 rounded-2xl shadow-sm border border-stone-100 mb-6", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "w-full h-56 bg-stone-100 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden group", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           "img",
@@ -19397,7 +19530,7 @@ function Location() {
           ] })
         ] })
       ] })
-    ] })
+    ] }) })
   ] }) });
 }
 /**
@@ -19674,26 +19807,6 @@ const Pencil = createLucideIcon("Pencil", [
     }
   ],
   ["path", { d: "m15 5 4 4", key: "1mk7zo" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const Lock = createLucideIcon("Lock", [
-  ["rect", { width: "18", height: "11", x: "3", y: "11", rx: "2", ry: "2", key: "1w4ew1" }],
-  ["path", { d: "M7 11V7a5 5 0 0 1 10 0v4", key: "fwvmzm" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const LockOpen = createLucideIcon("LockOpen", [
-  ["rect", { width: "18", height: "11", x: "3", y: "11", rx: "2", ry: "2", key: "1w4ew1" }],
-  ["path", { d: "M7 11V7a5 5 0 0 1 9.9-1", key: "1mm8w8" }]
 ]);
 /**
  * @license lucide-react v0.460.0 - ISC
@@ -20554,7 +20667,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "131"
+        "132"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
