@@ -19947,7 +19947,7 @@ function Guestbook({ showToast }) {
         setMessages(updated);
         localStorage.setItem("wedding_guestbook", JSON.stringify(updated));
       } else {
-        await supabase.from("guestbook").update({ content: dbContent }).eq("id", selectedMsg.id);
+        await supabase.from("guestbook").update({ content: dbContent, reply: modalReplyText.trim() }).eq("id", selectedMsg.id);
       }
       showToast("답글을 남겼습니다! ❤️");
       setIsReplyInputModalOpen(false);
@@ -19971,7 +19971,7 @@ function Guestbook({ showToast }) {
     try {
       const dateStr = (/* @__PURE__ */ new Date()).toLocaleDateString("ko-KR").replace(/\. /g, ".").replace(/\.$/, "");
       const dbContent = JSON.stringify({ text: trimmedContent, receiver, reply: existingMsg ? existingMsg.reply : "" });
-      const messageDataDB = { name: trimmedName, content: dbContent, password: trimmedPassword, is_secret: receiver !== "public" };
+      const messageDataDB = { name: trimmedName, content: dbContent, password: trimmedPassword, is_secret: receiver !== "public", receiver };
       const messageDataLocal = { name: trimmedName, content: trimmedContent, password: trimmedPassword, is_secret: receiver !== "public", receiver };
       if (existingMsg) {
         const { error: upError } = await supabase.from("guestbook").update(messageDataDB).eq("id", existingMsg.id);
@@ -20527,7 +20527,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "126"
+        "127"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
