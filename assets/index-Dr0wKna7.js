@@ -18855,7 +18855,7 @@ function IntroScreen({ onEnter, onStart }) {
             /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-1.5 h-1.5 rounded-full bg-rose-300" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-px w-14", style: { background: "linear-gradient(to left, transparent, #c4a080)" } })
           ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "text-5xl font-serif text-stone-700 mb-4 tracking-widest text-center px-8", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "text-5xl font-serif text-stone-700 mb-4 tracking-widest text-center px-8 whitespace-nowrap", children: [
             "태구 ",
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "mx-1", style: { color: "#bf7a9a" }, children: "&" }),
             " 희영"
@@ -21003,7 +21003,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "155"
+        "156"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
