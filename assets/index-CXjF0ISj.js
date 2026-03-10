@@ -7144,285 +7144,9 @@ const createLucideIcon = (iconName, iconNode) => {
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const Calendar = createLucideIcon("Calendar", [
-  ["path", { d: "M8 2v4", key: "1cmpym" }],
-  ["path", { d: "M16 2v4", key: "4m81vk" }],
-  ["rect", { width: "18", height: "18", x: "3", y: "4", rx: "2", key: "1hopcy" }],
-  ["path", { d: "M3 10h18", key: "8toen8" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const Camera = createLucideIcon("Camera", [
-  [
-    "path",
-    {
-      d: "M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z",
-      key: "1tc9qg"
-    }
-  ],
-  ["circle", { cx: "12", cy: "13", r: "3", key: "1vg3eu" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const ChevronDown = createLucideIcon("ChevronDown", [
-  ["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const ChevronLeft = createLucideIcon("ChevronLeft", [
-  ["path", { d: "m15 18-6-6 6-6", key: "1wnfg3" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const ChevronRight = createLucideIcon("ChevronRight", [
-  ["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const ChevronUp = createLucideIcon("ChevronUp", [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
 const CircleCheck = createLucideIcon("CircleCheck", [
   ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
   ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const Copy = createLucideIcon("Copy", [
-  ["rect", { width: "14", height: "14", x: "8", y: "8", rx: "2", ry: "2", key: "17jyea" }],
-  ["path", { d: "M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2", key: "zix9uf" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const Gift = createLucideIcon("Gift", [
-  ["rect", { x: "3", y: "8", width: "18", height: "4", rx: "1", key: "bkv52" }],
-  ["path", { d: "M12 8v13", key: "1c76mn" }],
-  ["path", { d: "M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7", key: "6wjy6b" }],
-  [
-    "path",
-    {
-      d: "M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5",
-      key: "1ihvrl"
-    }
-  ]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const Heart = createLucideIcon("Heart", [
-  [
-    "path",
-    {
-      d: "M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z",
-      key: "c3ymky"
-    }
-  ]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const LockOpen = createLucideIcon("LockOpen", [
-  ["rect", { width: "18", height: "11", x: "3", y: "11", rx: "2", ry: "2", key: "1w4ew1" }],
-  ["path", { d: "M7 11V7a5 5 0 0 1 9.9-1", key: "1mm8w8" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const Lock = createLucideIcon("Lock", [
-  ["rect", { width: "18", height: "11", x: "3", y: "11", rx: "2", ry: "2", key: "1w4ew1" }],
-  ["path", { d: "M7 11V7a5 5 0 0 1 10 0v4", key: "fwvmzm" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const MapPin = createLucideIcon("MapPin", [
-  [
-    "path",
-    {
-      d: "M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0",
-      key: "1r0f0z"
-    }
-  ],
-  ["circle", { cx: "12", cy: "10", r: "3", key: "ilqhr7" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const MessageSquare = createLucideIcon("MessageSquare", [
-  ["path", { d: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z", key: "1lielz" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const Music = createLucideIcon("Music", [
-  ["path", { d: "M9 18V5l12-2v13", key: "1jmyc2" }],
-  ["circle", { cx: "6", cy: "18", r: "3", key: "fqmcym" }],
-  ["circle", { cx: "18", cy: "16", r: "3", key: "1hluhg" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const Pencil = createLucideIcon("Pencil", [
-  [
-    "path",
-    {
-      d: "M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z",
-      key: "1a8usu"
-    }
-  ],
-  ["path", { d: "m15 5 4 4", key: "1mk7zo" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const Play = createLucideIcon("Play", [
-  ["polygon", { points: "6 3 20 12 6 21 6 3", key: "1oa8hb" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const Send = createLucideIcon("Send", [
-  [
-    "path",
-    {
-      d: "M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z",
-      key: "1ffxy3"
-    }
-  ],
-  ["path", { d: "m21.854 2.147-10.94 10.939", key: "12cjpa" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const Trash2 = createLucideIcon("Trash2", [
-  ["path", { d: "M3 6h18", key: "d0wm0j" }],
-  ["path", { d: "M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6", key: "4alrt4" }],
-  ["path", { d: "M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2", key: "v07s0e" }],
-  ["line", { x1: "10", x2: "10", y1: "11", y2: "17", key: "1uufr5" }],
-  ["line", { x1: "14", x2: "14", y1: "11", y2: "17", key: "xtxkd" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const TriangleAlert = createLucideIcon("TriangleAlert", [
-  [
-    "path",
-    {
-      d: "m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3",
-      key: "wmoenq"
-    }
-  ],
-  ["path", { d: "M12 9v4", key: "juzpu7" }],
-  ["path", { d: "M12 17h.01", key: "p32p05" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const Volume2 = createLucideIcon("Volume2", [
-  [
-    "path",
-    {
-      d: "M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z",
-      key: "uqj9uw"
-    }
-  ],
-  ["path", { d: "M16 9a5 5 0 0 1 0 6", key: "1q6k2b" }],
-  ["path", { d: "M19.364 18.364a9 9 0 0 0 0-12.728", key: "ijwkga" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const VolumeX = createLucideIcon("VolumeX", [
-  [
-    "path",
-    {
-      d: "M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z",
-      key: "uqj9uw"
-    }
-  ],
-  ["line", { x1: "22", x2: "16", y1: "9", y2: "15", key: "1ewh16" }],
-  ["line", { x1: "16", x2: "22", y1: "9", y2: "15", key: "5ykzw1" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const X = createLucideIcon("X", [
-  ["path", { d: "M18 6 6 18", key: "1bl5f8" }],
-  ["path", { d: "m6 6 12 12", key: "d8bk6v" }]
 ]);
 function __rest(s, e) {
   var t = {};
@@ -18922,6 +18646,21 @@ if (shouldShowDeprecationWarning()) console.warn("⚠️  Node.js 18 and below a
 const supabaseUrl = "https://hdbbpwcixfcgfmwucuqd.supabase.co";
 const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhkYmJwd2NpeGZjZ2Ztd3VjdXFkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI5NzE1MDgsImV4cCI6MjA4ODU0NzUwOH0.fs9qIjA7QjpvKqONApEToZ6Pk8wBP1YsrmlraxZjKfk";
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const Heart = createLucideIcon("Heart", [
+  [
+    "path",
+    {
+      d: "M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z",
+      key: "c3ymky"
+    }
+  ]
+]);
 function IntroScreen({ onEnter, onStart }) {
   const [isOpen, setIsOpen] = reactExports.useState(false);
   const [isProcessing, setIsProcessing] = reactExports.useState(false);
@@ -18934,35 +18673,12 @@ function IntroScreen({ onEnter, onStart }) {
       onEnter();
     }, 1200);
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `fixed inset-0 bg-stone-900 flex flex-col transition-opacity duration-1000 z-[150] ${isOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`, children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `fixed inset-0 bg-stone-900 flex flex-col items-center justify-center transition-opacity duration-1000 z-[150] ${isOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute inset-0 overflow-hidden", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-1/4 left-1/4 w-64 h-64 bg-rose-900/20 rounded-full blur-3xl opacity-50" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute bottom-1/4 right-1/4 w-64 h-64 bg-stone-700/30 rounded-full blur-3xl opacity-50" })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("style", { children: `
-                @keyframes warning-flash {
-                    0%, 100% { opacity: 1; }
-                    40% { opacity: 0.2; }
-                }
-                @keyframes icon-shake {
-                    0%, 100% { transform: rotate(0deg); }
-                    20% { transform: rotate(-14deg); }
-                    40% { transform: rotate(14deg); }
-                    60% { transform: rotate(-8deg); }
-                    80% { transform: rotate(8deg); }
-                }
-                .warning-flash { animation: warning-flash 1.1s ease-in-out infinite; }
-                .icon-shake { animation: icon-shake 1.1s ease-in-out infinite; }
-            ` }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "warning-flash z-10 w-full flex flex-col items-center pt-14 pb-5 px-4 bg-amber-950/30 border-b border-amber-700/40 space-y-2", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(TriangleAlert, { size: 26, className: "text-amber-400 icon-shake" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-stone-200 text-[17px] font-bold tracking-wide text-center leading-loose", children: [
-        "가족식이라 하객 없이 진행됩니다.",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-        "축하 방명록만 남겨주세요."
-      ] })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `z-10 flex-1 flex flex-col items-center justify-center transition-all duration-1000 transform ${isOpen ? "scale-110" : "scale-100"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `z-10 flex flex-col items-center transition-all duration-1000 transform ${isOpen ? "scale-110 translate-y-[-30px]" : "scale-100"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "text-4xl md:text-5xl font-serif text-stone-200 mb-6 tracking-widest text-center px-6", children: [
         "태구 ",
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-rose-400 mx-2", children: "&" }),
@@ -18988,6 +18704,18 @@ function IntroScreen({ onEnter, onStart }) {
     ] })
   ] });
 }
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const Calendar = createLucideIcon("Calendar", [
+  ["path", { d: "M8 2v4", key: "1cmpym" }],
+  ["path", { d: "M16 2v4", key: "4m81vk" }],
+  ["rect", { width: "18", height: "18", x: "3", y: "4", rx: "2", key: "1hopcy" }],
+  ["path", { d: "M3 10h18", key: "8toen8" }]
+]);
 const useScrollReveal = () => {
   const [isVisible, setIsVisible] = reactExports.useState(false);
   const ref = reactExports.useRef(null);
@@ -19068,7 +18796,7 @@ function Hero() {
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-gradient-to-b from-[#FDFBF7] via-white/40 to-white/10 opacity-90" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-white/5" })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `relative z-10 text-center flex flex-col items-center px-4 max-w-full transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0 -translate-y-4"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `relative z-10 text-center flex flex-col items-center px-4 max-w-full transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs md:text-sm tracking-[0.4em] text-stone-700 mb-6 font-medium", children: "WE ARE GETTING MARRIED" }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "text-4xl sm:text-5xl md:text-6xl font-serif text-stone-900 mb-3 drop-shadow-sm font-light tracking-widest whitespace-nowrap", children: [
         "강태구 ",
@@ -19080,7 +18808,7 @@ function Hero() {
         /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "https://www.mayfield.co.kr/restaurant/bongraeheon", target: "_blank", rel: "noopener noreferrer", className: "text-sm md:text-base text-stone-800 font-medium tracking-wide underline underline-offset-4 decoration-stone-800/30 active:text-rose-500 pb-0.5 mt-0.5", children: "메이필드 호텔 봉래헌" })
       ] })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `relative z-10 flex flex-col items-center transition-all duration-1000 delay-300 ${isVisible ? "opacity-100" : "opacity-0 translate-y-10"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `relative z-10 flex flex-col items-center transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(Countdown, {}),
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
         "button",
@@ -19099,7 +18827,7 @@ function Hero() {
 }
 function Greeting() {
   const [ref, isVisible] = useScrollReveal();
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 text-center", id: "greeting", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 text-center", id: "greeting", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(Heart, { className: "mx-auto text-rose-200 mb-8", size: 28, strokeWidth: 1.5 }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest mb-12 text-stone-800 font-bold", children: "결혼합니다" }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-6 text-stone-700 leading-relaxed text-[15px] break-keep font-medium", children: [
@@ -19143,6 +18871,67 @@ function Greeting() {
     ] })
   ] }) });
 }
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const Camera = createLucideIcon("Camera", [
+  [
+    "path",
+    {
+      d: "M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z",
+      key: "1tc9qg"
+    }
+  ],
+  ["circle", { cx: "12", cy: "13", r: "3", key: "1vg3eu" }]
+]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const X = createLucideIcon("X", [
+  ["path", { d: "M18 6 6 18", key: "1bl5f8" }],
+  ["path", { d: "m6 6 12 12", key: "d8bk6v" }]
+]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const ChevronLeft = createLucideIcon("ChevronLeft", [
+  ["path", { d: "m15 18-6-6 6-6", key: "1wnfg3" }]
+]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const ChevronRight = createLucideIcon("ChevronRight", [
+  ["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]
+]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const Volume2 = createLucideIcon("Volume2", [
+  [
+    "path",
+    {
+      d: "M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z",
+      key: "uqj9uw"
+    }
+  ],
+  ["path", { d: "M16 9a5 5 0 0 1 0 6", key: "1q6k2b" }],
+  ["path", { d: "M19.364 18.364a9 9 0 0 0 0-12.728", key: "ijwkga" }]
+]);
 function Gallery() {
   const [ref, isVisible] = useScrollReveal();
   const [selectedIdx, setSelectedIdx] = reactExports.useState(null);
@@ -19217,7 +19006,7 @@ function Gallery() {
     return () => el.removeEventListener("touchmove", onTouchMove);
   }, [selectedIdx]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "py-24 bg-white overflow-hidden", id: "gallery", ref, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-2xl mx-auto transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-2xl mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-8 px-6", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(Camera, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "우리의 빛나는 순간" })
@@ -19243,12 +19032,12 @@ function Gallery() {
       ) }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-center mb-4", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-stone-500 animate-pulse font-medium", children: "사진을 누르면 크게 보실 수 있어요 📸" }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative group", children: [
-        currentScrollIdx > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
           "button",
           {
             className: "absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-stone-600 z-10 active:bg-white select-none",
             style: { touchAction: "manipulation" },
-            onClick: (e) => {
+            onPointerDown: (e) => {
               e.stopPropagation();
               if (scrollContainerRef.current) {
                 const container = scrollContainerRef.current;
@@ -19282,12 +19071,12 @@ function Gallery() {
             ) }, idx))
           }
         ),
-        currentScrollIdx < images.length - 1 && /* @__PURE__ */ jsxRuntimeExports.jsx(
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
           "button",
           {
             className: "absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-stone-600 z-10 active:bg-white select-none",
             style: { touchAction: "manipulation" },
-            onClick: (e) => {
+            onPointerDown: (e) => {
               e.stopPropagation();
               if (scrollContainerRef.current) {
                 const container = scrollContainerRef.current;
@@ -19328,7 +19117,7 @@ function Gallery() {
             {
               className: "absolute top-6 right-6 z-[510] flex items-center justify-center w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-stone-800 shadow-xl active:bg-white transition-colors select-none",
               style: { touchAction: "manipulation" },
-              onClick: (e) => {
+              onPointerDown: (e) => {
                 e.stopPropagation();
                 document.body.classList.remove("music-hidden");
                 document.body.classList.remove("nav-hidden");
@@ -19342,7 +19131,7 @@ function Gallery() {
             {
               className: "absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/70 backdrop-blur-md text-stone-800 shadow-lg active:bg-white/90 transition-colors select-none",
               style: { touchAction: "manipulation" },
-              onClick: (e) => {
+              onPointerDown: (e) => {
                 e.stopPropagation();
                 goPrev();
               },
@@ -19354,7 +19143,7 @@ function Gallery() {
             {
               className: "absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/70 backdrop-blur-md text-stone-800 shadow-lg active:bg-white/90 transition-colors select-none",
               style: { touchAction: "manipulation" },
-              onClick: (e) => {
+              onPointerDown: (e) => {
                 e.stopPropagation();
                 goNext();
               },
@@ -19387,17 +19176,34 @@ function Gallery() {
     )
   ] });
 }
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const MapPin = createLucideIcon("MapPin", [
+  [
+    "path",
+    {
+      d: "M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0",
+      key: "1r0f0z"
+    }
+  ],
+  ["circle", { cx: "12", cy: "10", r: "3", key: "ilqhr7" }]
+]);
 function Location() {
   const [ref, isVisible] = useScrollReveal();
-  const openTmap = () => {
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-    if (isIOS) {
-      window.location.href = "tmap://route?goalname=메이필드호텔%20봉래헌&goalx=126.817971&goaly=37.5478974";
-    } else {
-      window.location.href = "intent://route?goalname=메이필드호텔%20봉래헌&goalx=126.817971&goaly=37.5478974#Intent;scheme=tmap;package=com.skt.tmap.ku;end";
-    }
+  const openNaverMap = () => {
+    window.open("https://map.naver.com/p/entry/place/11678840", "_blank");
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 bg-[#FDFBF7]", id: "location", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `max-w-lg mx-auto transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
+  const openKakaoMap = () => {
+    window.open("https://map.kakao.com/link/to/메이필드호텔 봉래헌,37.5478974,126.817971", "_blank");
+  };
+  const openTmap = () => {
+    window.open("tmap://route?goalname=메이필드호텔%20봉래헌&goalx=126.817971&goaly=37.5478974", "_blank");
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 bg-[#FDFBF7]", id: "location", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `max-w-lg mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-10", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(MapPin, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "식사 자리 안내" })
@@ -19465,22 +19271,18 @@ function Location() {
           ] }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex space-x-2 pl-3.5 mt-4 relative z-20", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "a",
+              "button",
               {
-                href: "https://map.naver.com/p/entry/place/11678840",
-                target: "_blank",
-                rel: "noopener noreferrer",
+                onPointerDown: openNaverMap,
                 style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
                 className: "flex-1 py-4 bg-[#00C73C] text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#009b2e] active:opacity-90 shadow-sm select-none",
                 children: "네이버 지도"
               }
             ),
             /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "a",
+              "button",
               {
-                href: "https://map.kakao.com/link/to/메이필드호텔 봉래헌,37.5478974,126.817971",
-                target: "_blank",
-                rel: "noopener noreferrer",
+                onPointerDown: openKakaoMap,
                 style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
                 className: "flex-1 py-4 bg-[#FAE100] text-[#391B1B] text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#e0c800] active:opacity-90 shadow-sm select-none",
                 children: "카카오맵"
@@ -19489,7 +19291,7 @@ function Location() {
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               "button",
               {
-                onClick: openTmap,
+                onPointerDown: openTmap,
                 style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
                 className: "flex-1 py-4 bg-stone-800 text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-stone-900 active:opacity-90 shadow-sm select-none",
                 children: "티맵"
@@ -19516,6 +19318,50 @@ function Location() {
     ] })
   ] }) });
 }
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const Gift = createLucideIcon("Gift", [
+  ["rect", { x: "3", y: "8", width: "18", height: "4", rx: "1", key: "bkv52" }],
+  ["path", { d: "M12 8v13", key: "1c76mn" }],
+  ["path", { d: "M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7", key: "6wjy6b" }],
+  [
+    "path",
+    {
+      d: "M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5",
+      key: "1ihvrl"
+    }
+  ]
+]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const ChevronDown = createLucideIcon("ChevronDown", [
+  ["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]
+]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const ChevronUp = createLucideIcon("ChevronUp", [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const Copy = createLucideIcon("Copy", [
+  ["rect", { width: "14", height: "14", x: "8", y: "8", rx: "2", ry: "2", key: "17jyea" }],
+  ["path", { d: "M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2", key: "zix9uf" }]
+]);
 function AccountInfo({ showToast }) {
   const [ref, isVisible] = useScrollReveal();
   const [openGroom, setOpenGroom] = reactExports.useState(true);
@@ -19548,16 +19394,14 @@ function AccountInfo({ showToast }) {
     }
     document.body.removeChild(textArea);
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 bg-stone-50", id: "account", ref, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-md mx-auto transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 bg-stone-50", id: "account", ref, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-md mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-10", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(Gift, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "마음 전하실 곳" }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm text-stone-600 mt-4 leading-relaxed font-medium", children: [
-        "따뜻한 마음으로 축하해 주시는",
+        "따뜻한 마음으로 축하해 주시는 모든 분들께 감사드립니다.",
         /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-        "모든 분들께 감사드립니다.",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-        "바르고 지혜롭게 살겠습니다."
+        "바르고 지혜롭게 잘 살겠습니다."
       ] })
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4", children: [
@@ -19565,7 +19409,7 @@ function AccountInfo({ showToast }) {
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
           "button",
           {
-            onClick: () => setOpenGroom(!openGroom),
+            onPointerDown: () => setOpenGroom(!openGroom),
             style: { touchAction: "manipulation" },
             className: "w-full px-6 py-5 flex justify-between items-center text-left bg-blue-50/50 hover:bg-blue-50 active:bg-blue-100 transition-colors select-none cursor-pointer",
             children: [
@@ -19586,7 +19430,7 @@ function AccountInfo({ showToast }) {
             /* @__PURE__ */ jsxRuntimeExports.jsxs(
               "button",
               {
-                onClick: () => handleCopy("카카오뱅크 3333-01-5650207"),
+                onPointerDown: () => handleCopy("카카오뱅크 3333-01-5650207"),
                 style: { touchAction: "manipulation" },
                 className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
                 children: [
@@ -19608,7 +19452,7 @@ function AccountInfo({ showToast }) {
             /* @__PURE__ */ jsxRuntimeExports.jsxs(
               "button",
               {
-                onClick: () => handleCopy("농협 735080-51-036329"),
+                onPointerDown: () => handleCopy("농협 735080-51-036329"),
                 style: { touchAction: "manipulation" },
                 className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
                 children: [
@@ -19624,7 +19468,7 @@ function AccountInfo({ showToast }) {
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
           "button",
           {
-            onClick: () => setOpenBride(!openBride),
+            onPointerDown: () => setOpenBride(!openBride),
             style: { touchAction: "manipulation" },
             className: "w-full px-6 py-5 flex justify-between items-center text-left bg-rose-50/50 hover:bg-rose-50 active:bg-rose-100 transition-colors select-none cursor-pointer",
             children: [
@@ -19645,7 +19489,7 @@ function AccountInfo({ showToast }) {
             /* @__PURE__ */ jsxRuntimeExports.jsxs(
               "button",
               {
-                onClick: () => handleCopy("우리은행 1002-837-547920"),
+                onPointerDown: () => handleCopy("우리은행 1002-837-547920"),
                 style: { touchAction: "manipulation" },
                 className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
                 children: [
@@ -19667,7 +19511,7 @@ function AccountInfo({ showToast }) {
             /* @__PURE__ */ jsxRuntimeExports.jsxs(
               "button",
               {
-                onClick: () => handleCopy("농협 352-0761-7396-23"),
+                onPointerDown: () => handleCopy("농협 352-0761-7396-23"),
                 style: { touchAction: "manipulation" },
                 className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
                 children: [
@@ -19689,7 +19533,7 @@ function AccountInfo({ showToast }) {
             /* @__PURE__ */ jsxRuntimeExports.jsxs(
               "button",
               {
-                onClick: () => handleCopy("우리은행 1002-734-796143"),
+                onPointerDown: () => handleCopy("우리은행 1002-734-796143"),
                 style: { touchAction: "manipulation" },
                 className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
                 children: [
@@ -19704,26 +19548,98 @@ function AccountInfo({ showToast }) {
     ] })
   ] }) });
 }
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const Send = createLucideIcon("Send", [
+  [
+    "path",
+    {
+      d: "M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z",
+      key: "1ffxy3"
+    }
+  ],
+  ["path", { d: "m21.854 2.147-10.94 10.939", key: "12cjpa" }]
+]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const Trash2 = createLucideIcon("Trash2", [
+  ["path", { d: "M3 6h18", key: "d0wm0j" }],
+  ["path", { d: "M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6", key: "4alrt4" }],
+  ["path", { d: "M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2", key: "v07s0e" }],
+  ["line", { x1: "10", x2: "10", y1: "11", y2: "17", key: "1uufr5" }],
+  ["line", { x1: "14", x2: "14", y1: "11", y2: "17", key: "xtxkd" }]
+]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const Pencil = createLucideIcon("Pencil", [
+  [
+    "path",
+    {
+      d: "M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z",
+      key: "1a8usu"
+    }
+  ],
+  ["path", { d: "m15 5 4 4", key: "1mk7zo" }]
+]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const Lock = createLucideIcon("Lock", [
+  ["rect", { width: "18", height: "11", x: "3", y: "11", rx: "2", ry: "2", key: "1w4ew1" }],
+  ["path", { d: "M7 11V7a5 5 0 0 1 10 0v4", key: "fwvmzm" }]
+]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const LockOpen = createLucideIcon("LockOpen", [
+  ["rect", { width: "18", height: "11", x: "3", y: "11", rx: "2", ry: "2", key: "1w4ew1" }],
+  ["path", { d: "M7 11V7a5 5 0 0 1 9.9-1", key: "1mm8w8" }]
+]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const MessageSquare = createLucideIcon("MessageSquare", [
+  ["path", { d: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z", key: "1lielz" }]
+]);
 const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModal, toggleUnlock }) => {
   const isLocked = msg.is_secret && !unlockedMessages[msg.id];
   let cardColorClass = msg.receiver === "groom" ? "bg-blue-50/60 border-blue-100" : msg.receiver === "bride" ? "bg-rose-50/60 border-rose-100" : "bg-white border-stone-100";
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `${cardColorClass} p-5 rounded-2xl shadow-sm border flex flex-col relative group transition-all duration-300`, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-3", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between items-center mb-1.5", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[11px] text-stone-400 font-medium", children: msg.date }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center space-x-1 -mr-2", children: [
-          msg.is_secret && /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => isLocked ? openPasswordModal(msg, "unlock") : toggleUnlock(msg.id, false), className: "p-3 -m-1 text-stone-300 active:text-stone-600 select-none", style: { touchAction: "manipulation" }, children: isLocked ? /* @__PURE__ */ jsxRuntimeExports.jsx(Lock, { size: 16 }) : /* @__PURE__ */ jsxRuntimeExports.jsx(LockOpen, { size: 16 }) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => openPasswordModal(msg, "reply"), className: "p-3 -m-1 text-stone-300 active:text-stone-600 select-none", style: { touchAction: "manipulation" }, title: "답글 남기기", children: /* @__PURE__ */ jsxRuntimeExports.jsx(MessageSquare, { size: 16 }) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => openPasswordModal(msg, "edit"), className: "p-3 -m-1 text-stone-300 active:text-stone-600 select-none", style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Pencil, { size: 16 }) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => openPasswordModal(msg, "delete"), className: "p-3 -m-1 text-stone-300 active:text-rose-400 select-none", style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Trash2, { size: 16 }) })
-        ] })
-      ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between items-center mb-3", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center space-x-2", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `font-bold text-sm bg-white/80 px-2.5 py-1 rounded-md ${msg.receiver === "groom" ? "text-blue-700" : msg.receiver === "bride" ? "text-rose-700" : "text-stone-800"}`, children: msg.name }),
         msg.receiver !== "public" && /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: `text-[9px] font-bold px-1.5 py-0.5 rounded ${msg.receiver === "groom" ? "bg-blue-200/50 text-blue-600" : "bg-rose-200/50 text-rose-600"}`, children: [
           "To. ",
           msg.receiver === "groom" ? "신랑" : "신부"
         ] })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center space-x-1 -mr-2 mt-1 sm:mt-0", children: [
+        msg.is_secret && /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => isLocked ? openPasswordModal(msg, "unlock") : toggleUnlock(msg.id, false), className: "p-3 -m-1 text-stone-300 active:text-stone-600 select-none", style: { touchAction: "manipulation" }, children: isLocked ? /* @__PURE__ */ jsxRuntimeExports.jsx(Lock, { size: 16 }) : /* @__PURE__ */ jsxRuntimeExports.jsx(LockOpen, { size: 16 }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[11px] text-stone-400 font-medium px-1.5", children: msg.date }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => openPasswordModal(msg, "reply"), className: "p-3 -m-1 text-stone-300 active:text-stone-600 select-none", style: { touchAction: "manipulation" }, title: "답글 남기기", children: /* @__PURE__ */ jsxRuntimeExports.jsx(MessageSquare, { size: 16 }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => openPasswordModal(msg, "edit"), className: "p-3 -m-1 text-stone-300 active:text-stone-600 select-none", style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Pencil, { size: 16 }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => openPasswordModal(msg, "delete"), className: "p-3 -m-1 text-stone-300 active:text-rose-400 select-none", style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Trash2, { size: 16 }) })
       ] })
     ] }),
     isLocked ? /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `text-sm italic flex items-center justify-center p-4 rounded-xl cursor-pointer active:opacity-70 transition-opacity ${msg.receiver === "groom" ? "text-blue-400 bg-blue-100/30" : msg.receiver === "bride" ? "text-rose-400 bg-rose-100/30" : "text-stone-400 bg-stone-50"}`, onClick: () => openPasswordModal(msg, "unlock"), children: [
@@ -19734,33 +19650,13 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
     ] }) : /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-3", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: `text-sm leading-relaxed font-medium whitespace-pre-wrap ${msg.receiver === "groom" ? "text-blue-900" : msg.receiver === "bride" ? "text-rose-900" : "text-stone-700"}`, children: msg.content }),
       msg.reply && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-stone-800/5 rounded-xl p-3 border-l-2 border-stone-800/20 animate-in slide-in-from-left-2 duration-300", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center space-x-1.5 mb-1", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] font-bold text-stone-800 bg-stone-200 px-1.5 py-0.5 rounded", children: msg.receiver === "groom" ? "강태구 🤵" : msg.receiver === "bride" ? "신희영 👰" : "신랑 & 신부 💑" }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center space-x-1.5 mb-1", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] font-bold text-stone-800 bg-stone-200 px-1.5 py-0.5 rounded", children: "신랑 & 신부" }) }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[13px] text-stone-600 font-medium leading-relaxed", children: msg.reply })
       ] })
     ] })
   ] });
 });
 const ModernModal = reactExports.memo(({ isOpen, onClose, title, description, children, onConfirm, confirmLabel = "확인", cancelLabel = "취소", isDestructive = false }) => {
-  const [kbHeight, setKbHeight] = React.useState(0);
-  React.useEffect(() => {
-    if (!isOpen) {
-      setKbHeight(0);
-      return;
-    }
-    const vv = window.visualViewport;
-    if (!vv) return;
-    const update = () => {
-      const kb = Math.max(0, window.innerHeight - vv.height - vv.offsetTop);
-      setKbHeight(kb);
-    };
-    update();
-    vv.addEventListener("resize", update);
-    vv.addEventListener("scroll", update);
-    return () => {
-      vv.removeEventListener("resize", update);
-      vv.removeEventListener("scroll", update);
-    };
-  }, [isOpen]);
   if (!isOpen) return null;
   const handleClose = () => {
     if (document.activeElement && document.activeElement !== document.body) {
@@ -19768,37 +19664,20 @@ const ModernModal = reactExports.memo(({ isOpen, onClose, title, description, ch
     }
     onClose();
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
-    "div",
-    {
-      className: "fixed inset-0 z-[200] flex justify-center px-4",
-      style: {
-        alignItems: kbHeight > 0 ? "flex-end" : "center",
-        paddingBottom: kbHeight > 0 ? `${kbHeight + 20}px` : "0px",
-        transition: "padding-bottom 0.2s ease"
-      },
-      children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-stone-900/80 animate-in fade-in duration-300", onClick: handleClose }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative bg-white w-full max-w-[320px] rounded-[24px] shadow-2xl border border-white/20 overflow-hidden animate-in fade-in zoom-in duration-200", onClick: (e) => e.stopPropagation(), children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 text-center", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-[17px] font-bold text-stone-900 mb-1", children: title }),
-            description && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[13px] text-stone-500 font-medium leading-relaxed whitespace-pre-line", children: description }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-4", children })
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col border-t border-stone-100", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onTouchEnd: (e) => {
-              e.preventDefault();
-              onConfirm();
-            }, onClick: onConfirm, style: { touchAction: "manipulation" }, className: `py-4 text-[15px] font-bold border-b border-stone-100 active:bg-stone-50 select-none ${isDestructive ? "text-rose-500" : "text-blue-500"}`, children: confirmLabel }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onTouchEnd: (e) => {
-              e.preventDefault();
-              handleClose();
-            }, onClick: handleClose, style: { touchAction: "manipulation" }, className: "py-4 text-[15px] font-medium text-stone-400 active:bg-stone-50 select-none", children: cancelLabel })
-          ] })
-        ] })
-      ]
-    }
-  );
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "fixed inset-0 z-[200] flex items-center justify-center px-4", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-stone-900/80 animate-in fade-in duration-300", onClick: handleClose }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative bg-white w-full max-w-[320px] rounded-[24px] shadow-2xl border border-white/20 overflow-hidden animate-in fade-in zoom-in duration-200", onClick: (e) => e.stopPropagation(), children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 text-center", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-[17px] font-bold text-stone-900 mb-1", children: title }),
+        description && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[13px] text-stone-500 font-medium leading-tight", children: description }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-4", children })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col border-t border-stone-100", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onPointerDown: onConfirm, style: { touchAction: "manipulation" }, className: `py-4 text-[15px] font-bold border-b border-stone-100 active:bg-stone-50 select-none ${isDestructive ? "text-rose-500" : "text-blue-500"}`, children: confirmLabel }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onPointerDown: handleClose, style: { touchAction: "manipulation" }, className: "py-4 text-[15px] font-medium text-stone-400 active:bg-stone-50 select-none", children: cancelLabel })
+      ] })
+    ] })
+  ] });
 });
 function Guestbook({ showToast }) {
   const [ref, isVisible] = useScrollReveal();
@@ -19903,7 +19782,7 @@ function Guestbook({ showToast }) {
         toggleUnlock(selectedMsg.id, true);
         setIsPasswordModalOpen(false);
       } else {
-        showToast("전화번호 뒷 4자리가 일치하지 않습니다.");
+        showToast("비밀번호가 일치하지 않습니다.");
         refocusPasswordInput();
       }
     } else if (modalPurpose === "delete") {
@@ -19911,7 +19790,7 @@ function Guestbook({ showToast }) {
         setIsPasswordModalOpen(false);
         setIsDeleteModalOpen(true);
       } else {
-        showToast("전화번호 뒷 4자리가 틀렸습니다.");
+        showToast("비밀번호가 틀렸습니다.");
         refocusPasswordInput();
       }
     } else if (modalPurpose === "edit") {
@@ -19920,19 +19799,16 @@ function Guestbook({ showToast }) {
         setIsPasswordModalOpen(false);
         setIsEditModalOpen(true);
       } else {
-        showToast("전화번호 뒷 4자리가 틀렸습니다.");
+        showToast("비밀번호가 틀렸습니다.");
         refocusPasswordInput();
       }
     } else if (modalPurpose === "reply") {
-      const groomPw = "840806";
-      const bridePw = "840407";
-      const isValid = selectedMsg.receiver === "groom" ? modalPassword === groomPw : selectedMsg.receiver === "bride" ? modalPassword === bridePw : modalPassword === groomPw || modalPassword === bridePw;
-      if (isValid) {
+      if (modalPassword === "0313") {
         setModalReplyText(selectedMsg.reply || "");
         setIsPasswordModalOpen(false);
         setIsReplyInputModalOpen(true);
       } else {
-        showToast("생일 비밀번호가 일치하지 않습니다.");
+        showToast("신랑/신부 전용 비밀번호가 아닙니다.");
         refocusPasswordInput();
       }
     }
@@ -20004,7 +19880,7 @@ function Guestbook({ showToast }) {
       if (existingMsg) {
         if (existingMsg.password && trimmedPassword !== existingMsg.password && trimmedPassword !== "0313") {
           setLoading(false);
-          return showToast("전화번호 뒷 4자리가 일치하지 않습니다.");
+          return showToast("비밀번호가 일치하지 않습니다.");
         }
         const { error: upError } = await supabase.from("guestbook").update(messageDataDB).eq("id", existingMsg.id);
         if (upError || typeof existingMsg.id === "string" && (existingMsg.id.startsWith("mock-") || existingMsg.id.startsWith("local-"))) {
@@ -20102,7 +19978,7 @@ function Guestbook({ showToast }) {
     ] });
   }, [messages, paginatedMessages, unlockedMessages, initialLoading, openPasswordModal, toggleUnlock, currentPage, totalPages]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "py-24 bg-[#FDFBF7]", id: "guestbook", ref, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-md mx-auto px-6 transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-md mx-auto px-6 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-10 flex flex-col items-center", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx(MessageSquare, { className: "mx-auto text-rose-200", size: 28, strokeWidth: 1.5 }) }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "text-2xl font-serif tracking-[0.2em] text-stone-900 font-bold mb-3 relative", children: [
@@ -20118,23 +19994,14 @@ function Guestbook({ showToast }) {
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("form", { onSubmit: handleSubmit, className: "bg-white p-5 rounded-[1.25rem] shadow-sm border border-stone-100 mb-8 space-y-4 relative z-20", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex space-x-2", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "text", placeholder: "성함", value: newName, onChange: (e) => setNewName(e.target.value), className: "w-2/5 bg-stone-50 border border-stone-100 rounded-xl px-3 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 10 }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "password", inputMode: "numeric", pattern: "[0-9]*", placeholder: "전화번호 뒷 4자리", value: newPassword, onChange: (e) => setNewPassword(e.target.value), className: "w-3/5 bg-stone-50 border border-stone-100 rounded-xl px-3 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 4 })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "text", placeholder: "성함", value: newName, onChange: (e) => setNewName(e.target.value), className: "w-1/2 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 10 }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "password", placeholder: "비밀번호", value: newPassword, onChange: (e) => setNewPassword(e.target.value), className: "w-1/2 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 10 })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { placeholder: "축하의 한마디를 남겨주세요.", value: newContent, onChange: (e) => setNewContent(e.target.value), className: "w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 h-28 resize-none focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 100 }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex space-x-2 relative z-10", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onTouchEnd: (e) => {
-            e.preventDefault();
-            setReceiver("public");
-          }, onClick: () => setReceiver("public"), style: { touchAction: "manipulation" }, className: `flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-stone-100 select-none ${receiver === "public" ? "bg-stone-100 border-stone-200 text-stone-700 shadow-sm" : "bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50"}`, children: "모두에게" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onTouchEnd: (e) => {
-            e.preventDefault();
-            setReceiver("groom");
-          }, onClick: () => setReceiver("groom"), style: { touchAction: "manipulation" }, className: `flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-blue-100 select-none ${receiver === "groom" ? "bg-blue-50 border-blue-200 text-blue-700 shadow-sm" : "bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50"}`, children: "신랑에게" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onTouchEnd: (e) => {
-            e.preventDefault();
-            setReceiver("bride");
-          }, onClick: () => setReceiver("bride"), style: { touchAction: "manipulation" }, className: `flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-rose-100 select-none ${receiver === "bride" ? "bg-rose-50 border-rose-200 text-rose-700 shadow-sm" : "bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50"}`, children: "신부에게" })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onClick: () => setReceiver("public"), style: { touchAction: "manipulation" }, className: `flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-stone-100 select-none ${receiver === "public" ? "bg-stone-100 border-stone-200 text-stone-700 shadow-sm" : "bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50"}`, children: "모두에게" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onClick: () => setReceiver("groom"), style: { touchAction: "manipulation" }, className: `flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-blue-100 select-none ${receiver === "groom" ? "bg-blue-50 border-blue-200 text-blue-700 shadow-sm" : "bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50"}`, children: "신랑에게" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onClick: () => setReceiver("bride"), style: { touchAction: "manipulation" }, className: `flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-rose-100 select-none ${receiver === "bride" ? "bg-rose-50 border-rose-200 text-rose-700 shadow-sm" : "bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50"}`, children: "신부에게" })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("button", { type: "submit", disabled: loading, style: { touchAction: "manipulation" }, className: "w-full bg-[#2A2626] active:bg-[#1f1d1d] text-white font-bold py-4 rounded-xl text-[15px] disabled:bg-stone-400 flex items-center justify-center relative z-10 mt-2 select-none", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(Send, { size: 18, className: "mr-2.5 opacity-90" }),
@@ -20144,15 +20011,15 @@ function Guestbook({ showToast }) {
       ] }),
       messageListOutput
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isPasswordModalOpen, onClose: () => setIsPasswordModalOpen(false), title: modalPurpose === "reply" ? "생일 확인" : "전화번호 확인", description: modalPurpose === "reply" ? (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑의 생일을 입력하세요.\n(예: 840806)" : (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부의 생일을 입력하세요.\n(예: 840407)" : "신랑 또는 신부의\n생일을 입력하세요." : modalPurpose === "edit" || modalPurpose === "delete" ? "등록 시 입력한\n전화번호 뒷 4자리를 입력해주세요." : "전화번호 뒷 4자리를\n입력해주세요.", onConfirm: handleModalConfirm, children: /* @__PURE__ */ jsxRuntimeExports.jsx("input", { ref: passwordInputRef, type: "password", inputMode: "numeric", pattern: "[0-9]*", maxLength: modalPurpose === "reply" ? 6 : 4, value: modalPassword, onChange: (e) => setModalPassword(e.target.value), onKeyDown: (e) => e.key === "Enter" && handleModalConfirm(), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-center text-lg tracking-[0.5em] focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "••••", autoFocus: true }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isPasswordModalOpen, onClose: () => setIsPasswordModalOpen(false), title: "비밀번호 확인", description: "비밀번호를 입력해주세요.", onConfirm: handleModalConfirm, children: /* @__PURE__ */ jsxRuntimeExports.jsx("input", { ref: passwordInputRef, type: "password", value: modalPassword, onChange: (e) => setModalPassword(e.target.value), onKeyDown: (e) => e.key === "Enter" && handleModalConfirm(), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-center text-lg tracking-[0.5em] focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "••••", autoFocus: true }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isDeleteModalOpen, onClose: () => setIsDeleteModalOpen(false), title: "메시지 삭제", description: "삭제하면 되돌릴 수 없습니다. 정말 삭제할까요?", onConfirm: confirmDelete, confirmLabel: "삭제", isDestructive: true }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isEditModalOpen, onClose: () => setIsEditModalOpen(false), title: "메시지 수정", onConfirm: confirmEdit, confirmLabel: "수정완료", children: /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalEditText, onChange: (e) => setModalEditText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none", autoFocus: true }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isReplyInputModalOpen, onClose: () => setIsReplyInputModalOpen(false), title: "답글 남기기", description: "게스트에게 전할 소중한 메시지를 입력하세요.", onConfirm: confirmReply, confirmLabel: "답글저장", children: /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalReplyText, onChange: (e) => setModalReplyText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 pt-2 pb-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "감사의 인사를 남겨주세요.", autoFocus: true }) })
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isReplyInputModalOpen, onClose: () => setIsReplyInputModalOpen(false), title: "답글 남기기", description: "게스트에게 전할 소중한 메시지를 입력하세요.", onConfirm: confirmReply, confirmLabel: "답글저장", children: /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalReplyText, onChange: (e) => setModalReplyText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "감사의 인사를 남겨주세요.", autoFocus: true }) })
   ] });
 }
 function Share() {
   const [ref, isVisible] = useScrollReveal();
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "pt-8 pb-4 bg-white", id: "share", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { ref, className: `max-w-md mx-auto text-center transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4", children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "pt-8 pb-4 bg-white", id: "share", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { ref, className: `max-w-md mx-auto text-center transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[28px] font-serif italic text-stone-800 tracking-wider", children: "Thank you!" }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-2xl text-stone-900", children: "🖤" })
   ] }) }) });
@@ -20172,7 +20039,7 @@ function BottomNav() {
   return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "fixed bottom-0 w-full max-w-[480px] bg-white/95 border-t border-stone-200 z-40 px-2 pt-1 pb-[max(4px,env(safe-area-inset-bottom))] flex justify-around items-center left-1/2 -translate-x-1/2 shadow-[0_-5px_20px_rgba(0,0,0,0.05)]", children: navItems.map((item) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
     "button",
     {
-      onClick: (e) => {
+      onPointerDown: (e) => {
         scrollTo(item.id);
       },
       style: { touchAction: "manipulation" },
@@ -20217,6 +20084,43 @@ function Petals() {
     petal.id
   )) });
 }
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const Music = createLucideIcon("Music", [
+  ["path", { d: "M9 18V5l12-2v13", key: "1jmyc2" }],
+  ["circle", { cx: "6", cy: "18", r: "3", key: "fqmcym" }],
+  ["circle", { cx: "18", cy: "16", r: "3", key: "1hluhg" }]
+]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const VolumeX = createLucideIcon("VolumeX", [
+  [
+    "path",
+    {
+      d: "M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z",
+      key: "uqj9uw"
+    }
+  ],
+  ["line", { x1: "22", x2: "16", y1: "9", y2: "15", key: "1ewh16" }],
+  ["line", { x1: "16", x2: "22", y1: "9", y2: "15", key: "5ykzw1" }]
+]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const Play = createLucideIcon("Play", [
+  ["polygon", { points: "6 3 20 12 6 21 6 3", key: "1oa8hb" }]
+]);
 function MusicPlayer({ forcePlay }) {
   const [isPlaying, setIsPlaying] = reactExports.useState(false);
   const [showPlaylist, setShowPlaylist] = reactExports.useState(false);
@@ -20302,13 +20206,13 @@ function MusicPlayer({ forcePlay }) {
     document.addEventListener("pointerdown", handler);
     return () => document.removeEventListener("pointerdown", handler);
   }, [showPlaylist]);
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref: playerRef, className: `fixed top-6 left-6 z-[100] flex flex-col items-start select-none pointer-events-none transition-opacity duration-300 ${hidePlayer ? "opacity-0" : "opacity-100"}`, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center pointer-events-auto", children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref: playerRef, className: `fixed top-6 left-6 z-[100] flex flex-col items-start select-none transition-opacity duration-300 ${hidePlayer ? "opacity-0 pointer-events-none" : "opacity-100"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative group flex items-center bg-white/95 border border-stone-200 rounded-full shadow-md p-1 transition-all hover:shadow-lg", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           "button",
           {
-            onClick: (e) => {
+            onPointerDown: (e) => {
               e.stopPropagation();
               setShowPlaylist(!showPlaylist);
             },
@@ -20322,7 +20226,7 @@ function MusicPlayer({ forcePlay }) {
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
           "button",
           {
-            onClick: togglePlay,
+            onPointerDown: togglePlay,
             style: { touchAction: "manipulation" },
             className: "w-9 h-9 rounded-full flex items-center justify-center transition-colors hover:bg-stone-100 text-stone-600 relative overflow-hidden",
             title: isPlaying ? "음악 끄기" : "음악 켜기",
@@ -20337,7 +20241,7 @@ function MusicPlayer({ forcePlay }) {
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
         "div",
         {
-          onClick: (e) => {
+          onPointerDown: (e) => {
             e.stopPropagation();
             setShowPlaylist(!showPlaylist);
           },
@@ -20358,7 +20262,7 @@ function MusicPlayer({ forcePlay }) {
         }
       )
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `mt-3 w-64 bg-white rounded-2xl border border-rose-100 shadow-2xl transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] origin-top-left overflow-hidden ${showPlaylist ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" : "opacity-0 scale-90 -translate-y-4 pointer-events-none"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `mt-3 w-64 bg-white rounded-2xl border border-rose-100 shadow-2xl transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] origin-top-left overflow-hidden ${showPlaylist ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-90 -translate-y-4 pointer-events-none"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-5 py-4 border-b border-stone-100 flex justify-between items-center bg-stone-50", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-[11px] font-bold text-stone-400 uppercase tracking-widest", children: "Playlist" }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-[10px] text-rose-400 font-bold bg-rose-50 px-2 py-0.5 rounded-full", children: [
@@ -20372,7 +20276,7 @@ function MusicPlayer({ forcePlay }) {
         return /* @__PURE__ */ jsxRuntimeExports.jsxs(
           "button",
           {
-            onClick: () => selectTrack(index),
+            onPointerDown: () => selectTrack(index),
             style: { touchAction: "manipulation" },
             className: `w-full flex items-center px-4 py-3 rounded-xl transition-colors group/item ${isCurrent ? "bg-rose-50/80 text-rose-600" : "hover:bg-stone-50 text-stone-600"}`,
             children: [
@@ -20463,25 +20367,14 @@ function App() {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-h-screen bg-[#FDFBF7] text-stone-800 font-sans selection:bg-rose-200 relative", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(Petals, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(MusicPlayer, { forcePlay: shouldMusicPlay }),
-    totalVisitors !== null && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "fixed top-3 left-3 z-[400] flex items-center gap-1 text-[10px] text-stone-400 font-mono bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100 select-none pointer-events-none", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
-      "총 ",
-      totalVisitors,
-      "명"
+    totalVisitors !== null && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "fixed top-3 right-3 z-[400] flex items-center gap-1 text-[10px] text-stone-400 font-serif bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100 select-none pointer-events-none", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
+      "total : ",
+      totalVisitors
     ] }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "fixed top-3 right-3 z-[400] flex items-center gap-1.5 text-[10px] text-stone-400 font-mono bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100 select-none pointer-events-none", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
-        "gh-pages #",
-        "105"
-      ] }),
-      todayVisitors !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-300", children: "·" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
-          "오늘 ",
-          todayVisitors,
-          "명"
-        ] })
-      ] })
-    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "fixed bottom-20 right-3 z-[400] flex items-center gap-1.5 text-[10px] text-stone-400 font-mono bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100 select-none pointer-events-none", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
+      "gh-pages #",
+      "ccd51ad"
+    ] }) }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
       IntroScreen,
       {
