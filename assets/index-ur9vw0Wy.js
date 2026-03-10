@@ -20138,10 +20138,10 @@ function Guestbook({ showToast }) {
       ] }),
       messageListOutput
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isPasswordModalOpen, onClose: () => setIsPasswordModalOpen(false), title: "비밀번호 확인", description: "비밀번호를 입력해주세요.", onConfirm: handleModalConfirm, children: /* @__PURE__ */ jsxRuntimeExports.jsx("input", { ref: passwordInputRef, type: "password", value: modalPassword, onChange: (e) => setModalPassword(e.target.value), onKeyDown: (e) => e.key === "Enter" && handleModalConfirm(), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-center text-lg tracking-[0.5em] focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "••••", autoFocus: true }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isPasswordModalOpen, onClose: () => setIsPasswordModalOpen(false), title: "비밀번호 확인", description: modalPurpose === "reply" ? "신랑/신부용 비밀번호를 입력해주세요." : "비밀번호를 입력해주세요.", onConfirm: handleModalConfirm, children: /* @__PURE__ */ jsxRuntimeExports.jsx("input", { ref: passwordInputRef, type: "password", value: modalPassword, onChange: (e) => setModalPassword(e.target.value), onKeyDown: (e) => e.key === "Enter" && handleModalConfirm(), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-center text-lg tracking-[0.5em] focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "••••", autoFocus: true }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isDeleteModalOpen, onClose: () => setIsDeleteModalOpen(false), title: "메시지 삭제", description: "삭제하면 되돌릴 수 없습니다. 정말 삭제할까요?", onConfirm: confirmDelete, confirmLabel: "삭제", isDestructive: true }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isEditModalOpen, onClose: () => setIsEditModalOpen(false), title: "메시지 수정", onConfirm: confirmEdit, confirmLabel: "수정완료", children: /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalEditText, onChange: (e) => setModalEditText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none", autoFocus: true }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isReplyInputModalOpen, onClose: () => setIsReplyInputModalOpen(false), title: "답글 남기기", description: "게스트에게 전할 소중한 메시지를 입력하세요.", onConfirm: confirmReply, confirmLabel: "답글저장", children: /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalReplyText, onChange: (e) => setModalReplyText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "감사의 인사를 남겨주세요.", autoFocus: true }) })
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isReplyInputModalOpen, onClose: () => setIsReplyInputModalOpen(false), title: "답글 남기기", description: "게스트에게 전할 소중한 메시지를 입력하세요.", onConfirm: confirmReply, confirmLabel: "답글저장", children: /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalReplyText, onChange: (e) => setModalReplyText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 pt-2 pb-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "감사의 인사를 남겨주세요.", autoFocus: true }) })
   ] });
 }
 function Share() {
@@ -20457,7 +20457,7 @@ function App() {
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "fixed top-3 right-3 z-[400] flex items-center gap-1.5 text-[10px] text-stone-400 font-mono bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100 select-none pointer-events-none", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "96"
+        "97"
       ] }),
       todayVisitors !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-300", children: "·" }),
