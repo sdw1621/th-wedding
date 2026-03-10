@@ -18661,6 +18661,23 @@ const Heart = createLucideIcon("Heart", [
     }
   ]
 ]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const TriangleAlert = createLucideIcon("TriangleAlert", [
+  [
+    "path",
+    {
+      d: "m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3",
+      key: "wmoenq"
+    }
+  ],
+  ["path", { d: "M12 9v4", key: "juzpu7" }],
+  ["path", { d: "M12 17h.01", key: "p32p05" }]
+]);
 function IntroScreen({ onEnter, onStart }) {
   const [isOpen, setIsOpen] = reactExports.useState(false);
   const [isProcessing, setIsProcessing] = reactExports.useState(false);
@@ -18673,12 +18690,28 @@ function IntroScreen({ onEnter, onStart }) {
       onEnter();
     }, 1200);
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `fixed inset-0 bg-stone-900 flex flex-col items-center justify-center transition-opacity duration-1000 z-[150] ${isOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`, children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `fixed inset-0 bg-stone-900 flex flex-col transition-opacity duration-1000 z-[150] ${isOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("style", { children: `
+                @keyframes icon-shake {
+                    0%, 100% { transform: translateY(0) rotate(0deg); }
+                    25% { transform: translateY(-3px) rotate(-8deg); }
+                    75% { transform: translateY(-3px) rotate(8deg); }
+                }
+                .icon-shake { animation: icon-shake 1.1s ease-in-out infinite; }
+            ` }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute inset-0 overflow-hidden", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-1/4 left-1/4 w-64 h-64 bg-rose-900/20 rounded-full blur-3xl opacity-50" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute bottom-1/4 right-1/4 w-64 h-64 bg-stone-700/30 rounded-full blur-3xl opacity-50" })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `z-10 flex flex-col items-center transition-all duration-1000 transform ${isOpen ? "scale-110 translate-y-[-30px]" : "scale-100"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "warning-flash z-10 w-full flex flex-col items-center pt-14 pb-5 px-4 bg-amber-950/30 border-b border-amber-700/40 space-y-2", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(TriangleAlert, { size: 26, className: "text-amber-400 icon-shake" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-stone-200 text-[17px] font-bold tracking-wide text-center leading-loose", children: [
+        "가족식이라 하객 없이 진행됩니다.",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+        "축하 방명록만 남겨주세요."
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `z-10 flex-1 flex flex-col items-center justify-center transition-all duration-1000 transform ${isOpen ? "scale-110 translate-y-[-30px]" : "scale-100"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "text-4xl md:text-5xl font-serif text-stone-200 mb-6 tracking-widest text-center px-6", children: [
         "태구 ",
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-rose-400 mx-2", children: "&" }),
@@ -19664,7 +19697,7 @@ const ModernModal = reactExports.memo(({ isOpen, onClose, title, description, ch
     }
     onClose();
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "fixed inset-0 z-[200] flex items-center justify-center px-4", children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "fixed inset-0 z-[200] flex items-start justify-center px-4 pt-[15vh] overflow-y-auto", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-stone-900/80 animate-in fade-in duration-300", onClick: handleClose }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative bg-white w-full max-w-[320px] rounded-[24px] shadow-2xl border border-white/20 overflow-hidden animate-in fade-in zoom-in duration-200", onClick: (e) => e.stopPropagation(), children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 text-center", children: [
@@ -20206,7 +20239,7 @@ function MusicPlayer({ forcePlay }) {
     document.addEventListener("pointerdown", handler);
     return () => document.removeEventListener("pointerdown", handler);
   }, [showPlaylist]);
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref: playerRef, className: `fixed top-6 left-6 z-[100] flex flex-col items-start select-none transition-opacity duration-300 ${hidePlayer ? "opacity-0 pointer-events-none" : "opacity-100"}`, children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref: playerRef, className: `fixed top-3 left-3 z-[160] flex flex-col items-start select-none transition-opacity duration-300 ${hidePlayer ? "opacity-0 pointer-events-none" : "opacity-100"}`, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative group flex items-center bg-white/95 border border-stone-200 rounded-full shadow-md p-1 transition-all hover:shadow-lg", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -20367,16 +20400,18 @@ function App() {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-h-screen bg-[#FDFBF7] text-stone-800 font-sans selection:bg-rose-200 relative", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(Petals, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(MusicPlayer, { forcePlay: shouldMusicPlay }),
-    (totalVisitors !== null || todayVisitors !== null) && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "fixed top-3 right-3 z-[400] flex items-center gap-1 text-[10px] text-stone-400 font-serif bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100 select-none pointer-events-none", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
-      "total : ",
-      totalVisitors ?? "-",
-      ", today : ",
-      todayVisitors ?? "-"
-    ] }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "fixed bottom-20 right-3 z-[400] flex items-center gap-1.5 text-[10px] text-stone-400 font-mono bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100 select-none pointer-events-none", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
-      "gh-pages #",
-      "109"
-    ] }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "fixed bottom-20 right-3 z-[400] flex flex-col gap-1 items-stretch select-none pointer-events-none font-mono text-[10px] text-stone-400", children: [
+      (totalVisitors !== null || todayVisitors !== null) && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
+        "total : ",
+        totalVisitors ?? "-",
+        ", today : ",
+        todayVisitors ?? "-"
+      ] }) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
+        "gh-pages #",
+        "110"
+      ] }) })
+    ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
       IntroScreen,
       {
