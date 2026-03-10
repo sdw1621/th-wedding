@@ -19380,7 +19380,7 @@ function Location() {
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-5", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-12 h-12 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-3", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Lock, { size: 22, className: "text-stone-600" }) }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-base font-bold text-stone-800", children: "직계가족만 확인" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[12px] text-stone-400 mt-1", children: "결혼식 날짜를 입력해주세요." })
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[12px] text-stone-400 mt-1", children: "직계가족 히든 번호 4자리 입력해주세요." })
           ] }),
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             "input",
@@ -20667,7 +20667,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "133"
+        "134"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
