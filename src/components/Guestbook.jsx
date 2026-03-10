@@ -11,6 +11,8 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import { supabase } from '../supabaseClient';
 
 const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbxOb4nA57HQsWz9dkcKzrvSRkIwvMwJa_ajVAavSiNZI9gzUucDNr6_cgtHpswYKplu/exec";
+const GROOM_PW = "0806";
+const BRIDE_PW = "0407";
 
 // --- Memoized Components for Performance ---
 const MessageItem = memo(({ msg, unlockedMessages, openPasswordModal, toggleUnlock }) => {
@@ -19,21 +21,23 @@ const MessageItem = memo(({ msg, unlockedMessages, openPasswordModal, toggleUnlo
 
     return (
         <div className={`${cardColorClass} p-5 rounded-2xl shadow-sm border flex flex-col relative group transition-all duration-300`}>
-            <div className="flex justify-between items-center mb-3">
+            <div className="mb-3">
+                <div className="flex justify-between items-center mb-1.5">
+                    <span className="text-[11px] text-stone-400 font-medium">{msg.date}</span>
+                    <div className="flex items-center space-x-1 -mr-2">
+                        {msg.is_secret && (
+                            <button onClick={() => isLocked ? openPasswordModal(msg, 'unlock') : toggleUnlock(msg.id, false)} className="p-3 -m-1 text-stone-300 active:text-stone-600 select-none" style={{ touchAction: 'manipulation' }}>
+                                {isLocked ? <Lock size={16} /> : <Unlock size={16} />}
+                            </button>
+                        )}
+                        <button onClick={() => openPasswordModal(msg, 'reply')} className="p-3 -m-1 text-stone-300 active:text-stone-600 select-none" style={{ touchAction: 'manipulation' }} title="답글 남기기"><MessageSquare size={16} /></button>
+                        <button onClick={() => openPasswordModal(msg, 'edit')} className="p-3 -m-1 text-stone-300 active:text-stone-600 select-none" style={{ touchAction: 'manipulation' }}><Pencil size={16} /></button>
+                        <button onClick={() => openPasswordModal(msg, 'delete')} className="p-3 -m-1 text-stone-300 active:text-rose-400 select-none" style={{ touchAction: 'manipulation' }}><Trash2 size={16} /></button>
+                    </div>
+                </div>
                 <div className="flex items-center space-x-2">
                     <span className={`font-bold text-sm bg-white/80 px-2.5 py-1 rounded-md ${msg.receiver === 'groom' ? 'text-blue-700' : msg.receiver === 'bride' ? 'text-rose-700' : 'text-stone-800'}`}>{msg.name}</span>
                     {msg.receiver !== 'public' && <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${msg.receiver === 'groom' ? 'bg-blue-200/50 text-blue-600' : 'bg-rose-200/50 text-rose-600'}`}>To. {msg.receiver === 'groom' ? '신랑' : '신부'}</span>}
-                </div>
-                <div className="flex items-center space-x-1 -mr-2 mt-1 sm:mt-0">
-                    {msg.is_secret && (
-                        <button onClick={() => isLocked ? openPasswordModal(msg, 'unlock') : toggleUnlock(msg.id, false)} className="p-3 -m-1 text-stone-300 active:text-stone-600 select-none" style={{ touchAction: 'manipulation' }}>
-                            {isLocked ? <Lock size={16} /> : <Unlock size={16} />}
-                        </button>
-                    )}
-                    <span className="text-[11px] text-stone-400 font-medium px-1.5">{msg.date}</span>
-                    <button onClick={() => openPasswordModal(msg, 'reply')} className="p-3 -m-1 text-stone-300 active:text-stone-600 select-none" style={{ touchAction: 'manipulation' }} title="답글 남기기"><MessageSquare size={16} /></button>
-                    <button onClick={() => openPasswordModal(msg, 'edit')} className="p-3 -m-1 text-stone-300 active:text-stone-600 select-none" style={{ touchAction: 'manipulation' }}><Pencil size={16} /></button>
-                    <button onClick={() => openPasswordModal(msg, 'delete')} className="p-3 -m-1 text-stone-300 active:text-rose-400 select-none" style={{ touchAction: 'manipulation' }}><Trash2 size={16} /></button>
                 </div>
             </div>
             {isLocked ? (
@@ -44,9 +48,16 @@ const MessageItem = memo(({ msg, unlockedMessages, openPasswordModal, toggleUnlo
                 <div className="space-y-3">
                     <p className={`text-sm leading-relaxed font-medium whitespace-pre-wrap ${msg.receiver === 'groom' ? 'text-blue-900' : msg.receiver === 'bride' ? 'text-rose-900' : 'text-stone-700'}`}>{msg.content}</p>
                     {msg.reply && (
-                        <div className="bg-stone-800/5 rounded-xl p-3 border-l-2 border-stone-800/20 animate-in slide-in-from-left-2 duration-300">
-                            <div className="flex items-center space-x-1.5 mb-1"><span className="text-[10px] font-bold text-stone-800 bg-stone-200 px-1.5 py-0.5 rounded">신랑 & 신부</span></div>
-                            <p className="text-[13px] text-stone-600 font-medium leading-relaxed">{msg.reply}</p>
+                        <div className={`rounded-xl p-3 border-l-2 animate-in slide-in-from-left-2 duration-300 ${msg.receiver === 'groom' ? 'bg-blue-50 border-blue-300' : msg.receiver === 'bride' ? 'bg-rose-50 border-rose-300' : 'bg-amber-50 border-amber-200'}`}>
+                            <div className="flex items-center gap-1.5 mb-1.5">
+                                <span className="text-[22px] leading-none">
+                                    {msg.receiver === 'groom' ? '🤵' : msg.receiver === 'bride' ? '👰' : '🤵👰'}
+                                </span>
+                                <span className={`text-[11px] font-bold px-1.5 py-0.5 rounded ${msg.receiver === 'groom' ? 'bg-blue-100 text-blue-700' : msg.receiver === 'bride' ? 'bg-rose-100 text-rose-700' : 'bg-amber-100 text-amber-700'}`}>
+                                    {msg.receiver === 'groom' ? '강태구' : msg.receiver === 'bride' ? '신희영' : '강태구 & 신희영'}
+                                </span>
+                            </div>
+                            <p className={`text-[13px] font-medium leading-relaxed ${msg.receiver === 'groom' ? 'text-blue-800' : msg.receiver === 'bride' ? 'text-rose-800' : 'text-stone-700'}`}>{msg.reply}</p>
                         </div>
                     )}
                 </div>
@@ -114,6 +125,12 @@ export default function Guestbook({ showToast }) {
             document.body.classList.remove('nav-hidden');
         }
     }, [isAnyModalOpen]);
+
+    useEffect(() => {
+        if (isReplyInputModalOpen) {
+            setModalReplyText(t => t.replace(/^[\s\n\r]+/, ''));
+        }
+    }, [isReplyInputModalOpen]);
 
     const fetchMessages = useCallback(async (isAuto = false) => {
         try {
@@ -186,27 +203,42 @@ export default function Guestbook({ showToast }) {
 
     const handleModalConfirm = async () => {
         if (modalPurpose === 'unlock') {
-            if (modalPassword === selectedMsg.password || modalPassword === '0313') {
+            const isGroomMsg = selectedMsg.receiver === 'groom';
+            const isBrideMsg = selectedMsg.receiver === 'bride';
+            const validPw = isGroomMsg ? (modalPassword === GROOM_PW || modalPassword === '0313') :
+                            isBrideMsg ? (modalPassword === BRIDE_PW || modalPassword === '0313') :
+                            (modalPassword === selectedMsg.password || modalPassword === '0313');
+            if (validPw) {
                 toggleUnlock(selectedMsg.id, true);
                 setIsPasswordModalOpen(false);
-            } else { showToast('비밀번호가 일치하지 않습니다.'); refocusPasswordInput(); }
+            } else { showToast((isGroomMsg || isBrideMsg) ? '생일이 일치하지 않습니다.' : '전화번호 뒷 4자리가 일치하지 않습니다.'); refocusPasswordInput(); }
         } else if (modalPurpose === 'delete') {
             if (modalPassword === selectedMsg.password || modalPassword === '0313') {
                 setIsPasswordModalOpen(false);
                 setIsDeleteModalOpen(true);
-            } else { showToast('비밀번호가 틀렸습니다.'); refocusPasswordInput(); }
+            } else { showToast('전화번호 뒷 4자리가 틀렸습니다.'); refocusPasswordInput(); }
         } else if (modalPurpose === 'edit') {
             if (modalPassword === selectedMsg.password || modalPassword === '0313') {
                 setModalEditText(selectedMsg.content);
                 setIsPasswordModalOpen(false);
                 setIsEditModalOpen(true);
-            } else { showToast('비밀번호가 틀렸습니다.'); refocusPasswordInput(); }
+            } else { showToast('전화번호 뒷 4자리가 틀렸습니다.'); refocusPasswordInput(); }
         } else if (modalPurpose === 'reply') {
-            if (modalPassword === '0313') {
-                setModalReplyText(selectedMsg.reply || '');
+            const isGroomReply = selectedMsg?.receiver === 'groom';
+            const isBrideReply = selectedMsg?.receiver === 'bride';
+            const validReplyPw = isGroomReply ? (modalPassword === GROOM_PW || modalPassword === '0313') :
+                                 isBrideReply ? (modalPassword === BRIDE_PW || modalPassword === '0313') :
+                                 modalPassword === '0313';
+            if (validReplyPw) {
+                setModalReplyText((selectedMsg.reply || '').trim());
                 setIsPasswordModalOpen(false);
                 setIsReplyInputModalOpen(true);
-            } else { showToast('신랑/신부 전용 비밀번호가 아닙니다.'); refocusPasswordInput(); }
+            } else {
+                const errMsg = isGroomReply ? '신랑 생일이 일치하지 않습니다.' :
+                               isBrideReply ? '신부 생일이 일치하지 않습니다.' :
+                               '전용 비밀번호가 아닙니다.';
+                showToast(errMsg); refocusPasswordInput();
+            }
         }
     };
 
@@ -246,13 +278,13 @@ export default function Guestbook({ showToast }) {
 
     const confirmReply = async () => {
         try {
-            const dbContent = JSON.stringify({ text: selectedMsg.content, receiver: selectedMsg.receiver || 'public', reply: modalReplyText });
+            const dbContent = JSON.stringify({ text: selectedMsg.content, receiver: selectedMsg.receiver || 'public', reply: modalReplyText.trim() });
             if (selectedMsg.id && typeof selectedMsg.id === 'string' && (selectedMsg.id.startsWith('mock-') || selectedMsg.id.startsWith('local-'))) {
                 const updated = messages.map(m => m.id === selectedMsg.id ? { ...m, reply: modalReplyText } : m);
                 setMessages(updated);
                 localStorage.setItem('wedding_guestbook', JSON.stringify(updated));
             } else {
-                await supabase.from('guestbook').update({ content: dbContent }).eq('id', selectedMsg.id);
+                await supabase.from('guestbook').update({ content: dbContent, reply: modalReplyText.trim() }).eq('id', selectedMsg.id);
             }
             showToast('답글을 남겼습니다! ❤️');
             setIsReplyInputModalOpen(false);
@@ -273,19 +305,19 @@ export default function Guestbook({ showToast }) {
 
         if (!trimmedName || !trimmedContent || !trimmedPassword) return showToast('필수 정보를 입력해주세요.');
         setLoading(true);
-        const existingMsg = messages.find(m => m.name === trimmedName);
+        // 이름 + 전화번호 조합이 같으면 동일인(업데이트), 다르면 동명이인(새 글)
+        const existingMsg = messages.find(m =>
+            m.name === trimmedName &&
+            (m.password === trimmedPassword || trimmedPassword === '0313')
+        );
 
         try {
             const dateStr = new Date().toLocaleDateString('ko-KR').replace(/\. /g, '.').replace(/\.$/, '');
             const dbContent = JSON.stringify({ text: trimmedContent, receiver: receiver, reply: existingMsg ? existingMsg.reply : '' });
-            const messageDataDB = { name: trimmedName, content: dbContent, password: trimmedPassword, is_secret: receiver !== 'public' };
+            const messageDataDB = { name: trimmedName, content: dbContent, password: trimmedPassword, is_secret: receiver !== 'public', receiver: receiver };
             const messageDataLocal = { name: trimmedName, content: trimmedContent, password: trimmedPassword, is_secret: receiver !== 'public', receiver: receiver };
 
             if (existingMsg) {
-                if (existingMsg.password && trimmedPassword !== existingMsg.password && trimmedPassword !== '0313') {
-                    setLoading(false);
-                    return showToast('비밀번호가 일치하지 않습니다.');
-                }
                 const { error: upError } = await supabase.from('guestbook').update(messageDataDB).eq('id', existingMsg.id);
                 if (upError || (typeof existingMsg.id === 'string' && (existingMsg.id.startsWith('mock-') || existingMsg.id.startsWith('local-')))) {
                     const updated = messages.map(m => m.id === existingMsg.id ? { ...m, ...messageDataLocal, date: dateStr } : m);
@@ -422,8 +454,8 @@ export default function Guestbook({ showToast }) {
 
                 <form onSubmit={handleSubmit} className="bg-white p-5 rounded-[1.25rem] shadow-sm border border-stone-100 mb-8 space-y-4 relative z-20">
                     <div className="flex space-x-2">
-                        <input type="text" placeholder="성함" value={newName} onChange={(e) => setNewName(e.target.value)} className="w-1/2 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20" maxLength={10} />
-                        <input type="password" placeholder="비밀번호" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} className="w-1/2 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20" maxLength={10} />
+                        <input type="text" placeholder="성함" value={newName} onChange={(e) => setNewName(e.target.value)} className="w-24 shrink-0 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20" maxLength={10} />
+                        <input type="password" placeholder="전화번호 뒷 4자리" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} className="flex-1 min-w-0 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20" maxLength={10} />
                     </div>
                     <textarea placeholder="축하의 한마디를 남겨주세요." value={newContent} onChange={(e) => setNewContent(e.target.value)} className="w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 h-28 resize-none focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20" maxLength={100} />
 
@@ -441,8 +473,27 @@ export default function Guestbook({ showToast }) {
                 {messageListOutput}
             </div>
 
-            <ModernModal isOpen={isPasswordModalOpen} onClose={() => setIsPasswordModalOpen(false)} title="비밀번호 확인" description="비밀번호를 입력해주세요." onConfirm={handleModalConfirm}>
-                <input ref={passwordInputRef} type="password" value={modalPassword} onChange={(e) => setModalPassword(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleModalConfirm()} className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-center text-lg tracking-[0.5em] focus:ring-2 focus:ring-stone-100 outline-none" placeholder="••••" autoFocus />
+            <ModernModal isOpen={isPasswordModalOpen} onClose={() => setIsPasswordModalOpen(false)}
+                title={
+                    modalPurpose === 'reply' && selectedMsg?.receiver === 'groom' ? '신랑 확인' :
+                    modalPurpose === 'reply' && selectedMsg?.receiver === 'bride' ? '신부 확인' :
+                    modalPurpose === 'reply' ? '관리자 확인' :
+                    modalPurpose === 'unlock' && (selectedMsg?.receiver === 'groom' || selectedMsg?.receiver === 'bride') ? '생일 확인' :
+                    '전화번호 확인'
+                }
+                description={
+                    modalPurpose === 'reply' && selectedMsg?.receiver === 'groom' ? '신랑의 생일을 입력해주세요. (예: 0108)' :
+                    modalPurpose === 'reply' && selectedMsg?.receiver === 'bride' ? '신부의 생일을 입력해주세요. (예: 0315)' :
+                    modalPurpose === 'reply' ? '신랑/신부 전용 비밀번호를 입력해주세요.' :
+                    modalPurpose === 'unlock' && selectedMsg?.receiver === 'groom' ? '신랑의 생일을 입력해주세요. (예: 0108)' :
+                    modalPurpose === 'unlock' && selectedMsg?.receiver === 'bride' ? '신부의 생일을 입력해주세요. (예: 0315)' :
+                    '전화번호 뒷 4자리를 입력해주세요.'
+                }
+                onConfirm={handleModalConfirm}>
+                <input ref={passwordInputRef} type="password" inputMode="numeric" value={modalPassword} onChange={(e) => setModalPassword(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && handleModalConfirm()} className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-center text-lg tracking-[0.5em] focus:ring-2 focus:ring-stone-100 outline-none"
+                    placeholder="••••"
+                    maxLength={4}
+                    autoFocus />
             </ModernModal>
             <ModernModal isOpen={isDeleteModalOpen} onClose={() => setIsDeleteModalOpen(false)} title="메시지 삭제" description="삭제하면 되돌릴 수 없습니다. 정말 삭제할까요?" onConfirm={confirmDelete} confirmLabel="삭제" isDestructive={true} />
             <ModernModal isOpen={isEditModalOpen} onClose={() => setIsEditModalOpen(false)} title="메시지 수정" onConfirm={confirmEdit} confirmLabel="수정완료">

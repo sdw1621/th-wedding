@@ -7,6 +7,7 @@ import Play from 'lucide-react/dist/esm/icons/play';
 
 export default function MusicPlayer({ forcePlay }) {
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isYtPlaying, setIsYtPlaying] = useState(false);
     const [showPlaylist, setShowPlaylist] = useState(false);
     const audioRef = useRef(null);
     const [showInfo, setShowInfo] = useState(false);
@@ -98,6 +99,18 @@ export default function MusicPlayer({ forcePlay }) {
         return () => observer.disconnect();
     }, []);
 
+    // YouTube 재생 시 BGM 자동 뮤트/복원
+    useEffect(() => {
+        const handleYtPlaying = () => { if (audioRef.current) audioRef.current.volume = 0; setIsYtPlaying(true); };
+        const handleYtStopped = () => { if (audioRef.current) audioRef.current.volume = 0.3; setIsYtPlaying(false); };
+        document.addEventListener('youtube-playing', handleYtPlaying);
+        document.addEventListener('youtube-stopped', handleYtStopped);
+        return () => {
+            document.removeEventListener('youtube-playing', handleYtPlaying);
+            document.removeEventListener('youtube-stopped', handleYtStopped);
+        };
+    }, []);
+
     // 플레이리스트 외부 터치/클릭 시 닫기
     useEffect(() => {
         if (!showPlaylist) return;
@@ -131,9 +144,11 @@ export default function MusicPlayer({ forcePlay }) {
                     className="w-9 h-9 rounded-full flex items-center justify-center transition-colors hover:bg-stone-100 text-stone-600 relative overflow-hidden"
                     title={isPlaying ? "음악 끄기" : "음악 켜기"}
                 >
-                    {isPlaying
-                        ? <Volume2 size={18} className="text-rose-400 thump-icon" />
-                        : <VolumeX size={18} className="text-stone-300" />}
+                    {isYtPlaying
+                        ? <VolumeX size={18} className="text-amber-400" />
+                        : isPlaying
+                            ? <Volume2 size={18} className="text-rose-400 thump-icon" />
+                            : <VolumeX size={18} className="text-stone-300" />}
                 </button>
 
                 <audio ref={audioRef} src={currentTrack.url} onEnded={handleEnded} />

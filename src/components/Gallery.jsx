@@ -6,7 +6,7 @@ import ChevronRight from 'lucide-react/dist/esm/icons/chevron-right';
 import Volume2 from 'lucide-react/dist/esm/icons/volume-2';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
-export default function Gallery() {
+export default function Gallery({ onFullscreenChange }) {
     const [ref, isVisible] = useScrollReveal();
     const [selectedIdx, setSelectedIdx] = useState(null);
     const [currentScrollIdx, setCurrentScrollIdx] = useState(0);
@@ -74,6 +74,50 @@ export default function Gallery() {
         }
     };
 
+    // 풀스크린 상태 변경 시 부모에 알림
+    useEffect(() => {
+        if (onFullscreenChange) {
+            onFullscreenChange(
+                selectedIdx !== null,
+                () => {
+                    document.body.classList.remove('music-hidden');
+                    document.body.classList.remove('nav-hidden');
+                    setSelectedIdx(null);
+                }
+            );
+        }
+    }, [selectedIdx !== null]);
+
+    // YouTube IFrame API: 재생 시 BGM 뮤트, 종료 시 복원
+    useEffect(() => {
+        const initYT = () => {
+            if (!window.YT || !window.YT.Player) return;
+            new window.YT.Player('yt-wedding', {
+                events: {
+                    onStateChange: (e) => {
+                        if (e.data === 1) { // PLAYING
+                            document.dispatchEvent(new CustomEvent('youtube-playing'));
+                        } else if (e.data === 0 || e.data === 2) { // ENDED or PAUSED
+                            document.dispatchEvent(new CustomEvent('youtube-stopped'));
+                        }
+                    }
+                }
+            });
+        };
+
+        if (window.YT && window.YT.Player) {
+            initYT();
+        } else {
+            const prev = window.onYouTubeIframeAPIReady;
+            window.onYouTubeIframeAPIReady = () => { prev?.(); initYT(); };
+            if (!document.querySelector('script[src*="youtube.com/iframe_api"]')) {
+                const tag = document.createElement('script');
+                tag.src = 'https://www.youtube.com/iframe_api';
+                document.head.appendChild(tag);
+            }
+        }
+    }, []);
+
     // 라이트박스 스와이프 시 페이지 스크롤 방지 (non-passive touchmove 필요)
     useEffect(() => {
         const el = lightboxRef.current;
@@ -104,13 +148,14 @@ export default function Gallery() {
                 <div className="text-center mb-6 space-y-1.5 px-6">
                     <p className="text-[11px] text-stone-500 font-medium whitespace-nowrap">크게 보시고 싶으시면 영상 터치 후 Youtube 로고를 눌러주세요 👆</p>
                     <p className="text-[11px] text-stone-500 font-medium flex items-center justify-center whitespace-nowrap">
-                        유튜브 영상 볼 때는 좌측 상단의 배경음(<Volume2 size={12} className="mx-1 text-rose-300" />)을 잠시 꺼두세요
+                        유튜브 영상 볼 때는 상단의 배경음(<Volume2 size={12} className="mx-1 text-rose-300" />)을 잠시 꺼두세요
                     </p>
                 </div>
                 <div className="px-6 mb-12 relative z-30">
                     <div className="rounded-2xl overflow-hidden shadow-sm aspect-video bg-stone-100 border border-stone-200 relative z-30">
                         <iframe
-                            src="https://www.youtube.com/embed/aBT0gHQ0AwE"
+                            id="yt-wedding"
+                            src="https://www.youtube.com/embed/aBT0gHQ0AwE?enablejsapi=1"
                             title="Wedding Video"
                             className="w-full h-full border-none relative z-30"
                             style={{ pointerEvents: 'auto' }}
@@ -150,7 +195,7 @@ export default function Gallery() {
                                 <div
                                     className="rounded-xl overflow-hidden shadow-sm aspect-[4/5] cursor-zoom-in relative active:opacity-90"
                                     style={{ touchAction: 'manipulation' }}
-                                    onClick={() => {
+                                    onPointerDown={() => {
                                         document.body.classList.add('music-hidden');
                                         document.body.classList.add('nav-hidden');
                                         setSelectedIdx(idx);
@@ -211,7 +256,7 @@ export default function Gallery() {
                     onTouchEnd={handleTouchEnd}
                 >
                     <button
-                        className="absolute top-6 right-6 z-[510] flex items-center justify-center w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-stone-800 shadow-xl active:bg-white transition-colors select-none"
+                        className="absolute top-3 right-3 z-[510] flex items-center bg-white/95 border border-stone-200 rounded-full shadow-md p-1 active:shadow-lg transition-all select-none"
                         style={{ touchAction: 'manipulation' }}
                         onPointerDown={(e) => {
                             e.stopPropagation();
@@ -220,7 +265,9 @@ export default function Gallery() {
                             setSelectedIdx(null);
                         }}
                     >
-                        <X size={24} />
+                        <div className="w-9 h-9 rounded-full flex items-center justify-center text-stone-500">
+                            <X size={18} />
+                        </div>
                     </button>
 
                     {/* 이전 버튼 */}

@@ -29,28 +29,34 @@ export default function IntroScreen({ onEnter, onStart }) {
                     75% { transform: translateY(-3px) rotate(8deg); }
                 }
                 .icon-shake { animation: icon-shake 1.1s ease-in-out infinite; }
+                @keyframes text-warn {
+                    0%, 100% { filter: brightness(0.6); transform: scale(1); }
+                    40% { filter: brightness(1.35); transform: scale(1.22); }
+                }
+                .text-warn { animation: text-warn 1.1s ease-in-out infinite; }
             `}</style>
             <div className="absolute inset-0 overflow-hidden">
                 <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-rose-900/20 rounded-full blur-3xl opacity-50"></div>
                 <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-stone-700/30 rounded-full blur-3xl opacity-50"></div>
             </div>
 
-            <div className="warning-flash z-10 w-full flex flex-col items-center pt-14 pb-5 px-4 bg-amber-950/30 border-b border-amber-700/40 space-y-2">
+            <div className="warning-flash z-10 w-full flex flex-col items-center pt-24 pb-6 px-4 bg-amber-950/30 border-b border-amber-700/40 space-y-3">
                 <TriangleAlert size={26} className="text-amber-400 icon-shake" />
-                <p className="text-stone-200 text-[17px] font-bold tracking-wide text-center leading-loose">
-                    가족식이라 하객 없이 진행됩니다.<br />
-                    축하 방명록만 남겨주세요.
+                <p className="text-stone-200 text-[16px] font-bold tracking-wide text-center leading-loose">
+                    가족식(스몰웨딩)이라<br />
+                    <span className="text-warn">하객 없이</span> 진행됩니다.<br />
+                    축하 방명록만 남겨주세요. 💌
                 </p>
             </div>
 
-            <div className={`z-10 flex-1 flex flex-col items-center justify-center transition-all duration-1000 transform ${isOpen ? 'scale-110 translate-y-[-30px]' : 'scale-100'}`}>
+            <div className={`z-10 flex-1 flex flex-col items-center justify-start pt-10 transition-all duration-1000 transform ${isOpen ? 'scale-110 translate-y-[-30px]' : 'scale-100'}`}>
                 <h1 className="text-4xl md:text-5xl font-serif text-stone-200 mb-6 tracking-widest text-center px-6">
                     태구 <span className="text-rose-400 mx-2">&</span> 희영
                 </h1>
-                <p className="text-stone-400 text-sm tracking-[0.3em] mb-12 font-light">2026. 03. 13. FRI 11:30 AM</p>
+                <p className="text-stone-400 text-sm tracking-[0.3em] mb-10 font-light">2026. 03. 13. FRI 11:30 AM</p>
 
                 <button
-                    onClick={handleOpen}
+                    onPointerDown={handleOpen}
                     disabled={isProcessing}
                     style={{ touchAction: 'manipulation' }}
                     className="group relative px-12 py-5 bg-stone-800 border border-stone-600 rounded-full overflow-hidden hover:bg-stone-700 active:bg-stone-700 shadow-2xl shadow-black/50 select-none"

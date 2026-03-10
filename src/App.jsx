@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import CheckCircle2 from 'lucide-react/dist/esm/icons/check-circle-2';
 import ChevronLeft from 'lucide-react/dist/esm/icons/chevron-left';
 import { supabase } from './supabaseClient';
@@ -23,6 +23,8 @@ export default function App() {
     const [shouldMusicPlay, setShouldMusicPlay] = useState(false);
     const [todayVisitors, setTodayVisitors] = useState(null);
     const [totalVisitors, setTotalVisitors] = useState(null);
+    const [galleryFullscreen, setGalleryFullscreen] = useState(false);
+    const galleryCloseRef = useRef(null);
 
     useEffect(() => {
         const today = new Date().toISOString().split('T')[0];
@@ -61,13 +63,19 @@ export default function App() {
             {/* MusicPlayer는 항상 존재하며, 인트로에서 버튼 클릭 시 소리가 남 */}
             <MusicPlayer forcePlay={shouldMusicPlay} />
 
-            {/* 인트로 복귀 버튼 (메인 페이지에서만 표시) */}
+            {/* 뒤로가기 버튼 (메인 페이지에서만 표시) */}
             {isEntered && (
                 <button
-                    onPointerDown={() => setIsEntered(false)}
+                    onPointerDown={() => {
+                        if (galleryFullscreen && galleryCloseRef.current) {
+                            galleryCloseRef.current();
+                        } else {
+                            setIsEntered(false);
+                        }
+                    }}
                     style={{ touchAction: 'manipulation' }}
-                    className="fixed top-3 left-3 z-[160] flex items-center bg-white/95 border border-stone-200 rounded-full shadow-md p-1 hover:shadow-lg transition-all select-none"
-                    title="인트로로 돌아가기"
+                    className="fixed top-3 left-3 z-[520] flex items-center bg-white/95 border border-stone-200 rounded-full shadow-md p-1 hover:shadow-lg transition-all select-none"
+                    title={galleryFullscreen ? '갤러리로 돌아가기' : '인트로로 돌아가기'}
                 >
                     <div className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-stone-100 text-stone-500 transition-colors">
                         <ChevronLeft size={18} />
@@ -75,8 +83,8 @@ export default function App() {
                 </button>
             )}
 
-            {/* 방문자 + 버전 (우하단, 같은 너비) */}
-            <div className="fixed bottom-20 right-3 z-[400] flex flex-col gap-1 items-stretch select-none pointer-events-none font-mono text-[10px] text-stone-400">
+            {/* 방문자 + 버전 (우하단, 같은 너비) - 갤러리 풀스크린 시 숨김 */}
+            <div className={`fixed bottom-20 right-3 z-[400] flex flex-col gap-1 items-stretch select-none pointer-events-none font-mono text-[10px] text-stone-400 transition-opacity duration-300 ${galleryFullscreen ? 'opacity-0' : 'opacity-100'}`}>
                 {(totalVisitors !== null || todayVisitors !== null) && (
                     <div className="flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100">
                         <span>total : {totalVisitors ?? '-'}, today : {todayVisitors ?? '-'}</span>
@@ -97,7 +105,10 @@ export default function App() {
                     <div className="pb-28 animate-in fade-in duration-500 relative z-10">
                         <Hero />
                         <Greeting />
-                        <Gallery />
+                        <Gallery onFullscreenChange={(isOpen, closeFn) => {
+                            setGalleryFullscreen(isOpen);
+                            galleryCloseRef.current = closeFn || null;
+                        }} />
                         <Location />
                         <AccountInfo showToast={showToast} />
                         <Guestbook showToast={showToast} />

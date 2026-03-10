@@ -18,7 +18,7 @@ export default function Hero() {
     };
 
     return (
-        <div className="relative w-full h-screen overflow-hidden flex flex-col items-center justify-between pb-32 pt-20" id="home">
+        <div className="relative w-full h-screen overflow-hidden flex flex-col items-center justify-between pb-32" id="home">
             <div className="absolute inset-0">
                 <img
                     src={`${import.meta.env.BASE_URL}img/메인이미지.webp`}
@@ -32,14 +32,14 @@ export default function Hero() {
             </div>
 
             {/* 상단 정보 */}
-            <div ref={ref} className={`relative z-10 text-center flex flex-col items-center px-4 max-w-full transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
+            <div ref={ref} className={`relative z-10 text-center flex flex-col items-center px-4 max-w-full py-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
                 <p className="text-xs md:text-sm tracking-[0.4em] text-stone-700 mb-6 font-medium">WE ARE GETTING MARRIED</p>
 
-                <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif text-stone-900 mb-3 drop-shadow-sm font-light tracking-widest whitespace-nowrap">
-                    강태구 <span className="text-rose-400 text-3xl sm:text-4xl mx-2 font-light">&</span> 신희영
+                <h1 className="text-[8.5vw] sm:text-5xl md:text-6xl font-serif text-stone-900 mb-5 drop-shadow-sm font-light tracking-widest px-4 whitespace-nowrap">
+                    강태구 <span className="text-rose-400 text-[6.5vw] sm:text-4xl mx-2 font-light">&</span> 신희영
                 </h1>
 
-                <div className="flex flex-col items-center gap-1">
+                <div className="flex flex-col items-center gap-2">
                     <p className="text-sm md:text-base tracking-[0.1em] text-stone-800 font-medium">2026년 3월 13일 금요일 오전 11시 30분</p>
                     <a href="https://www.mayfield.co.kr/restaurant/bongraeheon" target="_blank" rel="noopener noreferrer" className="text-sm md:text-base text-stone-800 font-medium tracking-wide underline underline-offset-4 decoration-stone-800/30 active:text-rose-500 pb-0.5 mt-0.5">메이필드 호텔 봉래헌</a>
                 </div>
@@ -50,7 +50,7 @@ export default function Hero() {
                 <Countdown />
 
                 <button
-                    onClick={addToCalendar}
+                    onPointerDown={addToCalendar}
                     style={{ touchAction: 'manipulation' }}
                     className="mt-10 flex items-center space-x-2 px-6 py-2.5 bg-white/90 border border-stone-200 rounded-full text-stone-600 text-[11px] font-bold active:bg-stone-50 shadow-sm select-none"
                 >
