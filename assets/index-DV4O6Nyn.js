@@ -18956,23 +18956,6 @@ const X = createLucideIcon("X", [
 const ChevronRight = createLucideIcon("ChevronRight", [
   ["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]
 ]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const Volume2 = createLucideIcon("Volume2", [
-  [
-    "path",
-    {
-      d: "M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z",
-      key: "uqj9uw"
-    }
-  ],
-  ["path", { d: "M16 9a5 5 0 0 1 0 6", key: "1q6k2b" }],
-  ["path", { d: "M19.364 18.364a9 9 0 0 0 0-12.728", key: "ijwkga" }]
-]);
 function Gallery({ onFullscreenChange }) {
   const [ref, isVisible] = useScrollReveal();
   const [selectedIdx, setSelectedIdx] = reactExports.useState(null);
@@ -18983,6 +18966,8 @@ function Gallery({ onFullscreenChange }) {
   const isSwiping = reactExports.useRef(false);
   const lightboxRef = reactExports.useRef(null);
   const scrollContainerRef = reactExports.useRef(null);
+  const ytPlayerRef = reactExports.useRef(null);
+  const ytContainerRef = reactExports.useRef(null);
   const images = [
     { src: `${"/th-wedding/"}img/pages/커플_꽃셔츠.webp`, alt: "커플 꽃무늬 셔츠" },
     { src: `${"/th-wedding/"}img/pages/커플_드레스업.webp`, alt: "커플 드레스업" },
@@ -19047,7 +19032,7 @@ function Gallery({ onFullscreenChange }) {
   reactExports.useEffect(() => {
     const initYT = () => {
       if (!window.YT || !window.YT.Player) return;
-      new window.YT.Player("yt-wedding", {
+      ytPlayerRef.current = new window.YT.Player("yt-wedding", {
         events: {
           onStateChange: (e) => {
             if (e.data === 1) {
@@ -19075,6 +19060,26 @@ function Gallery({ onFullscreenChange }) {
     }
   }, []);
   reactExports.useEffect(() => {
+    const container = ytContainerRef.current;
+    if (!container) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const player = ytPlayerRef.current;
+          if (!player || typeof player.playVideo !== "function") return;
+          if (entry.isIntersecting) {
+            player.playVideo();
+          } else {
+            player.pauseVideo();
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
+  reactExports.useEffect(() => {
     const el = lightboxRef.current;
     if (!el) return;
     const onTouchMove = (e) => {
@@ -19094,15 +19099,8 @@ function Gallery({ onFullscreenChange }) {
         /* @__PURE__ */ jsxRuntimeExports.jsx(Camera, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "우리의 빛나는 순간" })
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-6 space-y-1.5 px-6", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-stone-500 font-medium whitespace-nowrap", children: "크게 보시고 싶으시면 영상 터치 후 Youtube 로고를 눌러주세요 👆" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-[11px] text-stone-500 font-medium flex items-center justify-center whitespace-nowrap", children: [
-          "유튜브 영상 볼 때는 상단의 배경음(",
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Volume2, { size: 12, className: "mx-1 text-rose-300" }),
-          ")을 잠시 꺼두세요"
-        ] })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-6 mb-12 relative z-30", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-2xl overflow-hidden shadow-sm aspect-video bg-stone-100 border border-stone-200 relative z-30", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-center mb-4 px-6", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-stone-500 font-medium whitespace-nowrap", children: "크게 보시고 싶으시면 영상 터치 후 Youtube 로고를 눌러주세요 👆" }) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-6 mb-12 relative z-30", ref: ytContainerRef, children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-2xl overflow-hidden shadow-sm aspect-video bg-stone-100 border border-stone-200 relative z-30", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
         "iframe",
         {
           id: "yt-wedding",
@@ -20226,6 +20224,23 @@ const Music = createLucideIcon("Music", [
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
+const Volume2 = createLucideIcon("Volume2", [
+  [
+    "path",
+    {
+      d: "M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z",
+      key: "uqj9uw"
+    }
+  ],
+  ["path", { d: "M16 9a5 5 0 0 1 0 6", key: "1q6k2b" }],
+  ["path", { d: "M19.364 18.364a9 9 0 0 0 0-12.728", key: "ijwkga" }]
+]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
 const VolumeX = createLucideIcon("VolumeX", [
   [
     "path",
@@ -20539,7 +20554,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "130"
+        "131"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
