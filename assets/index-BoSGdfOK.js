@@ -19697,16 +19697,17 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
   ] });
 });
 const ModernModal = reactExports.memo(({ isOpen, onClose, title, description, children, onConfirm, confirmLabel = "확인", cancelLabel = "취소", isDestructive = false }) => {
-  const [vpStyle, setVpStyle] = React.useState({});
+  const [kbHeight, setKbHeight] = React.useState(0);
   React.useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen) {
+      setKbHeight(0);
+      return;
+    }
     const vv = window.visualViewport;
     if (!vv) return;
     const update = () => {
-      setVpStyle({
-        top: vv.offsetTop + "px",
-        height: vv.height + "px"
-      });
+      const kb = Math.max(0, window.innerHeight - vv.height - vv.offsetTop);
+      setKbHeight(kb);
     };
     update();
     vv.addEventListener("resize", update);
@@ -19714,7 +19715,6 @@ const ModernModal = reactExports.memo(({ isOpen, onClose, title, description, ch
     return () => {
       vv.removeEventListener("resize", update);
       vv.removeEventListener("scroll", update);
-      setVpStyle({});
     };
   }, [isOpen]);
   if (!isOpen) return null;
@@ -19727,8 +19727,12 @@ const ModernModal = reactExports.memo(({ isOpen, onClose, title, description, ch
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(
     "div",
     {
-      className: "fixed left-0 right-0 z-[200] flex items-center justify-center px-4",
-      style: { transition: "top 0.15s ease, height 0.15s ease", ...vpStyle },
+      className: "fixed inset-0 z-[200] flex justify-center px-4",
+      style: {
+        alignItems: kbHeight > 0 ? "flex-end" : "center",
+        paddingBottom: kbHeight > 0 ? `${kbHeight + 20}px` : "0px",
+        transition: "padding-bottom 0.2s ease"
+      },
       children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-stone-900/80 animate-in fade-in duration-300", onClick: handleClose }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative bg-white w-full max-w-[320px] rounded-[24px] shadow-2xl border border-white/20 overflow-hidden animate-in fade-in zoom-in duration-200", onClick: (e) => e.stopPropagation(), children: [
@@ -20412,7 +20416,7 @@ function App() {
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "fixed top-3 right-3 z-[400] flex items-center gap-1.5 text-[10px] text-stone-400 font-mono bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100 select-none pointer-events-none", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "92"
+        "93"
       ] }),
       todayVisitors !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-300", children: "·" }),
