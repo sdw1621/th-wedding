@@ -19042,8 +19042,11 @@ function Greeting() {
       /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { children: [
         "화려하고 거창한 예식보다는",
         /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-        "진실한 약속을 나누는 자리가 더 뜻깊다고 생각하여,",
+        "진실한 약속을 나누는 자리가",
         /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+        "더 뜻깊다고 생각하여,"
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { children: [
         "가족분들만 모시고 조촐한 식사 자리로",
         /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
         "결혼식을 대신하게 되었습니다."
@@ -19053,7 +19056,9 @@ function Greeting() {
         /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
         "송구하고 아쉬운 마음이 크지만,",
         /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-        "멀리서나마 저희의 새로운 출발을 축복해 주신다면",
+        "멀리서나마 저희의 새로운 출발을",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+        "축복해 주신다면",
         /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
         "그 마음 깊이 간직하며 예쁘게 잘 살겠습니다."
       ] })
@@ -20583,12 +20588,16 @@ function Share() {
           }
         ),
         /* @__PURE__ */ jsxRuntimeExports.jsx("hr", { className: "border-stone-100" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(
           "p",
           {
             className: "text-[12px] text-stone-500 italic text-center leading-relaxed",
             style: { animation: "msg-glow 3.5s ease-in-out infinite" },
-            children: '"현장에서 마주하는 문제를 누구보다 깊이 고민하고 해결합니다."'
+            children: [
+              '"현장에서 마주하는 문제를',
+              /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+              '누구보다 깊이 고민하고 해결합니다."'
+            ]
           }
         ),
         /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-stone-300 text-center", children: "© 2026 AI Intersys. All rights reserved." })
@@ -21003,7 +21012,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "156"
+        "157"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
