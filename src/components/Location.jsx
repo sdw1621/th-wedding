@@ -88,7 +88,7 @@ export default function Location() {
                                     <Lock size={22} className="text-stone-600" />
                                 </div>
                                 <h3 className="text-base font-bold text-stone-800">직계가족만 확인</h3>
-                                <p className="text-[12px] text-stone-400 mt-1">결혼식 날짜를 입력해주세요.</p>
+                                <p className="text-[12px] text-stone-400 mt-1">직계가족 히든 번호 4자리 입력해주세요.</p>
                             </div>
                             <input
                                 ref={pwInputRef}
