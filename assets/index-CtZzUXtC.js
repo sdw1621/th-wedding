@@ -18831,7 +18831,7 @@ function Hero() {
     const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
     window.open(googleCalendarUrl, "_blank");
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative w-full h-screen overflow-hidden flex flex-col items-center justify-between pb-32 pt-20", id: "home", children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative w-full h-screen overflow-hidden flex flex-col items-center justify-between pb-32", id: "home", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute inset-0", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(
         "img",
@@ -18846,7 +18846,7 @@ function Hero() {
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-gradient-to-b from-[#FDFBF7] via-white/40 to-white/10 opacity-90" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-white/5" })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `relative z-10 text-center flex flex-col items-center px-4 max-w-full transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `relative z-10 text-center flex flex-col items-center px-4 max-w-full py-20 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs md:text-sm tracking-[0.4em] text-stone-700 mb-6 font-medium", children: "WE ARE GETTING MARRIED" }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "text-[8.5vw] sm:text-5xl md:text-6xl font-serif text-stone-900 mb-5 drop-shadow-sm font-light tracking-widest px-4 whitespace-nowrap", children: [
         "강태구 ",
@@ -19737,9 +19737,12 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
       "만 확인 가능"
     ] }) : /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-3", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: `text-sm leading-relaxed font-medium whitespace-pre-wrap ${msg.receiver === "groom" ? "text-blue-900" : msg.receiver === "bride" ? "text-rose-900" : "text-stone-700"}`, children: msg.content }),
-      msg.reply && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-stone-800/5 rounded-xl p-3 border-l-2 border-stone-800/20 animate-in slide-in-from-left-2 duration-300", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center space-x-1.5 mb-1", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] font-bold text-stone-800 bg-stone-200 px-1.5 py-0.5 rounded", children: "신랑 & 신부" }) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[13px] text-stone-600 font-medium leading-relaxed", children: msg.reply })
+      msg.reply && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `rounded-xl p-3 border-l-2 animate-in slide-in-from-left-2 duration-300 ${msg.receiver === "groom" ? "bg-blue-50 border-blue-300" : msg.receiver === "bride" ? "bg-rose-50 border-rose-300" : "bg-amber-50 border-amber-200"}`, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1.5 mb-1.5", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[22px] leading-none", children: msg.receiver === "groom" ? "🤵" : msg.receiver === "bride" ? "👰" : "🤵👰" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[11px] font-bold px-1.5 py-0.5 rounded ${msg.receiver === "groom" ? "bg-blue-100 text-blue-700" : msg.receiver === "bride" ? "bg-rose-100 text-rose-700" : "bg-amber-100 text-amber-700"}`, children: msg.receiver === "groom" ? "강태구" : msg.receiver === "bride" ? "신희영" : "강태구 & 신희영" })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: `text-[13px] font-medium leading-relaxed ${msg.receiver === "groom" ? "text-blue-800" : msg.receiver === "bride" ? "text-rose-800" : "text-stone-700"}`, children: msg.reply })
       ] })
     ] })
   ] });
@@ -19895,7 +19898,7 @@ function Guestbook({ showToast }) {
       }
     } else if (modalPurpose === "reply") {
       if (modalPassword === "0313") {
-        setModalReplyText(selectedMsg.reply || "");
+        setModalReplyText((selectedMsg.reply || "").trim());
         setIsPasswordModalOpen(false);
         setIsReplyInputModalOpen(true);
       } else {
@@ -19938,7 +19941,7 @@ function Guestbook({ showToast }) {
   };
   const confirmReply = async () => {
     try {
-      const dbContent = JSON.stringify({ text: selectedMsg.content, receiver: selectedMsg.receiver || "public", reply: modalReplyText });
+      const dbContent = JSON.stringify({ text: selectedMsg.content, receiver: selectedMsg.receiver || "public", reply: modalReplyText.trim() });
       if (selectedMsg.id && typeof selectedMsg.id === "string" && (selectedMsg.id.startsWith("mock-") || selectedMsg.id.startsWith("local-"))) {
         const updated = messages.map((m) => m.id === selectedMsg.id ? { ...m, reply: modalReplyText } : m);
         setMessages(updated);
@@ -20524,7 +20527,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "124"
+        "125"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
