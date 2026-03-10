@@ -7148,6 +7148,15 @@ const CircleCheck = createLucideIcon("CircleCheck", [
   ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
   ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
 ]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const ChevronLeft = createLucideIcon("ChevronLeft", [
+  ["path", { d: "m15 18-6-6 6-6", key: "1wnfg3" }]
+]);
 function __rest(s, e) {
   var t = {};
   for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
@@ -18936,15 +18945,6 @@ const X = createLucideIcon("X", [
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const ChevronLeft = createLucideIcon("ChevronLeft", [
-  ["path", { d: "m15 18-6-6 6-6", key: "1wnfg3" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
 const ChevronRight = createLucideIcon("ChevronRight", [
   ["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]
 ]);
@@ -20239,63 +20239,58 @@ function MusicPlayer({ forcePlay }) {
     document.addEventListener("pointerdown", handler);
     return () => document.removeEventListener("pointerdown", handler);
   }, [showPlaylist]);
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref: playerRef, className: `fixed top-3 left-3 z-[160] flex flex-col items-start select-none transition-opacity duration-300 ${hidePlayer ? "opacity-0 pointer-events-none" : "opacity-100"}`, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative group flex items-center bg-white/95 border border-stone-200 rounded-full shadow-md p-1 transition-all hover:shadow-lg", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "button",
-          {
-            onPointerDown: (e) => {
-              e.stopPropagation();
-              setShowPlaylist(!showPlaylist);
-            },
-            style: { touchAction: "manipulation" },
-            className: `w-9 h-9 rounded-full flex items-center justify-center transition-colors ${showPlaylist ? "bg-rose-100 text-rose-500" : "hover:bg-stone-100 text-stone-500"}`,
-            title: "재생 목록",
-            children: /* @__PURE__ */ jsxRuntimeExports.jsx(Music, { size: 18 })
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-[1px] h-4 bg-stone-200 mx-1" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          "button",
-          {
-            onPointerDown: togglePlay,
-            style: { touchAction: "manipulation" },
-            className: "w-9 h-9 rounded-full flex items-center justify-center transition-colors hover:bg-stone-100 text-stone-600 relative overflow-hidden",
-            title: isPlaying ? "음악 끄기" : "음악 켜기",
-            children: [
-              isPlaying ? /* @__PURE__ */ jsxRuntimeExports.jsx(Volume2, { size: 18, className: "text-rose-400" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(VolumeX, { size: 18, className: "text-stone-300" }),
-              isPlaying && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-rose-400/10 animate-pulse" })
-            ]
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("audio", { ref: audioRef, src: currentTrack.url, onEnded: handleEnded })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "div",
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref: playerRef, className: `fixed top-3 left-1/2 -translate-x-1/2 z-[160] flex flex-col items-center select-none transition-opacity duration-300 ${hidePlayer ? "opacity-0 pointer-events-none" : "opacity-100"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative group flex items-center bg-white/95 border border-stone-200 rounded-full shadow-md p-1 transition-all hover:shadow-lg", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "button",
         {
           onPointerDown: (e) => {
             e.stopPropagation();
             setShowPlaylist(!showPlaylist);
           },
           style: { touchAction: "manipulation" },
-          className: `ml-3 bg-white/95 px-5 py-2.5 rounded-full border border-rose-100 shadow-lg transition-all duration-700 ease-out flex items-center cursor-pointer hover:bg-rose-50/50 ${showInfo ? "max-w-xs opacity-100 translate-x-0" : "max-w-0 opacity-0 -translate-x-10 pointer-events-none px-0 overflow-hidden"}`,
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "bg-rose-100 p-1.5 rounded-full mr-3 flex-shrink-0 animate-pulse", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Music, { size: 12, className: "text-rose-500" }) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col min-w-0", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] text-rose-400 font-bold uppercase tracking-tighter leading-none mb-0.5", children: "Now Playing" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-[12px] font-bold text-stone-700 truncate whitespace-nowrap leading-tight", children: [
-                "BGM ",
-                currentTrack.id,
-                ": ",
-                currentTrack.name
-              ] })
-            ] })
-          ]
+          className: `w-9 h-9 rounded-full flex items-center justify-center transition-colors ${showPlaylist ? "bg-rose-100 text-rose-500" : "hover:bg-stone-100 text-stone-500"}`,
+          title: "재생 목록",
+          children: /* @__PURE__ */ jsxRuntimeExports.jsx(Music, { size: 18 })
         }
-      )
+      ),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-[1px] h-4 bg-stone-200 mx-1" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "button",
+        {
+          onPointerDown: togglePlay,
+          style: { touchAction: "manipulation" },
+          className: "w-9 h-9 rounded-full flex items-center justify-center transition-colors hover:bg-stone-100 text-stone-600 relative overflow-hidden",
+          title: isPlaying ? "음악 끄기" : "음악 켜기",
+          children: isPlaying ? /* @__PURE__ */ jsxRuntimeExports.jsx(Volume2, { size: 18, className: "text-rose-400 thump-icon" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(VolumeX, { size: 18, className: "text-stone-300" })
+        }
+      ),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("audio", { ref: audioRef, src: currentTrack.url, onEnded: handleEnded })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `mt-3 w-64 bg-white rounded-2xl border border-rose-100 shadow-2xl transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] origin-top-left overflow-hidden ${showPlaylist ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-90 -translate-y-4 pointer-events-none"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      "div",
+      {
+        onPointerDown: (e) => {
+          e.stopPropagation();
+          setShowPlaylist(!showPlaylist);
+        },
+        style: { touchAction: "manipulation" },
+        className: `mt-2 bg-white/95 px-5 py-2.5 rounded-full border border-rose-100 shadow-lg transition-all duration-700 ease-out flex items-center cursor-pointer hover:bg-rose-50/50 ${showInfo ? "opacity-100 translate-y-0 scale-100" : "opacity-0 -translate-y-2 scale-95 pointer-events-none"}`,
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "bg-rose-100 p-1.5 rounded-full mr-3 flex-shrink-0 thump-icon", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Music, { size: 12, className: "text-rose-500" }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col min-w-0", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] text-rose-400 font-bold uppercase tracking-tighter leading-none mb-0.5", children: "Now Playing" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-[12px] font-bold text-stone-700 truncate whitespace-nowrap leading-tight", children: [
+              "BGM ",
+              currentTrack.id,
+              ": ",
+              currentTrack.name
+            ] })
+          ] })
+        ]
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `mt-2 w-64 bg-white rounded-2xl border border-rose-100 shadow-2xl transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] origin-top overflow-hidden ${showPlaylist ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-90 -translate-y-4 pointer-events-none"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-5 py-4 border-b border-stone-100 flex justify-between items-center bg-stone-50", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-[11px] font-bold text-stone-400 uppercase tracking-widest", children: "Playlist" }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-[10px] text-rose-400 font-bold bg-rose-50 px-2 py-0.5 rounded-full", children: [
@@ -20348,6 +20343,14 @@ function MusicPlayer({ forcePlay }) {
                     0%, 100% { height: 4px; }
                     50% { height: 12px; }
                 }
+                @keyframes thump {
+                    0%, 100% { transform: scale(1); }
+                    12%  { transform: scale(1.3); }
+                    24%  { transform: scale(1); }
+                    38%  { transform: scale(1.2); }
+                    52%  { transform: scale(1); }
+                }
+                .thump-icon { animation: thump 1.2s ease-in-out infinite; }
                 .custom-scrollbar::-webkit-scrollbar {
                     width: 4px;
                 }
@@ -20400,6 +20403,16 @@ function App() {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-h-screen bg-[#FDFBF7] text-stone-800 font-sans selection:bg-rose-200 relative", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(Petals, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(MusicPlayer, { forcePlay: shouldMusicPlay }),
+    isEntered && /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "button",
+      {
+        onPointerDown: () => setIsEntered(false),
+        style: { touchAction: "manipulation" },
+        className: "fixed top-3 left-3 z-[160] flex items-center bg-white/95 border border-stone-200 rounded-full shadow-md p-1 hover:shadow-lg transition-all select-none",
+        title: "인트로로 돌아가기",
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-9 h-9 rounded-full flex items-center justify-center hover:bg-stone-100 text-stone-500 transition-colors", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { size: 18 }) })
+      }
+    ),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "fixed bottom-20 right-3 z-[400] flex flex-col gap-1 items-stretch select-none pointer-events-none font-mono text-[10px] text-stone-400", children: [
       (totalVisitors !== null || todayVisitors !== null) && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "total : ",
@@ -20409,7 +20422,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "110"
+        "111"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
