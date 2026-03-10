@@ -19902,12 +19902,16 @@ function Guestbook({ showToast }) {
         refocusPasswordInput();
       }
     } else if (modalPurpose === "reply") {
-      if (modalPassword === "0313") {
+      const isGroomReply = (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom";
+      const isBrideReply = (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride";
+      const validReplyPw = isGroomReply ? modalPassword === GROOM_PW || modalPassword === "0313" : isBrideReply ? modalPassword === BRIDE_PW || modalPassword === "0313" : modalPassword === "0313";
+      if (validReplyPw) {
         setModalReplyText((selectedMsg.reply || "").trim());
         setIsPasswordModalOpen(false);
         setIsReplyInputModalOpen(true);
       } else {
-        showToast("신랑/신부 전용 비밀번호가 아닙니다.");
+        const errMsg = isGroomReply ? "신랑 생일이 일치하지 않습니다." : isBrideReply ? "신부 생일이 일치하지 않습니다." : "전용 비밀번호가 아닙니다.";
+        showToast(errMsg);
         refocusPasswordInput();
       }
     }
@@ -20113,8 +20117,8 @@ function Guestbook({ showToast }) {
       {
         isOpen: isPasswordModalOpen,
         onClose: () => setIsPasswordModalOpen(false),
-        title: modalPurpose === "reply" ? "관리자 확인" : modalPurpose === "unlock" && ((selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" || (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride") ? "생일 확인" : "전화번호 확인",
-        description: modalPurpose === "reply" ? "신랑/신부 전용 비밀번호를 입력해주세요." : modalPurpose === "unlock" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑의 생일을 입력해주세요. (예: 0108)" : modalPurpose === "unlock" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부의 생일을 입력해주세요. (예: 0315)" : "전화번호 뒷 4자리를 입력해주세요.",
+        title: modalPurpose === "reply" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑 확인" : modalPurpose === "reply" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부 확인" : modalPurpose === "reply" ? "관리자 확인" : modalPurpose === "unlock" && ((selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" || (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride") ? "생일 확인" : "전화번호 확인",
+        description: modalPurpose === "reply" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑의 생일을 입력해주세요. (예: 0108)" : modalPurpose === "reply" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부의 생일을 입력해주세요. (예: 0315)" : modalPurpose === "reply" ? "신랑/신부 전용 비밀번호를 입력해주세요." : modalPurpose === "unlock" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑의 생일을 입력해주세요. (예: 0108)" : modalPurpose === "unlock" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부의 생일을 입력해주세요. (예: 0315)" : "전화번호 뒷 4자리를 입력해주세요.",
         onConfirm: handleModalConfirm,
         children: /* @__PURE__ */ jsxRuntimeExports.jsx(
           "input",
@@ -20535,7 +20539,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "128"
+        "129"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
