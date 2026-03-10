@@ -20523,48 +20523,52 @@ function Share() {
         draggable: false
       }
     ),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-6 mt-4", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-4 mt-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-white rounded-2xl border border-stone-100 shadow-sm overflow-hidden", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
         "button",
         {
           onPointerDown: () => setExpanded((v) => !v),
           style: { touchAction: "manipulation" },
-          className: "w-full flex items-center justify-between px-5 py-3.5 bg-stone-50 rounded-2xl border border-stone-100 select-none active:opacity-80",
+          className: "w-full flex items-center justify-between px-5 py-4 select-none active:bg-stone-50",
           children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "flex items-center gap-2.5 text-stone-600 font-bold text-sm", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "🛠️" }),
-              " Made by Developer"
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-stone-400 text-xs transition-transform duration-300 ${expanded ? "rotate-180" : ""}`, children: "▼" })
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-bold text-stone-800 text-[15px]", children: "Made by Developer" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-stone-400 text-sm transition-transform duration-300 ${expanded ? "rotate-180" : ""}`, children: "∧" })
           ]
         }
       ),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `overflow-hidden transition-all duration-500 ${expanded ? "max-h-[400px] opacity-100 mt-3" : "max-h-0 opacity-0"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-stone-50 rounded-2xl border border-stone-100 p-5 space-y-4 text-left", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `overflow-hidden transition-all duration-500 ${expanded ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "border-t border-stone-100 px-5 py-5 space-y-5", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-4", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-12 h-12 rounded-xl bg-gradient-to-br from-stone-700 to-stone-900 flex items-center justify-center text-white font-bold text-lg select-none", children: "신" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "font-bold text-stone-800 text-sm leading-tight", children: [
-              "신동욱 ",
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-normal text-stone-400 text-xs", children: "Shin Dong-wook" })
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[12px] text-rose-400 font-semibold mt-0.5", children: "Founder & CEO · AI Intersys" })
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "img",
+            {
+              src: `${"/th-wedding/"}img/developer.jpg`,
+              alt: "신동욱",
+              className: "w-16 h-16 rounded-xl object-cover object-top shadow-sm",
+              draggable: false
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-left", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-bold text-stone-800 text-[15px] leading-tight", children: "신동욱" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[12px] text-stone-400 mt-0.5", children: "Shin Dong-wook" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[12px] text-rose-400 font-semibold mt-1", children: "AIINTERSYS CEO / 융합공학 박사" })
           ] })
         ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("hr", { className: "border-stone-200" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2 text-[12px]", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("hr", { className: "border-stone-100" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-3 text-[13px] text-left", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-3", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-400 w-16 shrink-0", children: "Expertise" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-600", children: "AI · IT Education · Solution Architect" })
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-700", children: "AI · IT Education · Solution Architect" })
           ] }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-3", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-400 w-16 shrink-0", children: "Projects" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-600", children: "POLBOT (AI Bot) · MetaAware (Solution)" })
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-700", children: "POLICEBOT (AI Bot), ONTOLOGYS (RAG) 등" })
           ] })
         ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("hr", { className: "border-stone-200" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[12px] text-stone-400 italic text-center", children: '"기술로 세상의 문제를 해결하는 솔루션을 만듭니다."' })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("hr", { className: "border-stone-100" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[12px] text-stone-500 italic text-center leading-relaxed", children: '"현장에서 마주하는 문제를 누구보다 깊이 고민하고 해결합니다."' }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-stone-300 text-center", children: "© 2026 AI Intersys. All rights reserved." })
       ] }) })
-    ] })
+    ] }) })
   ] }) });
 }
 function BottomNav() {
@@ -20974,7 +20978,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "149"
+        "150"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
