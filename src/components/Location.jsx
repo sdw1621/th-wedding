@@ -1,9 +1,35 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import MapPin from 'lucide-react/dist/esm/icons/map-pin';
+import Lock from 'lucide-react/dist/esm/icons/lock';
+import Unlock from 'lucide-react/dist/esm/icons/unlock';
+import Users from 'lucide-react/dist/esm/icons/users';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function Location() {
     const [ref, isVisible] = useScrollReveal();
+    const [unlocked, setUnlocked] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [pw, setPw] = useState('');
+    const [pwError, setPwError] = useState('');
+    const pwInputRef = useRef(null);
+
+    const handleUnlockClick = () => {
+        setPw('');
+        setPwError('');
+        setShowModal(true);
+        setTimeout(() => pwInputRef.current?.focus(), 100);
+    };
+
+    const handleConfirm = () => {
+        if (pw === '0313') {
+            setUnlocked(true);
+            setShowModal(false);
+        } else {
+            setPwError('비밀번호가 틀렸습니다.');
+            setPw('');
+            setTimeout(() => pwInputRef.current?.focus(), 50);
+        }
+    };
 
     const openNaverMap = () => {
         window.open('https://map.naver.com/p/entry/place/11678840', '_blank');
@@ -26,6 +52,73 @@ export default function Location() {
                     <h2 className="text-xl font-serif tracking-widest text-stone-800 font-bold">식사 자리 안내</h2>
                 </div>
 
+                {/* 잠금 버튼 (미해제 시) */}
+                {!unlocked && (
+                    <div className="mb-6 flex flex-col items-center gap-3">
+                        <button
+                            onPointerDown={handleUnlockClick}
+                            style={{ touchAction: 'manipulation' }}
+                            className="flex items-center gap-2.5 px-6 py-3.5 bg-stone-800 text-white rounded-2xl shadow-md active:bg-stone-900 select-none font-bold text-[15px] tracking-wide"
+                        >
+                            <Users size={18} />
+                            직계가족만
+                            <Lock size={16} className="text-stone-400 ml-1" />
+                        </button>
+                        <p className="text-[11px] text-stone-400">가족 전용 공간 안내입니다.</p>
+                    </div>
+                )}
+
+                {/* 해제 후 자물쇠 해제 표시 */}
+                {unlocked && (
+                    <div className="mb-4 flex items-center justify-center gap-1.5 text-[11px] text-emerald-500 font-bold">
+                        <Unlock size={12} />
+                        직계가족막 공개됨
+                    </div>
+                )}
+
+                {/* 비밀번호 모달 */}
+                {showModal && (
+                    <div
+                        className="fixed inset-0 z-[600] flex items-center justify-center bg-black/40 backdrop-blur-sm"
+                        onPointerDown={(e) => { if (e.target === e.currentTarget) setShowModal(false); }}
+                    >
+                        <div className="bg-white rounded-3xl shadow-2xl p-7 mx-6 w-full max-w-xs animate-in zoom-in-95 duration-200">
+                            <div className="text-center mb-5">
+                                <div className="w-12 h-12 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <Lock size={22} className="text-stone-600" />
+                                </div>
+                                <h3 className="text-base font-bold text-stone-800">직계가족만 확인</h3>
+                                <p className="text-[12px] text-stone-400 mt-1">결혼식 날짜를 입력해주세요.</p>
+                            </div>
+                            <input
+                                ref={pwInputRef}
+                                type="password"
+                                inputMode="numeric"
+                                value={pw}
+                                onChange={(e) => { setPw(e.target.value); setPwError(''); }}
+                                onKeyDown={(e) => e.key === 'Enter' && handleConfirm()}
+                                className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-center text-lg tracking-[0.5em] focus:ring-2 focus:ring-stone-200 outline-none mb-1"
+                                placeholder="••••"
+                                maxLength={6}
+                            />
+                            {pwError && <p className="text-[11px] text-rose-400 text-center mb-2">{pwError}</p>}
+                            <div className="flex gap-2 mt-4">
+                                <button
+                                    onPointerDown={() => setShowModal(false)}
+                                    style={{ touchAction: 'manipulation' }}
+                                    className="flex-1 py-3 rounded-xl bg-stone-100 text-stone-600 font-bold text-[13px] active:bg-stone-200"
+                                >취소</button>
+                                <button
+                                    onPointerDown={handleConfirm}
+                                    style={{ touchAction: 'manipulation' }}
+                                    className="flex-1 py-3 rounded-xl bg-stone-800 text-white font-bold text-[13px] active:bg-stone-900"
+                                >확인</button>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                <div className={`transition-all duration-500 overflow-hidden ${unlocked ? 'opacity-100 max-h-[9999px]' : 'opacity-0 max-h-0 pointer-events-none'}`}>
                 <div className="bg-white p-4 rounded-2xl shadow-sm border border-stone-100 mb-6">
                     <div className="w-full h-56 bg-stone-100 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden group">
                         {/* 시그니처 한옥 이미지 적용 */}
@@ -118,6 +211,7 @@ export default function Location() {
                         </div>
                     </div>
                 </div>
+                </div>{/* 잠금 콘텐츠 wrapper 닫기 */}
             </div>
         </section>
     );
