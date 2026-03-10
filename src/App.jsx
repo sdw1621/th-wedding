@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CheckCircle2 from 'lucide-react/dist/esm/icons/check-circle-2';
+import ChevronLeft from 'lucide-react/dist/esm/icons/chevron-left';
 import { supabase } from './supabaseClient';
 
 import IntroScreen from './components/IntroScreen';
@@ -59,6 +60,20 @@ export default function App() {
             <Petals />
             {/* MusicPlayer는 항상 존재하며, 인트로에서 버튼 클릭 시 소리가 남 */}
             <MusicPlayer forcePlay={shouldMusicPlay} />
+
+            {/* 인트로 복귀 버튼 (메인 페이지에서만 표시) */}
+            {isEntered && (
+                <button
+                    onPointerDown={() => setIsEntered(false)}
+                    style={{ touchAction: 'manipulation' }}
+                    className="fixed top-3 left-3 z-[160] flex items-center bg-white/95 border border-stone-200 rounded-full shadow-md p-1 hover:shadow-lg transition-all select-none"
+                    title="인트로로 돌아가기"
+                >
+                    <div className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-stone-100 text-stone-500 transition-colors">
+                        <ChevronLeft size={18} />
+                    </div>
+                </button>
+            )}
 
             {/* 방문자 + 버전 (우하단, 같은 너비) */}
             <div className="fixed bottom-20 right-3 z-[400] flex flex-col gap-1 items-stretch select-none pointer-events-none font-mono text-[10px] text-stone-400">

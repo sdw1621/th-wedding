@@ -111,53 +111,53 @@ export default function MusicPlayer({ forcePlay }) {
     }, [showPlaylist]);
 
     return (
-        <div ref={playerRef} className={`fixed top-3 left-3 z-[160] flex flex-col items-start select-none transition-opacity duration-300 ${hidePlayer ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-            <div className="flex items-center">
-                <div className="relative group flex items-center bg-white/95 border border-stone-200 rounded-full shadow-md p-1 transition-all hover:shadow-lg">
-                    <button
-                        onPointerDown={(e) => { e.stopPropagation(); setShowPlaylist(!showPlaylist); }}
-                        style={{ touchAction: 'manipulation' }}
-                        className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors ${showPlaylist ? 'bg-rose-100 text-rose-500' : 'hover:bg-stone-100 text-stone-500'}`}
-                        title="재생 목록"
-                    >
-                        <Music size={18} />
-                    </button>
-
-                    <div className="w-[1px] h-4 bg-stone-200 mx-1"></div>
-
-                    <button
-                        onPointerDown={togglePlay}
-                        style={{ touchAction: 'manipulation' }}
-                        className="w-9 h-9 rounded-full flex items-center justify-center transition-colors hover:bg-stone-100 text-stone-600 relative overflow-hidden"
-                        title={isPlaying ? "음악 끄기" : "음악 켜기"}
-                    >
-                        {isPlaying ? <Volume2 size={18} className="text-rose-400" /> : <VolumeX size={18} className="text-stone-300" />}
-                        {isPlaying && <div className="absolute inset-0 bg-rose-400/10 animate-pulse"></div>}
-                    </button>
-
-                    <audio ref={audioRef} src={currentTrack.url} onEnded={handleEnded} />
-                </div>
-
-                {/* 곡 정보 알림 (Now Playing) */}
-                <div
+        <div ref={playerRef} className={`fixed top-3 left-1/2 -translate-x-1/2 z-[160] flex flex-col items-center select-none transition-opacity duration-300 ${hidePlayer ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+            {/* 메인 pill */}
+            <div className="relative group flex items-center bg-white/95 border border-stone-200 rounded-full shadow-md p-1 transition-all hover:shadow-lg">
+                <button
                     onPointerDown={(e) => { e.stopPropagation(); setShowPlaylist(!showPlaylist); }}
                     style={{ touchAction: 'manipulation' }}
-                    className={`ml-3 bg-white/95 px-5 py-2.5 rounded-full border border-rose-100 shadow-lg transition-all duration-700 ease-out flex items-center cursor-pointer hover:bg-rose-50/50 ${showInfo ? 'max-w-xs opacity-100 translate-x-0' : 'max-w-0 opacity-0 -translate-x-10 pointer-events-none px-0 overflow-hidden'}`}
+                    className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors ${showPlaylist ? 'bg-rose-100 text-rose-500' : 'hover:bg-stone-100 text-stone-500'}`}
+                    title="재생 목록"
                 >
-                    <div className="bg-rose-100 p-1.5 rounded-full mr-3 flex-shrink-0 animate-pulse">
-                        <Music size={12} className="text-rose-500" />
-                    </div>
-                    <div className="flex flex-col min-w-0">
-                        <span className="text-[10px] text-rose-400 font-bold uppercase tracking-tighter leading-none mb-0.5">Now Playing</span>
-                        <span className="text-[12px] font-bold text-stone-700 truncate whitespace-nowrap leading-tight">
-                            BGM {currentTrack.id}: {currentTrack.name}
-                        </span>
-                    </div>
+                    <Music size={18} />
+                </button>
+
+                <div className="w-[1px] h-4 bg-stone-200 mx-1"></div>
+
+                <button
+                    onPointerDown={togglePlay}
+                    style={{ touchAction: 'manipulation' }}
+                    className="w-9 h-9 rounded-full flex items-center justify-center transition-colors hover:bg-stone-100 text-stone-600 relative overflow-hidden"
+                    title={isPlaying ? "음악 끄기" : "음악 켜기"}
+                >
+                    {isPlaying
+                        ? <Volume2 size={18} className="text-rose-400 thump-icon" />
+                        : <VolumeX size={18} className="text-stone-300" />}
+                </button>
+
+                <audio ref={audioRef} src={currentTrack.url} onEnded={handleEnded} />
+            </div>
+
+            {/* 곡 정보 알림 (Now Playing) — pill 아래로 */}
+            <div
+                onPointerDown={(e) => { e.stopPropagation(); setShowPlaylist(!showPlaylist); }}
+                style={{ touchAction: 'manipulation' }}
+                className={`mt-2 bg-white/95 px-5 py-2.5 rounded-full border border-rose-100 shadow-lg transition-all duration-700 ease-out flex items-center cursor-pointer hover:bg-rose-50/50 ${showInfo ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-2 scale-95 pointer-events-none'}`}
+            >
+                <div className="bg-rose-100 p-1.5 rounded-full mr-3 flex-shrink-0 thump-icon">
+                    <Music size={12} className="text-rose-500" />
+                </div>
+                <div className="flex flex-col min-w-0">
+                    <span className="text-[10px] text-rose-400 font-bold uppercase tracking-tighter leading-none mb-0.5">Now Playing</span>
+                    <span className="text-[12px] font-bold text-stone-700 truncate whitespace-nowrap leading-tight">
+                        BGM {currentTrack.id}: {currentTrack.name}
+                    </span>
                 </div>
             </div>
 
-            {/* 재생 목록 모달/드롭다운 */}
-            <div className={`mt-3 w-64 bg-white rounded-2xl border border-rose-100 shadow-2xl transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] origin-top-left overflow-hidden ${showPlaylist ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 -translate-y-4 pointer-events-none'}`}>
+            {/* 재생 목록 드롭다운 */}
+            <div className={`mt-2 w-64 bg-white rounded-2xl border border-rose-100 shadow-2xl transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] origin-top overflow-hidden ${showPlaylist ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 -translate-y-4 pointer-events-none'}`}>
                 <div className="px-5 py-4 border-b border-stone-100 flex justify-between items-center bg-stone-50">
                     <h3 className="text-[11px] font-bold text-stone-400 uppercase tracking-widest">Playlist</h3>
                     <span className="text-[10px] text-rose-400 font-bold bg-rose-50 px-2 py-0.5 rounded-full">{currentTrackIndex + 1} / {PLAYLIST.length}</span>
@@ -214,6 +214,14 @@ export default function MusicPlayer({ forcePlay }) {
                     0%, 100% { height: 4px; }
                     50% { height: 12px; }
                 }
+                @keyframes thump {
+                    0%, 100% { transform: scale(1); }
+                    12%  { transform: scale(1.3); }
+                    24%  { transform: scale(1); }
+                    38%  { transform: scale(1.2); }
+                    52%  { transform: scale(1); }
+                }
+                .thump-icon { animation: thump 1.2s ease-in-out infinite; }
                 .custom-scrollbar::-webkit-scrollbar {
                     width: 4px;
                 }
