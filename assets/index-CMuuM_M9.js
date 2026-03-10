@@ -18840,12 +18840,12 @@ function Hero() {
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `relative z-10 text-center flex flex-col items-center px-4 max-w-full transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs md:text-sm tracking-[0.4em] text-stone-700 mb-6 font-medium", children: "WE ARE GETTING MARRIED" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "text-4xl sm:text-5xl md:text-6xl font-serif text-stone-900 mb-3 drop-shadow-sm font-light tracking-widest whitespace-nowrap", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "text-[8.5vw] sm:text-5xl md:text-6xl font-serif text-stone-900 mb-5 drop-shadow-sm font-light tracking-widest px-4", children: [
         "강태구 ",
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-rose-400 text-3xl sm:text-4xl mx-2 font-light", children: "&" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-rose-400 text-[6.5vw] sm:text-4xl mx-2 font-light", children: "&" }),
         " 신희영"
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center gap-1", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center gap-2", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm md:text-base tracking-[0.1em] text-stone-800 font-medium", children: "2026년 3월 13일 금요일 오전 11시 30분" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "https://www.mayfield.co.kr/restaurant/bongraeheon", target: "_blank", rel: "noopener noreferrer", className: "text-sm md:text-base text-stone-800 font-medium tracking-wide underline underline-offset-4 decoration-stone-800/30 active:text-rose-500 pb-0.5 mt-0.5", children: "메이필드 호텔 봉래헌" })
       ] })
