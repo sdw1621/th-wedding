@@ -19107,7 +19107,6 @@ function Gallery() {
   const [ref, isVisible] = useScrollReveal();
   const [selectedIdx, setSelectedIdx] = reactExports.useState(null);
   const [currentScrollIdx, setCurrentScrollIdx] = reactExports.useState(0);
-  const [youtubeActive, setYoutubeActive] = reactExports.useState(false);
   const touchStartX = reactExports.useRef(0);
   const touchEndX = reactExports.useRef(0);
   const touchStartY = reactExports.useRef(0);
@@ -19191,36 +19190,15 @@ function Gallery() {
           ")을 잠시 꺼두세요"
         ] })
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-6 mb-12 relative z-30", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-2xl overflow-hidden shadow-sm aspect-video bg-stone-900 border border-stone-200 relative z-30", children: youtubeActive ? /* @__PURE__ */ jsxRuntimeExports.jsx(
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-6 mb-12 relative z-30", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-2xl overflow-hidden shadow-sm aspect-video bg-stone-100 border border-stone-200 relative z-30", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
         "iframe",
         {
-          src: "https://www.youtube.com/embed/aBT0gHQ0AwE?autoplay=1&playsinline=1",
+          src: "https://www.youtube.com/embed/aBT0gHQ0AwE",
           title: "Wedding Video",
-          className: "w-full h-full border-none",
+          className: "w-full h-full border-none relative z-30",
+          style: { pointerEvents: "auto" },
           allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
           allowFullScreen: true
-        }
-      ) : /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "div",
-        {
-          className: "w-full h-full relative cursor-pointer",
-          style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
-          onClick: () => setYoutubeActive(true),
-          onTouchEnd: (e) => {
-            e.preventDefault();
-            setYoutubeActive(true);
-          },
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "img",
-              {
-                src: "https://img.youtube.com/vi/aBT0gHQ0AwE/maxresdefault.jpg",
-                alt: "Wedding Video",
-                className: "w-full h-full object-cover"
-              }
-            ),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 flex items-center justify-center bg-black/20", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-xl", children: /* @__PURE__ */ jsxRuntimeExports.jsx("svg", { viewBox: "0 0 24 24", fill: "white", className: "w-8 h-8 ml-1", children: /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M8 5v14l11-7z" }) }) }) })
-          ]
         }
       ) }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-center mb-4", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-stone-500 animate-pulse font-medium", children: "사진을 누르면 크게 보실 수 있어요 📸" }) }),
@@ -19372,7 +19350,12 @@ function Gallery() {
 function Location() {
   const [ref, isVisible] = useScrollReveal();
   const openTmap = () => {
-    window.location.href = "tmap://route?goalname=메이필드호텔%20봉래헌&goalx=126.817971&goaly=37.5478974";
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    if (isIOS) {
+      window.location.href = "tmap://route?goalname=메이필드호텔%20봉래헌&goalx=126.817971&goaly=37.5478974";
+    } else {
+      window.location.href = "intent://route?goalname=메이필드호텔%20봉래헌&goalx=126.817971&goaly=37.5478974#Intent;scheme=tmap;package=com.skt.tmap.ku;end";
+    }
   };
   return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 bg-[#FDFBF7]", id: "location", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `max-w-lg mx-auto transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0 translate-y-6 pointer-events-none"}`, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-10", children: [
@@ -20402,7 +20385,7 @@ function App() {
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "fixed top-3 right-3 z-[400] flex items-center gap-1.5 text-[10px] text-stone-400 font-mono bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100 select-none pointer-events-none", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "90"
+        "91"
       ] }),
       todayVisitors !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-300", children: "·" }),
