@@ -20519,7 +20519,7 @@ function Share() {
       {
         src: `${"/th-wedding/"}img/wedding-couple.png`,
         alt: "모카와 리트리버 축하",
-        className: "w-full",
+        className: "w-full rounded-2xl",
         draggable: false
       }
     ),
@@ -21003,7 +21003,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "154"
+        "155"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
