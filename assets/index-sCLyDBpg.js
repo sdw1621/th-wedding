@@ -18708,9 +18708,8 @@ function IntroScreen({ onEnter, onStart }) {
                 }
                 .icon-shake { animation: icon-shake 1.1s ease-in-out infinite; }
                 @keyframes text-warn {
-                    0%, 100% { opacity: 1; color: rgb(231, 229, 228); }
-                    30% { opacity: 0.9; color: rgb(251, 191, 36); letter-spacing: 0.06em; }
-                    60% { opacity: 1; color: rgb(231, 229, 228); }
+                    0%, 100% { filter: brightness(0.65); transform: scale(1); }
+                    40% { filter: brightness(1.3); transform: scale(1.02); }
                 }
                 .text-warn { animation: text-warn 1.1s ease-in-out infinite; }
             ` }),
@@ -20475,7 +20474,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "119"
+        "120"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
