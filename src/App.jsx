@@ -99,9 +99,9 @@ export default function App() {
             {isEntered && (
                 <div
                     className="fixed bottom-24 left-3 z-[90] pointer-events-none select-none"
-                    style={{ fontSize: '2.2rem', animation: 'bouquet-breathe 3.5s ease-in-out infinite', transform: 'rotate(-30deg)', transformOrigin: 'center' }}
+                    style={{ fontSize: '4.5rem', animation: 'bouquet-breathe 2.8s ease-in-out infinite', transform: 'rotate(30deg)', transformOrigin: 'center' }}
                 >
-                    💐
+                    🪷
                 </div>
             )}
 
