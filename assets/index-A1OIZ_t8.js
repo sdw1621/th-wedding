@@ -20811,51 +20811,51 @@ function MusicPlayer({ forcePlay }) {
 }
 const DaisyCouple = () => {
   const petals = [0, 45, 90, 135, 180, 225, 270, 315];
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("svg", { width: "110", height: "105", viewBox: "0 0 110 105", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M43 50 Q28 60 22 70", stroke: "#c47a3a", strokeWidth: "5", strokeLinecap: "round", fill: "none" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M67 50 Q82 60 88 70", stroke: "#c47a3a", strokeWidth: "5", strokeLinecap: "round", fill: "none" }),
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("svg", { width: "110", height: "98", viewBox: "0 0 110 98", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M44 52 Q32 60 26 67", stroke: "#c47a3a", strokeWidth: "5", strokeLinecap: "round", fill: "none" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M66 52 Q78 60 84 67", stroke: "#c47a3a", strokeWidth: "5", strokeLinecap: "round", fill: "none" }),
     petals.map((a, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(
       "ellipse",
       {
-        cx: "22",
-        cy: "75",
+        cx: "26",
+        cy: "70",
         rx: "3.5",
         ry: "9",
         fill: "white",
         stroke: "#e0ccd8",
         strokeWidth: "0.6",
         opacity: "0.97",
-        transform: `rotate(${a} 22 85)`
+        transform: `rotate(${a} 26 80)`
       },
       `lp${i}`
     )),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "22", cy: "85", r: "9", fill: "#f5c340" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "19.8", cy: "84", r: "1.2", fill: "#3a1a00" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "24.2", cy: "84", r: "1.2", fill: "#3a1a00" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M19.5 87.5 Q22 90.5 24.5 87.5", stroke: "#3a1a00", strokeWidth: "1.1", fill: "none", strokeLinecap: "round" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "17.5", cy: "87", rx: "2.2", ry: "1.3", fill: "#ff9eb5", opacity: "0.55" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "26.5", cy: "87", rx: "2.2", ry: "1.3", fill: "#ff9eb5", opacity: "0.55" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("line", { x1: "22", y1: "75", x2: "22", y2: "70", stroke: "#a8c890", strokeWidth: "2.5", strokeLinecap: "round" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "26", cy: "80", r: "9", fill: "#f5c340" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "23.8", cy: "79", r: "1.2", fill: "#3a1a00" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "28.2", cy: "79", r: "1.2", fill: "#3a1a00" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M23.5 82.5 Q26 85.5 28.5 82.5", stroke: "#3a1a00", strokeWidth: "1.1", fill: "none", strokeLinecap: "round" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "21.5", cy: "82", rx: "2.2", ry: "1.3", fill: "#ff9eb5", opacity: "0.55" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "30.5", cy: "82", rx: "2.2", ry: "1.3", fill: "#ff9eb5", opacity: "0.55" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("line", { x1: "26", y1: "70", x2: "26", y2: "67", stroke: "#a8c890", strokeWidth: "2.5", strokeLinecap: "round" }),
     petals.map((a, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(
       "ellipse",
       {
-        cx: "88",
-        cy: "75",
+        cx: "84",
+        cy: "70",
         rx: "3.5",
         ry: "9",
         fill: "#2272d8",
         opacity: "0.9",
-        transform: `rotate(${a} 88 85)`
+        transform: `rotate(${a} 84 80)`
       },
       `rp${i}`
     )),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "88", cy: "85", r: "9", fill: "#f5c340" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "85.8", cy: "84", r: "1.2", fill: "#3a1a00" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "90.2", cy: "84", r: "1.2", fill: "#3a1a00" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M85.5 87.5 Q88 90.5 90.5 87.5", stroke: "#3a1a00", strokeWidth: "1.1", fill: "none", strokeLinecap: "round" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "83.5", cy: "87", rx: "2.2", ry: "1.3", fill: "#ff9eb5", opacity: "0.55" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "92.5", cy: "87", rx: "2.2", ry: "1.3", fill: "#ff9eb5", opacity: "0.55" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("line", { x1: "88", y1: "75", x2: "88", y2: "70", stroke: "#a8c890", strokeWidth: "2.5", strokeLinecap: "round" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "84", cy: "80", r: "9", fill: "#f5c340" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "81.8", cy: "79", r: "1.2", fill: "#3a1a00" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "86.2", cy: "79", r: "1.2", fill: "#3a1a00" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M81.5 82.5 Q84 85.5 86.5 82.5", stroke: "#3a1a00", strokeWidth: "1.1", fill: "none", strokeLinecap: "round" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "79.5", cy: "82", rx: "2.2", ry: "1.3", fill: "#ff9eb5", opacity: "0.55" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "88.5", cy: "82", rx: "2.2", ry: "1.3", fill: "#ff9eb5", opacity: "0.55" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("line", { x1: "84", y1: "70", x2: "84", y2: "67", stroke: "#a8c890", strokeWidth: "2.5", strokeLinecap: "round" }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "40", cy: "20", rx: "8", ry: "12", fill: "#a05828", transform: "rotate(18 40 20)" }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "70", cy: "20", rx: "8", ry: "12", fill: "#a05828", transform: "rotate(-18 70 20)" }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "40.5", cy: "21", rx: "4.5", ry: "8", fill: "#d4874a", opacity: "0.55", transform: "rotate(18 40.5 21)" }),
@@ -20883,8 +20883,7 @@ const DaisyCouple = () => {
     /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "49.5", cy: "28", r: "1", fill: "white", opacity: "0.9" }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "62.5", cy: "28", r: "1", fill: "white", opacity: "0.9" }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "44", cy: "36", rx: "3.5", ry: "2.2", fill: "#ff9eb5", opacity: "0.45" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "66", cy: "36", rx: "3.5", ry: "2.2", fill: "#ff9eb5", opacity: "0.45" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M68 47 Q80 40 77 32 Q75 27 70 30", stroke: "#c47a3a", strokeWidth: "5", fill: "none", strokeLinecap: "round" })
+    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "66", cy: "36", rx: "3.5", ry: "2.2", fill: "#ff9eb5", opacity: "0.45" })
   ] });
 };
 function App() {
@@ -20949,7 +20948,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "146"
+        "147"
       ] }) })
     ] }),
     isEntered && /* @__PURE__ */ jsxRuntimeExports.jsx(
