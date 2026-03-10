@@ -612,6 +612,10 @@ video {
   left: 1.5rem;
 }
 
+.right-0{
+  right: 0px;
+}
+
 .right-1\/4{
   right: 25%;
 }
@@ -1204,6 +1208,10 @@ video {
 
 .resize-none{
   resize: none;
+}
+
+.resize{
+  resize: both;
 }
 
 .snap-x{
@@ -2323,6 +2331,12 @@ video {
 .backdrop-blur-sm{
   --tw-backdrop-blur: blur(4px);
   backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+
+.transition{
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 
 .transition-all{
