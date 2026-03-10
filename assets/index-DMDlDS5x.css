@@ -743,6 +743,10 @@ video {
   margin-bottom: 3rem;
 }
 
+.mb-16{
+  margin-bottom: 4rem;
+}
+
 .mb-2{
   margin-bottom: 0.5rem;
 }
@@ -1979,10 +1983,6 @@ video {
   font-size: 17px;
 }
 
-.text-\[23px\]{
-  font-size: 23px;
-}
-
 .text-\[28px\]{
   font-size: 28px;
 }
@@ -2046,6 +2046,10 @@ video {
 
 .italic{
   font-style: italic;
+}
+
+.leading-loose{
+  line-height: 2;
 }
 
 .leading-none{
