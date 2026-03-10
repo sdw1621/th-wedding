@@ -19160,7 +19160,7 @@ function Gallery({ onFullscreenChange }) {
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             "button",
             {
-              className: "absolute top-6 right-6 z-[510] flex items-center justify-center w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-stone-800 shadow-xl active:bg-white transition-colors select-none",
+              className: "absolute top-3 right-3 z-[510] flex items-center justify-center w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-stone-800 shadow-xl active:bg-white transition-colors select-none",
               style: { touchAction: "manipulation" },
               onPointerDown: (e) => {
                 e.stopPropagation();
