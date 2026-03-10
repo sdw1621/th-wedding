@@ -21,43 +21,43 @@ import MusicPlayer from './components/MusicPlayer';
 const DaisyCouple = () => {
     const petals = [0, 45, 90, 135, 180, 225, 270, 315];
     return (
-        <svg width="110" height="105" viewBox="0 0 110 105" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="110" height="98" viewBox="0 0 110 98" fill="none" xmlns="http://www.w3.org/2000/svg">
 
             {/* ── 강아지 팔 (꽃보다 뒤에 그리기) ── */}
             {/* 왼쪽 팔: 몸 → 왼쪽 꽃 줄기 */}
-            <path d="M43 50 Q28 60 22 70" stroke="#c47a3a" strokeWidth="5" strokeLinecap="round" fill="none" />
+            <path d="M44 52 Q32 60 26 67" stroke="#c47a3a" strokeWidth="5" strokeLinecap="round" fill="none" />
             {/* 오른쪽 팔: 몸 → 오른쪽 꽃 줄기 */}
-            <path d="M67 50 Q82 60 88 70" stroke="#c47a3a" strokeWidth="5" strokeLinecap="round" fill="none" />
+            <path d="M66 52 Q78 60 84 67" stroke="#c47a3a" strokeWidth="5" strokeLinecap="round" fill="none" />
 
-            {/* ── 왼쪽 흰꽃 (22, 85 중심) ── */}
+            {/* ── 왼쪽 흰꽃 (26, 80 중심) ── */}
             {petals.map((a, i) => (
-                <ellipse key={`lp${i}`} cx="22" cy="75" rx="3.5" ry="9"
+                <ellipse key={`lp${i}`} cx="26" cy="70" rx="3.5" ry="9"
                     fill="white" stroke="#e0ccd8" strokeWidth="0.6" opacity="0.97"
-                    transform={`rotate(${a} 22 85)`} />
+                    transform={`rotate(${a} 26 80)`} />
             ))}
-            <circle cx="22" cy="85" r="9" fill="#f5c340" />
-            <circle cx="19.8" cy="84" r="1.2" fill="#3a1a00" />
-            <circle cx="24.2" cy="84" r="1.2" fill="#3a1a00" />
-            <path d="M19.5 87.5 Q22 90.5 24.5 87.5" stroke="#3a1a00" strokeWidth="1.1" fill="none" strokeLinecap="round" />
-            <ellipse cx="17.5" cy="87" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
-            <ellipse cx="26.5" cy="87" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
+            <circle cx="26" cy="80" r="9" fill="#f5c340" />
+            <circle cx="23.8" cy="79" r="1.2" fill="#3a1a00" />
+            <circle cx="28.2" cy="79" r="1.2" fill="#3a1a00" />
+            <path d="M23.5 82.5 Q26 85.5 28.5 82.5" stroke="#3a1a00" strokeWidth="1.1" fill="none" strokeLinecap="round" />
+            <ellipse cx="21.5" cy="82" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
+            <ellipse cx="30.5" cy="82" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
             {/* 꽃 줄기 끝 (팔 연결 부분) */}
-            <line x1="22" y1="75" x2="22" y2="70" stroke="#a8c890" strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="26" y1="70" x2="26" y2="67" stroke="#a8c890" strokeWidth="2.5" strokeLinecap="round" />
 
-            {/* ── 오른쪽 파란꽃 (88, 85 중심) ── */}
+            {/* ── 오른쪽 파란꽃 (84, 80 중심) ── */}
             {petals.map((a, i) => (
-                <ellipse key={`rp${i}`} cx="88" cy="75" rx="3.5" ry="9"
+                <ellipse key={`rp${i}`} cx="84" cy="70" rx="3.5" ry="9"
                     fill="#2272d8" opacity="0.9"
-                    transform={`rotate(${a} 88 85)`} />
+                    transform={`rotate(${a} 84 80)`} />
             ))}
-            <circle cx="88" cy="85" r="9" fill="#f5c340" />
-            <circle cx="85.8" cy="84" r="1.2" fill="#3a1a00" />
-            <circle cx="90.2" cy="84" r="1.2" fill="#3a1a00" />
-            <path d="M85.5 87.5 Q88 90.5 90.5 87.5" stroke="#3a1a00" strokeWidth="1.1" fill="none" strokeLinecap="round" />
-            <ellipse cx="83.5" cy="87" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
-            <ellipse cx="92.5" cy="87" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
+            <circle cx="84" cy="80" r="9" fill="#f5c340" />
+            <circle cx="81.8" cy="79" r="1.2" fill="#3a1a00" />
+            <circle cx="86.2" cy="79" r="1.2" fill="#3a1a00" />
+            <path d="M81.5 82.5 Q84 85.5 86.5 82.5" stroke="#3a1a00" strokeWidth="1.1" fill="none" strokeLinecap="round" />
+            <ellipse cx="79.5" cy="82" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
+            <ellipse cx="88.5" cy="82" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
             {/* 꽃 줄기 끝 (팔 연결 부분) */}
-            <line x1="88" y1="75" x2="88" y2="70" stroke="#a8c890" strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="84" y1="70" x2="84" y2="67" stroke="#a8c890" strokeWidth="2.5" strokeLinecap="round" />
 
             {/* ── 강아지 본체 ── */}
             {/* 귀 (뒤에) */}
@@ -106,8 +106,6 @@ const DaisyCouple = () => {
             <ellipse cx="44" cy="36" rx="3.5" ry="2.2" fill="#ff9eb5" opacity="0.45" />
             <ellipse cx="66" cy="36" rx="3.5" ry="2.2" fill="#ff9eb5" opacity="0.45" />
 
-            {/* 꼬리 */}
-            <path d="M68 47 Q80 40 77 32 Q75 27 70 30" stroke="#c47a3a" strokeWidth="5" fill="none" strokeLinecap="round" />
 
         </svg>
     );
