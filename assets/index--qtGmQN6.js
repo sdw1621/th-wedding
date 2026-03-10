@@ -18709,7 +18709,7 @@ function IntroScreen({ onEnter, onStart }) {
                 .icon-shake { animation: icon-shake 1.1s ease-in-out infinite; }
                 @keyframes text-warn {
                     0%, 100% { filter: brightness(0.6); transform: scale(1); }
-                    40% { filter: brightness(1.35); transform: scale(1.07); }
+                    40% { filter: brightness(1.35); transform: scale(1.22); }
                 }
                 .text-warn { animation: text-warn 1.1s ease-in-out infinite; }
             ` }),
@@ -19800,6 +19800,11 @@ function Guestbook({ showToast }) {
       document.body.classList.remove("nav-hidden");
     }
   }, [isAnyModalOpen]);
+  reactExports.useEffect(() => {
+    if (isReplyInputModalOpen) {
+      setModalReplyText((t) => t.replace(/^[\s\n\r]+/, ""));
+    }
+  }, [isReplyInputModalOpen]);
   const fetchMessages = reactExports.useCallback(async (isAuto = false) => {
     try {
       const { data, error } = await supabase.from("guestbook").select("*").order("created_at", { ascending: false });
@@ -20239,6 +20244,7 @@ const Play = createLucideIcon("Play", [
 ]);
 function MusicPlayer({ forcePlay }) {
   const [isPlaying, setIsPlaying] = reactExports.useState(false);
+  const [isYtPlaying, setIsYtPlaying] = reactExports.useState(false);
   const [showPlaylist, setShowPlaylist] = reactExports.useState(false);
   const audioRef = reactExports.useRef(null);
   const [showInfo, setShowInfo] = reactExports.useState(false);
@@ -20315,9 +20321,11 @@ function MusicPlayer({ forcePlay }) {
   reactExports.useEffect(() => {
     const handleYtPlaying = () => {
       if (audioRef.current) audioRef.current.volume = 0;
+      setIsYtPlaying(true);
     };
     const handleYtStopped = () => {
       if (audioRef.current) audioRef.current.volume = 0.3;
+      setIsYtPlaying(false);
     };
     document.addEventListener("youtube-playing", handleYtPlaying);
     document.addEventListener("youtube-stopped", handleYtStopped);
@@ -20359,7 +20367,7 @@ function MusicPlayer({ forcePlay }) {
           style: { touchAction: "manipulation" },
           className: "w-9 h-9 rounded-full flex items-center justify-center transition-colors hover:bg-stone-100 text-stone-600 relative overflow-hidden",
           title: isPlaying ? "음악 끄기" : "음악 켜기",
-          children: isPlaying ? /* @__PURE__ */ jsxRuntimeExports.jsx(Volume2, { size: 18, className: "text-rose-400 thump-icon" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(VolumeX, { size: 18, className: "text-stone-300" })
+          children: isYtPlaying ? /* @__PURE__ */ jsxRuntimeExports.jsx(VolumeX, { size: 18, className: "text-amber-400" }) : isPlaying ? /* @__PURE__ */ jsxRuntimeExports.jsx(Volume2, { size: 18, className: "text-rose-400 thump-icon" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(VolumeX, { size: 18, className: "text-stone-300" })
         }
       ),
       /* @__PURE__ */ jsxRuntimeExports.jsx("audio", { ref: audioRef, src: currentTrack.url, onEnded: handleEnded })
@@ -20527,7 +20535,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "127"
+        "128"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
