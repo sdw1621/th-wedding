@@ -19284,7 +19284,7 @@ function Gallery({ onFullscreenChange }) {
         /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "우리의 빛나는 순간" })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-center mb-4 px-6", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-stone-500 font-medium whitespace-nowrap", children: "크게 보시고 싶으시면 영상 터치 후 Youtube 로고를 눌러주세요 👆" }) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-6 mb-40 relative z-30", ref: ytContainerRef, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-6 mb-6 relative z-30", ref: ytContainerRef, children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "p-[3px] rounded-2xl shadow-lg", style: { background: "linear-gradient(135deg, #e8b4b8 0%, #f5dcc8 30%, #e8c4d8 60%, #d4a8c0 100%)" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-[14px] overflow-hidden aspect-video bg-stone-100 relative z-30", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
             "iframe",
@@ -19308,6 +19308,59 @@ function Gallery({ onFullscreenChange }) {
           /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[10px] tracking-[0.3em] text-stone-300", children: "2 0 2 6 · 0 3 · 1 3" })
         ] })
       ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "div",
+        {
+          className: "flex justify-center mb-8 select-none pointer-events-none",
+          style: { animation: "couple-float 3s ease-in-out infinite" },
+          children: /* @__PURE__ */ jsxRuntimeExports.jsxs("svg", { width: "180", height: "160", viewBox: "0 0 110 98", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M44 52 Q32 60 26 67", stroke: "#c47a3a", strokeWidth: "5", strokeLinecap: "round", fill: "none" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M66 52 Q78 60 84 67", stroke: "#c47a3a", strokeWidth: "5", strokeLinecap: "round", fill: "none" }),
+            [0, 45, 90, 135, 180, 225, 270, 315].map((a, i) => /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "26", cy: "70", rx: "3.5", ry: "9", fill: "white", stroke: "#e0ccd8", strokeWidth: "0.6", opacity: "0.97", transform: `rotate(${a} 26 80)` }, `lp${i}`)),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "26", cy: "80", r: "9", fill: "#f5c340" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "23.8", cy: "79", r: "1.2", fill: "#3a1a00" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "28.2", cy: "79", r: "1.2", fill: "#3a1a00" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M23.5 82.5 Q26 85.5 28.5 82.5", stroke: "#3a1a00", strokeWidth: "1.1", fill: "none", strokeLinecap: "round" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "21.5", cy: "82", rx: "2.2", ry: "1.3", fill: "#ff9eb5", opacity: "0.55" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "30.5", cy: "82", rx: "2.2", ry: "1.3", fill: "#ff9eb5", opacity: "0.55" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("line", { x1: "26", y1: "70", x2: "26", y2: "67", stroke: "#a8c890", strokeWidth: "2.5", strokeLinecap: "round" }),
+            [0, 45, 90, 135, 180, 225, 270, 315].map((a, i) => /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "84", cy: "70", rx: "3.5", ry: "9", fill: "#2272d8", opacity: "0.9", transform: `rotate(${a} 84 80)` }, `rp${i}`)),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "84", cy: "80", r: "9", fill: "#f5c340" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "81.8", cy: "79", r: "1.2", fill: "#3a1a00" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "86.2", cy: "79", r: "1.2", fill: "#3a1a00" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M81.5 82.5 Q84 85.5 86.5 82.5", stroke: "#3a1a00", strokeWidth: "1.1", fill: "none", strokeLinecap: "round" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "79.5", cy: "82", rx: "2.2", ry: "1.3", fill: "#ff9eb5", opacity: "0.55" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "88.5", cy: "82", rx: "2.2", ry: "1.3", fill: "#ff9eb5", opacity: "0.55" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("line", { x1: "84", y1: "70", x2: "84", y2: "67", stroke: "#a8c890", strokeWidth: "2.5", strokeLinecap: "round" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "40", cy: "20", rx: "8", ry: "12", fill: "#a05828", transform: "rotate(18 40 20)" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "70", cy: "20", rx: "8", ry: "12", fill: "#a05828", transform: "rotate(-18 70 20)" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "40.5", cy: "21", rx: "4.5", ry: "8", fill: "#d4874a", opacity: "0.55", transform: "rotate(18 40.5 21)" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "69.5", cy: "21", rx: "4.5", ry: "8", fill: "#d4874a", opacity: "0.55", transform: "rotate(-18 69.5 21)" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "55", cy: "51", rx: "13", ry: "11", fill: "#c47a3a" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "55", cy: "53", rx: "8", ry: "7", fill: "#d4874a", opacity: "0.5" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "43", cy: "23", r: "6.5", fill: "#c47a3a" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "48", cy: "16", r: "7", fill: "#c47a3a" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "55", cy: "13", r: "7.5", fill: "#c47a3a" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "62", cy: "16", r: "7", fill: "#c47a3a" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "67", cy: "23", r: "6.5", fill: "#c47a3a" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "46", cy: "19", r: "2.8", fill: "#d98a45", opacity: "0.45" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "55", cy: "12", r: "2.8", fill: "#d98a45", opacity: "0.45" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "64", cy: "20", r: "2.8", fill: "#d98a45", opacity: "0.45" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "55", cy: "32", r: "15", fill: "#c47a3a" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "55", cy: "34", r: "13", fill: "#be722f", opacity: "0.3" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "55", cy: "38", rx: "7", ry: "5.5", fill: "#b86820", opacity: "0.65" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "55", cy: "35.5", rx: "3", ry: "2.2", fill: "#2a0f00" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M51.5 39.5 Q55 43.5 58.5 39.5", stroke: "#2a0f00", strokeWidth: "1.2", fill: "none", strokeLinecap: "round" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "55", cy: "42", rx: "3", ry: "2.4", fill: "#ff7a9a" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "48.5", cy: "29", r: "3", fill: "#1a0800" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "61.5", cy: "29", r: "3", fill: "#1a0800" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "49.5", cy: "28", r: "1", fill: "white", opacity: "0.9" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "62.5", cy: "28", r: "1", fill: "white", opacity: "0.9" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "44", cy: "36", rx: "3.5", ry: "2.2", fill: "#ff9eb5", opacity: "0.45" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "66", cy: "36", rx: "3.5", ry: "2.2", fill: "#ff9eb5", opacity: "0.45" })
+          ] })
+        }
+      ),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-center mb-6", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-stone-500 animate-pulse font-medium", children: "사진을 누르면 크게 보실 수 있어요 📸" }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative group", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -20809,83 +20862,6 @@ function MusicPlayer({ forcePlay }) {
     } })
   ] });
 }
-const DaisyCouple = () => {
-  const petals = [0, 45, 90, 135, 180, 225, 270, 315];
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("svg", { width: "110", height: "98", viewBox: "0 0 110 98", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M44 52 Q32 60 26 67", stroke: "#c47a3a", strokeWidth: "5", strokeLinecap: "round", fill: "none" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M66 52 Q78 60 84 67", stroke: "#c47a3a", strokeWidth: "5", strokeLinecap: "round", fill: "none" }),
-    petals.map((a, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-      "ellipse",
-      {
-        cx: "26",
-        cy: "70",
-        rx: "3.5",
-        ry: "9",
-        fill: "white",
-        stroke: "#e0ccd8",
-        strokeWidth: "0.6",
-        opacity: "0.97",
-        transform: `rotate(${a} 26 80)`
-      },
-      `lp${i}`
-    )),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "26", cy: "80", r: "9", fill: "#f5c340" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "23.8", cy: "79", r: "1.2", fill: "#3a1a00" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "28.2", cy: "79", r: "1.2", fill: "#3a1a00" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M23.5 82.5 Q26 85.5 28.5 82.5", stroke: "#3a1a00", strokeWidth: "1.1", fill: "none", strokeLinecap: "round" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "21.5", cy: "82", rx: "2.2", ry: "1.3", fill: "#ff9eb5", opacity: "0.55" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "30.5", cy: "82", rx: "2.2", ry: "1.3", fill: "#ff9eb5", opacity: "0.55" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("line", { x1: "26", y1: "70", x2: "26", y2: "67", stroke: "#a8c890", strokeWidth: "2.5", strokeLinecap: "round" }),
-    petals.map((a, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-      "ellipse",
-      {
-        cx: "84",
-        cy: "70",
-        rx: "3.5",
-        ry: "9",
-        fill: "#2272d8",
-        opacity: "0.9",
-        transform: `rotate(${a} 84 80)`
-      },
-      `rp${i}`
-    )),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "84", cy: "80", r: "9", fill: "#f5c340" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "81.8", cy: "79", r: "1.2", fill: "#3a1a00" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "86.2", cy: "79", r: "1.2", fill: "#3a1a00" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M81.5 82.5 Q84 85.5 86.5 82.5", stroke: "#3a1a00", strokeWidth: "1.1", fill: "none", strokeLinecap: "round" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "79.5", cy: "82", rx: "2.2", ry: "1.3", fill: "#ff9eb5", opacity: "0.55" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "88.5", cy: "82", rx: "2.2", ry: "1.3", fill: "#ff9eb5", opacity: "0.55" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("line", { x1: "84", y1: "70", x2: "84", y2: "67", stroke: "#a8c890", strokeWidth: "2.5", strokeLinecap: "round" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "40", cy: "20", rx: "8", ry: "12", fill: "#a05828", transform: "rotate(18 40 20)" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "70", cy: "20", rx: "8", ry: "12", fill: "#a05828", transform: "rotate(-18 70 20)" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "40.5", cy: "21", rx: "4.5", ry: "8", fill: "#d4874a", opacity: "0.55", transform: "rotate(18 40.5 21)" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "69.5", cy: "21", rx: "4.5", ry: "8", fill: "#d4874a", opacity: "0.55", transform: "rotate(-18 69.5 21)" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "55", cy: "51", rx: "13", ry: "11", fill: "#c47a3a" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "55", cy: "53", rx: "8", ry: "7", fill: "#d4874a", opacity: "0.5" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "43", cy: "23", r: "6.5", fill: "#c47a3a" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "48", cy: "16", r: "7", fill: "#c47a3a" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "55", cy: "13", r: "7.5", fill: "#c47a3a" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "62", cy: "16", r: "7", fill: "#c47a3a" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "67", cy: "23", r: "6.5", fill: "#c47a3a" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "46", cy: "19", r: "2.8", fill: "#d98a45", opacity: "0.45" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "55", cy: "12", r: "2.8", fill: "#d98a45", opacity: "0.45" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "64", cy: "20", r: "2.8", fill: "#d98a45", opacity: "0.45" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "55", cy: "32", r: "15", fill: "#c47a3a" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "55", cy: "34", r: "13", fill: "#be722f", opacity: "0.3" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "55", cy: "38", rx: "7", ry: "5.5", fill: "#b86820", opacity: "0.65" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "55", cy: "35.5", rx: "3", ry: "2.2", fill: "#2a0f00" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "53.5", cy: "35.7", rx: "0.7", ry: "0.55", fill: "#5a2500", opacity: "0.6" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "56.5", cy: "35.7", rx: "0.7", ry: "0.55", fill: "#5a2500", opacity: "0.6" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M51.5 39.5 Q55 43.5 58.5 39.5", stroke: "#2a0f00", strokeWidth: "1.2", fill: "none", strokeLinecap: "round" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "55", cy: "42", rx: "3", ry: "2.4", fill: "#ff7a9a" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "48.5", cy: "29", r: "3", fill: "#1a0800" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "61.5", cy: "29", r: "3", fill: "#1a0800" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "49.5", cy: "28", r: "1", fill: "white", opacity: "0.9" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "62.5", cy: "28", r: "1", fill: "white", opacity: "0.9" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "44", cy: "36", rx: "3.5", ry: "2.2", fill: "#ff9eb5", opacity: "0.45" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "66", cy: "36", rx: "3.5", ry: "2.2", fill: "#ff9eb5", opacity: "0.45" })
-  ] });
-};
 function App() {
   const [isEntered, setIsEntered] = reactExports.useState(false);
   const [toast, setToast] = reactExports.useState({ show: false, message: "" });
@@ -20948,17 +20924,9 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "147"
+        "148"
       ] }) })
     ] }),
-    isEntered && /* @__PURE__ */ jsxRuntimeExports.jsx(
-      "div",
-      {
-        className: "fixed bottom-20 left-1 z-[90] pointer-events-none select-none",
-        style: { animation: "couple-float 3s ease-in-out infinite" },
-        children: /* @__PURE__ */ jsxRuntimeExports.jsx(DaisyCouple, {})
-      }
-    ),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
       IntroScreen,
       {
