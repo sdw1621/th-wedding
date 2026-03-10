@@ -18934,36 +18934,35 @@ function IntroScreen({ onEnter, onStart }) {
       onEnter();
     }, 1200);
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `fixed inset-0 bg-stone-900 flex flex-col items-center justify-center transition-opacity duration-1000 z-[150] ${isOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`, children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `fixed inset-0 bg-stone-900 flex flex-col transition-opacity duration-1000 z-[150] ${isOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute inset-0 overflow-hidden", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-1/4 left-1/4 w-64 h-64 bg-rose-900/20 rounded-full blur-3xl opacity-50" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute bottom-1/4 right-1/4 w-64 h-64 bg-stone-700/30 rounded-full blur-3xl opacity-50" })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `z-10 flex flex-col items-center transition-all duration-1000 transform ${isOpen ? "scale-110 translate-y-[-30px]" : "scale-100"}`, children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("style", { children: `
-                    @keyframes warning-flash {
-                        0%, 100% { opacity: 1; transform: scale(1); }
-                        30% { opacity: 0.15; transform: scale(0.97); }
-                        60% { opacity: 1; transform: scale(1.03); }
-                    }
-                    @keyframes icon-shake {
-                        0%, 100% { transform: rotate(0deg); }
-                        20% { transform: rotate(-12deg); }
-                        40% { transform: rotate(12deg); }
-                        60% { transform: rotate(-8deg); }
-                        80% { transform: rotate(8deg); }
-                    }
-                    .warning-flash { animation: warning-flash 1.2s ease-in-out infinite; }
-                    .icon-shake { animation: icon-shake 1.2s ease-in-out infinite; }
-                ` }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "warning-flash mb-16 flex flex-col items-center space-y-3 px-3", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(TriangleAlert, { size: 28, className: "text-amber-400 icon-shake" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-stone-200 text-[17px] font-bold tracking-wide text-center leading-loose", children: [
-          "가족식이라 하객 없이 진행됩니다.",
-          /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-          "축하 방명록만 남겨주세요."
-        ] })
-      ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("style", { children: `
+                @keyframes warning-flash {
+                    0%, 100% { opacity: 1; }
+                    40% { opacity: 0.2; }
+                }
+                @keyframes icon-shake {
+                    0%, 100% { transform: rotate(0deg); }
+                    20% { transform: rotate(-14deg); }
+                    40% { transform: rotate(14deg); }
+                    60% { transform: rotate(-8deg); }
+                    80% { transform: rotate(8deg); }
+                }
+                .warning-flash { animation: warning-flash 1.1s ease-in-out infinite; }
+                .icon-shake { animation: icon-shake 1.1s ease-in-out infinite; }
+            ` }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "warning-flash z-10 w-full flex flex-col items-center pt-14 pb-5 px-4 bg-amber-950/30 border-b border-amber-700/40 space-y-2", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(TriangleAlert, { size: 26, className: "text-amber-400 icon-shake" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-stone-200 text-[17px] font-bold tracking-wide text-center leading-loose", children: [
+        "가족식이라 하객 없이 진행됩니다.",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+        "축하 방명록만 남겨주세요."
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `z-10 flex-1 flex flex-col items-center justify-center transition-all duration-1000 transform ${isOpen ? "scale-110" : "scale-100"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "text-4xl md:text-5xl font-serif text-stone-200 mb-6 tracking-widest text-center px-6", children: [
         "태구 ",
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-rose-400 mx-2", children: "&" }),
@@ -19900,7 +19899,7 @@ function Guestbook({ showToast }) {
         toggleUnlock(selectedMsg.id, true);
         setIsPasswordModalOpen(false);
       } else {
-        showToast("비밀번호가 일치하지 않습니다.");
+        showToast("전화번호 뒷 4자리가 일치하지 않습니다.");
         refocusPasswordInput();
       }
     } else if (modalPurpose === "delete") {
@@ -19908,7 +19907,7 @@ function Guestbook({ showToast }) {
         setIsPasswordModalOpen(false);
         setIsDeleteModalOpen(true);
       } else {
-        showToast("비밀번호가 틀렸습니다.");
+        showToast("전화번호 뒷 4자리가 틀렸습니다.");
         refocusPasswordInput();
       }
     } else if (modalPurpose === "edit") {
@@ -19917,7 +19916,7 @@ function Guestbook({ showToast }) {
         setIsPasswordModalOpen(false);
         setIsEditModalOpen(true);
       } else {
-        showToast("비밀번호가 틀렸습니다.");
+        showToast("전화번호 뒷 4자리가 틀렸습니다.");
         refocusPasswordInput();
       }
     } else if (modalPurpose === "reply") {
@@ -19998,7 +19997,7 @@ function Guestbook({ showToast }) {
       if (existingMsg) {
         if (existingMsg.password && trimmedPassword !== existingMsg.password && trimmedPassword !== "0313") {
           setLoading(false);
-          return showToast("비밀번호가 일치하지 않습니다.");
+          return showToast("전화번호 뒷 4자리가 일치하지 않습니다.");
         }
         const { error: upError } = await supabase.from("guestbook").update(messageDataDB).eq("id", existingMsg.id);
         if (upError || typeof existingMsg.id === "string" && (existingMsg.id.startsWith("mock-") || existingMsg.id.startsWith("local-"))) {
@@ -20113,7 +20112,7 @@ function Guestbook({ showToast }) {
       /* @__PURE__ */ jsxRuntimeExports.jsxs("form", { onSubmit: handleSubmit, className: "bg-white p-5 rounded-[1.25rem] shadow-sm border border-stone-100 mb-8 space-y-4 relative z-20", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex space-x-2", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "text", placeholder: "성함", value: newName, onChange: (e) => setNewName(e.target.value), className: "w-1/2 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 10 }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "password", placeholder: "비밀번호", value: newPassword, onChange: (e) => setNewPassword(e.target.value), className: "w-1/2 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 10 })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "password", inputMode: "numeric", pattern: "[0-9]*", placeholder: "전화번호 뒷 4자리", value: newPassword, onChange: (e) => setNewPassword(e.target.value), className: "w-1/2 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 4 })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { placeholder: "축하의 한마디를 남겨주세요.", value: newContent, onChange: (e) => setNewContent(e.target.value), className: "w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 h-28 resize-none focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 relative z-20", maxLength: 100 }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex space-x-2 relative z-10", children: [
@@ -20138,7 +20137,7 @@ function Guestbook({ showToast }) {
       ] }),
       messageListOutput
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isPasswordModalOpen, onClose: () => setIsPasswordModalOpen(false), title: "비밀번호 확인", description: modalPurpose === "reply" ? "신랑/신부용 비밀번호를 입력해주세요." : modalPurpose === "edit" || modalPurpose === "delete" ? "본인이 입력한 비밀번호를 입력해주세요." : "비밀번호를 입력해주세요.", onConfirm: handleModalConfirm, children: /* @__PURE__ */ jsxRuntimeExports.jsx("input", { ref: passwordInputRef, type: "password", value: modalPassword, onChange: (e) => setModalPassword(e.target.value), onKeyDown: (e) => e.key === "Enter" && handleModalConfirm(), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-center text-lg tracking-[0.5em] focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "••••", autoFocus: true }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isPasswordModalOpen, onClose: () => setIsPasswordModalOpen(false), title: "전화번호 확인", description: modalPurpose === "reply" ? "신랑/신부용 비밀번호를 입력해주세요." : modalPurpose === "edit" || modalPurpose === "delete" ? "등록 시 입력한 전화번호 뒷 4자리를 입력해주세요." : "전화번호 뒷 4자리를 입력해주세요.", onConfirm: handleModalConfirm, children: /* @__PURE__ */ jsxRuntimeExports.jsx("input", { ref: passwordInputRef, type: "password", inputMode: "numeric", pattern: "[0-9]*", maxLength: 4, value: modalPassword, onChange: (e) => setModalPassword(e.target.value), onKeyDown: (e) => e.key === "Enter" && handleModalConfirm(), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-center text-lg tracking-[0.5em] focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "••••", autoFocus: true }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isDeleteModalOpen, onClose: () => setIsDeleteModalOpen(false), title: "메시지 삭제", description: "삭제하면 되돌릴 수 없습니다. 정말 삭제할까요?", onConfirm: confirmDelete, confirmLabel: "삭제", isDestructive: true }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isEditModalOpen, onClose: () => setIsEditModalOpen(false), title: "메시지 수정", onConfirm: confirmEdit, confirmLabel: "수정완료", children: /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalEditText, onChange: (e) => setModalEditText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none", autoFocus: true }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isReplyInputModalOpen, onClose: () => setIsReplyInputModalOpen(false), title: "답글 남기기", description: "게스트에게 전할 소중한 메시지를 입력하세요.", onConfirm: confirmReply, confirmLabel: "답글저장", children: /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalReplyText, onChange: (e) => setModalReplyText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 pt-2 pb-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "감사의 인사를 남겨주세요.", autoFocus: true }) })
@@ -20457,7 +20456,7 @@ function App() {
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "fixed top-3 right-3 z-[400] flex items-center gap-1.5 text-[10px] text-stone-400 font-mono bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100 select-none pointer-events-none", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "99"
+        "100"
       ] }),
       todayVisitors !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-300", children: "·" }),
