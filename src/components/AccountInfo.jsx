@@ -53,7 +53,8 @@ export default function AccountInfo({ showToast }) {
                     <Gift className="mx-auto text-rose-200 mb-4" size={28} strokeWidth={1.5} />
                     <h2 className="text-xl font-serif tracking-widest text-stone-800 font-bold">마음 전하실 곳</h2>
                     <p className="text-sm text-stone-600 mt-4 leading-relaxed font-medium">
-                        따뜻한 마음으로 축하해 주시는 모든 분들께 감사드립니다.<br />
+                        따뜻한 마음으로 축하해 주시는<br />
+                        모든 분들께 감사드립니다.<br />
                         바르고 지혜롭게 잘 살겠습니다.
                     </p>
                 </div>
