@@ -19553,9 +19553,11 @@ function AccountInfo({ showToast }) {
       /* @__PURE__ */ jsxRuntimeExports.jsx(Gift, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "마음 전하실 곳" }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm text-stone-600 mt-4 leading-relaxed font-medium", children: [
-        "따뜻한 마음으로 축하해 주시는 모든 분들께 감사드립니다.",
+        "따뜻한 마음으로 축하해 주시는",
         /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-        "바르고 지혜롭게 잘 살겠습니다."
+        "모든 분들께 감사드립니다.",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+        "바르고 지혜롭게 살겠습니다."
       ] })
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4", children: [
@@ -19730,7 +19732,7 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
     ] }) : /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-3", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: `text-sm leading-relaxed font-medium whitespace-pre-wrap ${msg.receiver === "groom" ? "text-blue-900" : msg.receiver === "bride" ? "text-rose-900" : "text-stone-700"}`, children: msg.content }),
       msg.reply && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-stone-800/5 rounded-xl p-3 border-l-2 border-stone-800/20 animate-in slide-in-from-left-2 duration-300", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center space-x-1.5 mb-1", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] font-bold text-stone-800 bg-stone-200 px-1.5 py-0.5 rounded", children: "신랑 & 신부" }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center space-x-1.5 mb-1", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] font-bold text-stone-800 bg-stone-200 px-1.5 py-0.5 rounded", children: msg.receiver === "groom" ? "강태구 🤵" : msg.receiver === "bride" ? "신희영 👰" : "신랑 & 신부 💑" }) }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[13px] text-stone-600 font-medium leading-relaxed", children: msg.reply })
       ] })
     ] })
@@ -19920,12 +19922,15 @@ function Guestbook({ showToast }) {
         refocusPasswordInput();
       }
     } else if (modalPurpose === "reply") {
-      if (modalPassword === "0313") {
+      const groomPw = "840806";
+      const bridePw = "840407";
+      const isValid = selectedMsg.receiver === "groom" ? modalPassword === groomPw : selectedMsg.receiver === "bride" ? modalPassword === bridePw : modalPassword === groomPw || modalPassword === bridePw;
+      if (isValid) {
         setModalReplyText(selectedMsg.reply || "");
         setIsPasswordModalOpen(false);
         setIsReplyInputModalOpen(true);
       } else {
-        showToast("신랑/신부 전용 비밀번호가 아닙니다.");
+        showToast("생일 비밀번호가 일치하지 않습니다.");
         refocusPasswordInput();
       }
     }
@@ -20137,7 +20142,7 @@ function Guestbook({ showToast }) {
       ] }),
       messageListOutput
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isPasswordModalOpen, onClose: () => setIsPasswordModalOpen(false), title: "전화번호 확인", description: modalPurpose === "reply" ? "신랑/신부용\n비밀번호를 입력해주세요." : modalPurpose === "edit" || modalPurpose === "delete" ? "등록 시 입력한\n전화번호 뒷 4자리를 입력해주세요." : "전화번호 뒷 4자리를\n입력해주세요.", onConfirm: handleModalConfirm, children: /* @__PURE__ */ jsxRuntimeExports.jsx("input", { ref: passwordInputRef, type: "password", inputMode: "numeric", pattern: "[0-9]*", maxLength: 4, value: modalPassword, onChange: (e) => setModalPassword(e.target.value), onKeyDown: (e) => e.key === "Enter" && handleModalConfirm(), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-center text-lg tracking-[0.5em] focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "••••", autoFocus: true }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isPasswordModalOpen, onClose: () => setIsPasswordModalOpen(false), title: modalPurpose === "reply" ? "생일 확인" : "전화번호 확인", description: modalPurpose === "reply" ? (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑의 생일을 입력하세요.\n(예: 840806)" : (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부의 생일을 입력하세요.\n(예: 840407)" : "신랑 또는 신부의\n생일을 입력하세요." : modalPurpose === "edit" || modalPurpose === "delete" ? "등록 시 입력한\n전화번호 뒷 4자리를 입력해주세요." : "전화번호 뒷 4자리를\n입력해주세요.", onConfirm: handleModalConfirm, children: /* @__PURE__ */ jsxRuntimeExports.jsx("input", { ref: passwordInputRef, type: "password", inputMode: "numeric", pattern: "[0-9]*", maxLength: modalPurpose === "reply" ? 6 : 4, value: modalPassword, onChange: (e) => setModalPassword(e.target.value), onKeyDown: (e) => e.key === "Enter" && handleModalConfirm(), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-center text-lg tracking-[0.5em] focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "••••", autoFocus: true }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isDeleteModalOpen, onClose: () => setIsDeleteModalOpen(false), title: "메시지 삭제", description: "삭제하면 되돌릴 수 없습니다. 정말 삭제할까요?", onConfirm: confirmDelete, confirmLabel: "삭제", isDestructive: true }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isEditModalOpen, onClose: () => setIsEditModalOpen(false), title: "메시지 수정", onConfirm: confirmEdit, confirmLabel: "수정완료", children: /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalEditText, onChange: (e) => setModalEditText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none", autoFocus: true }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isReplyInputModalOpen, onClose: () => setIsReplyInputModalOpen(false), title: "답글 남기기", description: "게스트에게 전할 소중한 메시지를 입력하세요.", onConfirm: confirmReply, confirmLabel: "답글저장", children: /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalReplyText, onChange: (e) => setModalReplyText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 pt-2 pb-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "감사의 인사를 남겨주세요.", autoFocus: true }) })
@@ -20464,7 +20469,7 @@ function App() {
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "fixed top-3 right-3 z-[400] flex items-center gap-1.5 text-[10px] text-stone-400 font-mono bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100 select-none pointer-events-none", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "103"
+        "104"
       ] }),
       todayVisitors !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-300", children: "·" }),
