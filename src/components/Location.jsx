@@ -57,9 +57,8 @@ export default function Location() {
                     <div className="mb-6 flex flex-col items-center gap-3">
                         <button
                             onPointerDown={handleUnlockClick}
-                            style={{ touchAction: 'manipulation' }}
-                            className="flex items-center gap-2.5 px-6 py-3.5 text-white rounded-2xl shadow-md active:opacity-85 select-none font-bold text-[15px] tracking-wide"
                             style={{ background: 'linear-gradient(135deg, #5c3446 0%, #3d2030 100%)', touchAction: 'manipulation' }}
+                            className="flex items-center gap-2.5 px-6 py-3.5 text-white rounded-2xl shadow-md active:opacity-85 select-none font-bold text-[15px] tracking-wide"
                         >
                             <Users size={18} />
                             직계가족만
