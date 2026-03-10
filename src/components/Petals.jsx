@@ -4,7 +4,7 @@ export default function Petals() {
     const [petals, setPetals] = useState([]);
 
     useEffect(() => {
-        const petalCount = 15; // 심플한 느낌을 위해 적은 수 유지
+        const petalCount = 8; // 모바일 성능 최적화
         const newPetals = Array.from({ length: petalCount }).map((_, i) => ({
             id: i,
             left: Math.random() * 100 + '%',
