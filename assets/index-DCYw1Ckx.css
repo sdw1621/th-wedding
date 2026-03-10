@@ -2290,6 +2290,11 @@ video {
   color: rgb(57 27 27 / var(--tw-text-opacity, 1));
 }
 
+.text-\[\#FF0000\]{
+  --tw-text-opacity: 1;
+  color: rgb(255 0 0 / var(--tw-text-opacity, 1));
+}
+
 .text-amber-400{
   --tw-text-opacity: 1;
   color: rgb(251 191 36 / var(--tw-text-opacity, 1));
@@ -2953,6 +2958,11 @@ body.nav-hidden .fixed.bottom-0 {
 
 /* 커플 캐릭터 플로팅 애니메이션 */
 
+@keyframes msg-glow {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
 @keyframes couple-float {
   0%, 100% { transform: translateY(0px) scale(1); opacity: 0.95; }
   45% { transform: translateY(-7px) scale(1.04); opacity: 1; }
@@ -3027,6 +3037,10 @@ body.nav-hidden .fixed.bottom-0 {
 .hover\:text-rose-500:hover{
   --tw-text-opacity: 1;
   color: rgb(244 63 94 / var(--tw-text-opacity, 1));
+}
+
+.hover\:underline:hover{
+  text-decoration-line: underline;
 }
 
 .hover\:shadow-lg:hover{

@@ -20562,10 +20562,34 @@ function Share() {
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-3", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-400 w-16 shrink-0", children: "Projects" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-700", children: "POLICEBOT (AI Bot), ONTOLOGYS (RAG) 등" })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-3 items-center", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-400 w-16 shrink-0", children: "YouTube" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs(
+              "a",
+              {
+                href: "https://www.youtube.com/@sdw1621",
+                target: "_blank",
+                rel: "noopener noreferrer",
+                className: "flex items-center gap-1.5 text-[#FF0000] font-medium hover:underline",
+                style: { touchAction: "manipulation" },
+                children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("svg", { width: "16", height: "12", viewBox: "0 0 24 17", fill: "#FF0000", children: /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M23.495 2.656A3.016 3.016 0 0 0 21.383.516C19.505 0 12 0 12 0S4.495 0 2.617.516A3.016 3.016 0 0 0 .505 2.656 31.808 31.808 0 0 0 0 8.5a31.808 31.808 0 0 0 .505 5.844 3.016 3.016 0 0 0 2.112 2.14C4.495 17 12 17 12 17s7.505 0 9.383-.516a3.016 3.016 0 0 0 2.112-2.14A31.808 31.808 0 0 0 24 8.5a31.808 31.808 0 0 0-.505-5.844zM9.6 12.143V4.857L15.818 8.5 9.6 12.143z" }) }),
+                  "@sdw1621"
+                ]
+              }
+            )
           ] })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("hr", { className: "border-stone-100" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[12px] text-stone-500 italic text-center leading-relaxed", children: '"현장에서 마주하는 문제를 누구보다 깊이 고민하고 해결합니다."' }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "p",
+          {
+            className: "text-[12px] text-stone-500 italic text-center leading-relaxed",
+            style: { animation: "msg-glow 3.5s ease-in-out infinite" },
+            children: '"현장에서 마주하는 문제를 누구보다 깊이 고민하고 해결합니다."'
+          }
+        ),
         /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-stone-300 text-center", children: "© 2026 AI Intersys. All rights reserved." })
       ] }) })
     ] }) })
@@ -20978,7 +21002,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "151"
+        "152"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
