@@ -18720,7 +18720,7 @@ function IntroScreen({ onEnter, onStart }) {
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "warning-flash z-10 w-full flex flex-col items-center pt-24 pb-6 px-4 bg-amber-950/30 border-b border-amber-700/40 space-y-3", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(TriangleAlert, { size: 26, className: "text-amber-400 icon-shake" }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-stone-200 text-[17px] font-bold tracking-wide text-center leading-loose text-warn", children: [
-        "가족식이라 하객 없이 진행됩니다.",
+        "가족식(스몰웨딩)이라 하객 없이 진행됩니다.",
         /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
         "축하 방명록만 남겨주세요. 💌"
       ] })
@@ -20474,7 +20474,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "120"
+        "121"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
