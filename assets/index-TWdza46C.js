@@ -7369,6 +7369,23 @@ const Trash2 = createLucideIcon("Trash2", [
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
+const TriangleAlert = createLucideIcon("TriangleAlert", [
+  [
+    "path",
+    {
+      d: "m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3",
+      key: "wmoenq"
+    }
+  ],
+  ["path", { d: "M12 9v4", key: "juzpu7" }],
+  ["path", { d: "M12 17h.01", key: "p32p05" }]
+]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
 const Volume2 = createLucideIcon("Volume2", [
   [
     "path",
@@ -18944,7 +18961,15 @@ function IntroScreen({ onEnter, onStart }) {
             ] })
           ]
         }
-      )
+      ),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-10 flex flex-col items-center space-y-2 animate-pulse", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(TriangleAlert, { size: 22, className: "text-amber-400" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-stone-300 text-[13px] tracking-wide text-center leading-relaxed font-light", children: [
+          "가족식이라 하객 없이 진행됩니다.",
+          /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+          "축하 방명록만 남겨주세요."
+        ] })
+      ] })
     ] })
   ] });
 }
@@ -20416,7 +20441,7 @@ function App() {
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "fixed top-3 right-3 z-[400] flex items-center gap-1.5 text-[10px] text-stone-400 font-mono bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100 select-none pointer-events-none", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "94"
+        "95"
       ] }),
       todayVisitors !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-300", children: "·" }),
