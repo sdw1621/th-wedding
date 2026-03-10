@@ -20373,7 +20373,7 @@ function App() {
     ] }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "fixed bottom-20 right-3 z-[400] flex items-center gap-1.5 text-[10px] text-stone-400 font-mono bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100 select-none pointer-events-none", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
       "gh-pages #",
-      "ccd51ad"
+      "107"
     ] }) }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
       IntroScreen,
