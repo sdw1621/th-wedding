@@ -174,16 +174,32 @@ export default function Gallery({ onFullscreenChange }) {
                     <p className="text-[11px] text-stone-500 font-medium whitespace-nowrap">크게 보시고 싶으시면 영상 터치 후 Youtube 로고를 눌러주세요 👆</p>
                 </div>
                 <div className="px-6 mb-40 relative z-30" ref={ytContainerRef}>
-                    <div className="rounded-2xl overflow-hidden shadow-sm aspect-video bg-stone-100 border border-stone-200 relative z-30">
-                        <iframe
-                            id="yt-wedding"
-                            src="https://www.youtube.com/embed/aBT0gHQ0AwE?enablejsapi=1"
-                            title="Wedding Video"
-                            className="w-full h-full border-none relative z-30"
-                            style={{ pointerEvents: 'auto' }}
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                        ></iframe>
+                    {/* 웨딩 엔빌로프 프레임 */}
+                    <div className="relative">
+                        {/* 로즈골드 그라디언트 테두리 */}
+                        <div className="p-[3px] rounded-2xl shadow-lg" style={{ background: 'linear-gradient(135deg, #e8b4b8 0%, #f5dcc8 30%, #e8c4d8 60%, #d4a8c0 100%)' }}>
+                            <div className="rounded-[14px] overflow-hidden aspect-video bg-stone-100 relative z-30">
+                                <iframe
+                                    id="yt-wedding"
+                                    src="https://www.youtube.com/embed/aBT0gHQ0AwE?enablejsapi=1"
+                                    title="Wedding Video"
+                                    className="w-full h-full border-none relative z-30"
+                                    style={{ pointerEvents: 'auto' }}
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                ></iframe>
+                            </div>
+                        </div>
+                        {/* 코너 장식 */}
+                        <div className="absolute -top-2 -left-2 w-6 h-6 border-l-2 border-t-2 border-rose-300/70 rounded-tl-md pointer-events-none"></div>
+                        <div className="absolute -top-2 -right-2 w-6 h-6 border-r-2 border-t-2 border-rose-300/70 rounded-tr-md pointer-events-none"></div>
+                        <div className="absolute -bottom-2 -left-2 w-6 h-6 border-l-2 border-b-2 border-rose-300/70 rounded-bl-md pointer-events-none"></div>
+                        <div className="absolute -bottom-2 -right-2 w-6 h-6 border-r-2 border-b-2 border-rose-300/70 rounded-br-md pointer-events-none"></div>
+                    </div>
+                    {/* 하단 라벨 */}
+                    <div className="text-center mt-4 space-y-1">
+                        <p className="text-[11px] tracking-[0.45em] text-stone-400 font-light">T H  ♥  S H Y</p>
+                        <p className="text-[10px] tracking-[0.3em] text-stone-300">2 0 2 6 · 0 3 · 1 3</p>
                     </div>
                 </div>
 
