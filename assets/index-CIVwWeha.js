@@ -18730,7 +18730,7 @@ function IntroScreen({ onEnter, onStart }) {
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
         "button",
         {
-          onClick: handleOpen,
+          onPointerDown: handleOpen,
           disabled: isProcessing,
           style: { touchAction: "manipulation" },
           className: "group relative px-12 py-5 bg-stone-800 border border-stone-600 rounded-full overflow-hidden hover:bg-stone-700 active:bg-stone-700 shadow-2xl shadow-black/50 select-none",
@@ -18855,7 +18855,7 @@ function Hero() {
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
         "button",
         {
-          onClick: addToCalendar,
+          onPointerDown: addToCalendar,
           style: { touchAction: "manipulation" },
           className: "mt-10 flex items-center space-x-2 px-6 py-2.5 bg-white/90 border border-stone-200 rounded-full text-stone-600 text-[11px] font-bold active:bg-stone-50 shadow-sm select-none",
           children: [
@@ -18965,7 +18965,7 @@ const Volume2 = createLucideIcon("Volume2", [
   ["path", { d: "M16 9a5 5 0 0 1 0 6", key: "1q6k2b" }],
   ["path", { d: "M19.364 18.364a9 9 0 0 0 0-12.728", key: "ijwkga" }]
 ]);
-function Gallery() {
+function Gallery({ onFullscreenChange }) {
   const [ref, isVisible] = useScrollReveal();
   const [selectedIdx, setSelectedIdx] = reactExports.useState(null);
   const [currentScrollIdx, setCurrentScrollIdx] = reactExports.useState(0);
@@ -19025,6 +19025,18 @@ function Gallery() {
     }
   };
   reactExports.useEffect(() => {
+    if (onFullscreenChange) {
+      onFullscreenChange(
+        selectedIdx !== null,
+        () => {
+          document.body.classList.remove("music-hidden");
+          document.body.classList.remove("nav-hidden");
+          setSelectedIdx(null);
+        }
+      );
+    }
+  }, [selectedIdx !== null]);
+  reactExports.useEffect(() => {
     const el = lightboxRef.current;
     if (!el) return;
     const onTouchMove = (e) => {
@@ -19047,7 +19059,7 @@ function Gallery() {
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-6 space-y-1.5 px-6", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-stone-500 font-medium whitespace-nowrap", children: "크게 보시고 싶으시면 영상 터치 후 Youtube 로고를 눌러주세요 👆" }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-[11px] text-stone-500 font-medium flex items-center justify-center whitespace-nowrap", children: [
-          "유튜브 영상 볼 때는 좌측 상단의 배경음(",
+          "유튜브 영상 볼 때는 상단의 배경음(",
           /* @__PURE__ */ jsxRuntimeExports.jsx(Volume2, { size: 12, className: "mx-1 text-rose-300" }),
           ")을 잠시 꺼두세요"
         ] })
@@ -19091,7 +19103,7 @@ function Gallery() {
               {
                 className: "rounded-xl overflow-hidden shadow-sm aspect-[4/5] cursor-zoom-in relative active:opacity-90",
                 style: { touchAction: "manipulation" },
-                onClick: () => {
+                onPointerDown: () => {
                   document.body.classList.add("music-hidden");
                   document.body.classList.add("nav-hidden");
                   setSelectedIdx(idx);
@@ -20374,6 +20386,8 @@ function App() {
   const [shouldMusicPlay, setShouldMusicPlay] = reactExports.useState(false);
   const [todayVisitors, setTodayVisitors] = reactExports.useState(null);
   const [totalVisitors, setTotalVisitors] = reactExports.useState(null);
+  const [galleryFullscreen, setGalleryFullscreen] = reactExports.useState(false);
+  const galleryCloseRef = reactExports.useRef(null);
   reactExports.useEffect(() => {
     const today = (/* @__PURE__ */ new Date()).toISOString().split("T")[0];
     const trackAndFetch = async () => {
@@ -20406,14 +20420,20 @@ function App() {
     isEntered && /* @__PURE__ */ jsxRuntimeExports.jsx(
       "button",
       {
-        onPointerDown: () => setIsEntered(false),
+        onPointerDown: () => {
+          if (galleryFullscreen && galleryCloseRef.current) {
+            galleryCloseRef.current();
+          } else {
+            setIsEntered(false);
+          }
+        },
         style: { touchAction: "manipulation" },
-        className: "fixed top-3 left-3 z-[160] flex items-center bg-white/95 border border-stone-200 rounded-full shadow-md p-1 hover:shadow-lg transition-all select-none",
-        title: "인트로로 돌아가기",
+        className: "fixed top-3 left-3 z-[520] flex items-center bg-white/95 border border-stone-200 rounded-full shadow-md p-1 hover:shadow-lg transition-all select-none",
+        title: galleryFullscreen ? "갤러리로 돌아가기" : "인트로로 돌아가기",
         children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-9 h-9 rounded-full flex items-center justify-center hover:bg-stone-100 text-stone-500 transition-colors", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { size: 18 }) })
       }
     ),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "fixed bottom-20 right-3 z-[400] flex flex-col gap-1 items-stretch select-none pointer-events-none font-mono text-[10px] text-stone-400", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `fixed bottom-20 right-3 z-[400] flex flex-col gap-1 items-stretch select-none pointer-events-none font-mono text-[10px] text-stone-400 transition-opacity duration-300 ${galleryFullscreen ? "opacity-0" : "opacity-100"}`, children: [
       (totalVisitors !== null || todayVisitors !== null) && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "total : ",
         totalVisitors ?? "-",
@@ -20422,7 +20442,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "112"
+        "113"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -20435,7 +20455,10 @@ function App() {
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "pb-28 animate-in fade-in duration-500 relative z-10", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(Hero, {}),
         /* @__PURE__ */ jsxRuntimeExports.jsx(Greeting, {}),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Gallery, {}),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Gallery, { onFullscreenChange: (isOpen, closeFn) => {
+          setGalleryFullscreen(isOpen);
+          galleryCloseRef.current = closeFn || null;
+        } }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(Location, {}),
         /* @__PURE__ */ jsxRuntimeExports.jsx(AccountInfo, { showToast }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(Guestbook, { showToast }),
