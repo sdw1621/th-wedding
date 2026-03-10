@@ -18699,7 +18699,7 @@ function IntroScreen({ onEnter, onStart }) {
       onEnter();
     }, 1200);
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `fixed inset-0 bg-stone-900 flex flex-col transition-opacity duration-1000 z-[150] ${isOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`, children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `fixed inset-0 flex flex-col transition-opacity duration-1000 z-[150] ${isOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`, style: { background: "linear-gradient(160deg, #1a1015 0%, #12090e 60%, #0e0810 100%)" }, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("style", { children: `
                 @keyframes icon-shake {
                     0%, 100% { transform: translateY(0) rotate(0deg); }
@@ -18723,11 +18723,12 @@ function IntroScreen({ onEnter, onStart }) {
                 }
             ` }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute inset-0 overflow-hidden", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-1/4 left-1/4 w-64 h-64 bg-rose-900/20 rounded-full blur-3xl opacity-50" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute bottom-1/4 right-1/4 w-64 h-64 bg-stone-700/30 rounded-full blur-3xl opacity-50" })
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-1/4 left-1/4 w-64 h-64 bg-rose-900/25 rounded-full blur-3xl opacity-60" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-900/20 rounded-full blur-3xl opacity-50" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-1/2 right-1/3 w-48 h-48 bg-rose-800/15 rounded-full blur-3xl opacity-40" })
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "warning-flash z-10 w-full flex flex-col items-center pt-24 pb-6 px-4 bg-amber-950/30 border-b border-amber-700/40 space-y-3", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(TriangleAlert, { size: 26, className: "text-amber-400 icon-shake" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "warning-flash z-10 w-full flex flex-col items-center pt-24 pb-6 px-4 border-b space-y-3", style: { background: "rgba(80, 20, 35, 0.3)", borderColor: "rgba(120, 40, 60, 0.3)" }, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(TriangleAlert, { size: 26, className: "text-rose-300 icon-shake" }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-stone-200 text-[16px] font-bold tracking-wide text-center leading-loose", children: [
         "가족식(스몰웨딩)이라",
         /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
@@ -18750,7 +18751,8 @@ function IntroScreen({ onEnter, onStart }) {
           onPointerDown: handleOpen,
           disabled: isProcessing,
           style: { touchAction: "manipulation" },
-          className: "group relative px-12 py-5 bg-stone-800 border border-stone-600 rounded-full overflow-hidden hover:bg-stone-700 active:bg-stone-700 shadow-2xl shadow-black/50 select-none",
+          className: "group relative px-12 py-5 rounded-full overflow-hidden shadow-2xl shadow-black/50 select-none active:opacity-90",
+          style: { background: "linear-gradient(135deg, #2d1a24 0%, #3d2230 100%)", border: "1px solid rgba(180, 100, 130, 0.3)" },
           children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-rose-500/10 w-0 group-hover:w-full transition-all duration-500 ease-out" }),
             /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "relative flex items-center space-x-3 text-stone-200", children: [
@@ -18965,6 +18967,39 @@ const X = createLucideIcon("X", [
 const ChevronRight = createLucideIcon("ChevronRight", [
   ["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]
 ]);
+const BotCorner = ({ flipX = false, flipY = false, size = 58 }) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+  "svg",
+  {
+    width: size,
+    height: size,
+    viewBox: "0 0 60 60",
+    fill: "none",
+    style: { transform: `scale(${flipX ? -1 : 1}, ${flipY ? -1 : 1})` },
+    xmlns: "http://www.w3.org/2000/svg",
+    children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M4 4 C16 17 26 26 38 36", stroke: "#8ab086", strokeWidth: "1.3", strokeLinecap: "round", fill: "none", opacity: "0.85" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M4 4 C18 10 30 13 42 15", stroke: "#8ab086", strokeWidth: "1", strokeLinecap: "round", fill: "none", opacity: "0.7" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M4 4 C10 18 13 30 15 42", stroke: "#8ab086", strokeWidth: "1", strokeLinecap: "round", fill: "none", opacity: "0.7" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M15 13 C8 7 13 2 17 5 C16 10 15 13 15 13Z", fill: "#a8cea0", opacity: "0.8" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M11 18 C4 12 7 6 11 9 C11 14 11 18 11 18Z", fill: "#bddab4", opacity: "0.7" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M20 9 C24 3 29 6 27 10 C23 12 20 9 20 9Z", fill: "#a0c898", opacity: "0.75" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M24 21 C17 14 22 9 25 12 C24 17 24 21 24 21Z", fill: "#9ec494", opacity: "0.68" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M10 27 C4 21 6 15 10 18 C10 23 10 27 10 27Z", fill: "#b4d4ac", opacity: "0.62" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M14 5 C18 1 23 3 21 7 C18 8 14 5 14 5Z", fill: "#a8c8a0", opacity: "0.7" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "6", cy: "6", rx: "8", ry: "5", fill: "#faf2f5", opacity: "0.88", transform: "rotate(-45 6 6)" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "6", cy: "6", rx: "5", ry: "8", fill: "#f7eef4", opacity: "0.84", transform: "rotate(45 6 6)" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "6", cy: "6", rx: "7", ry: "4", fill: "#f3e9f1", opacity: "0.8" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "6", cy: "6", r: "3.5", fill: "#e8d0de", opacity: "0.92" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "6", cy: "6", r: "1.8", fill: "#dbbfcf" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "35", cy: "11", rx: "4.5", ry: "3.5", fill: "#faf0f4", opacity: "0.85", transform: "rotate(15 35 11)" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "35", cy: "11", rx: "3", ry: "4.5", fill: "#f6ecf2", opacity: "0.78", transform: "rotate(-15 35 11)" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "35", cy: "11", r: "2.2", fill: "#e6cedd" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "35", cy: "11", r: "1.1", fill: "#d8beca" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "12", cy: "37", rx: "3", ry: "3.8", fill: "#f8f0f4", opacity: "0.78" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("ellipse", { cx: "12", cy: "34", rx: "2", ry: "1.5", fill: "#e4d0dc", opacity: "0.85" })
+    ]
+  }
+);
 function Gallery({ onFullscreenChange }) {
   const [ref, isVisible] = useScrollReveal();
   const [selectedIdx, setSelectedIdx] = reactExports.useState(null);
@@ -19123,12 +19158,10 @@ function Gallery({ onFullscreenChange }) {
               allowFullScreen: true
             }
           ) }) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -top-3 -left-3 text-xl select-none pointer-events-none", children: "🌸" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -top-3 -right-3 text-xl select-none pointer-events-none", children: "🌸" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -bottom-3 -left-3 text-xl select-none pointer-events-none", children: "🌸" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -bottom-3 -right-3 text-xl select-none pointer-events-none", children: "🌸" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -top-3 left-1/2 -translate-x-1/2 text-base select-none pointer-events-none", children: "🌷" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -bottom-3 left-1/2 -translate-x-1/2 text-base select-none pointer-events-none", children: "🌷" })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -top-5 -left-5 pointer-events-none select-none", children: /* @__PURE__ */ jsxRuntimeExports.jsx(BotCorner, { size: 58 }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -top-5 -right-5 pointer-events-none select-none", children: /* @__PURE__ */ jsxRuntimeExports.jsx(BotCorner, { flipX: true, size: 58 }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -bottom-5 -left-5 pointer-events-none select-none", children: /* @__PURE__ */ jsxRuntimeExports.jsx(BotCorner, { flipY: true, size: 58 }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -bottom-5 -right-5 pointer-events-none select-none", children: /* @__PURE__ */ jsxRuntimeExports.jsx(BotCorner, { flipX: true, flipY: true, size: 58 }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mt-5 space-y-1", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[12px] tracking-[0.25em] text-stone-500 font-medium", children: "강태구 ♥ 신희영" }),
@@ -19140,7 +19173,7 @@ function Gallery({ onFullscreenChange }) {
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           "button",
           {
-            className: "absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-stone-600 z-10 active:bg-white select-none",
+            className: `absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-stone-600 z-10 active:bg-white select-none transition-opacity duration-200 ${currentScrollIdx === 0 ? "opacity-0 pointer-events-none" : "opacity-100"}`,
             style: { touchAction: "manipulation" },
             onPointerDown: (e) => {
               e.stopPropagation();
@@ -19159,10 +19192,10 @@ function Gallery({ onFullscreenChange }) {
             onScroll: handleScroll,
             className: "flex overflow-x-auto snap-x snap-mandatory hide-scrollbar px-6 space-x-4 pb-6",
             children: images.map((img, idx) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-none w-[80vw] sm:w-[300px] snap-center", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -top-2.5 -left-2.5 text-base select-none pointer-events-none z-10", children: "🌸" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -top-2.5 -right-2.5 text-base select-none pointer-events-none z-10", children: "🌸" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -bottom-2.5 -left-2.5 text-base select-none pointer-events-none z-10", children: "🌸" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -bottom-2.5 -right-2.5 text-base select-none pointer-events-none z-10", children: "🌸" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -top-4 -left-4 pointer-events-none select-none z-10", children: /* @__PURE__ */ jsxRuntimeExports.jsx(BotCorner, { size: 44 }) }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -top-4 -right-4 pointer-events-none select-none z-10", children: /* @__PURE__ */ jsxRuntimeExports.jsx(BotCorner, { flipX: true, size: 44 }) }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -bottom-4 -left-4 pointer-events-none select-none z-10", children: /* @__PURE__ */ jsxRuntimeExports.jsx(BotCorner, { flipY: true, size: 44 }) }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -bottom-4 -right-4 pointer-events-none select-none z-10", children: /* @__PURE__ */ jsxRuntimeExports.jsx(BotCorner, { flipX: true, flipY: true, size: 44 }) }),
               /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "p-[2px] rounded-xl", style: { background: "linear-gradient(135deg, #e8b4b8 0%, #f5dcc8 50%, #d4a8c0 100%)" }, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
                 "div",
                 {
@@ -19185,7 +19218,7 @@ function Gallery({ onFullscreenChange }) {
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           "button",
           {
-            className: "absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-stone-600 z-10 active:bg-white select-none",
+            className: `absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-stone-600 z-10 active:bg-white select-none transition-opacity duration-200 ${currentScrollIdx === images.length - 1 ? "opacity-0 pointer-events-none" : "opacity-100"}`,
             style: { touchAction: "manipulation" },
             onPointerDown: (e) => {
               e.stopPropagation();
@@ -19384,11 +19417,12 @@ function Location() {
         {
           onPointerDown: handleUnlockClick,
           style: { touchAction: "manipulation" },
-          className: "flex items-center gap-2.5 px-6 py-3.5 bg-stone-800 text-white rounded-2xl shadow-md active:bg-stone-900 select-none font-bold text-[15px] tracking-wide",
+          className: "flex items-center gap-2.5 px-6 py-3.5 text-white rounded-2xl shadow-md active:opacity-85 select-none font-bold text-[15px] tracking-wide",
+          style: { background: "linear-gradient(135deg, #5c3446 0%, #3d2030 100%)", touchAction: "manipulation" },
           children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(Users, { size: 18 }),
             "직계가족만",
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Lock, { size: 16, className: "text-stone-400 ml-1" })
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Lock, { size: 16, className: "text-rose-200/60 ml-1" })
           ]
         }
       ),
@@ -20698,9 +20732,17 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "139"
+        "140"
       ] }) })
     ] }),
+    isEntered && /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "div",
+      {
+        className: "fixed bottom-24 left-3 z-[90] pointer-events-none select-none",
+        style: { fontSize: "2.2rem", animation: "bouquet-breathe 3.5s ease-in-out infinite", transform: "rotate(-30deg)", transformOrigin: "center" },
+        children: "💐"
+      }
+    ),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
       IntroScreen,
       {

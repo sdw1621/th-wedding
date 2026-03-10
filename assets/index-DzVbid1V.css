@@ -596,36 +596,40 @@ video {
   inset: 0px;
 }
 
-.-bottom-2\.5{
-  bottom: -0.625rem;
-}
-
 .-bottom-3{
   bottom: -0.75rem;
 }
 
-.-left-2\.5{
-  left: -0.625rem;
+.-bottom-4{
+  bottom: -1rem;
 }
 
-.-left-3{
-  left: -0.75rem;
+.-bottom-5{
+  bottom: -1.25rem;
 }
 
-.-right-2\.5{
-  right: -0.625rem;
+.-left-4{
+  left: -1rem;
 }
 
-.-right-3{
-  right: -0.75rem;
+.-left-5{
+  left: -1.25rem;
 }
 
-.-top-2\.5{
-  top: -0.625rem;
+.-right-4{
+  right: -1rem;
 }
 
-.-top-3{
-  top: -0.75rem;
+.-right-5{
+  right: -1.25rem;
+}
+
+.-top-4{
+  top: -1rem;
+}
+
+.-top-5{
+  top: -1.25rem;
 }
 
 .bottom-0{
@@ -638,6 +642,10 @@ video {
 
 .bottom-20{
   bottom: 5rem;
+}
+
+.bottom-24{
+  bottom: 6rem;
 }
 
 .bottom-8{
@@ -666,6 +674,10 @@ video {
 
 .left-4{
   left: 1rem;
+}
+
+.right-1\/3{
+  right: 33.333333%;
 }
 
 .right-1\/4{
@@ -758,6 +770,10 @@ video {
 
 .z-\[600\]{
   z-index: 600;
+}
+
+.z-\[90\]{
+  z-index: 90;
 }
 
 .-m-1{
@@ -964,6 +980,10 @@ video {
   height: 1rem;
 }
 
+.h-48{
+  height: 12rem;
+}
+
 .h-56{
   height: 14rem;
 }
@@ -1062,6 +1082,10 @@ video {
 
 .w-4{
   width: 1rem;
+}
+
+.w-48{
+  width: 12rem;
 }
 
 .w-6{
@@ -1527,10 +1551,6 @@ video {
   border-color: rgb(253 230 138 / var(--tw-border-opacity, 1));
 }
 
-.border-amber-700\/40{
-  border-color: rgb(180 83 9 / 0.4);
-}
-
 .border-blue-100{
   --tw-border-opacity: 1;
   border-color: rgb(219 234 254 / var(--tw-border-opacity, 1));
@@ -1576,11 +1596,6 @@ video {
   border-color: rgb(250 250 249 / var(--tw-border-opacity, 1));
 }
 
-.border-stone-600{
-  --tw-border-opacity: 1;
-  border-color: rgb(87 83 78 / var(--tw-border-opacity, 1));
-}
-
 .border-transparent{
   border-color: transparent;
 }
@@ -1622,10 +1637,6 @@ video {
 .bg-amber-50{
   --tw-bg-opacity: 1;
   background-color: rgb(255 251 235 / var(--tw-bg-opacity, 1));
-}
-
-.bg-amber-950\/30{
-  background-color: rgb(69 26 3 / 0.3);
 }
 
 .bg-black\/0{
@@ -1672,6 +1683,10 @@ video {
 
 .bg-current{
   background-color: currentColor;
+}
+
+.bg-purple-900\/20{
+  background-color: rgb(88 28 135 / 0.2);
 }
 
 .bg-red-600{
@@ -1723,8 +1738,12 @@ video {
   background-color: rgb(244 63 94 / 0.1);
 }
 
-.bg-rose-900\/20{
-  background-color: rgb(136 19 55 / 0.2);
+.bg-rose-800\/15{
+  background-color: rgb(159 18 57 / 0.15);
+}
+
+.bg-rose-900\/25{
+  background-color: rgb(136 19 55 / 0.25);
 }
 
 .bg-stone-100{
@@ -1750,18 +1769,9 @@ video {
   background-color: rgb(250 250 249 / 0.5);
 }
 
-.bg-stone-700\/30{
-  background-color: rgb(68 64 60 / 0.3);
-}
-
 .bg-stone-800{
   --tw-bg-opacity: 1;
   background-color: rgb(41 37 36 / var(--tw-bg-opacity, 1));
-}
-
-.bg-stone-900{
-  --tw-bg-opacity: 1;
-  background-color: rgb(28 25 23 / var(--tw-bg-opacity, 1));
 }
 
 .bg-stone-900\/80{
@@ -2289,6 +2299,10 @@ video {
   color: rgb(254 205 211 / var(--tw-text-opacity, 1));
 }
 
+.text-rose-200\/60{
+  color: rgb(254 205 211 / 0.6);
+}
+
 .text-rose-300{
   --tw-text-opacity: 1;
   color: rgb(253 164 175 / var(--tw-text-opacity, 1));
@@ -2393,8 +2407,16 @@ video {
   opacity: 1;
 }
 
+.opacity-40{
+  opacity: 0.4;
+}
+
 .opacity-50{
   opacity: 0.5;
+}
+
+.opacity-60{
+  opacity: 0.6;
 }
 
 .opacity-90{
@@ -2888,6 +2910,13 @@ body.nav-hidden .fixed.bottom-0 {
   scrollbar-width: none;
 }
 
+/* 부케 숨쉬기 애니메이션 */
+
+@keyframes bouquet-breathe {
+  0%, 100% { transform: rotate(-30deg) scale(1); opacity: 0.82; }
+  50% { transform: rotate(-30deg) scale(1.1); opacity: 1; }
+}
+
 .glass-morphism {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
@@ -2951,11 +2980,6 @@ body.nav-hidden .fixed.bottom-0 {
 .hover\:bg-stone-50:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(250 250 249 / var(--tw-bg-opacity, 1));
-}
-
-.hover\:bg-stone-700:hover{
-  --tw-bg-opacity: 1;
-  background-color: rgb(68 64 60 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:text-rose-500:hover{
@@ -3030,11 +3054,6 @@ body.nav-hidden .fixed.bottom-0 {
   background-color: rgb(250 250 249 / var(--tw-bg-opacity, 1));
 }
 
-.active\:bg-stone-700:active{
-  --tw-bg-opacity: 1;
-  background-color: rgb(68 64 60 / var(--tw-bg-opacity, 1));
-}
-
 .active\:bg-stone-900:active{
   --tw-bg-opacity: 1;
   background-color: rgb(28 25 23 / var(--tw-bg-opacity, 1));
@@ -3071,6 +3090,10 @@ body.nav-hidden .fixed.bottom-0 {
 
 .active\:opacity-70:active{
   opacity: 0.7;
+}
+
+.active\:opacity-85:active{
+  opacity: 0.85;
 }
 
 .active\:opacity-90:active{
