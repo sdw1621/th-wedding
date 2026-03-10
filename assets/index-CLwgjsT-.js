@@ -19106,7 +19106,7 @@ function Gallery({ onFullscreenChange }) {
         "iframe",
         {
           id: "yt-wedding",
-          src: "https://www.youtube.com/embed/aBT0gHQ0AwE?autoplay=1&mute=1&enablejsapi=1",
+          src: "https://www.youtube.com/embed/aBT0gHQ0AwE?enablejsapi=1",
           title: "Wedding Video",
           className: "w-full h-full border-none relative z-30",
           style: { pointerEvents: "auto" },
@@ -20527,7 +20527,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "125"
+        "126"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
