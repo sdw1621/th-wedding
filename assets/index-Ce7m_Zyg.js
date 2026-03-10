@@ -19123,13 +19123,15 @@ function Gallery({ onFullscreenChange }) {
               allowFullScreen: true
             }
           ) }) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -top-2 -left-2 w-6 h-6 border-l-2 border-t-2 border-rose-300/70 rounded-tl-md pointer-events-none" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -top-2 -right-2 w-6 h-6 border-r-2 border-t-2 border-rose-300/70 rounded-tr-md pointer-events-none" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -bottom-2 -left-2 w-6 h-6 border-l-2 border-b-2 border-rose-300/70 rounded-bl-md pointer-events-none" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -bottom-2 -right-2 w-6 h-6 border-r-2 border-b-2 border-rose-300/70 rounded-br-md pointer-events-none" })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -top-3 -left-3 text-xl select-none pointer-events-none", children: "🌸" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -top-3 -right-3 text-xl select-none pointer-events-none", children: "🌸" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -bottom-3 -left-3 text-xl select-none pointer-events-none", children: "🌸" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -bottom-3 -right-3 text-xl select-none pointer-events-none", children: "🌸" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -top-3 left-1/2 -translate-x-1/2 text-base select-none pointer-events-none", children: "🌷" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -bottom-3 left-1/2 -translate-x-1/2 text-base select-none pointer-events-none", children: "🌷" })
         ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mt-4 space-y-1", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] tracking-[0.45em] text-stone-400 font-light", children: "T H  ♥  S H Y" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mt-5 space-y-1", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[12px] tracking-[0.25em] text-stone-500 font-medium", children: "강태구 ♥ 신희영" }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[10px] tracking-[0.3em] text-stone-300", children: "2 0 2 6 · 0 3 · 1 3" })
         ] })
       ] }),
@@ -19156,22 +19158,28 @@ function Gallery({ onFullscreenChange }) {
             ref: scrollContainerRef,
             onScroll: handleScroll,
             className: "flex overflow-x-auto snap-x snap-mandatory hide-scrollbar px-6 space-x-4 pb-6",
-            children: images.map((img, idx) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-none w-[80vw] sm:w-[300px] snap-center", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
-              "div",
-              {
-                className: "rounded-xl overflow-hidden shadow-sm aspect-[4/5] cursor-zoom-in relative active:opacity-90",
-                style: { touchAction: "manipulation" },
-                onPointerDown: () => {
-                  document.body.classList.add("music-hidden");
-                  document.body.classList.add("nav-hidden");
-                  setSelectedIdx(idx);
-                },
-                children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: img.src, alt: img.alt, loading: "lazy", decoding: "async", className: "w-full h-full object-cover" }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors" })
-                ]
-              }
-            ) }, idx))
+            children: images.map((img, idx) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-none w-[80vw] sm:w-[300px] snap-center", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -top-2.5 -left-2.5 text-base select-none pointer-events-none z-10", children: "🌸" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -top-2.5 -right-2.5 text-base select-none pointer-events-none z-10", children: "🌸" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -bottom-2.5 -left-2.5 text-base select-none pointer-events-none z-10", children: "🌸" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -bottom-2.5 -right-2.5 text-base select-none pointer-events-none z-10", children: "🌸" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "p-[2px] rounded-xl", style: { background: "linear-gradient(135deg, #e8b4b8 0%, #f5dcc8 50%, #d4a8c0 100%)" }, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                "div",
+                {
+                  className: "rounded-[10px] overflow-hidden shadow-sm aspect-[4/5] cursor-zoom-in relative active:opacity-90",
+                  style: { touchAction: "manipulation" },
+                  onPointerDown: () => {
+                    document.body.classList.add("music-hidden");
+                    document.body.classList.add("nav-hidden");
+                    setSelectedIdx(idx);
+                  },
+                  children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: img.src, alt: img.alt, loading: "lazy", decoding: "async", className: "w-full h-full object-cover" }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors" })
+                  ]
+                }
+              ) })
+            ] }) }, idx))
           }
         ),
         /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -20690,7 +20698,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "138"
+        "139"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
