@@ -20514,15 +20514,15 @@ function Share() {
   const [ref, isVisible] = useScrollReveal();
   const [expanded, setExpanded] = reactExports.useState(false);
   return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "pt-8 pb-8 bg-white", id: "share", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `max-w-md mx-auto text-center transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-6", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
       "img",
       {
         src: `${"/th-wedding/"}img/wedding-couple.png`,
         alt: "모카와 리트리버 축하",
-        className: "w-full",
+        className: "w-full rounded-2xl",
         draggable: false
       }
-    ),
+    ) }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-6 mt-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-white rounded-2xl border border-stone-200 shadow-sm overflow-hidden", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
         "button",
@@ -20562,25 +20562,26 @@ function Share() {
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-3", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-400 w-16 shrink-0", children: "Projects" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-700", children: "POLICEBOT (AI Bot), ONTOLOGYS (RAG) 등" })
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-3 items-center", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-400 w-16 shrink-0", children: "YouTube" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs(
-              "a",
-              {
-                href: "https://www.youtube.com/@sdw1621",
-                target: "_blank",
-                rel: "noopener noreferrer",
-                className: "flex items-center gap-1.5 text-[#FF0000] font-medium hover:underline",
-                style: { touchAction: "manipulation" },
-                children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("svg", { width: "16", height: "12", viewBox: "0 0 24 17", fill: "#FF0000", children: /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M23.495 2.656A3.016 3.016 0 0 0 21.383.516C19.505 0 12 0 12 0S4.495 0 2.617.516A3.016 3.016 0 0 0 .505 2.656 31.808 31.808 0 0 0 0 8.5a31.808 31.808 0 0 0 .505 5.844 3.016 3.016 0 0 0 2.112 2.14C4.495 17 12 17 12 17s7.505 0 9.383-.516a3.016 3.016 0 0 0 2.112-2.14A31.808 31.808 0 0 0 24 8.5a31.808 31.808 0 0 0-.505-5.844zM9.6 12.143V4.857L15.818 8.5 9.6 12.143z" }) }),
-                  "@sdw1621"
-                ]
-              }
-            )
           ] })
         ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          "a",
+          {
+            href: "https://www.youtube.com/@sdw1621",
+            target: "_blank",
+            rel: "noopener noreferrer",
+            style: { touchAction: "manipulation" },
+            className: "flex items-center gap-4 bg-stone-50 rounded-xl px-4 py-3 border border-stone-100 active:bg-stone-100 select-none",
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-14 h-14 rounded-xl bg-[#FF0000] flex items-center justify-center shrink-0 shadow-sm", children: /* @__PURE__ */ jsxRuntimeExports.jsx("svg", { width: "28", height: "20", viewBox: "0 0 24 17", fill: "white", children: /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M23.495 2.656A3.016 3.016 0 0 0 21.383.516C19.505 0 12 0 12 0S4.495 0 2.617.516A3.016 3.016 0 0 0 .505 2.656 31.808 31.808 0 0 0 0 8.5a31.808 31.808 0 0 0 .505 5.844 3.016 3.016 0 0 0 2.112 2.14C4.495 17 12 17 12 17s7.505 0 9.383-.516a3.016 3.016 0 0 0 2.112-2.14A31.808 31.808 0 0 0 24 8.5a31.808 31.808 0 0 0-.505-5.844zM9.6 12.143V4.857L15.818 8.5 9.6 12.143z" }) }) }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-left", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-bold text-stone-800 text-[13px]", children: "@sdw1621" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-stone-400 mt-0.5", children: "YouTube 채널 바로가기" })
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("svg", { className: "ml-auto text-stone-300", width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", children: /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M9 18l6-6-6-6" }) })
+            ]
+          }
+        ),
         /* @__PURE__ */ jsxRuntimeExports.jsx("hr", { className: "border-stone-100" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           "p",
@@ -21002,7 +21003,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "152"
+        "153"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(

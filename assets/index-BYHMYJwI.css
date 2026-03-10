@@ -1666,6 +1666,11 @@ video {
   background-color: rgb(253 251 247 / var(--tw-bg-opacity, 1));
 }
 
+.bg-\[\#FF0000\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 0 0 / var(--tw-bg-opacity, 1));
+}
+
 .bg-amber-100{
   --tw-bg-opacity: 1;
   background-color: rgb(254 243 199 / var(--tw-bg-opacity, 1));
@@ -2288,11 +2293,6 @@ video {
 .text-\[\#391B1B\]{
   --tw-text-opacity: 1;
   color: rgb(57 27 27 / var(--tw-text-opacity, 1));
-}
-
-.text-\[\#FF0000\]{
-  --tw-text-opacity: 1;
-  color: rgb(255 0 0 / var(--tw-text-opacity, 1));
 }
 
 .text-amber-400{
@@ -3037,10 +3037,6 @@ body.nav-hidden .fixed.bottom-0 {
 .hover\:text-rose-500:hover{
   --tw-text-opacity: 1;
   color: rgb(244 63 94 / var(--tw-text-opacity, 1));
-}
-
-.hover\:underline:hover{
-  text-decoration-line: underline;
 }
 
 .hover\:shadow-lg:hover{
