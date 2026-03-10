@@ -18708,8 +18708,8 @@ function IntroScreen({ onEnter, onStart }) {
                 }
                 .icon-shake { animation: icon-shake 1.1s ease-in-out infinite; }
                 @keyframes text-warn {
-                    0%, 100% { filter: brightness(0.65); transform: scale(1); }
-                    40% { filter: brightness(1.3); transform: scale(1.02); }
+                    0%, 100% { filter: brightness(0.6); transform: scale(1); }
+                    40% { filter: brightness(1.35); transform: scale(1.07); }
                 }
                 .text-warn { animation: text-warn 1.1s ease-in-out infinite; }
             ` }),
@@ -19045,6 +19045,36 @@ function Gallery({ onFullscreenChange }) {
     }
   }, [selectedIdx !== null]);
   reactExports.useEffect(() => {
+    const initYT = () => {
+      if (!window.YT || !window.YT.Player) return;
+      new window.YT.Player("yt-wedding", {
+        events: {
+          onStateChange: (e) => {
+            if (e.data === 1) {
+              document.dispatchEvent(new CustomEvent("youtube-playing"));
+            } else if (e.data === 0 || e.data === 2) {
+              document.dispatchEvent(new CustomEvent("youtube-stopped"));
+            }
+          }
+        }
+      });
+    };
+    if (window.YT && window.YT.Player) {
+      initYT();
+    } else {
+      const prev = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = () => {
+        prev == null ? void 0 : prev();
+        initYT();
+      };
+      if (!document.querySelector('script[src*="youtube.com/iframe_api"]')) {
+        const tag = document.createElement("script");
+        tag.src = "https://www.youtube.com/iframe_api";
+        document.head.appendChild(tag);
+      }
+    }
+  }, []);
+  reactExports.useEffect(() => {
     const el = lightboxRef.current;
     if (!el) return;
     const onTouchMove = (e) => {
@@ -19075,7 +19105,8 @@ function Gallery({ onFullscreenChange }) {
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-6 mb-12 relative z-30", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-2xl overflow-hidden shadow-sm aspect-video bg-stone-100 border border-stone-200 relative z-30", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
         "iframe",
         {
-          src: "https://www.youtube.com/embed/aBT0gHQ0AwE?autoplay=1&mute=1",
+          id: "yt-wedding",
+          src: "https://www.youtube.com/embed/aBT0gHQ0AwE?autoplay=1&mute=1&enablejsapi=1",
           title: "Wedding Video",
           className: "w-full h-full border-none relative z-30",
           style: { pointerEvents: "auto" },
@@ -20279,6 +20310,20 @@ function MusicPlayer({ forcePlay }) {
     return () => observer.disconnect();
   }, []);
   reactExports.useEffect(() => {
+    const handleYtPlaying = () => {
+      if (audioRef.current) audioRef.current.volume = 0;
+    };
+    const handleYtStopped = () => {
+      if (audioRef.current) audioRef.current.volume = 0.3;
+    };
+    document.addEventListener("youtube-playing", handleYtPlaying);
+    document.addEventListener("youtube-stopped", handleYtStopped);
+    return () => {
+      document.removeEventListener("youtube-playing", handleYtPlaying);
+      document.removeEventListener("youtube-stopped", handleYtStopped);
+    };
+  }, []);
+  reactExports.useEffect(() => {
     if (!showPlaylist) return;
     const handler = (e) => {
       if (playerRef.current && !playerRef.current.contains(e.target)) {
@@ -20479,7 +20524,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "123"
+        "124"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
