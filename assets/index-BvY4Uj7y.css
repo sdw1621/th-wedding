@@ -724,10 +724,6 @@ video {
   z-index: 510;
 }
 
-.z-\[520\]{
-  z-index: 520;
-}
-
 .z-\[5\]{
   z-index: 5;
 }
@@ -2039,6 +2035,10 @@ video {
   padding-bottom: 0.5rem;
 }
 
+.pb-24{
+  padding-bottom: 6rem;
+}
+
 .pb-28{
   padding-bottom: 7rem;
 }
@@ -2081,10 +2081,6 @@ video {
 
 .pt-8{
   padding-top: 2rem;
-}
-
-.pt-\[12vh\]{
-  padding-top: 12vh;
 }
 
 .text-left{
