@@ -2424,10 +2424,6 @@ video {
   color: rgb(254 205 211 / var(--tw-text-opacity, 1));
 }
 
-.text-rose-200\/60{
-  color: rgb(254 205 211 / 0.6);
-}
-
 .text-rose-300{
   --tw-text-opacity: 1;
   color: rgb(253 164 175 / var(--tw-text-opacity, 1));

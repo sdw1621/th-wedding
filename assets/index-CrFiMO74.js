@@ -19926,12 +19926,12 @@ function Location() {
         "button",
         {
           onPointerDown: handleUnlockClick,
-          style: { background: "linear-gradient(135deg, #5c3446 0%, #3d2030 100%)", touchAction: "manipulation" },
-          className: "flex items-center gap-2.5 px-6 py-3.5 text-white rounded-2xl shadow-md active:opacity-85 select-none font-bold text-[15px] tracking-wide",
+          style: { background: "linear-gradient(135deg, #FFB3C6 0%, #FFCBA4 28%, #FFF0A0 52%, #B8F0C8 75%, #B3C8FF 100%)", touchAction: "manipulation", boxShadow: "0 4px 14px rgba(180,160,220,0.25)" },
+          className: "flex items-center gap-2.5 px-6 py-3.5 rounded-2xl shadow-md active:opacity-85 select-none font-bold text-[15px] tracking-wide text-stone-700",
           children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Users, { size: 18 }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "👨‍👩‍👧‍👦" }),
             "직계가족만",
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Lock, { size: 16, className: "text-rose-200/60 ml-1" })
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "🔒" })
           ]
         }
       ),
@@ -21915,7 +21915,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "206"
+        "207"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
