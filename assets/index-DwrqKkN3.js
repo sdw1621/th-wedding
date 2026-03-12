@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "254"
+            "255"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20611,10 +20611,22 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                 ] }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: `text-[12px] font-medium leading-relaxed ${c.commenter_type === "groom" ? "text-blue-800" : "text-rose-800"}`, children: c.content })
               ] }, c.id)),
-              guestComments.slice(0, PREVIEW).map((c) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `flex gap-2 rounded-lg px-2.5 py-1.5 mb-1 ${isDev ? "bg-white/5" : "bg-stone-50"}`, children: [
+              guestComments.slice(0, PREVIEW).map((c) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `flex gap-2 items-center rounded-lg px-2.5 py-1.5 mb-1 ${isDev ? "bg-white/5" : "bg-stone-50"}`, children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[10px] font-bold shrink-0 ${isDev ? "text-stone-300" : "text-stone-600"}`, children: c.name }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[11px] leading-snug flex-1 break-all ${isDev ? "text-stone-400" : "text-stone-500"}`, children: c.content }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[9px] text-stone-400 shrink-0 self-end", children: c.date })
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[9px] text-stone-400 shrink-0", children: c.date }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  "button",
+                  {
+                    onClick: (e) => {
+                      e.stopPropagation();
+                      onManageComment(c, "delete");
+                    },
+                    className: "shrink-0 px-1.5 py-0.5 text-[9px] font-bold text-rose-400 border border-rose-200 rounded active:bg-rose-50 select-none",
+                    style: { touchAction: "manipulation" },
+                    children: "삭제"
+                  }
+                )
               ] }, c.id)),
               showMore && /* @__PURE__ */ jsxRuntimeExports.jsxs(
                 "button",
