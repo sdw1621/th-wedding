@@ -18706,7 +18706,7 @@ const Blossom$1 = ({ cx, cy, s = 1, op = 0.85, r = 0 }) => /* @__PURE__ */ jsxRu
   /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "1.4", cy: "-0.7", r: "0.7", fill: "#c87010", opacity: "0.6" }),
   /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "-1.4", cy: "-0.7", r: "0.7", fill: "#c87010", opacity: "0.6" })
 ] });
-function IntroScreen({ onEnter, onStart }) {
+function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
   const [isOpen, setIsOpen] = reactExports.useState(false);
   const [isProcessing, setIsProcessing] = reactExports.useState(false);
   const handleOpen = () => {
@@ -18884,6 +18884,18 @@ function IntroScreen({ onEnter, onStart }) {
               ]
             }
           )
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute bottom-3 left-3 z-10 flex flex-col gap-1 items-stretch select-none pointer-events-none font-mono text-[10px] text-stone-400", children: [
+          totalVisitors !== null && totalVisitors !== void 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
+            "total : ",
+            totalVisitors,
+            ", today : ",
+            todayVisitors ?? "-"
+          ] }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
+            "gh-pages #",
+            "215"
+          ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
           "svg",
@@ -19828,7 +19840,7 @@ function Location() {
   const [pwError, setPwError] = reactExports.useState("");
   const [showPw, setShowPw] = reactExports.useState(false);
   const pwInputRef = reactExports.useRef(null);
-  const [vpStyle, setVpStyle] = reactExports.useState({});
+  const [vpStyle, setVpStyle] = reactExports.useState({ position: "fixed", left: 0, right: 0, top: 56, zIndex: 600, display: "flex", alignItems: "center", justifyContent: "center", padding: "0 16px", pointerEvents: "none" });
   reactExports.useEffect(() => {
     var _a, _b;
     if (!showModal) return;
@@ -19928,7 +19940,7 @@ function Location() {
     showModal && reactDomExports.createPortal(
       /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "fixed inset-0 z-[599] bg-stone-900/80 animate-in fade-in duration-300", onPointerDown: () => setShowModal(false) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: vpStyle, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative bg-white w-full max-w-[320px] rounded-[24px] shadow-2xl border border-white/20 animate-in fade-in zoom-in duration-200 pointer-events-auto flex flex-col font-sans", style: { maxHeight: "100%", overflowY: "auto" }, onPointerDown: (e) => e.stopPropagation(), children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: vpStyle, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative bg-white w-full max-w-[320px] rounded-[24px] shadow-2xl border border-white/20 animate-in fade-in zoom-in duration-200 pointer-events-auto flex flex-col", style: { maxHeight: "100%", overflowY: "auto", fontFamily: "'Noto Serif KR', serif" }, onPointerDown: (e) => e.stopPropagation(), children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 text-center", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-[17px] font-bold text-stone-900 mb-1", children: "직계가족만 확인" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[13px] text-stone-500 font-medium leading-tight", children: "직계가족 히든 번호 4자리 입력해주세요." }),
@@ -20585,7 +20597,7 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
           "div",
           {
             className: "relative w-full max-w-[320px] rounded-2xl pointer-events-auto animate-in zoom-in-95 duration-200 overflow-hidden border shadow-2xl",
-            style: modalBg,
+            style: { ...modalBg, fontFamily: "'Noto Serif KR', serif" },
             onClick: (e) => e.stopPropagation(),
             children: [
               /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between px-4 pt-4 pb-2", children: [
@@ -22063,18 +22075,6 @@ function App() {
         children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-9 h-9 rounded-full flex items-center justify-center hover:bg-stone-100 text-stone-500 transition-colors", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { size: 18 }) })
       }
     ),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `fixed bottom-20 left-3 z-[400] flex flex-col gap-1 items-stretch select-none pointer-events-none font-mono text-[10px] text-stone-400 transition-opacity duration-300 ${galleryFullscreen ? "opacity-0" : "opacity-100"}`, children: [
-      (totalVisitors !== null || todayVisitors !== null) && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
-        "total : ",
-        totalVisitors ?? "-",
-        ", today : ",
-        todayVisitors ?? "-"
-      ] }) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
-        "gh-pages #",
-        "214"
-      ] }) })
-    ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
       IntroScreen,
       {
@@ -22083,7 +22083,9 @@ function App() {
           (_a = musicApiRef.current) == null ? void 0 : _a.triggerPlay();
           setShouldMusicPlay(true);
         },
-        onEnter: () => setIsEntered(true)
+        onEnter: () => setIsEntered(true),
+        totalVisitors,
+        todayVisitors
       }
     ) : /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "pb-28 animate-in fade-in duration-500 relative z-10", children: [

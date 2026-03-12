@@ -620,8 +620,8 @@ video {
   bottom: 0px;
 }
 
-.bottom-20{
-  bottom: 5rem;
+.bottom-3{
+  bottom: 0.75rem;
 }
 
 .bottom-8{
@@ -710,10 +710,6 @@ video {
 
 .z-\[200\]{
   z-index: 200;
-}
-
-.z-\[400\]{
-  z-index: 400;
 }
 
 .z-\[500\]{
