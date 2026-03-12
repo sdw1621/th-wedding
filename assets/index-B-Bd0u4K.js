@@ -20393,13 +20393,19 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
   const isLocked = msg.is_secret && !unlockedMessages[msg.id];
   const isDev = msg.name === "개발자" && msg.password === "0000";
   const sirenOn = isDev && msg.siren;
-  const devCardStyle = isDev ? {
+  const cardStyle = isDev ? {
     background: "linear-gradient(135deg, rgba(255,200,210,0.35) 0%, rgba(255,225,190,0.35) 20%, rgba(255,250,200,0.35) 40%, rgba(200,245,215,0.35) 60%, rgba(200,220,255,0.35) 80%, rgba(220,200,255,0.35) 100%)",
     borderColor: "rgba(200,190,230,0.5)"
-  } : {};
-  let cardColorClass = isDev ? "border" : msg.receiver === "groom" ? "bg-blue-50/60 border-blue-100" : msg.receiver === "bride" ? "bg-rose-50/60 border-rose-100" : "bg-white border-stone-100";
+  } : {
+    background: msg.receiver === "groom" ? "linear-gradient(145deg, rgba(245,250,255,1) 0%, rgba(228,242,255,0.95) 100%)" : msg.receiver === "bride" ? "linear-gradient(145deg, rgba(255,245,250,1) 0%, rgba(255,228,240,0.95) 100%)" : "linear-gradient(145deg, rgba(255,255,255,1) 0%, rgba(248,248,255,0.96) 100%)",
+    backdropFilter: "blur(8px)",
+    WebkitBackdropFilter: "blur(8px)",
+    boxShadow: "inset 0 1.5px 0 rgba(255,255,255,1), inset 1px 0 0 rgba(255,255,255,0.7), 0 2px 10px rgba(0,0,0,0.06)",
+    borderColor: msg.receiver === "groom" ? "rgba(180,215,255,0.7)" : msg.receiver === "bride" ? "rgba(255,175,210,0.7)" : "rgba(215,215,240,0.8)"
+  };
+  const cardColorClass = "border";
   const guestEmoji = msg.receiver === "groom" ? "💙" : msg.receiver === "bride" ? "💗" : "✨";
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `${cardColorClass} p-5 rounded-2xl shadow-sm flex flex-col relative group transition-all duration-300 ${sirenOn ? "ring-2 ring-red-500" : ""}`, style: devCardStyle, children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `${cardColorClass} p-5 rounded-2xl flex flex-col relative group transition-all duration-300 ${sirenOn ? "ring-2 ring-red-500" : ""}`, style: cardStyle, children: [
     sirenOn && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-3 -mt-1 flex items-center justify-center gap-1.5 bg-red-500/20 text-red-400 text-[11px] font-bold py-1 px-3 rounded-lg", children: "🚨 긴급 알림 활성화됨 🚨" }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-3", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between items-center mb-1.5", children: [
@@ -21526,7 +21532,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "191"
+        "192"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
