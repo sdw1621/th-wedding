@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "233"
+            "234"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20725,9 +20725,17 @@ function Guestbook({ showToast }) {
   const MESSAGES_PER_PAGE = 3;
   const [messageFilter, setMessageFilter] = reactExports.useState("all");
   const FAMILY_NAMES_FILTER = ["강영태", "김경자", "강다윤", "신현갑", "송현숙", "신동욱", "신민석", "모카"];
-  const [myName, setMyName] = reactExports.useState(() => localStorage.getItem("guestbook_my_name") || "");
+  const [myNames, setMyNames] = reactExports.useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("guestbook_my_names") || "[]");
+    } catch {
+      return [];
+    }
+  });
   const [isNameFilterModalOpen, setIsNameFilterModalOpen] = reactExports.useState(false);
   const [filterNameInput, setFilterNameInput] = reactExports.useState("");
+  const [selectedFilterNames, setSelectedFilterNames] = reactExports.useState(/* @__PURE__ */ new Set());
+  const [nameFilterConsonant, setNameFilterConsonant] = reactExports.useState(null);
   const [familyFilterName, setFamilyFilterName] = reactExports.useState("");
   const [isFamilyFilterModalOpen, setIsFamilyFilterModalOpen] = reactExports.useState(false);
   const [filterFamilyInput, setFilterFamilyInput] = reactExports.useState("");
@@ -20982,8 +20990,11 @@ function Guestbook({ showToast }) {
         }
         showToast("소중한 메시지 감사합니다! 💌");
       }
-      localStorage.setItem("guestbook_my_name", trimmedName);
-      setMyName(trimmedName);
+      setMyNames((prev) => {
+        const next = prev.includes(trimmedName) ? prev : [...prev, trimmedName];
+        localStorage.setItem("guestbook_my_names", JSON.stringify(next));
+        return next;
+      });
       setNewName("");
       setNewPassword("");
       setNewContent("");
@@ -21001,9 +21012,46 @@ function Guestbook({ showToast }) {
     () => FAMILY_NAMES_FILTER.filter((name) => messages.some((m) => m.name === name)),
     [messages, FAMILY_NAMES_FILTER]
   );
+  const CHOSUNG = ["ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ", "ㄹ", "ㅁ", "ㅂ", "ㅃ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅉ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"];
+  const getChosung = (str) => {
+    if (!str) return "기타";
+    const code = str.charCodeAt(0);
+    if (code < 44032 || code > 55203) return "기타";
+    return CHOSUNG[Math.floor((code - 44032) / (21 * 28))];
+  };
+  const allNamesWithMessages = reactExports.useMemo(() => {
+    const seen = /* @__PURE__ */ new Set();
+    const names = [];
+    for (const m of messages) {
+      if (!m.is_dev && m.name && !seen.has(m.name)) {
+        seen.add(m.name);
+        names.push(m.name);
+      }
+    }
+    return names;
+  }, [messages]);
+  const namesGroupedByChosung = reactExports.useMemo(() => {
+    const groups = {};
+    for (const name of allNamesWithMessages) {
+      const cs = getChosung(name);
+      if (!groups[cs]) groups[cs] = [];
+      groups[cs].push(name);
+    }
+    return groups;
+  }, [allNamesWithMessages]);
+  const availableChosungs = reactExports.useMemo(
+    () => {
+      var _a;
+      return CHOSUNG.filter((cs) => {
+        var _a2;
+        return ((_a2 = namesGroupedByChosung[cs]) == null ? void 0 : _a2.length) > 0;
+      }).concat(((_a = namesGroupedByChosung["기타"]) == null ? void 0 : _a.length) > 0 ? ["기타"] : []);
+    },
+    [namesGroupedByChosung]
+  );
   const filteredMessages = reactExports.useMemo(() => {
-    if (messageFilter === "mine" && myName) {
-      return messages.filter((m) => m.name === myName);
+    if (messageFilter === "mine" && myNames.length > 0) {
+      return messages.filter((m) => myNames.includes(m.name));
     }
     if (messageFilter === "family") {
       if (familyFilterName) {
@@ -21015,7 +21063,7 @@ function Guestbook({ showToast }) {
       return messages.filter((m) => m.is_dev === true);
     }
     return messages;
-  }, [messages, messageFilter, myName, familyFilterName, FAMILY_NAMES_FILTER]);
+  }, [messages, messageFilter, myNames, familyFilterName, FAMILY_NAMES_FILTER]);
   const totalPages = Math.max(1, Math.ceil(filteredMessages.length / MESSAGES_PER_PAGE));
   const prevMsgCount = React.useRef(messages.length);
   reactExports.useEffect(() => {
@@ -21175,12 +21223,14 @@ function Guestbook({ showToast }) {
           "button",
           {
             onClick: () => {
-              setFilterNameInput(myName);
+              setSelectedFilterNames(new Set(myNames));
+              setFilterNameInput("");
+              setNameFilterConsonant(null);
               setIsNameFilterModalOpen(true);
             },
             style: { touchAction: "manipulation", ...messageFilter === "mine" ? {} : glassStyle },
             className: `flex-1 py-2.5 rounded-xl font-bold transition-all select-none border whitespace-nowrap overflow-hidden ${messageFilter === "mine" ? "bg-rose-500 text-white border-rose-500 shadow-md text-[11px]" : "text-stone-400 text-[13px]"}`,
-            children: messageFilter === "mine" ? `"${myName}" ${filteredMessages.length}개` : "내가 쓴 글"
+            children: messageFilter === "mine" ? `${myNames.length > 1 ? `${myNames[0]} 외 ${myNames.length - 1}명` : `"${myNames[0]}"`} ${filteredMessages.length}개` : "내가 쓴 글"
           }
         ),
         /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -21232,33 +21282,81 @@ function Guestbook({ showToast }) {
         onClose: () => setIsNameFilterModalOpen(false),
         title: "내가 쓴 글 찾기",
         description: /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-          "방명록에 남긴 이름을 입력하면",
+          "이름을 선택하거나 직접 입력하세요.",
           /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-          "해당 이름의 글만 보여드려요."
+          "여러 명 동시 선택도 가능해요."
         ] }),
-        confirmLabel: "찾기",
+        confirmLabel: `찾기${selectedFilterNames.size > 0 ? ` (${selectedFilterNames.size}명)` : ""}`,
         onConfirm: () => {
+          const names = new Set(selectedFilterNames);
           const trimmed = filterNameInput.trim();
-          if (!trimmed) {
-            showToast("이름을 입력해주세요.");
+          if (trimmed) names.add(trimmed);
+          if (names.size === 0) {
+            showToast("이름을 선택하거나 입력해주세요.");
             return;
           }
-          localStorage.setItem("guestbook_my_name", trimmed);
-          setMyName(trimmed);
+          const arr = Array.from(names);
+          localStorage.setItem("guestbook_my_names", JSON.stringify(arr));
+          setMyNames(arr);
           setMessageFilter("mine");
           setIsNameFilterModalOpen(false);
         },
         children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-end mb-2 -mt-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          allNamesWithMessages.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+            allNamesWithMessages.length >= 10 && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-wrap gap-1.5 justify-center mb-2", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(
+                "button",
+                {
+                  type: "button",
+                  onPointerDown: () => setNameFilterConsonant(null),
+                  style: { touchAction: "manipulation" },
+                  className: `px-2.5 py-1 rounded-lg text-xs font-bold border select-none ${nameFilterConsonant === null ? "bg-stone-600 text-white border-stone-500" : "bg-stone-50 text-stone-500 border-stone-200 active:bg-stone-100"}`,
+                  children: "전체"
+                }
+              ),
+              availableChosungs.map((cs) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+                "button",
+                {
+                  type: "button",
+                  onPointerDown: () => setNameFilterConsonant(cs),
+                  style: { touchAction: "manipulation" },
+                  className: `px-2.5 py-1 rounded-lg text-xs font-bold border select-none ${nameFilterConsonant === cs ? "bg-stone-600 text-white border-stone-500" : "bg-stone-50 text-stone-500 border-stone-200 active:bg-stone-100"}`,
+                  children: cs
+                },
+                cs
+              ))
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-wrap gap-2 justify-center mb-3", children: (allNamesWithMessages.length >= 10 ? nameFilterConsonant ? namesGroupedByChosung[nameFilterConsonant] || [] : allNamesWithMessages : allNamesWithMessages).map((name) => {
+              const isSelected = selectedFilterNames.has(name);
+              return /* @__PURE__ */ jsxRuntimeExports.jsx(
+                "button",
+                {
+                  type: "button",
+                  onPointerDown: () => setSelectedFilterNames((prev) => {
+                    const next = new Set(prev);
+                    if (next.has(name)) next.delete(name);
+                    else next.add(name);
+                    return next;
+                  }),
+                  style: { touchAction: "manipulation" },
+                  className: `px-3 py-1.5 rounded-xl text-xs font-bold border select-none ${isSelected ? "bg-rose-500 text-white border-rose-400" : "bg-stone-50 text-stone-500 border-stone-200 active:bg-stone-100"}`,
+                  children: name
+                },
+                name
+              );
+            }) })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-end mb-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
             "button",
             {
               type: "button",
               onPointerDown: (e) => {
                 e.preventDefault();
                 setMessageFilter("all");
-                setMyName("");
+                setMyNames([]);
+                setSelectedFilterNames(/* @__PURE__ */ new Set());
                 setFilterNameInput("");
-                localStorage.removeItem("guestbook_my_name");
+                localStorage.removeItem("guestbook_my_names");
                 setIsNameFilterModalOpen(false);
               },
               style: { touchAction: "manipulation" },
@@ -21277,15 +21375,12 @@ function Guestbook({ showToast }) {
                   if (e.key === "Enter") {
                     const trimmed = filterNameInput.trim();
                     if (!trimmed) return;
-                    localStorage.setItem("guestbook_my_name", trimmed);
-                    setMyName(trimmed);
-                    setMessageFilter("mine");
-                    setIsNameFilterModalOpen(false);
+                    setSelectedFilterNames((prev) => /* @__PURE__ */ new Set([...prev, trimmed]));
+                    setFilterNameInput("");
                   }
                 },
-                placeholder: "방명록에 쓴 이름 입력",
-                className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3.5 text-[16px] text-stone-800 focus:ring-2 focus:ring-stone-100 outline-none pr-11",
-                autoFocus: true
+                placeholder: "목록에 없으면 직접 입력 후 Enter",
+                className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3.5 text-[16px] text-stone-800 focus:ring-2 focus:ring-stone-100 outline-none pr-11"
               }
             ),
             filterNameInput && /* @__PURE__ */ jsxRuntimeExports.jsx(
