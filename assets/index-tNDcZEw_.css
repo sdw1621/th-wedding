@@ -1062,6 +1062,10 @@ video {
   max-height: 18rem;
 }
 
+.max-h-\[40vh\]{
+  max-height: 40vh;
+}
+
 .max-h-\[500px\]{
   max-height: 500px;
 }
@@ -1076,10 +1080,6 @@ video {
 
 .max-h-\[620px\]{
   max-height: 620px;
-}
-
-.max-h-\[65vh\]{
-  max-height: 65vh;
 }
 
 .max-h-\[80vh\]{
@@ -2261,6 +2261,10 @@ video {
   padding-bottom: 7rem;
 }
 
+.pb-3{
+  padding-bottom: 0.75rem;
+}
+
 .pb-4{
   padding-bottom: 1rem;
 }
@@ -2315,6 +2319,10 @@ video {
 
 .pt-24{
   padding-top: 6rem;
+}
+
+.pt-3{
+  padding-top: 0.75rem;
 }
 
 .pt-4{

@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "267"
+            "268"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20599,7 +20599,7 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
             ] }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => setShowAllComments(false), className: "w-7 h-7 rounded-full bg-stone-100 text-stone-500 text-[13px] font-bold flex items-center justify-center active:opacity-60 select-none", style: { touchAction: "manipulation" }, children: "✕" })
           ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-4 py-3 max-h-[65vh] overflow-y-auto space-y-2", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-4 pt-3 pb-2 space-y-2", children: [
             (() => {
               var _a;
               const origStyle = isDev ? {} : isFamily ? {
@@ -20663,7 +20663,9 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                 ] })
               ] }),
               /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: `text-[12px] leading-relaxed whitespace-pre-wrap ${msg.receiver === "groom" ? "text-blue-800" : msg.receiver === "bride" ? "text-rose-800" : "text-stone-700"}`, children: msg.reply })
-            ] }),
+            ] })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-4 pb-3 max-h-[40vh] overflow-y-auto space-y-1 border-t border-stone-100", children: [
             (comments || []).length === 0 && !msg.reply && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-center text-stone-400 text-[13px] py-4", children: "아직 댓글이 없어요." }),
             (() => {
               const getNameColor = (name) => {
@@ -20688,8 +20690,9 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                 var _a;
                 const isDevC = c.is_dev === true || c.name === "개발자";
                 const isBrideC = !isDevC && c.name === "신희영";
-                const isJikgye = !isDevC && !isBrideC && (!!parentType || MODAL_FAMILY_NAMES.includes(c.name));
-                let avatarBg, cellBg, nameCls, contentCls;
+                const isFamilyMember = !isDevC && !isBrideC && MODAL_FAMILY_NAMES.includes(c.name);
+                const isJikgye = !isDevC && !isBrideC && !isFamilyMember && !!parentType;
+                let avatarBg, cellBg, nameCls, contentCls, cellStyle = {};
                 if (isDevC) {
                   avatarBg = "bg-stone-600";
                   cellBg = "bg-stone-800";
@@ -20700,6 +20703,12 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                   cellBg = "bg-rose-50";
                   nameCls = "text-rose-700";
                   contentCls = "text-rose-600";
+                } else if (isFamilyMember) {
+                  avatarBg = "bg-white/70 text-stone-700";
+                  cellBg = "";
+                  nameCls = "text-stone-700";
+                  contentCls = "text-stone-600";
+                  cellStyle = { background: "linear-gradient(135deg, rgba(255,200,210,0.4) 0%, rgba(255,225,190,0.4) 20%, rgba(255,250,200,0.4) 40%, rgba(200,245,215,0.4) 60%, rgba(200,220,255,0.4) 80%, rgba(220,200,255,0.4) 100%)" };
                 } else if (isJikgye) {
                   const col = getNameColor(c.name);
                   avatarBg = col.avatar;
@@ -20713,7 +20722,7 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                   contentCls = "text-stone-600";
                 }
                 const avatarSize = indent ? "w-6 h-6 text-[10px]" : "w-7 h-7 text-[13px]";
-                return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `flex gap-2 ${indent ? "ml-9" : ""} mt-1.5 rounded-2xl px-3 py-2 ${cellBg}`, children: [
+                return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `flex gap-2 ${indent ? "ml-9" : ""} mt-1.5 rounded-2xl px-3 py-2 ${cellBg}`, style: cellStyle, children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `${avatarSize} rounded-full ${avatarBg} flex items-center justify-center shrink-0 mt-0.5`, children: isDevC ? "👨‍💻" : ((_a = c.name) == null ? void 0 : _a[0]) || "?" }),
                   /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
                     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
@@ -22033,7 +22042,7 @@ function Guestbook({ showToast }) {
                   inputMode: "numeric",
                   value: commentPassword,
                   onChange: (e) => setCommentPassword(e.target.value.replace(/\D/g, "").slice(0, 4)),
-                  placeholder: "삭제용 비번 4자리",
+                  placeholder: "전화번호 뒤4·신랑·신부·개발자",
                   maxLength: 4,
                   className: "w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 pr-10 text-[16px] font-medium text-stone-800 outline-none focus:ring-2 focus:ring-rose-200 placeholder:text-stone-400 placeholder:text-[13px]"
                 }
