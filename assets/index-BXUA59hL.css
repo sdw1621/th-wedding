@@ -2018,6 +2018,10 @@ video {
   background-color: rgb(255 255 255 / 0.05);
 }
 
+.bg-white\/70{
+  background-color: rgb(255 255 255 / 0.7);
+}
+
 .bg-white\/80{
   background-color: rgb(255 255 255 / 0.8);
 }
