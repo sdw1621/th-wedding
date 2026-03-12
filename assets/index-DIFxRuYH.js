@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "226"
+            "227"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20650,7 +20650,7 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
     )
   ] });
 });
-const ModernModal = reactExports.memo(({ isOpen, onClose, title, description, children, onConfirm, confirmLabel = "확인", cancelLabel = "취소", isDestructive = false }) => {
+const ModernModal = reactExports.memo(({ isOpen, onClose, title, description, children, onConfirm, confirmLabel = "확인", cancelLabel = "취소", onCancel, isDestructive = false }) => {
   const [vpStyle, setVpStyle] = reactExports.useState({ position: "fixed", left: 0, right: 0, top: 56, zIndex: 600, display: "flex", alignItems: "center", justifyContent: "center", padding: "0 16px", pointerEvents: "none" });
   reactExports.useEffect(() => {
     var _a, _b;
@@ -20691,7 +20691,7 @@ const ModernModal = reactExports.memo(({ isOpen, onClose, title, description, ch
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col border-t border-stone-100", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onPointerDown: onConfirm, style: { touchAction: "manipulation" }, className: `py-4 text-[15px] font-bold border-b border-stone-100 active:bg-stone-50 select-none ${isDestructive ? "text-rose-600" : "text-rose-500"}`, children: confirmLabel }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onPointerDown: handleClose, style: { touchAction: "manipulation" }, className: "py-4 text-[15px] font-medium text-blue-400 active:bg-stone-50 select-none", children: cancelLabel })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onPointerDown: onCancel ?? handleClose, style: { touchAction: "manipulation" }, className: "py-4 text-[15px] font-medium text-blue-400 active:bg-stone-50 select-none", children: cancelLabel })
         ] })
       ] }) })
     ] }),
@@ -21216,6 +21216,14 @@ function Guestbook({ showToast }) {
           "해당 이름의 글만 보여드려요."
         ] }),
         confirmLabel: "찾기",
+        cancelLabel: "필터 초기화",
+        onCancel: () => {
+          setIsNameFilterModalOpen(false);
+          setMessageFilter("all");
+          setMyName("");
+          setFilterNameInput("");
+          localStorage.removeItem("guestbook_my_name");
+        },
         onConfirm: () => {
           const trimmed = filterNameInput.trim();
           if (!trimmed) {
@@ -21320,6 +21328,13 @@ function Guestbook({ showToast }) {
         title: "가족 찾기",
         description: /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: "이름을 선택하거나 직접 입력하세요." }),
         confirmLabel: "찾기",
+        cancelLabel: "필터 초기화",
+        onCancel: () => {
+          setIsFamilyFilterModalOpen(false);
+          setMessageFilter("all");
+          setFamilyFilterName("");
+          setFilterFamilyInput("");
+        },
         onConfirm: () => {
           const trimmed = filterFamilyInput.trim();
           setFamilyFilterName(trimmed);
