@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "234"
+            "235"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -21229,8 +21229,14 @@ function Guestbook({ showToast }) {
               setIsNameFilterModalOpen(true);
             },
             style: { touchAction: "manipulation", ...messageFilter === "mine" ? {} : glassStyle },
-            className: `flex-1 py-2.5 rounded-xl font-bold transition-all select-none border whitespace-nowrap overflow-hidden ${messageFilter === "mine" ? "bg-rose-500 text-white border-rose-500 shadow-md text-[11px]" : "text-stone-400 text-[13px]"}`,
-            children: messageFilter === "mine" ? `${myNames.length > 1 ? `${myNames[0]} 외 ${myNames.length - 1}명` : `"${myNames[0]}"`} ${filteredMessages.length}개` : "내가 쓴 글"
+            className: `flex-1 py-2 rounded-xl font-bold transition-all select-none border leading-tight text-center ${messageFilter === "mine" ? "bg-rose-500 text-white border-rose-500 shadow-md text-[10px]" : "text-stone-400 text-[12px] whitespace-nowrap overflow-hidden"}`,
+            children: messageFilter === "mine" ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "block", children: myNames.length > 1 ? `${myNames[0]} 외 ${myNames.length - 1}명` : `"${myNames[0]}"` }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "block", children: [
+                filteredMessages.length,
+                "개"
+              ] })
+            ] }) : "내가 쓴 글"
           }
         ),
         /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -21339,7 +21345,7 @@ function Guestbook({ showToast }) {
                     return next;
                   }),
                   style: { touchAction: "manipulation" },
-                  className: `px-3 py-1.5 rounded-xl text-xs font-bold border select-none ${isSelected ? "bg-rose-500 text-white border-rose-400" : "bg-stone-50 text-stone-500 border-stone-200 active:bg-stone-100"}`,
+                  className: `px-2 py-1 rounded-lg text-[11px] font-bold border select-none ${isSelected ? "bg-rose-500 text-white border-rose-400" : "bg-stone-50 text-stone-500 border-stone-200 active:bg-stone-100"}`,
                   children: name
                 },
                 name
