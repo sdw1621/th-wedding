@@ -21090,7 +21090,7 @@ function Guestbook({ showToast }) {
     const seen = /* @__PURE__ */ new Set();
     const names = [];
     for (const m of messages) {
-      if (!m.is_dev && m.name && !seen.has(m.name)) {
+      if (m.name && !seen.has(m.name)) {
         seen.add(m.name);
         names.push(m.name);
       }
