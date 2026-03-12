@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "222"
+            "224"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -19992,8 +19992,8 @@ function Location() {
             ] })
           ] }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col border-t border-stone-100", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onPointerDown: handleConfirm, style: { touchAction: "manipulation" }, className: "py-4 text-[15px] font-bold border-b border-stone-100 active:bg-stone-50 select-none text-blue-500", children: "확인" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onPointerDown: () => setShowModal(false), style: { touchAction: "manipulation" }, className: "py-4 text-[15px] font-medium text-stone-400 active:bg-stone-50 select-none", children: "취소" })
+            /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onPointerDown: handleConfirm, style: { touchAction: "manipulation" }, className: "py-4 text-[15px] font-bold border-b border-stone-100 active:bg-stone-50 select-none text-rose-500", children: "확인" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onPointerDown: () => setShowModal(false), style: { touchAction: "manipulation" }, className: "py-4 text-[15px] font-medium text-blue-400 active:bg-stone-50 select-none", children: "취소" })
           ] })
         ] }) })
       ] }),
