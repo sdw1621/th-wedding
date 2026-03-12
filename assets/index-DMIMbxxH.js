@@ -20391,9 +20391,9 @@ const GROOM_PW = "0806";
 const BRIDE_PW = "0407";
 const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModal, toggleUnlock }) => {
   const isLocked = msg.is_secret && !unlockedMessages[msg.id];
-  const isDev = msg.name === "0000";
+  const isDev = msg.name === "개발자" && msg.password === "0000";
   const sirenOn = isDev && msg.siren;
-  let cardColorClass = isDev ? "bg-stone-900 border-stone-700" : msg.receiver === "groom" ? "bg-blue-50/60 border-blue-100" : msg.receiver === "bride" ? "bg-rose-50/60 border-rose-100" : "bg-white border-stone-100";
+  let cardColorClass = isDev ? "bg-stone-900/90 border-stone-700/80" : msg.receiver === "groom" ? "bg-blue-50/60 border-blue-100" : msg.receiver === "bride" ? "bg-rose-50/60 border-rose-100" : "bg-white border-stone-100";
   const guestEmoji = msg.receiver === "groom" ? "💙" : msg.receiver === "bride" ? "💗" : "✨";
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `${cardColorClass} p-5 rounded-2xl shadow-sm border flex flex-col relative group transition-all duration-300 ${sirenOn ? "ring-2 ring-red-500" : ""}`, children: [
     sirenOn && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-3 -mt-1 flex items-center justify-center gap-1.5 bg-red-500/20 text-red-400 text-[11px] font-bold py-1 px-3 rounded-lg", children: "🚨 긴급 알림 활성화됨 🚨" }),
@@ -20410,6 +20410,7 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center space-x-2", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: `font-bold text-sm px-2.5 py-1 rounded-md ${isDev ? "bg-stone-800 text-stone-200" : "bg-white/80 " + (msg.receiver === "groom" ? "text-blue-700" : msg.receiver === "bride" ? "text-rose-700" : "text-stone-800")}`, children: [
+          isDev && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "mr-1", children: "🚨" }),
           msg.name,
           isDev ? /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "ml-1", children: "👨‍💻" }) : /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "ml-1", children: guestEmoji })
         ] }),
@@ -20565,6 +20566,7 @@ function Guestbook({ showToast }) {
     const saved = localStorage.getItem("wedding_guestbook");
     let currentMessages = saved ? JSON.parse(saved) : [];
     const mockMessages = [
+      { id: "mock-dev", name: "개발자", content: "시스템 테스트 메시지입니다. 👨‍💻 개발자 카드 스타일 확인용.", date: "2026.03.13", password: "0000", is_secret: false, receiver: "public" },
       { id: "mock-1", name: "김철수", content: "두 분의 결혼을 진심으로 축하드립니다! 행복하게 잘 사세요! 💐", date: "2026.03.13", password: "0313", is_secret: false, receiver: "public", reply: "감사합니다! 축하해주셔서 정말 기뻐요." },
       { id: "mock-2", name: "이영희", content: "희영아 결혼 너무 축하해! 세상에서 가장 아름다운 신부가 될 거야. 💕", date: "2026.03.13", password: "0313", is_secret: false, receiver: "public" }
     ];
@@ -21520,7 +21522,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "189"
+        "190"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
