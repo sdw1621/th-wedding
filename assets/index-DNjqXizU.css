@@ -767,6 +767,10 @@ video {
   margin-top: -0.25rem;
 }
 
+.-mt-2{
+  margin-top: -0.5rem;
+}
+
 .mb-0\.5{
   margin-bottom: 0.125rem;
 }
@@ -3360,6 +3364,11 @@ body.nav-hidden .app-back-btn {
 
 .active\:bg-white\/95:active{
   background-color: rgb(255 255 255 / 0.95);
+}
+
+.active\:text-blue-600:active{
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity, 1));
 }
 
 .active\:text-red-400:active{

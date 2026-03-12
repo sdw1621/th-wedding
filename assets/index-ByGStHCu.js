@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "227"
+            "228"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -21204,7 +21204,7 @@ function Guestbook({ showToast }) {
     /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isDeleteModalOpen, onClose: () => setIsDeleteModalOpen(false), title: "메시지 삭제", description: "삭제하면 되돌릴 수 없습니다. 정말 삭제할까요?", onConfirm: confirmDelete, confirmLabel: "삭제", isDestructive: true }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isEditModalOpen, onClose: () => setIsEditModalOpen(false), title: "메시지 수정", onConfirm: confirmEdit, confirmLabel: "수정완료", children: /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalEditText, onChange: (e) => setModalEditText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none" }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isReplyInputModalOpen, onClose: () => setIsReplyInputModalOpen(false), title: "답글 남기기", description: "게스트에게 전할 소중한 메시지를 입력하세요.", onConfirm: confirmReply, confirmLabel: "답글저장", children: /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalReplyText, onChange: (e) => setModalReplyText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "감사의 인사를 남겨주세요." }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(
       ModernModal,
       {
         isOpen: isNameFilterModalOpen,
@@ -21216,14 +21216,6 @@ function Guestbook({ showToast }) {
           "해당 이름의 글만 보여드려요."
         ] }),
         confirmLabel: "찾기",
-        cancelLabel: "필터 초기화",
-        onCancel: () => {
-          setIsNameFilterModalOpen(false);
-          setMessageFilter("all");
-          setMyName("");
-          setFilterNameInput("");
-          localStorage.removeItem("guestbook_my_name");
-        },
         onConfirm: () => {
           const trimmed = filterNameInput.trim();
           if (!trimmed) {
@@ -21235,41 +21227,60 @@ function Guestbook({ showToast }) {
           setMessageFilter("mine");
           setIsNameFilterModalOpen(false);
         },
-        children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "input",
-            {
-              type: "text",
-              value: filterNameInput,
-              onChange: (e) => setFilterNameInput(e.target.value),
-              onKeyDown: (e) => {
-                if (e.key === "Enter") {
-                  const trimmed = filterNameInput.trim();
-                  if (!trimmed) return;
-                  localStorage.setItem("guestbook_my_name", trimmed);
-                  setMyName(trimmed);
-                  setMessageFilter("mine");
-                  setIsNameFilterModalOpen(false);
-                }
-              },
-              placeholder: "방명록에 쓴 이름 입력",
-              className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3.5 text-[16px] text-stone-800 focus:ring-2 focus:ring-stone-100 outline-none pr-11",
-              autoFocus: true
-            }
-          ),
-          filterNameInput && /* @__PURE__ */ jsxRuntimeExports.jsx(
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-end mb-2 -mt-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
             "button",
             {
               type: "button",
               onPointerDown: (e) => {
                 e.preventDefault();
+                setMessageFilter("all");
+                setMyName("");
                 setFilterNameInput("");
+                localStorage.removeItem("guestbook_my_name");
+                setIsNameFilterModalOpen(false);
               },
-              className: "absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-full bg-stone-200 text-stone-500 active:bg-stone-300",
-              children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { size: 14 })
+              style: { touchAction: "manipulation" },
+              className: "text-[12px] text-blue-400 font-medium active:text-blue-600 select-none border border-blue-200 rounded-lg px-2.5 py-1",
+              children: "필터 초기화"
             }
-          )
-        ] })
+          ) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "input",
+              {
+                type: "text",
+                value: filterNameInput,
+                onChange: (e) => setFilterNameInput(e.target.value),
+                onKeyDown: (e) => {
+                  if (e.key === "Enter") {
+                    const trimmed = filterNameInput.trim();
+                    if (!trimmed) return;
+                    localStorage.setItem("guestbook_my_name", trimmed);
+                    setMyName(trimmed);
+                    setMessageFilter("mine");
+                    setIsNameFilterModalOpen(false);
+                  }
+                },
+                placeholder: "방명록에 쓴 이름 입력",
+                className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3.5 text-[16px] text-stone-800 focus:ring-2 focus:ring-stone-100 outline-none pr-11",
+                autoFocus: true
+              }
+            ),
+            filterNameInput && /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "button",
+              {
+                type: "button",
+                onPointerDown: (e) => {
+                  e.preventDefault();
+                  setFilterNameInput("");
+                },
+                className: "absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-full bg-stone-200 text-stone-500 active:bg-stone-300",
+                children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { size: 14 })
+              }
+            )
+          ] })
+        ]
       }
     ),
     /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -21328,13 +21339,6 @@ function Guestbook({ showToast }) {
         title: "가족 찾기",
         description: /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: "이름을 선택하거나 직접 입력하세요." }),
         confirmLabel: "찾기",
-        cancelLabel: "필터 초기화",
-        onCancel: () => {
-          setIsFamilyFilterModalOpen(false);
-          setMessageFilter("all");
-          setFamilyFilterName("");
-          setFilterFamilyInput("");
-        },
         onConfirm: () => {
           const trimmed = filterFamilyInput.trim();
           setFamilyFilterName(trimmed);
