@@ -19663,7 +19663,7 @@ function Gallery({ onFullscreenChange }) {
                 document.body.classList.remove("nav-hidden");
                 setSelectedIdx(null);
               },
-              children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-9 h-9 rounded-full flex items-center justify-center text-stone-500", children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { size: 18 }) })
+              children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-9 h-9 rounded-full flex items-center justify-center text-stone-800", children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { size: 18 }) })
             }
           ),
           /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -20346,7 +20346,7 @@ const GROOM_PW = "0806";
 const BRIDE_PW = "0407";
 const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModal, toggleUnlock }) => {
   const isLocked = msg.is_secret && !unlockedMessages[msg.id];
-  const isDev = msg.name === "신동욱";
+  const isDev = msg.name === "0000";
   let cardColorClass = isDev ? "bg-zinc-800/[0.07] border-zinc-500/50" : msg.receiver === "groom" ? "bg-blue-50/60 border-blue-100" : msg.receiver === "bride" ? "bg-rose-50/60 border-rose-100" : "bg-white border-stone-100";
   const guestEmoji = msg.receiver === "groom" ? "💙" : msg.receiver === "bride" ? "💗" : "✨";
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `${cardColorClass} p-5 rounded-2xl shadow-sm border flex flex-col relative group transition-all duration-300`, children: [
@@ -20827,7 +20827,7 @@ function Guestbook({ showToast }) {
 function Share() {
   const [ref, isVisible] = useScrollReveal();
   const [expanded, setExpanded] = reactExports.useState(true);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "-mt-20 pt-0 pb-8 bg-white relative rounded-t-[2rem] shadow-[0_-14px_40px_rgba(0,0,0,0.07)] overflow-hidden", id: "share", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `max-w-md mx-auto text-center transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "-mt-20 pt-0 pb-8 bg-white relative rounded-t-[2rem] shadow-[0_-14px_40px_rgba(0,0,0,0.07)]", id: "share", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `max-w-md mx-auto text-center transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-4 pt-12 mb-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-white rounded-2xl border border-stone-200 shadow-sm overflow-hidden", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
         "button",
@@ -21398,7 +21398,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "181"
+        "182"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
