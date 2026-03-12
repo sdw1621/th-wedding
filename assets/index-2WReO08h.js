@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "219"
+            "220"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20672,7 +20672,7 @@ const ModernModal = reactExports.memo(({ isOpen, onClose, title, description, ch
   return reactDomExports.createPortal(
     /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "fixed inset-0 z-[599] bg-stone-900/80 animate-in fade-in duration-300", onClick: handleClose }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: vpStyle, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative bg-white w-full max-w-[320px] rounded-[24px] shadow-2xl border border-white/20 animate-in fade-in zoom-in duration-200 pointer-events-auto flex flex-col font-sans", style: { maxHeight: "100%", overflowY: "auto" }, onClick: (e) => e.stopPropagation(), children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: vpStyle, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative bg-white w-full max-w-[320px] rounded-[24px] shadow-2xl border border-white/20 animate-in fade-in zoom-in duration-200 pointer-events-auto flex flex-col font-sans", style: { maxHeight: "100%", overflowY: "auto", fontFamily: "system-ui,-apple-system,'Apple SD Gothic Neo',BlinkMacSystemFont,'Noto Sans KR',sans-serif" }, onClick: (e) => e.stopPropagation(), children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 text-center", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-[17px] font-bold text-stone-900 mb-1", children: title }),
           description && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[13px] text-stone-500 font-medium leading-tight", children: description }),
@@ -20720,7 +20720,11 @@ function Guestbook({ showToast }) {
   const [familyFilterName, setFamilyFilterName] = reactExports.useState("");
   const [isFamilyFilterModalOpen, setIsFamilyFilterModalOpen] = reactExports.useState(false);
   const [filterFamilyInput, setFilterFamilyInput] = reactExports.useState("");
-  const isAnyModalOpen = isPasswordModalOpen || isDeleteModalOpen || isEditModalOpen || isReplyInputModalOpen || isFamilyFilterModalOpen || isNameFilterModalOpen;
+  const [isFamilyPinModalOpen, setIsFamilyPinModalOpen] = reactExports.useState(false);
+  const [familyPinValue, setFamilyPinValue] = reactExports.useState("");
+  const [showFamilyPin, setShowFamilyPin] = reactExports.useState(false);
+  const familyPinRef = reactExports.useRef(null);
+  const isAnyModalOpen = isPasswordModalOpen || isDeleteModalOpen || isEditModalOpen || isReplyInputModalOpen || isFamilyFilterModalOpen || isNameFilterModalOpen || isFamilyPinModalOpen;
   reactExports.useEffect(() => {
     if (isAnyModalOpen) {
       document.body.classList.add("nav-hidden");
@@ -21013,6 +21017,10 @@ function Guestbook({ showToast }) {
   const goToPage = reactExports.useCallback((page) => (e) => {
     e.currentTarget.blur();
     setCurrentPage(page);
+    setTimeout(() => {
+      var _a;
+      (_a = document.getElementById("guestbook")) == null ? void 0 : _a.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 0);
   }, []);
   const pageItems = reactExports.useMemo(() => {
     if (totalPages <= 4) return Array.from({ length: totalPages }, (_, i) => i + 1);
@@ -21117,8 +21125,9 @@ function Guestbook({ showToast }) {
           "button",
           {
             onClick: () => {
-              setFilterFamilyInput(familyFilterName);
-              setIsFamilyFilterModalOpen(true);
+              setFamilyPinValue("");
+              setShowFamilyPin(false);
+              setIsFamilyPinModalOpen(true);
             },
             style: {
               touchAction: "manipulation",
@@ -21212,6 +21221,54 @@ function Guestbook({ showToast }) {
             placeholder: "방명록에 쓴 이름 입력",
             className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3.5 text-[16px] text-stone-800 focus:ring-2 focus:ring-stone-100 outline-none",
             autoFocus: true
+          }
+        )
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      ModernModal,
+      {
+        isOpen: isFamilyPinModalOpen,
+        onClose: () => setIsFamilyPinModalOpen(false),
+        title: "직계가족만 확인",
+        description: "직계가족 히든 번호 4자리 입력해주세요.",
+        confirmLabel: "확인",
+        onConfirm: () => {
+          if (familyPinValue === "0313") {
+            setIsFamilyPinModalOpen(false);
+            setFilterFamilyInput(familyFilterName);
+            setIsFamilyFilterModalOpen(true);
+          } else {
+            showToast("비밀번호가 틀렸습니다.");
+            setFamilyPinValue("");
+            setTimeout(() => {
+              var _a;
+              return (_a = familyPinRef.current) == null ? void 0 : _a.focus({ preventScroll: true });
+            }, 50);
+          }
+        },
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          PinInput,
+          {
+            value: familyPinValue,
+            onChange: setFamilyPinValue,
+            show: showFamilyPin,
+            onToggleShow: () => setShowFamilyPin((v) => !v),
+            onEnter: () => {
+              if (familyPinValue === "0313") {
+                setIsFamilyPinModalOpen(false);
+                setFilterFamilyInput(familyFilterName);
+                setIsFamilyFilterModalOpen(true);
+              } else {
+                showToast("비밀번호가 틀렸습니다.");
+                setFamilyPinValue("");
+                setTimeout(() => {
+                  var _a;
+                  return (_a = familyPinRef.current) == null ? void 0 : _a.focus({ preventScroll: true });
+                }, 50);
+              }
+            },
+            inputRef: familyPinRef
           }
         )
       }
@@ -22108,6 +22165,7 @@ function App() {
         /* @__PURE__ */ jsxRuntimeExports.jsx(Greeting, {}),
         /* @__PURE__ */ jsxRuntimeExports.jsx(Gallery, { onFullscreenChange: (isOpen, closeFn) => {
           setGalleryFullscreen(isOpen);
+          galleryFullscreenRef.current = isOpen;
           galleryCloseRef.current = closeFn || null;
         } }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(Location, {}),
