@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "237"
+            "238"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -21007,6 +21007,13 @@ function Guestbook({ showToast }) {
       setLoading(false);
     }
   };
+  const CHOSUNG = ["ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ", "ㄹ", "ㅁ", "ㅂ", "ㅃ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅉ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"];
+  const getChosung = (str) => {
+    if (!str) return "기타";
+    const code = str.charCodeAt(0);
+    if (code < 44032 || code > 55203) return "기타";
+    return CHOSUNG[Math.floor((code - 44032) / (21 * 28))];
+  };
   const familyCount = reactExports.useMemo(() => messages.filter((m) => FAMILY_NAMES_FILTER.includes(m.name)).length, [messages, FAMILY_NAMES_FILTER]);
   const devCount = reactExports.useMemo(() => messages.filter((m) => m.is_dev === true).length, [messages]);
   const familyNamesWithMessages = reactExports.useMemo(
@@ -21032,13 +21039,6 @@ function Guestbook({ showToast }) {
     },
     [familyNamesGroupedByChosung]
   );
-  const CHOSUNG = ["ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ", "ㄹ", "ㅁ", "ㅂ", "ㅃ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅉ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"];
-  const getChosung = (str) => {
-    if (!str) return "기타";
-    const code = str.charCodeAt(0);
-    if (code < 44032 || code > 55203) return "기타";
-    return CHOSUNG[Math.floor((code - 44032) / (21 * 28))];
-  };
   const allNamesWithMessages = reactExports.useMemo(() => {
     const seen = /* @__PURE__ */ new Set();
     const names = [];
