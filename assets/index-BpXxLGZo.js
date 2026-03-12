@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "218"
+            "219"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20508,8 +20508,8 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
     background: "linear-gradient(145deg, rgba(14,12,24,0.99) 0%, rgba(26,20,40,1) 100%)",
     borderColor: "rgba(105,88,140,0.6)"
   } : isFamily ? {
-    background: "linear-gradient(135deg, rgba(255,200,210,0.6) 0%, rgba(255,225,190,0.6) 20%, rgba(255,250,200,0.6) 40%, rgba(200,245,215,0.6) 60%, rgba(200,220,255,0.6) 80%, rgba(220,200,255,0.6) 100%)",
-    borderColor: "rgba(200,190,230,0.6)"
+    background: "linear-gradient(135deg, rgb(255,200,210) 0%, rgb(255,225,190) 20%, rgb(255,250,200) 40%, rgb(200,245,215) 60%, rgb(200,220,255) 80%, rgb(220,200,255) 100%)",
+    borderColor: "rgba(200,190,230,0.8)"
   } : {
     background: msg.receiver === "groom" ? "linear-gradient(145deg, rgba(240,248,255,1) 0%, rgba(218,238,255,1) 100%)" : msg.receiver === "bride" ? "linear-gradient(145deg, rgba(255,242,248,1) 0%, rgba(255,218,238,1) 100%)" : "linear-gradient(145deg, rgba(255,255,255,1) 0%, rgba(248,248,255,1) 100%)",
     borderColor: msg.receiver === "groom" ? "rgba(180,215,255,0.8)" : msg.receiver === "bride" ? "rgba(255,175,210,0.8)" : "rgba(215,215,240,0.9)"
@@ -21254,23 +21254,38 @@ function Guestbook({ showToast }) {
               name
             ))
           ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "input",
-            {
-              type: "text",
-              value: filterFamilyInput,
-              onChange: (e) => setFilterFamilyInput(e.target.value),
-              onKeyDown: (e) => {
-                if (e.key === "Enter") {
-                  setFamilyFilterName(filterFamilyInput.trim());
-                  setMessageFilter("family");
-                  setIsFamilyFilterModalOpen(false);
-                }
-              },
-              placeholder: "직접 이름 입력",
-              className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3.5 text-[16px] text-stone-800 focus:ring-2 focus:ring-stone-100 outline-none"
-            }
-          )
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "input",
+              {
+                type: "text",
+                value: filterFamilyInput,
+                onChange: (e) => setFilterFamilyInput(e.target.value),
+                onKeyDown: (e) => {
+                  if (e.key === "Enter") {
+                    setFamilyFilterName(filterFamilyInput.trim());
+                    setMessageFilter("family");
+                    setIsFamilyFilterModalOpen(false);
+                  }
+                },
+                placeholder: "직접 이름 입력",
+                className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3.5 pr-11 text-[16px] text-stone-800 focus:ring-2 focus:ring-stone-100 outline-none"
+              }
+            ),
+            filterFamilyInput && /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "button",
+              {
+                type: "button",
+                onPointerDown: (e) => {
+                  e.preventDefault();
+                  setFilterFamilyInput("");
+                },
+                style: { touchAction: "manipulation" },
+                className: "absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-full bg-stone-200 text-stone-500 active:bg-stone-300",
+                children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { size: 14 })
+              }
+            )
+          ] })
         ]
       }
     )
