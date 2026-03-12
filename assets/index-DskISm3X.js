@@ -20507,13 +20507,15 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
     /* @__PURE__ */ jsxRuntimeExports.jsxs(
       "div",
       {
-        className: `${cardColorClass} p-5 rounded-2xl flex flex-col relative group transition-all duration-300 ${sirenOn ? "ring-2 ring-red-500" : ""} ${hasLongContent ? "cursor-pointer active:brightness-[0.97]" : ""}`,
+        className: `${cardColorClass} ${sirenOn && devCollapsed ? "px-5 py-3" : "p-5"} rounded-2xl flex flex-col relative group transition-all duration-300 ${sirenOn ? "ring-2 ring-red-500" : ""} ${hasLongContent && !devCollapsed ? "cursor-pointer active:brightness-[0.97]" : ""}`,
         style: cardStyle,
-        onClick: hasLongContent ? () => setShowFullModal(true) : void 0,
+        onClick: hasLongContent && !devCollapsed ? () => setShowFullModal(true) : void 0,
         children: [
-          sirenOn && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1.5 bg-yellow-400/20 border border-yellow-400/40 rounded-md px-2.5 py-2 mb-2 -mt-1", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg leading-none", children: "🚨" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-white text-[11px] font-bold flex-1", children: "긴급 알림" }),
+          sirenOn && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `flex items-center gap-2 ${devCollapsed ? "" : "mb-2 -mt-1"}`, children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 flex items-center gap-1.5 bg-yellow-400/20 border border-yellow-400/40 rounded-md px-2.5 py-2", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg leading-none", children: "🚨" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-white text-[11px] font-bold", children: "긴급 알림" })
+            ] }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               "button",
               {
@@ -20521,9 +20523,9 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                   e.stopPropagation();
                   setDevCollapsed((v) => !v);
                 },
-                className: "text-yellow-300/80 w-6 h-6 flex items-center justify-center rounded active:opacity-60 select-none text-[15px] font-bold",
+                className: "text-yellow-400/90 shrink-0 text-[14px] leading-none active:opacity-50 select-none px-1",
                 style: { touchAction: "manipulation" },
-                children: devCollapsed ? "∧" : "∨"
+                children: devCollapsed ? "▲" : "▼"
               }
             )
           ] }),

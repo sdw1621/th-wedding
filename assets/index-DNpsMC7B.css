@@ -2135,6 +2135,11 @@ video {
   padding: 3px;
 }
 
+.px-1{
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
 .px-1\.5{
   padding-left: 0.375rem;
   padding-right: 0.375rem;
@@ -2758,8 +2763,8 @@ video {
   color: rgb(255 255 255 / 0.8);
 }
 
-.text-yellow-300\/80{
-  color: rgb(253 224 71 / 0.8);
+.text-yellow-400\/90{
+  color: rgb(250 204 21 / 0.9);
 }
 
 .underline{
@@ -3604,6 +3609,10 @@ body.nav-hidden .app-back-btn {
 .active\:text-white:active{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+.active\:opacity-50:active{
+  opacity: 0.5;
 }
 
 .active\:opacity-60:active{
