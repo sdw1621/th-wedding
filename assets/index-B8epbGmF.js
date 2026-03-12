@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "272"
+            "274"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20461,7 +20461,7 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
   const isBrideAuthor = !isDev && !isFamily && msg.name === "신희영";
   const [showFullModal, setShowFullModal] = reactExports.useState(false);
   const [showAllComments, setShowAllComments] = reactExports.useState(false);
-  const [devCollapsed, setDevCollapsed] = reactExports.useState(false);
+  const [devCollapsed, setDevCollapsed] = reactExports.useState(sirenOn);
   const MAX_CHARS = 60;
   const contentLong = !isLocked && msg.content && (msg.content.length > MAX_CHARS || msg.content.split("\n").length > 3);
   const replyLong = msg.reply && (msg.reply.length > MAX_CHARS || msg.reply.split("\n").length > 3);
