@@ -1159,10 +1159,6 @@ video {
   width: 62px;
 }
 
-.w-\[75vw\]{
-  width: 75vw;
-}
-
 .w-\[80vw\]{
   width: 80vw;
 }
@@ -2090,6 +2086,10 @@ video {
   padding-bottom: 0.125rem;
 }
 
+.pb-1{
+  padding-bottom: 0.25rem;
+}
+
 .pb-2{
   padding-bottom: 0.5rem;
 }
@@ -2100,6 +2100,10 @@ video {
 
 .pb-32{
   padding-bottom: 8rem;
+}
+
+.pb-4{
+  padding-bottom: 1rem;
 }
 
 .pb-40{
@@ -3323,10 +3327,6 @@ body.nav-hidden .fixed.bottom-0 {
 }
 
 @media (min-width: 640px){
-
-  .sm\:w-\[260px\]{
-    width: 260px;
-  }
 
   .sm\:w-\[300px\]{
     width: 300px;

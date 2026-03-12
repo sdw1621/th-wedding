@@ -19375,23 +19375,14 @@ function Gallery({ onFullscreenChange }) {
   const [ref, isVisible] = useScrollReveal();
   const [selectedIdx, setSelectedIdx] = reactExports.useState(null);
   const [currentScrollIdx, setCurrentScrollIdx] = reactExports.useState(0);
-  const [dogSelectedIdx, setDogSelectedIdx] = reactExports.useState(null);
-  const [dogScrollIdx, setDogScrollIdx] = reactExports.useState(0);
   const touchStartX = reactExports.useRef(0);
   const touchEndX = reactExports.useRef(0);
   const touchStartY = reactExports.useRef(0);
   const isSwiping = reactExports.useRef(false);
   const lightboxRef = reactExports.useRef(null);
   const scrollContainerRef = reactExports.useRef(null);
-  const dogScrollRef = reactExports.useRef(null);
-  const dogLightboxRef = reactExports.useRef(null);
   const ytPlayerRef = reactExports.useRef(null);
   const ytContainerRef = reactExports.useRef(null);
-  const dogImages = [
-    { src: `${"/th-wedding/"}img/dog-wedding.png`, alt: "모카와 리트리버 커플" },
-    { src: `${"/th-wedding/"}img/wedding-couple.png`, alt: "모카와 리트리버 축하" },
-    { src: `${"/th-wedding/"}img/dog-mocha.jpg`, alt: "모카" }
-  ];
   const images = [
     { src: `${"/th-wedding/"}img/pages/커플_꽃셔츠.webp`, alt: "커플 꽃무늬 셔츠" },
     { src: `${"/th-wedding/"}img/pages/커플_드레스업.webp`, alt: "커플 드레스업" },
@@ -19410,12 +19401,6 @@ function Gallery({ onFullscreenChange }) {
   const goPrev = reactExports.useCallback(() => {
     setSelectedIdx((prev) => (prev - 1 + images.length) % images.length);
   }, [images.length]);
-  const dogGoNext = reactExports.useCallback(() => {
-    setDogSelectedIdx((prev) => (prev + 1) % dogImages.length);
-  }, [dogImages.length]);
-  const dogGoPrev = reactExports.useCallback(() => {
-    setDogSelectedIdx((prev) => (prev - 1 + dogImages.length) % dogImages.length);
-  }, [dogImages.length]);
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
     touchStartY.current = e.touches[0].clientY;
@@ -19447,35 +19432,18 @@ function Gallery({ onFullscreenChange }) {
       setCurrentScrollIdx(closestIndex);
     }
   };
-  const handleDogScroll = () => {
-    if (!dogScrollRef.current) return;
-    const container = dogScrollRef.current;
-    const scrollPosition = container.scrollLeft + container.clientWidth / 2;
-    let closestIndex = 0;
-    let minDistance = Infinity;
-    Array.from(container.children).forEach((child, idx) => {
-      const childCenter = child.offsetLeft + child.clientWidth / 2;
-      const distance = Math.abs(scrollPosition - childCenter);
-      if (distance < minDistance) {
-        minDistance = distance;
-        closestIndex = idx;
-      }
-    });
-    if (closestIndex !== dogScrollIdx) setDogScrollIdx(closestIndex);
-  };
   reactExports.useEffect(() => {
     if (onFullscreenChange) {
       onFullscreenChange(
-        selectedIdx !== null || dogSelectedIdx !== null,
+        selectedIdx !== null,
         () => {
           document.body.classList.remove("music-hidden");
           document.body.classList.remove("nav-hidden");
           setSelectedIdx(null);
-          setDogSelectedIdx(null);
         }
       );
     }
-  }, [selectedIdx !== null, dogSelectedIdx !== null]);
+  }, [selectedIdx !== null]);
   reactExports.useEffect(() => {
     const initYT = () => {
       if (!window.YT || !window.YT.Player) return;
@@ -19540,20 +19508,6 @@ function Gallery({ onFullscreenChange }) {
     el.addEventListener("touchmove", onTouchMove, { passive: false });
     return () => el.removeEventListener("touchmove", onTouchMove);
   }, [selectedIdx]);
-  reactExports.useEffect(() => {
-    const el = dogLightboxRef.current;
-    if (!el) return;
-    const onTouchMove = (e) => {
-      const dx = Math.abs(e.touches[0].clientX - touchStartX.current);
-      const dy = Math.abs(e.touches[0].clientY - touchStartY.current);
-      if (dx > dy && dx > 10) {
-        isSwiping.current = true;
-        e.preventDefault();
-      }
-    };
-    el.addEventListener("touchmove", onTouchMove, { passive: false });
-    return () => el.removeEventListener("touchmove", onTouchMove);
-  }, [dogSelectedIdx]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "py-24 bg-white overflow-hidden", id: "gallery", ref, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-2xl mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-8 px-6", children: [
@@ -19593,57 +19547,6 @@ function Gallery({ onFullscreenChange }) {
           /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[12px] tracking-[0.25em] text-stone-500 font-medium", children: "강태구 ♥ 신희영" }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[10px] tracking-[0.3em] text-stone-300", children: "2 0 2 6 · 0 3 · 1 3" })
         ] })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-6 mb-8", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-center text-[11px] text-stone-400 font-medium mb-3 tracking-wide", children: "🐶 우리 가족 모카" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative group", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "button",
-            {
-              className: `absolute left-1 top-1/2 -translate-y-1/2 w-8 h-8 bg-stone-800/80 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-white z-30 active:bg-stone-900 select-none transition-opacity duration-200 ${dogScrollIdx === 0 ? "opacity-0 pointer-events-none" : "opacity-100"}`,
-              style: { touchAction: "manipulation" },
-              onPointerDown: (e) => {
-                e.stopPropagation();
-                if (dogScrollRef.current) dogScrollRef.current.scrollBy({ left: -dogScrollRef.current.clientWidth * 0.8, behavior: "smooth" });
-              },
-              children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { size: 18 })
-            }
-          ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "div",
-            {
-              ref: dogScrollRef,
-              onScroll: handleDogScroll,
-              className: "flex overflow-x-auto snap-x snap-mandatory hide-scrollbar space-x-3 pb-2",
-              children: dogImages.map((img, idx) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-none w-[75vw] sm:w-[260px] snap-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                "div",
-                {
-                  className: "rounded-2xl overflow-hidden shadow-sm aspect-square cursor-zoom-in active:opacity-90",
-                  style: { touchAction: "manipulation" },
-                  onPointerDown: () => {
-                    document.body.classList.add("music-hidden");
-                    document.body.classList.add("nav-hidden");
-                    setDogSelectedIdx(idx);
-                  },
-                  children: /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: img.src, alt: img.alt, loading: "lazy", decoding: "async", className: "w-full h-full object-cover" })
-                }
-              ) }, idx))
-            }
-          ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "button",
-            {
-              className: `absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 bg-stone-800/80 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-white z-30 active:bg-stone-900 select-none transition-opacity duration-200 ${dogScrollIdx === dogImages.length - 1 ? "opacity-0 pointer-events-none" : "opacity-100"}`,
-              style: { touchAction: "manipulation" },
-              onPointerDown: (e) => {
-                e.stopPropagation();
-                if (dogScrollRef.current) dogScrollRef.current.scrollBy({ left: dogScrollRef.current.clientWidth * 0.8, behavior: "smooth" });
-              },
-              children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { size: 18 })
-            }
-          )
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-center items-center gap-2 mt-3", children: dogImages.map((_, i) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `rounded-full transition-all duration-300 ${i === dogScrollIdx ? "w-5 h-2 bg-rose-400" : "w-2 h-2 bg-stone-200"}` }, i)) })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-center mb-6", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-stone-500 animate-pulse font-medium", children: "사진을 누르면 크게 보실 수 있어요 📸" }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative group", children: [
@@ -19713,92 +19616,6 @@ function Gallery({ onFullscreenChange }) {
         i
       )) })
     ] }),
-    dogSelectedIdx !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs(
-      "div",
-      {
-        ref: dogLightboxRef,
-        className: "fixed inset-0 z-[500] bg-black/95 flex items-center justify-center p-4 animate-in fade-in duration-300",
-        style: { touchAction: "none" },
-        onClick: (e) => {
-          if (isSwiping.current) return;
-          if (e.target === e.currentTarget) {
-            document.body.classList.remove("music-hidden");
-            document.body.classList.remove("nav-hidden");
-            setDogSelectedIdx(null);
-          }
-        },
-        onTouchStart: handleTouchStart,
-        onTouchEnd: (e) => {
-          touchEndX.current = e.changedTouches[0].clientX;
-          const diff = touchStartX.current - touchEndX.current;
-          if (Math.abs(diff) > 50) {
-            if (diff > 0) dogGoNext();
-            else dogGoPrev();
-          }
-        },
-        children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "button",
-            {
-              className: "absolute top-3 right-3 z-[510] flex items-center bg-white/95 border border-stone-200 rounded-full shadow-md p-1 active:shadow-lg transition-all select-none",
-              style: { touchAction: "manipulation" },
-              onPointerDown: (e) => {
-                e.stopPropagation();
-                document.body.classList.remove("music-hidden");
-                document.body.classList.remove("nav-hidden");
-                setDogSelectedIdx(null);
-              },
-              children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-9 h-9 rounded-full flex items-center justify-center text-stone-800", children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { size: 18 }) })
-            }
-          ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "button",
-            {
-              className: "absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-stone-800 shadow-lg active:bg-white/95 transition-colors select-none",
-              style: { touchAction: "manipulation" },
-              onPointerDown: (e) => {
-                e.stopPropagation();
-                dogGoPrev();
-              },
-              children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { size: 24 })
-            }
-          ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "button",
-            {
-              className: "absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-stone-800 shadow-lg active:bg-white/95 transition-colors select-none",
-              style: { touchAction: "manipulation" },
-              onPointerDown: (e) => {
-                e.stopPropagation();
-                dogGoNext();
-              },
-              children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { size: 24 })
-            }
-          ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "img",
-            {
-              src: dogImages[dogSelectedIdx].src,
-              alt: dogImages[dogSelectedIdx].alt,
-              className: "max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl animate-in zoom-in-95 duration-300",
-              onClick: (e) => e.stopPropagation()
-            }
-          ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2", children: dogImages.map((_, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "button",
-            {
-              onClick: (e) => {
-                e.stopPropagation();
-                setDogSelectedIdx(i);
-              },
-              className: `rounded-full transition-all duration-300 ${i === dogSelectedIdx ? "w-6 h-2.5 bg-rose-400" : "w-2.5 h-2.5 bg-white/30"} p-1 -m-1`,
-              style: { touchAction: "manipulation" }
-            },
-            i
-          )) })
-        ]
-      }
-    ),
     selectedIdx !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs(
       "div",
       {
@@ -20612,7 +20429,7 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
   const isLocked = msg.is_secret && !unlockedMessages[msg.id];
   const isDev = msg.is_dev === true;
   const sirenOn = isDev && msg.siren;
-  const FAMILY_NAMES = ["강영태", "김경자", "강다윤", "신현갑", "송현숙", "신동욱", "신민석"];
+  const FAMILY_NAMES = ["강영태", "김경자", "강다윤", "신현갑", "송현숙", "신동욱", "신민석", "모카"];
   const isFamily = !isDev && FAMILY_NAMES.includes(msg.name);
   const cardStyle = isDev ? {
     background: "linear-gradient(145deg, rgba(14,12,24,0.94) 0%, rgba(26,20,40,0.97) 100%)",
@@ -21248,142 +21065,303 @@ const Mail = createLucideIcon("Mail", [
 function Share() {
   const [ref, isVisible] = useScrollReveal();
   const [expanded, setExpanded] = reactExports.useState(true);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "pb-8 bg-[#FDFBF7] relative", id: "share", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `max-w-md mx-auto text-center transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-4 pt-6 mb-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-white rounded-2xl border border-stone-200 shadow-sm overflow-hidden", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "button",
-        {
-          onPointerDown: () => setExpanded((v) => !v),
-          style: { touchAction: "manipulation" },
-          className: "w-full flex items-center justify-between px-6 py-5 bg-stone-900 select-none active:bg-stone-800",
-          children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-bold text-white text-[15px]", children: "Made by Developer" }),
-            expanded ? /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronUp, { size: 20, className: "text-white/70" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronDown, { size: 20, className: "text-white/70" })
-          ]
-        }
-      ),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `overflow-hidden transition-all duration-500 ${expanded ? "max-h-[620px] opacity-100" : "max-h-0 opacity-0"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "border-t border-stone-100 px-5 py-5 space-y-5", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "img",
-            {
-              src: `${"/th-wedding/"}img/developer.jpg`,
-              alt: "신동욱",
-              className: "w-14 h-14 rounded-xl object-cover object-top shadow-sm shrink-0",
-              draggable: false
-            }
-          ),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-left flex-1 min-w-0", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-bold text-stone-800 text-[15px] leading-tight", children: "신동욱" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[12px] text-stone-400 mt-0.5", children: "Shin Dong-wook" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[12px] text-rose-400 font-semibold mt-1 leading-tight", children: "AIINTERSYS CEO" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[12px] text-rose-400 font-semibold leading-tight", children: "융합공학 박사" })
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-2 shrink-0", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "a",
-              {
-                href: "tel:01027312579",
-                style: { touchAction: "manipulation" },
-                className: "w-11 h-11 rounded-2xl bg-blue-500 flex items-center justify-center shadow-sm active:bg-blue-600 select-none",
-                children: /* @__PURE__ */ jsxRuntimeExports.jsx(Phone, { size: 19, className: "text-white", strokeWidth: 2 })
-              }
-            ),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "a",
-              {
-                href: "mailto:sdw1904@naver.com",
-                style: { touchAction: "manipulation" },
-                className: "w-11 h-11 rounded-2xl bg-emerald-500 flex items-center justify-center shadow-sm active:bg-emerald-600 select-none",
-                children: /* @__PURE__ */ jsxRuntimeExports.jsx(Mail, { size: 19, className: "text-white", strokeWidth: 2 })
-              }
-            )
-          ] })
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("hr", { className: "border-stone-100" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-3 text-[13px] text-left", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-3", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-400 w-16 shrink-0", children: "Expertise" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-700", children: "AI · IT Education · Solution Architect" })
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-3", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-400 w-16 shrink-0", children: "Projects" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-stone-700 flex flex-col", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "POLICEBOT (AI Bot)" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "ONTOLOGYS (RAG) 등" })
-            ] })
-          ] })
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs(
-            "a",
-            {
-              href: "https://www.youtube.com/@sdw1621",
-              target: "_blank",
-              rel: "noopener noreferrer",
-              style: { touchAction: "manipulation", background: "linear-gradient(135deg, #FFF8F0 0%, #FFF3E8 100%)", borderColor: "#F0E0CC" },
-              className: "flex items-center gap-4 rounded-xl px-4 py-3 border active:opacity-80 select-none",
-              children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-14 h-14 rounded-xl bg-[#FF0000] flex items-center justify-center shrink-0 shadow-sm", children: /* @__PURE__ */ jsxRuntimeExports.jsx("svg", { width: "28", height: "20", viewBox: "0 0 24 17", fill: "white", children: /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M23.495 2.656A3.016 3.016 0 0 0 21.383.516C19.505 0 12 0 12 0S4.495 0 2.617.516A3.016 3.016 0 0 0 .505 2.656 31.808 31.808 0 0 0 0 8.5a31.808 31.808 0 0 0 .505 5.844 3.016 3.016 0 0 0 2.112 2.14C4.495 17 12 17 12 17s7.505 0 9.383-.516a3.016 3.016 0 0 0 2.112-2.14A31.808 31.808 0 0 0 24 8.5a31.808 31.808 0 0 0-.505-5.844zM9.6 12.143V4.857L15.818 8.5 9.6 12.143z" }) }) }),
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-left", children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-bold text-stone-800 text-[13px]", children: "@sdw1621" }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-stone-500 mt-0.5", children: "YouTube 채널 바로가기" })
-                ] }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("svg", { className: "ml-auto text-stone-400", width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", children: /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M9 18l6-6-6-6" }) })
-              ]
-            }
-          ),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs(
-            "a",
-            {
-              href: "https://www.youtube.com/@AIINTERSYSBREND",
-              target: "_blank",
-              rel: "noopener noreferrer",
-              style: { touchAction: "manipulation", background: "linear-gradient(135deg, #FFF8F0 0%, #FFF3E8 100%)", borderColor: "#F0E0CC" },
-              className: "flex items-center gap-4 rounded-xl px-4 py-3 border active:opacity-80 select-none",
-              children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-14 h-14 rounded-xl bg-[#FF0000] flex items-center justify-center shrink-0 shadow-sm", children: /* @__PURE__ */ jsxRuntimeExports.jsx("svg", { width: "28", height: "20", viewBox: "0 0 24 17", fill: "white", children: /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M23.495 2.656A3.016 3.016 0 0 0 21.383.516C19.505 0 12 0 12 0S4.495 0 2.617.516A3.016 3.016 0 0 0 .505 2.656 31.808 31.808 0 0 0 0 8.5a31.808 31.808 0 0 0 .505 5.844 3.016 3.016 0 0 0 2.112 2.14C4.495 17 12 17 12 17s7.505 0 9.383-.516a3.016 3.016 0 0 0 2.112-2.14A31.808 31.808 0 0 0 24 8.5a31.808 31.808 0 0 0-.505-5.844zM9.6 12.143V4.857L15.818 8.5 9.6 12.143z" }) }) }),
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-left", children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-bold text-stone-800 text-[13px]", children: "@AIINTERSYSBREND" }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-stone-500 mt-0.5", children: "YouTube 채널 바로가기" })
-                ] }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("svg", { className: "ml-auto text-stone-400", width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", children: /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M9 18l6-6-6-6" }) })
-              ]
-            }
-          )
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("hr", { className: "border-stone-100" }),
+  const dogImages = [
+    { src: `${"/th-wedding/"}img/dog-wedding.png`, alt: "모카와 리트리버 커플" },
+    { src: `${"/th-wedding/"}img/wedding-couple.png`, alt: "모카와 리트리버 축하" },
+    { src: `${"/th-wedding/"}img/dog-mocha.jpg`, alt: "모카" }
+  ];
+  const [dogSelectedIdx, setDogSelectedIdx] = reactExports.useState(null);
+  const [dogScrollIdx, setDogScrollIdx] = reactExports.useState(0);
+  const dogScrollRef = reactExports.useRef(null);
+  const dogLightboxRef = reactExports.useRef(null);
+  const touchStartX = reactExports.useRef(0);
+  const touchEndX = reactExports.useRef(0);
+  const touchStartY = reactExports.useRef(0);
+  const isSwiping = reactExports.useRef(false);
+  const dogGoNext = reactExports.useCallback(() => setDogSelectedIdx((prev) => (prev + 1) % dogImages.length), [dogImages.length]);
+  const dogGoPrev = reactExports.useCallback(() => setDogSelectedIdx((prev) => (prev - 1 + dogImages.length) % dogImages.length), [dogImages.length]);
+  const handleDogScroll = () => {
+    if (!dogScrollRef.current) return;
+    const container = dogScrollRef.current;
+    const scrollPosition = container.scrollLeft + container.clientWidth / 2;
+    let closestIndex = 0, minDistance = Infinity;
+    Array.from(container.children).forEach((child, idx) => {
+      const dist = Math.abs(scrollPosition - (child.offsetLeft + child.clientWidth / 2));
+      if (dist < minDistance) {
+        minDistance = dist;
+        closestIndex = idx;
+      }
+    });
+    if (closestIndex !== dogScrollIdx) setDogScrollIdx(closestIndex);
+  };
+  reactExports.useEffect(() => {
+    const el = dogLightboxRef.current;
+    if (!el) return;
+    const onTouchMove = (e) => {
+      const dx = Math.abs(e.touches[0].clientX - touchStartX.current);
+      const dy = Math.abs(e.touches[0].clientY - touchStartY.current);
+      if (dx > dy && dx > 10) {
+        isSwiping.current = true;
+        e.preventDefault();
+      }
+    };
+    el.addEventListener("touchmove", onTouchMove, { passive: false });
+    return () => el.removeEventListener("touchmove", onTouchMove);
+  }, [dogSelectedIdx]);
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "pb-8 bg-[#FDFBF7] relative", id: "share", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `max-w-md mx-auto text-center transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-4 pt-6 mb-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-white rounded-2xl border border-stone-200 shadow-sm overflow-hidden", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          "p",
+          "button",
           {
-            className: "text-[12px] text-stone-500 text-center leading-relaxed",
-            style: { animation: "msg-glow 3.5s ease-in-out infinite" },
+            onPointerDown: () => setExpanded((v) => !v),
+            style: { touchAction: "manipulation" },
+            className: "w-full flex items-center justify-between px-6 py-5 bg-stone-900 select-none active:bg-stone-800",
             children: [
-              "현장에서 마주하는 ",
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "inline-block font-semibold", style: { color: "#e03060", animation: "word-highlight 2.5s ease-in-out infinite" }, children: "문제" }),
-              "를",
-              /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
-              "누구보다 ",
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "inline-block font-semibold", style: { color: "#e03060", animation: "word-highlight 2.5s ease-in-out 0.5s infinite" }, children: "깊이 고민" }),
-              "하고 ",
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "inline-block font-semibold", style: { color: "#e03060", animation: "word-highlight 2.5s ease-in-out 1s infinite" }, children: "해결" }),
-              "합니다."
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-bold text-white text-[15px]", children: "Made by Developer" }),
+              expanded ? /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronUp, { size: 20, className: "text-white/70" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronDown, { size: 20, className: "text-white/70" })
             ]
           }
         ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-stone-300 text-center", children: "© 2026 AI Intersys. All rights reserved." })
-      ] }) })
-    ] }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-4 pb-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-      "img",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `overflow-hidden transition-all duration-500 ${expanded ? "max-h-[620px] opacity-100" : "max-h-0 opacity-0"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "border-t border-stone-100 px-5 py-5 space-y-5", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "img",
+              {
+                src: `${"/th-wedding/"}img/developer.jpg`,
+                alt: "신동욱",
+                className: "w-14 h-14 rounded-xl object-cover object-top shadow-sm shrink-0",
+                draggable: false
+              }
+            ),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-left flex-1 min-w-0", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-bold text-stone-800 text-[15px] leading-tight", children: "신동욱" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[12px] text-stone-400 mt-0.5", children: "Shin Dong-wook" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[12px] text-rose-400 font-semibold mt-1 leading-tight", children: "AIINTERSYS CEO" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[12px] text-rose-400 font-semibold leading-tight", children: "융합공학 박사" })
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-2 shrink-0", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(
+                "a",
+                {
+                  href: "tel:01027312579",
+                  style: { touchAction: "manipulation" },
+                  className: "w-11 h-11 rounded-2xl bg-blue-500 flex items-center justify-center shadow-sm active:bg-blue-600 select-none",
+                  children: /* @__PURE__ */ jsxRuntimeExports.jsx(Phone, { size: 19, className: "text-white", strokeWidth: 2 })
+                }
+              ),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(
+                "a",
+                {
+                  href: "mailto:sdw1904@naver.com",
+                  style: { touchAction: "manipulation" },
+                  className: "w-11 h-11 rounded-2xl bg-emerald-500 flex items-center justify-center shadow-sm active:bg-emerald-600 select-none",
+                  children: /* @__PURE__ */ jsxRuntimeExports.jsx(Mail, { size: 19, className: "text-white", strokeWidth: 2 })
+                }
+              )
+            ] })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("hr", { className: "border-stone-100" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-3 text-[13px] text-left", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-3", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-400 w-16 shrink-0", children: "Expertise" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-700", children: "AI · IT Education · Solution Architect" })
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-3", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-400 w-16 shrink-0", children: "Projects" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-stone-700 flex flex-col", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "POLICEBOT (AI Bot)" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "ONTOLOGYS (RAG) 등" })
+              ] })
+            ] })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs(
+              "a",
+              {
+                href: "https://www.youtube.com/@sdw1621",
+                target: "_blank",
+                rel: "noopener noreferrer",
+                style: { touchAction: "manipulation", background: "linear-gradient(135deg, #FFF8F0 0%, #FFF3E8 100%)", borderColor: "#F0E0CC" },
+                className: "flex items-center gap-4 rounded-xl px-4 py-3 border active:opacity-80 select-none",
+                children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-14 h-14 rounded-xl bg-[#FF0000] flex items-center justify-center shrink-0 shadow-sm", children: /* @__PURE__ */ jsxRuntimeExports.jsx("svg", { width: "28", height: "20", viewBox: "0 0 24 17", fill: "white", children: /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M23.495 2.656A3.016 3.016 0 0 0 21.383.516C19.505 0 12 0 12 0S4.495 0 2.617.516A3.016 3.016 0 0 0 .505 2.656 31.808 31.808 0 0 0 0 8.5a31.808 31.808 0 0 0 .505 5.844 3.016 3.016 0 0 0 2.112 2.14C4.495 17 12 17 12 17s7.505 0 9.383-.516a3.016 3.016 0 0 0 2.112-2.14A31.808 31.808 0 0 0 24 8.5a31.808 31.808 0 0 0-.505-5.844zM9.6 12.143V4.857L15.818 8.5 9.6 12.143z" }) }) }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-left", children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-bold text-stone-800 text-[13px]", children: "@sdw1621" }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-stone-500 mt-0.5", children: "YouTube 채널 바로가기" })
+                  ] }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("svg", { className: "ml-auto text-stone-400", width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", children: /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M9 18l6-6-6-6" }) })
+                ]
+              }
+            ),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs(
+              "a",
+              {
+                href: "https://www.youtube.com/@AIINTERSYSBREND",
+                target: "_blank",
+                rel: "noopener noreferrer",
+                style: { touchAction: "manipulation", background: "linear-gradient(135deg, #FFF8F0 0%, #FFF3E8 100%)", borderColor: "#F0E0CC" },
+                className: "flex items-center gap-4 rounded-xl px-4 py-3 border active:opacity-80 select-none",
+                children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-14 h-14 rounded-xl bg-[#FF0000] flex items-center justify-center shrink-0 shadow-sm", children: /* @__PURE__ */ jsxRuntimeExports.jsx("svg", { width: "28", height: "20", viewBox: "0 0 24 17", fill: "white", children: /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M23.495 2.656A3.016 3.016 0 0 0 21.383.516C19.505 0 12 0 12 0S4.495 0 2.617.516A3.016 3.016 0 0 0 .505 2.656 31.808 31.808 0 0 0 0 8.5a31.808 31.808 0 0 0 .505 5.844 3.016 3.016 0 0 0 2.112 2.14C4.495 17 12 17 12 17s7.505 0 9.383-.516a3.016 3.016 0 0 0 2.112-2.14A31.808 31.808 0 0 0 24 8.5a31.808 31.808 0 0 0-.505-5.844zM9.6 12.143V4.857L15.818 8.5 9.6 12.143z" }) }) }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-left", children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-bold text-stone-800 text-[13px]", children: "@AIINTERSYSBREND" }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-stone-500 mt-0.5", children: "YouTube 채널 바로가기" })
+                  ] }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("svg", { className: "ml-auto text-stone-400", width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", children: /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M9 18l6-6-6-6" }) })
+                ]
+              }
+            )
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("hr", { className: "border-stone-100" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            "p",
+            {
+              className: "text-[12px] text-stone-500 text-center leading-relaxed",
+              style: { animation: "msg-glow 3.5s ease-in-out infinite" },
+              children: [
+                "현장에서 마주하는 ",
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "inline-block font-semibold", style: { color: "#e03060", animation: "word-highlight 2.5s ease-in-out infinite" }, children: "문제" }),
+                "를",
+                /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+                "누구보다 ",
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "inline-block font-semibold", style: { color: "#e03060", animation: "word-highlight 2.5s ease-in-out 0.5s infinite" }, children: "깊이 고민" }),
+                "하고 ",
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "inline-block font-semibold", style: { color: "#e03060", animation: "word-highlight 2.5s ease-in-out 1s infinite" }, children: "해결" }),
+                "합니다."
+              ]
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-stone-300 text-center", children: "© 2026 AI Intersys. All rights reserved." })
+        ] }) })
+      ] }) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-4 pb-4", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-center text-[11px] text-stone-400 font-medium mb-3 tracking-wide", children: "🐶 우리 가족 모카" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
+            {
+              className: `absolute left-1 top-1/2 -translate-y-1/2 w-8 h-8 bg-stone-800/80 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-white z-30 active:bg-stone-900 select-none transition-opacity duration-200 ${dogScrollIdx === 0 ? "opacity-0 pointer-events-none" : "opacity-100"}`,
+              style: { touchAction: "manipulation" },
+              onPointerDown: (e) => {
+                var _a;
+                e.stopPropagation();
+                (_a = dogScrollRef.current) == null ? void 0 : _a.scrollBy({ left: -dogScrollRef.current.clientWidth * 0.85, behavior: "smooth" });
+              },
+              children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { size: 18 })
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { ref: dogScrollRef, onScroll: handleDogScroll, className: "flex overflow-x-auto snap-x snap-mandatory hide-scrollbar space-x-3 pb-1", children: dogImages.map((img, idx) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-none w-full snap-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "div",
+            {
+              className: "rounded-2xl overflow-hidden shadow-sm aspect-square cursor-zoom-in active:opacity-90",
+              style: { touchAction: "manipulation" },
+              onPointerDown: () => setDogSelectedIdx(idx),
+              children: /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: img.src, alt: img.alt, loading: "lazy", decoding: "async", className: "w-full h-full object-cover", draggable: false })
+            }
+          ) }, idx)) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
+            {
+              className: `absolute right-1 top-1/2 -translate-y-1/2 w-8 h-8 bg-stone-800/80 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-white z-30 active:bg-stone-900 select-none transition-opacity duration-200 ${dogScrollIdx === dogImages.length - 1 ? "opacity-0 pointer-events-none" : "opacity-100"}`,
+              style: { touchAction: "manipulation" },
+              onPointerDown: (e) => {
+                var _a;
+                e.stopPropagation();
+                (_a = dogScrollRef.current) == null ? void 0 : _a.scrollBy({ left: dogScrollRef.current.clientWidth * 0.85, behavior: "smooth" });
+              },
+              children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { size: 18 })
+            }
+          )
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-center items-center gap-2 mt-3", children: dogImages.map((_, i) => /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `rounded-full transition-all duration-300 ${i === dogScrollIdx ? "w-5 h-2 bg-rose-400" : "w-2 h-2 bg-stone-200"}` }, i)) })
+      ] })
+    ] }),
+    dogSelectedIdx !== null && /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      "div",
       {
-        src: `${"/th-wedding/"}img/wedding-couple.png`,
-        alt: "모카와 리트리버 축하",
-        className: "w-full rounded-2xl",
-        draggable: false
+        ref: dogLightboxRef,
+        className: "fixed inset-0 z-[500] bg-black/95 flex items-center justify-center p-4",
+        style: { touchAction: "none" },
+        onClick: (e) => {
+          if (isSwiping.current) return;
+          if (e.target === e.currentTarget) setDogSelectedIdx(null);
+        },
+        onTouchStart: (e) => {
+          touchStartX.current = e.touches[0].clientX;
+          touchStartY.current = e.touches[0].clientY;
+          isSwiping.current = false;
+        },
+        onTouchEnd: (e) => {
+          touchEndX.current = e.changedTouches[0].clientX;
+          const diff = touchStartX.current - touchEndX.current;
+          if (Math.abs(diff) > 50) {
+            if (diff > 0) dogGoNext();
+            else dogGoPrev();
+          }
+        },
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
+            {
+              className: "absolute top-3 right-3 z-[510] bg-white/95 border border-stone-200 rounded-full shadow-md p-1 select-none",
+              style: { touchAction: "manipulation" },
+              onPointerDown: (e) => {
+                e.stopPropagation();
+                setDogSelectedIdx(null);
+              },
+              children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-9 h-9 rounded-full flex items-center justify-center text-stone-800", children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { size: 18 }) })
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
+            {
+              className: "absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-stone-800 shadow-lg flex items-center justify-center select-none",
+              style: { touchAction: "manipulation" },
+              onPointerDown: (e) => {
+                e.stopPropagation();
+                dogGoPrev();
+              },
+              children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { size: 24 })
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
+            {
+              className: "absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-stone-800 shadow-lg flex items-center justify-center select-none",
+              style: { touchAction: "manipulation" },
+              onPointerDown: (e) => {
+                e.stopPropagation();
+                dogGoNext();
+              },
+              children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { size: 24 })
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "img",
+            {
+              src: dogImages[dogSelectedIdx].src,
+              alt: dogImages[dogSelectedIdx].alt,
+              className: "max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl",
+              onClick: (e) => e.stopPropagation()
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2", children: dogImages.map((_, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
+            {
+              onClick: (e) => {
+                e.stopPropagation();
+                setDogSelectedIdx(i);
+              },
+              className: `rounded-full transition-all duration-300 ${i === dogSelectedIdx ? "w-6 h-2.5 bg-rose-400" : "w-2.5 h-2.5 bg-white/30"} p-1 -m-1`,
+              style: { touchAction: "manipulation" }
+            },
+            i
+          )) })
+        ]
       }
-    ) })
-  ] }) });
+    )
+  ] });
 }
 /**
  * @license lucide-react v0.460.0 - ISC
@@ -21843,7 +21821,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "202"
+        "203"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
