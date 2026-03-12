@@ -3155,12 +3155,14 @@ body.nav-hidden .app-back-btn {
 
 @keyframes urgentDark {
   0%, 100% {
-    background: linear-gradient(145deg, #1a0008 0%, #2d0014 100%);
-    box-shadow: 0 0 14px rgba(244,63,94,0.28), inset 0 1px 0 rgba(255,255,255,0.05);
+    background: linear-gradient(145deg, #0a0a1a 0%, #0d0d2e 100%);
+    box-shadow: 0 0 14px rgba(99,179,255,0.28), inset 0 1px 0 rgba(255,255,255,0.05);
+    border-color: rgba(99,179,255,0.3);
   }
   50% {
-    background: linear-gradient(145deg, #2d0010 0%, #450020 100%);
-    box-shadow: 0 0 28px rgba(244,63,94,0.55), inset 0 1px 0 rgba(255,255,255,0.05);
+    background: linear-gradient(145deg, #0d0d28 0%, #111140 100%);
+    box-shadow: 0 0 28px rgba(99,179,255,0.55), inset 0 1px 0 rgba(255,255,255,0.05);
+    border-color: rgba(99,179,255,0.5);
   }
 }
 

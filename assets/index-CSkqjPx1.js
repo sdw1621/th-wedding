@@ -18975,14 +18975,14 @@ function Countdown() {
       {
         className: "w-[62px] h-[62px] rounded-2xl flex items-center justify-center mb-2 border",
         style: isUrgent ? {
-          background: "linear-gradient(145deg, #1a0008 0%, #2d0014 100%)",
-          borderColor: "rgba(244,63,94,0.4)",
-          boxShadow: "0 0 18px rgba(244,63,94,0.35), inset 0 1px 0 rgba(255,255,255,0.05)",
+          background: "linear-gradient(145deg, #0a0a1a 0%, #0d0d2e 100%)",
+          borderColor: "rgba(99,179,255,0.35)",
+          boxShadow: "0 0 18px rgba(99,179,255,0.35), inset 0 1px 0 rgba(255,255,255,0.05)",
           animation: "urgentDark 2s ease-in-out infinite"
         } : {
-          background: "linear-gradient(145deg, #111111 0%, #1c1c1e 100%)",
-          borderColor: "rgba(255,255,255,0.1)",
-          boxShadow: "inset 0 1px 0 rgba(255,255,255,0.06), 0 4px 16px rgba(0,0,0,0.5)"
+          background: "linear-gradient(145deg, #0a0a1a 0%, #0d0d2e 100%)",
+          borderColor: "rgba(99,179,255,0.2)",
+          boxShadow: "0 0 12px rgba(99,179,255,0.2), inset 0 1px 0 rgba(255,255,255,0.06)"
         },
         children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-2xl font-semibold tabular-nums countdown-num", children: String(unit.value).padStart(2, "0") })
       }
@@ -21294,7 +21294,12 @@ const Mail = createLucideIcon("Mail", [
 ]);
 function Share() {
   const [ref, isVisible] = useScrollReveal();
-  const [expanded, setExpanded] = reactExports.useState(true);
+  const [expanded, setExpanded] = reactExports.useState(false);
+  reactExports.useEffect(() => {
+    const open = () => setExpanded(true);
+    window.addEventListener("openDevCard", open);
+    return () => window.removeEventListener("openDevCard", open);
+  }, []);
   const dogImages = [
     { src: `${"/th-wedding/"}img/mocha-1.png`, alt: "모카와 리트리버 축하" },
     { src: `${"/th-wedding/"}img/mocha-2.png`, alt: "모카와 리트리버 축하2" },
@@ -21618,6 +21623,9 @@ function BottomNav() {
   const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (id === "share") {
+      setTimeout(() => window.dispatchEvent(new CustomEvent("openDevCard")), 400);
+    }
   };
   const navItems = [
     { id: "greeting", label: "인사말", icon: Heart },
@@ -22067,7 +22075,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "212"
+        "213"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
