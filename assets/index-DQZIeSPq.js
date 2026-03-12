@@ -18968,21 +18968,27 @@ function Countdown() {
     { label: "MIN", value: timeLeft.minutes },
     { label: "SEC", value: timeLeft.seconds }
   ];
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex space-x-3 mt-8", children: units.map((unit, idx) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      "div",
-      {
-        className: "w-[62px] h-[62px] rounded-2xl flex items-center justify-center mb-2 border",
-        style: {
-          background: "linear-gradient(145deg, rgba(255,255,255,0.92) 0%, rgba(248,248,255,0.88) 100%)",
-          boxShadow: "inset 0 1.5px 0 rgba(255,255,255,1), inset 1px 0 0 rgba(255,255,255,0.7), 0 2px 10px rgba(0,0,0,0.07)",
-          borderColor: "rgba(215,215,240,0.8)"
-        },
-        children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-2xl font-semibold text-stone-700 tabular-nums", children: String(unit.value).padStart(2, "0") })
-      }
-    ),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] tracking-widest text-stone-600 font-black", children: unit.label })
-  ] }, idx)) });
+  const isUrgent = timeLeft.days === 0;
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative flex space-x-3 mt-8", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "countdown-backlight" }),
+    units.map((unit, idx) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center relative z-10", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "div",
+        {
+          className: `w-[62px] h-[62px] rounded-2xl flex items-center justify-center mb-2 border ${isUrgent ? "urgent-box" : ""}`,
+          style: isUrgent ? {
+            borderColor: "rgba(251,146,60,0.3)"
+          } : {
+            background: "linear-gradient(145deg, rgba(255,255,255,0.92) 0%, rgba(248,248,255,0.88) 100%)",
+            boxShadow: "inset 0 1.5px 0 rgba(255,255,255,1), inset 1px 0 0 rgba(255,255,255,0.7), 0 2px 10px rgba(0,0,0,0.07)",
+            borderColor: "rgba(215,215,240,0.8)"
+          },
+          children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-2xl font-semibold tabular-nums ${isUrgent ? "urgent-number" : "text-stone-700"}`, children: String(unit.value).padStart(2, "0") })
+        }
+      ),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] tracking-widest font-black text-stone-600", children: unit.label })
+    ] }, idx))
+  ] });
 }
 function Hero() {
   const [ref, isVisible] = useScrollReveal();
@@ -20619,6 +20625,7 @@ function Guestbook({ showToast }) {
   const [currentPage, setCurrentPage] = reactExports.useState(1);
   const MESSAGES_PER_PAGE = 3;
   const [messageFilter, setMessageFilter] = reactExports.useState("all");
+  const FAMILY_NAMES_FILTER = ["강영태", "김경자", "강다윤", "신현갑", "송현숙", "신동욱", "신민석", "모카"];
   const [myName, setMyName] = reactExports.useState(() => localStorage.getItem("guestbook_my_name") || "");
   const [isNameFilterModalOpen, setIsNameFilterModalOpen] = reactExports.useState(false);
   const [filterNameInput, setFilterNameInput] = reactExports.useState("");
@@ -20884,8 +20891,11 @@ function Guestbook({ showToast }) {
     if (messageFilter === "mine" && myName) {
       return messages.filter((m) => m.name === myName);
     }
+    if (messageFilter === "family") {
+      return messages.filter((m) => FAMILY_NAMES_FILTER.includes(m.name));
+    }
     return messages;
-  }, [messages, messageFilter, myName]);
+  }, [messages, messageFilter, myName, FAMILY_NAMES_FILTER]);
   const totalPages = Math.max(1, Math.ceil(filteredMessages.length / MESSAGES_PER_PAGE));
   const prevMsgCount = React.useRef(messages.length);
   reactExports.useEffect(() => {
@@ -20970,7 +20980,7 @@ function Guestbook({ showToast }) {
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("form", { onSubmit: handleSubmit, className: "bg-white p-5 rounded-[1.25rem] shadow-sm border border-stone-100 mb-6 space-y-4 relative z-20", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex space-x-2", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "text", placeholder: "성함", value: newName, onChange: (e) => setNewName(e.target.value), className: "w-24 shrink-0 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 placeholder:text-[13px] relative z-20", maxLength: 10 }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "text", placeholder: "성함", value: newName, onChange: (e) => setNewName(e.target.value), className: "w-[68px] shrink-0 bg-stone-50 border border-stone-100 rounded-xl px-3 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 placeholder:text-[13px] relative z-20", maxLength: 10 }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative flex-1 min-w-0", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: showNewPw ? "text" : "password", inputMode: "numeric", placeholder: "전화번호 뒷 4자리", value: newPassword, onChange: (e) => setNewPassword(e.target.value), className: "w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 pr-10 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 placeholder:text-[13px] relative z-20", maxLength: 10 }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onPointerDown: (e) => {
@@ -21001,6 +21011,25 @@ function Guestbook({ showToast }) {
             children: [
               "전체 ",
               messageFilter === "all" && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "ml-1 text-white/70", children: messages.length })
+            ]
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          "button",
+          {
+            onClick: () => setMessageFilter((f) => f === "family" ? "all" : "family"),
+            style: {
+              touchAction: "manipulation",
+              ...messageFilter === "family" ? { background: "linear-gradient(135deg, #FFB3C6 0%, #FFCBA4 35%, #FFF0A0 60%, #B8F0C8 80%, #B3C8FF 100%)", borderColor: "transparent" } : glassStyle
+            },
+            className: `flex-1 py-2.5 rounded-xl text-[13px] font-bold transition-all select-none border flex items-center justify-center gap-1 ${messageFilter === "family" ? "text-stone-700 shadow-md" : "text-stone-400"}`,
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Users, { size: 13 }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "직계가족" }),
+              messageFilter === "family" && /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-stone-500 font-normal", children: [
+                filteredMessages.length,
+                "개"
+              ] })
             ]
           }
         ),
@@ -21053,7 +21082,11 @@ function Guestbook({ showToast }) {
         isOpen: isNameFilterModalOpen,
         onClose: () => setIsNameFilterModalOpen(false),
         title: "내가 쓴 글 찾기",
-        description: "방명록에 남긴 이름을 입력하면 해당 이름의 글만 보여드려요.",
+        description: /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+          "방명록에 남긴 이름을 입력하면",
+          /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+          "해당 이름의 글만 보여드려요."
+        ] }),
         confirmLabel: "찾기",
         onConfirm: () => {
           const trimmed = filterNameInput.trim();
@@ -21120,9 +21153,9 @@ function Share() {
   const [ref, isVisible] = useScrollReveal();
   const [expanded, setExpanded] = reactExports.useState(true);
   const dogImages = [
+    { src: `${"/th-wedding/"}img/dog-mocha.jpg`, alt: "모카" },
     { src: `${"/th-wedding/"}img/dog-wedding.png`, alt: "모카와 리트리버 커플" },
-    { src: `${"/th-wedding/"}img/wedding-couple.png`, alt: "모카와 리트리버 축하" },
-    { src: `${"/th-wedding/"}img/dog-mocha.jpg`, alt: "모카" }
+    { src: `${"/th-wedding/"}img/wedding-couple.png`, alt: "모카와 리트리버 축하" }
   ];
   const [dogSelectedIdx, setDogSelectedIdx] = reactExports.useState(null);
   const [dogScrollIdx, setDogScrollIdx] = reactExports.useState(0);
@@ -21310,7 +21343,10 @@ function Share() {
             {
               className: "rounded-2xl overflow-hidden shadow-sm aspect-square cursor-zoom-in active:opacity-90",
               style: { touchAction: "manipulation" },
-              onPointerDown: () => setDogSelectedIdx(idx),
+              onPointerDown: () => {
+                document.body.classList.add("nav-hidden");
+                setDogSelectedIdx(idx);
+              },
               children: /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: img.src, alt: img.alt, loading: "lazy", decoding: "async", className: "w-full h-full object-cover", draggable: false })
             }
           ) }, idx)) }),
@@ -21339,7 +21375,10 @@ function Share() {
         style: { touchAction: "none" },
         onClick: (e) => {
           if (isSwiping.current) return;
-          if (e.target === e.currentTarget) setDogSelectedIdx(null);
+          if (e.target === e.currentTarget) {
+            document.body.classList.remove("nav-hidden");
+            setDogSelectedIdx(null);
+          }
         },
         onTouchStart: (e) => {
           touchStartX.current = e.touches[0].clientX;
@@ -21362,6 +21401,7 @@ function Share() {
               style: { touchAction: "manipulation" },
               onPointerDown: (e) => {
                 e.stopPropagation();
+                document.body.classList.remove("nav-hidden");
                 setDogSelectedIdx(null);
               },
               children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-9 h-9 rounded-full flex items-center justify-center text-stone-800", children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { size: 18 }) })
@@ -21875,7 +21915,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "205"
+        "206"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
