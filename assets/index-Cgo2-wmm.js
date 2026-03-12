@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "224"
+            "225"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -19848,8 +19848,10 @@ function Location() {
     const HEADER = 56, BOTTOM_NAV = 80;
     const update = () => {
       const vv = window.visualViewport;
+      const vvHeight = vv ? vv.height : window.innerHeight;
+      const keyboardVisible = window.innerHeight - vvHeight > 100;
       const top = (vv ? vv.offsetTop : 0) + HEADER;
-      const height = (vv ? vv.height : window.innerHeight) - HEADER - BOTTOM_NAV;
+      const height = vvHeight - HEADER - (keyboardVisible ? 8 : BOTTOM_NAV);
       setVpStyle({ position: "fixed", left: 0, right: 0, top, height, zIndex: 600, display: "flex", alignItems: "center", justifyContent: "center", padding: "0 16px", pointerEvents: "none" });
     };
     update();
@@ -20435,6 +20437,13 @@ const PinInput = reactExports.memo(({ value, onChange, show, onToggleShow, onEnt
     var _a;
     return (_a = inputRef.current) == null ? void 0 : _a.focus({ preventScroll: true });
   };
+  reactExports.useEffect(() => {
+    const t = setTimeout(() => {
+      var _a;
+      return (_a = inputRef.current) == null ? void 0 : _a.focus({ preventScroll: true });
+    }, 80);
+    return () => clearTimeout(t);
+  }, []);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center gap-5", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center gap-3 cursor-pointer", onClick: handleAreaClick, children: slots.map((i) => {
       const isFilled = i < value.length;
@@ -20650,8 +20659,10 @@ const ModernModal = reactExports.memo(({ isOpen, onClose, title, description, ch
     const HEADER = 56, BOTTOM_NAV = 80;
     const update = () => {
       const vv = window.visualViewport;
+      const vvHeight = vv ? vv.height : window.innerHeight;
+      const keyboardVisible = window.innerHeight - vvHeight > 100;
       const top = (vv ? vv.offsetTop : 0) + HEADER;
-      const height = (vv ? vv.height : window.innerHeight) - HEADER - BOTTOM_NAV;
+      const height = vvHeight - HEADER - (keyboardVisible ? 8 : BOTTOM_NAV);
       setVpStyle({ position: "fixed", left: 0, right: 0, top, height, zIndex: 600, display: "flex", alignItems: "center", justifyContent: "center", padding: "0 16px", pointerEvents: "none" });
     };
     update();
@@ -21202,27 +21213,41 @@ function Guestbook({ showToast }) {
           setMessageFilter("mine");
           setIsNameFilterModalOpen(false);
         },
-        children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "input",
-          {
-            type: "text",
-            value: filterNameInput,
-            onChange: (e) => setFilterNameInput(e.target.value),
-            onKeyDown: (e) => {
-              if (e.key === "Enter") {
-                const trimmed = filterNameInput.trim();
-                if (!trimmed) return;
-                localStorage.setItem("guestbook_my_name", trimmed);
-                setMyName(trimmed);
-                setMessageFilter("mine");
-                setIsNameFilterModalOpen(false);
-              }
-            },
-            placeholder: "방명록에 쓴 이름 입력",
-            className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3.5 text-[16px] text-stone-800 focus:ring-2 focus:ring-stone-100 outline-none",
-            autoFocus: true
-          }
-        )
+        children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "input",
+            {
+              type: "text",
+              value: filterNameInput,
+              onChange: (e) => setFilterNameInput(e.target.value),
+              onKeyDown: (e) => {
+                if (e.key === "Enter") {
+                  const trimmed = filterNameInput.trim();
+                  if (!trimmed) return;
+                  localStorage.setItem("guestbook_my_name", trimmed);
+                  setMyName(trimmed);
+                  setMessageFilter("mine");
+                  setIsNameFilterModalOpen(false);
+                }
+              },
+              placeholder: "방명록에 쓴 이름 입력",
+              className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3.5 text-[16px] text-stone-800 focus:ring-2 focus:ring-stone-100 outline-none pr-11",
+              autoFocus: true
+            }
+          ),
+          filterNameInput && /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
+            {
+              type: "button",
+              onPointerDown: (e) => {
+                e.preventDefault();
+                setFilterNameInput("");
+              },
+              className: "absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-full bg-stone-200 text-stone-500 active:bg-stone-300",
+              children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { size: 14 })
+            }
+          )
+        ] })
       }
     ),
     /* @__PURE__ */ jsxRuntimeExports.jsx(
