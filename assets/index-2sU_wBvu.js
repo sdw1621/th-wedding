@@ -19572,7 +19572,7 @@ function Gallery({ onFullscreenChange }) {
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           "button",
           {
-            className: `absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-stone-800/80 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-white z-10 active:bg-stone-900 select-none transition-opacity duration-200 ${currentScrollIdx === 0 ? "opacity-0 pointer-events-none" : "opacity-100"}`,
+            className: `absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-stone-800/80 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-white z-30 active:bg-stone-900 select-none transition-opacity duration-200 ${currentScrollIdx === 0 ? "opacity-0 pointer-events-none" : "opacity-100"}`,
             style: { touchAction: "manipulation" },
             onPointerDown: (e) => {
               e.stopPropagation();
@@ -19614,7 +19614,7 @@ function Gallery({ onFullscreenChange }) {
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           "button",
           {
-            className: `absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-stone-800/80 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-white z-10 active:bg-stone-900 select-none transition-opacity duration-200 ${currentScrollIdx === images.length - 1 ? "opacity-0 pointer-events-none" : "opacity-100"}`,
+            className: `absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-stone-800/80 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-white z-30 active:bg-stone-900 select-none transition-opacity duration-200 ${currentScrollIdx === images.length - 1 ? "opacity-0 pointer-events-none" : "opacity-100"}`,
             style: { touchAction: "manipulation" },
             onPointerDown: (e) => {
               e.stopPropagation();
@@ -19765,12 +19765,53 @@ const Users = createLucideIcon("Users", [
   ["path", { d: "M22 21v-2a4 4 0 0 0-3-3.87", key: "kshegd" }],
   ["path", { d: "M16 3.13a4 4 0 0 1 0 7.75", key: "1da9ce" }]
 ]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const Eye = createLucideIcon("Eye", [
+  [
+    "path",
+    {
+      d: "M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0",
+      key: "1nclc0"
+    }
+  ],
+  ["circle", { cx: "12", cy: "12", r: "3", key: "1v7zrd" }]
+]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const EyeOff = createLucideIcon("EyeOff", [
+  [
+    "path",
+    {
+      d: "M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49",
+      key: "ct8e1f"
+    }
+  ],
+  ["path", { d: "M14.084 14.158a3 3 0 0 1-4.242-4.242", key: "151rxh" }],
+  [
+    "path",
+    {
+      d: "M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143",
+      key: "13bj9a"
+    }
+  ],
+  ["path", { d: "m2 2 20 20", key: "1ooewy" }]
+]);
 function Location() {
   const [ref, isVisible] = useScrollReveal();
   const [unlocked, setUnlocked] = reactExports.useState(false);
   const [showModal, setShowModal] = reactExports.useState(false);
   const [pw, setPw] = reactExports.useState("");
   const [pwError, setPwError] = reactExports.useState("");
+  const [showPw, setShowPw] = reactExports.useState(false);
   const pwInputRef = reactExports.useRef(null);
   const [vpStyle, setVpStyle] = reactExports.useState({});
   reactExports.useEffect(() => {
@@ -19797,6 +19838,7 @@ function Location() {
   const handleUnlockClick = () => {
     setPw("");
     setPwError("");
+    setShowPw(false);
     setShowModal(true);
     setTimeout(() => {
       var _a;
@@ -19858,23 +19900,38 @@ function Location() {
             /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-[17px] font-bold text-stone-900 mb-1", children: "직계가족만 확인" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[13px] text-stone-500 font-medium leading-tight", children: "직계가족 히든 번호 4자리 입력해주세요." }),
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-4", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                "input",
-                {
-                  ref: pwInputRef,
-                  type: "password",
-                  inputMode: "numeric",
-                  value: pw,
-                  onChange: (e) => {
-                    setPw(e.target.value);
-                    setPwError("");
-                  },
-                  onKeyDown: (e) => e.key === "Enter" && handleConfirm(),
-                  className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-center text-lg tracking-[0.5em] focus:ring-2 focus:ring-stone-100 outline-none",
-                  placeholder: "••••",
-                  maxLength: 6
-                }
-              ),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  "input",
+                  {
+                    ref: pwInputRef,
+                    type: showPw ? "text" : "password",
+                    inputMode: "numeric",
+                    value: pw,
+                    onChange: (e) => {
+                      setPw(e.target.value);
+                      setPwError("");
+                    },
+                    onKeyDown: (e) => e.key === "Enter" && handleConfirm(),
+                    className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 pr-11 text-center text-lg tracking-[0.5em] focus:ring-2 focus:ring-stone-100 outline-none",
+                    placeholder: "••••",
+                    maxLength: 6
+                  }
+                ),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  "button",
+                  {
+                    type: "button",
+                    onPointerDown: (e) => {
+                      e.preventDefault();
+                      setShowPw((v) => !v);
+                    },
+                    style: { touchAction: "manipulation" },
+                    className: "absolute right-3 top-1/2 -translate-y-1/2 p-1 text-stone-400 active:text-stone-600",
+                    children: showPw ? /* @__PURE__ */ jsxRuntimeExports.jsx(EyeOff, { size: 17 }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Eye, { size: 17 })
+                  }
+                )
+              ] }),
               pwError && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-rose-400 text-center mt-2", children: pwError })
             ] })
           ] }),
@@ -20290,7 +20347,7 @@ const BRIDE_PW = "0407";
 const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModal, toggleUnlock }) => {
   const isLocked = msg.is_secret && !unlockedMessages[msg.id];
   const isDev = msg.name === "신동욱";
-  let cardColorClass = isDev ? "bg-stone-50 border-stone-200" : msg.receiver === "groom" ? "bg-blue-50/60 border-blue-100" : msg.receiver === "bride" ? "bg-rose-50/60 border-rose-100" : "bg-white border-stone-100";
+  let cardColorClass = isDev ? "bg-zinc-800/[0.07] border-zinc-500/50" : msg.receiver === "groom" ? "bg-blue-50/60 border-blue-100" : msg.receiver === "bride" ? "bg-rose-50/60 border-rose-100" : "bg-white border-stone-100";
   const guestEmoji = msg.receiver === "groom" ? "💙" : msg.receiver === "bride" ? "💗" : "✨";
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `${cardColorClass} p-5 rounded-2xl shadow-sm border flex flex-col relative group transition-all duration-300`, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-3", children: [
@@ -20306,7 +20363,7 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center space-x-2", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: `font-bold text-sm px-2.5 py-1 rounded-md bg-white/80 ${isDev ? "text-stone-800" : msg.receiver === "groom" ? "text-blue-700" : msg.receiver === "bride" ? "text-rose-700" : "text-stone-800"}`, children: [
           msg.name,
-          isDev ? /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "ml-1 text-[11px] font-bold bg-stone-800 text-emerald-300 px-1.5 py-0.5 rounded ml-1.5", children: "DEV" }) : /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "ml-1", children: guestEmoji })
+          isDev ? /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "ml-1", children: "👨‍💻" }) : /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "ml-1", children: guestEmoji })
         ] }),
         msg.receiver !== "public" && /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: `text-[9px] font-bold px-1.5 py-0.5 rounded ${msg.receiver === "groom" ? "bg-blue-200/50 text-blue-600" : "bg-rose-200/50 text-rose-600"}`, children: [
           "To. ",
@@ -20393,6 +20450,8 @@ function Guestbook({ showToast }) {
   const [modalPassword, setModalPassword] = reactExports.useState("");
   const [modalEditText, setModalEditText] = reactExports.useState("");
   const [modalReplyText, setModalReplyText] = reactExports.useState("");
+  const [showModalPw, setShowModalPw] = reactExports.useState(false);
+  const [showNewPw, setShowNewPw] = reactExports.useState(false);
   const passwordInputRef = reactExports.useRef(null);
   const [selectedMsg, setSelectedMsg] = reactExports.useState(null);
   const [modalPurpose, setModalPurpose] = reactExports.useState("");
@@ -20467,6 +20526,7 @@ function Guestbook({ showToast }) {
     setSelectedMsg(msg);
     setModalPurpose(purpose);
     setModalPassword("");
+    setShowModalPw(false);
     setIsPasswordModalOpen(true);
     setTimeout(() => {
       var _a;
@@ -20707,7 +20767,13 @@ function Guestbook({ showToast }) {
       /* @__PURE__ */ jsxRuntimeExports.jsxs("form", { onSubmit: handleSubmit, className: "bg-white p-5 rounded-[1.25rem] shadow-sm border border-stone-100 mb-8 space-y-4 relative z-20", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex space-x-2", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "text", placeholder: "성함", value: newName, onChange: (e) => setNewName(e.target.value), className: "w-24 shrink-0 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 placeholder:text-[13px] relative z-20", maxLength: 10 }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "password", inputMode: "numeric", placeholder: "전화번호 뒷 4자리", value: newPassword, onChange: (e) => setNewPassword(e.target.value), className: "flex-1 min-w-0 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 placeholder:text-[13px] relative z-20", maxLength: 10 })
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative flex-1 min-w-0", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: showNewPw ? "text" : "password", inputMode: "numeric", placeholder: "전화번호 뒷 4자리", value: newPassword, onChange: (e) => setNewPassword(e.target.value), className: "w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 pr-10 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 placeholder:text-[13px] relative z-20", maxLength: 10 }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onPointerDown: (e) => {
+              e.preventDefault();
+              setShowNewPw((v) => !v);
+            }, style: { touchAction: "manipulation" }, className: "absolute right-3 top-1/2 -translate-y-1/2 p-1 text-stone-400 active:text-stone-600 z-30", children: showNewPw ? /* @__PURE__ */ jsxRuntimeExports.jsx(EyeOff, { size: 15 }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Eye, { size: 15 }) })
+          ] })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { placeholder: "축하의 한마디를 남겨주세요.", value: newContent, onChange: (e) => setNewContent(e.target.value), className: "w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 h-28 resize-none focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 placeholder:text-[13px] relative z-20", maxLength: 100 }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex space-x-2 relative z-10", children: [
@@ -20731,20 +20797,26 @@ function Guestbook({ showToast }) {
         title: modalPurpose === "reply" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑 확인" : modalPurpose === "reply" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부 확인" : modalPurpose === "reply" ? "관리자 확인" : modalPurpose === "unlock" && ((selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" || (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride") ? "생일 확인" : "전화번호 확인",
         description: modalPurpose === "reply" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑의 생일을 입력해주세요. (예: 0108)" : modalPurpose === "reply" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부의 생일을 입력해주세요. (예: 0315)" : modalPurpose === "reply" ? "신랑/신부 전용 비밀번호를 입력해주세요." : modalPurpose === "unlock" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑의 생일을 입력해주세요. (예: 0108)" : modalPurpose === "unlock" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부의 생일을 입력해주세요. (예: 0315)" : "전화번호 뒷 4자리를 입력해주세요.",
         onConfirm: handleModalConfirm,
-        children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "input",
-          {
-            ref: passwordInputRef,
-            type: "password",
-            inputMode: "numeric",
-            value: modalPassword,
-            onChange: (e) => setModalPassword(e.target.value),
-            onKeyDown: (e) => e.key === "Enter" && handleModalConfirm(),
-            className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-center text-lg tracking-[0.5em] focus:ring-2 focus:ring-stone-100 outline-none",
-            placeholder: "••••",
-            maxLength: 4
-          }
-        )
+        children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "input",
+            {
+              ref: passwordInputRef,
+              type: showModalPw ? "text" : "password",
+              inputMode: "numeric",
+              value: modalPassword,
+              onChange: (e) => setModalPassword(e.target.value),
+              onKeyDown: (e) => e.key === "Enter" && handleModalConfirm(),
+              className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 pr-11 text-center text-lg tracking-[0.5em] focus:ring-2 focus:ring-stone-100 outline-none",
+              placeholder: "••••",
+              maxLength: 4
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onPointerDown: (e) => {
+            e.preventDefault();
+            setShowModalPw((v) => !v);
+          }, style: { touchAction: "manipulation" }, className: "absolute right-3 top-1/2 -translate-y-1/2 p-1 text-stone-400 active:text-stone-600", children: showModalPw ? /* @__PURE__ */ jsxRuntimeExports.jsx(EyeOff, { size: 17 }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Eye, { size: 17 }) })
+        ] })
       }
     ),
     /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isDeleteModalOpen, onClose: () => setIsDeleteModalOpen(false), title: "메시지 삭제", description: "삭제하면 되돌릴 수 없습니다. 정말 삭제할까요?", onConfirm: confirmDelete, confirmLabel: "삭제", isDestructive: true }),
@@ -20756,7 +20828,7 @@ function Share() {
   const [ref, isVisible] = useScrollReveal();
   const [expanded, setExpanded] = reactExports.useState(true);
   return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "-mt-20 pt-0 pb-8 bg-white relative rounded-t-[2rem] shadow-[0_-14px_40px_rgba(0,0,0,0.07)] overflow-hidden", id: "share", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `max-w-md mx-auto text-center transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-4 pt-8 mb-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-white rounded-2xl border border-stone-200 shadow-sm overflow-hidden", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-4 pt-12 mb-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-white rounded-2xl border border-stone-200 shadow-sm overflow-hidden", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
         "button",
         {
@@ -21326,7 +21398,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "180"
+        "181"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
