@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "255"
+            "257"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20588,51 +20588,75 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
             const msgComments = comments || [];
             const officialComments = msgComments.filter((c) => c.commenter_type === "groom" || c.commenter_type === "bride");
             const guestComments = msgComments.filter((c) => c.commenter_type === "guest");
-            const PREVIEW = 1;
-            const showMore = guestComments.length > PREVIEW;
-            return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `mt-2 ${msgComments.length > 0 ? `border-t border-dashed pt-2.5 ${isDev ? "border-stone-700" : "border-stone-100"}` : ""}`, children: [
-              officialComments.map((c) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `rounded-xl p-2.5 border-l-2 mb-1.5 ${c.commenter_type === "groom" ? "bg-blue-50 border-blue-300" : "bg-rose-50 border-rose-300"}`, children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between mb-1", children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[9px] text-stone-400", children: c.date }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1", children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
-                      e.stopPropagation();
-                      openCommentModal(msg, "guest");
-                    }, className: "px-1.5 py-0.5 text-[9px] font-bold rounded border select-none border-stone-200 text-stone-400 active:bg-stone-50", style: { touchAction: "manipulation" }, children: "댓글" }),
-                    /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
-                      e.stopPropagation();
-                      onManageComment(c, "edit");
-                    }, className: `px-1.5 py-0.5 text-[9px] font-bold rounded border select-none ${c.commenter_type === "groom" ? "border-blue-200 text-blue-400 active:bg-blue-50" : "border-rose-200 text-rose-400 active:bg-rose-50"}`, style: { touchAction: "manipulation" }, children: "수정" }),
-                    /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
-                      e.stopPropagation();
-                      onManageComment(c, "delete");
-                    }, className: "px-1.5 py-0.5 text-[9px] font-bold rounded border border-rose-200 select-none text-rose-400 active:bg-rose-50", style: { touchAction: "manipulation" }, children: "삭제" })
-                  ] })
-                ] }),
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1.5 mb-0.5", children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[18px] leading-none", children: c.commenter_type === "groom" ? "🤵" : "👰" }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[10px] font-bold ${c.commenter_type === "groom" ? "text-blue-700" : "text-rose-700"}`, children: c.name })
-                ] }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: `text-[12px] font-medium leading-relaxed ${c.commenter_type === "groom" ? "text-blue-800" : "text-rose-800"}`, children: c.content })
-              ] }, c.id)),
-              guestComments.slice(0, PREVIEW).map((c) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `flex gap-2 items-center rounded-lg px-2.5 py-1.5 mb-1 ml-3 border-l-2 ${isDev ? "bg-white/5 border-stone-700" : "bg-stone-50 border-stone-200"}`, children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[10px] font-bold shrink-0 ${isDev ? "text-stone-300" : "text-stone-600"}`, children: c.name }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[11px] leading-snug flex-1 break-all ${isDev ? "text-stone-400" : "text-stone-500"}`, children: c.content }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[9px] text-stone-400 shrink-0", children: c.date }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  "button",
-                  {
-                    onClick: (e) => {
-                      e.stopPropagation();
-                      onManageComment(c, "delete");
-                    },
-                    className: "shrink-0 px-1.5 py-0.5 text-[9px] font-bold text-rose-400 border border-rose-200 rounded active:bg-rose-50 select-none",
-                    style: { touchAction: "manipulation" },
-                    children: "삭제"
-                  }
-                )
-              ] }, c.id)),
-              showMore && /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            const totalCount = msgComments.length;
+            const GuestReplyRow = ({ c }) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `flex gap-2 items-center rounded-lg px-2.5 py-1.5 mb-0.5 ml-3 border-l-2 ${isDev ? "bg-white/5 border-stone-700" : "bg-stone-50 border-stone-200"}`, children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[10px] font-bold shrink-0 ${isDev ? "text-stone-300" : "text-stone-600"}`, children: c.name }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[11px] leading-snug flex-1 break-all ${isDev ? "text-stone-400" : "text-stone-500"}`, children: c.content }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[9px] text-stone-400 shrink-0", children: c.date }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(
+                "button",
+                {
+                  onClick: (e) => {
+                    e.stopPropagation();
+                    onManageComment(c, "delete");
+                  },
+                  className: "shrink-0 px-1.5 py-0.5 text-[9px] font-bold text-rose-400 border border-rose-200 rounded active:bg-rose-50 select-none",
+                  style: { touchAction: "manipulation" },
+                  children: "삭제"
+                }
+              )
+            ] }, c.id);
+            new Set(guestComments.filter((g) => g.parent_id).map((g) => g.parent_id));
+            const generalGuests = guestComments.filter((g) => !g.parent_id);
+            const showMoreGeneral = generalGuests.length > 1;
+            return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `mt-2 ${totalCount > 0 ? `border-t border-dashed pt-2.5 ${isDev ? "border-stone-700" : "border-stone-100"}` : ""}`, children: [
+              officialComments.map((c) => {
+                const replies = guestComments.filter((g) => g.parent_id === c.id);
+                const showMoreReplies = replies.length > 1;
+                return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `rounded-xl p-2.5 border-l-2 mb-1.5 ${c.commenter_type === "groom" ? "bg-blue-50 border-blue-300" : "bg-rose-50 border-rose-300"}`, children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between mb-1", children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[9px] text-stone-400", children: c.date }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1", children: [
+                      /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
+                        e.stopPropagation();
+                        openCommentModal(msg, "guest", c.id);
+                      }, className: "px-1.5 py-0.5 text-[9px] font-bold rounded border select-none border-stone-200 text-stone-400 active:bg-stone-50", style: { touchAction: "manipulation" }, children: "댓글" }),
+                      /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
+                        e.stopPropagation();
+                        onManageComment(c, "edit");
+                      }, className: `px-1.5 py-0.5 text-[9px] font-bold rounded border select-none ${c.commenter_type === "groom" ? "border-blue-200 text-blue-400 active:bg-blue-50" : "border-rose-200 text-rose-400 active:bg-rose-50"}`, style: { touchAction: "manipulation" }, children: "수정" }),
+                      /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
+                        e.stopPropagation();
+                        onManageComment(c, "delete");
+                      }, className: "px-1.5 py-0.5 text-[9px] font-bold rounded border border-rose-200 select-none text-rose-400 active:bg-rose-50", style: { touchAction: "manipulation" }, children: "삭제" })
+                    ] })
+                  ] }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1.5 mb-0.5", children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[18px] leading-none", children: c.commenter_type === "groom" ? "🤵" : "👰" }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[10px] font-bold ${c.commenter_type === "groom" ? "text-blue-700" : "text-rose-700"}`, children: c.name })
+                  ] }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: `text-[12px] font-medium leading-relaxed ${c.commenter_type === "groom" ? "text-blue-800" : "text-rose-800"}`, children: c.content }),
+                  replies.slice(0, 1).map((r) => /* @__PURE__ */ jsxRuntimeExports.jsx(GuestReplyRow, { c: r }, r.id)),
+                  showMoreReplies && /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                    "button",
+                    {
+                      onClick: (e) => {
+                        e.stopPropagation();
+                        setShowAllComments(true);
+                      },
+                      className: `text-[10px] font-bold px-1 py-0.5 ml-3 ${isDev ? "text-stone-400" : "text-stone-400"}`,
+                      style: { touchAction: "manipulation" },
+                      children: [
+                        "💬 +",
+                        replies.length - 1,
+                        "개 더보기"
+                      ]
+                    }
+                  )
+                ] }, c.id);
+              }),
+              generalGuests.slice(0, 1).map((c) => /* @__PURE__ */ jsxRuntimeExports.jsx(GuestReplyRow, { c }, c.id)),
+              showMoreGeneral && /* @__PURE__ */ jsxRuntimeExports.jsxs(
                 "button",
                 {
                   onClick: (e) => {
@@ -20643,7 +20667,7 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                   style: { touchAction: "manipulation" },
                   children: [
                     "💬 +",
-                    guestComments.length - PREVIEW,
+                    generalGuests.length - 1,
                     "개 더보기"
                   ]
                 }
@@ -20686,36 +20710,64 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
               /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
               "첫 번째 댓글을 남겨보세요!"
             ] }),
-            (comments || []).filter((c) => c.commenter_type === "groom" || c.commenter_type === "bride").map((c) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `rounded-xl p-2.5 border-l-2 ${c.commenter_type === "groom" ? "bg-blue-50 border-blue-300" : "bg-rose-50 border-rose-300"}`, children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1.5 mb-0.5", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[18px] leading-none", children: c.commenter_type === "groom" ? "🤵" : "👰" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[10px] font-bold ${c.commenter_type === "groom" ? "text-blue-700" : "text-rose-700"}`, children: c.name }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[9px] text-stone-400 ml-auto", children: c.date })
-              ] }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: `text-[12px] font-medium leading-relaxed ${c.commenter_type === "groom" ? "text-blue-800" : "text-rose-800"}`, children: c.content })
-            ] }, c.id)),
-            (comments || []).filter((c) => c.commenter_type === "guest").map((c) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-2 rounded-lg px-2.5 py-1.5 bg-stone-50", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1.5 mb-0.5", children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] font-bold text-stone-600", children: c.name }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[9px] text-stone-400", children: c.date })
+            (() => {
+              const allC = comments || [];
+              const officials = allC.filter((c) => c.commenter_type === "groom" || c.commenter_type === "bride");
+              const guests = allC.filter((c) => c.commenter_type === "guest");
+              const ModalGuestRow = ({ c }) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-2 rounded-lg px-2.5 py-1.5 bg-stone-50 ml-3 border-l-2 border-stone-200", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1.5 mb-0.5", children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] font-bold text-stone-600", children: c.name }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[9px] text-stone-400", children: c.date })
+                  ] }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] leading-snug break-all text-stone-500", children: c.content })
                 ] }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] leading-snug break-all text-stone-500", children: c.content })
-              ] }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                "button",
-                {
-                  onClick: (e) => {
-                    e.stopPropagation();
-                    setShowAllComments(false);
-                    setTimeout(() => onManageComment(c, "delete"), 150);
-                  },
-                  className: "shrink-0 self-start mt-0.5 px-1.5 py-0.5 text-[9px] font-bold text-rose-400 border border-rose-200 rounded active:bg-rose-50 select-none",
-                  style: { touchAction: "manipulation" },
-                  children: "삭제"
-                }
-              )
-            ] }, c.id))
+                /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  "button",
+                  {
+                    onClick: (e) => {
+                      e.stopPropagation();
+                      setShowAllComments(false);
+                      setTimeout(() => onManageComment(c, "delete"), 150);
+                    },
+                    className: "shrink-0 self-start mt-0.5 px-1.5 py-0.5 text-[9px] font-bold text-rose-400 border border-rose-200 rounded active:bg-rose-50 select-none",
+                    style: { touchAction: "manipulation" },
+                    children: "삭제"
+                  }
+                )
+              ] });
+              const generalGuests = guests.filter((g) => !g.parent_id);
+              return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+                officials.map((c) => {
+                  const replies = guests.filter((g) => g.parent_id === c.id);
+                  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `rounded-xl p-2.5 border-l-2 ${c.commenter_type === "groom" ? "bg-blue-50 border-blue-300" : "bg-rose-50 border-rose-300"}`, children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between mb-1", children: [
+                      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1.5", children: [
+                        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[18px] leading-none", children: c.commenter_type === "groom" ? "🤵" : "👰" }),
+                        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[10px] font-bold ${c.commenter_type === "groom" ? "text-blue-700" : "text-rose-700"}`, children: c.name }),
+                        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[9px] text-stone-400", children: c.date })
+                      ] }),
+                      /* @__PURE__ */ jsxRuntimeExports.jsx(
+                        "button",
+                        {
+                          onClick: (e) => {
+                            e.stopPropagation();
+                            setShowAllComments(false);
+                            setTimeout(() => openCommentModal(msg, "guest", c.id), 150);
+                          },
+                          className: "px-1.5 py-0.5 text-[9px] font-bold rounded border select-none border-stone-200 text-stone-400 active:bg-stone-50",
+                          style: { touchAction: "manipulation" },
+                          children: "댓글"
+                        }
+                      )
+                    ] }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: `text-[12px] font-medium leading-relaxed ${c.commenter_type === "groom" ? "text-blue-800" : "text-rose-800"}`, children: c.content }),
+                    replies.map((r) => /* @__PURE__ */ jsxRuntimeExports.jsx(ModalGuestRow, { c: r }, r.id))
+                  ] }, c.id);
+                }),
+                generalGuests.map((c) => /* @__PURE__ */ jsxRuntimeExports.jsx(ModalGuestRow, { c }, c.id))
+              ] });
+            })()
           ] }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-4 pb-4 pt-2 border-t border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
             "button",
@@ -20906,6 +20958,7 @@ function Guestbook({ showToast }) {
   const [showCommentPin, setShowCommentPin] = reactExports.useState(false);
   const commentPinRef = reactExports.useRef(null);
   const [showCommentPw, setShowCommentPw] = reactExports.useState(false);
+  const [commentParentId, setCommentParentId] = reactExports.useState(null);
   const [commentManageAction, setCommentManageAction] = reactExports.useState("create");
   const [commentToManage, setCommentToManage] = reactExports.useState(null);
   const [commentManageEditText, setCommentManageEditText] = reactExports.useState("");
@@ -21023,9 +21076,10 @@ function Guestbook({ showToast }) {
       return (_a = passwordInputRef.current) == null ? void 0 : _a.focus({ preventScroll: true });
     }, 80);
   }, []);
-  const openCommentModal = reactExports.useCallback((msg, type) => {
+  const openCommentModal = reactExports.useCallback((msg, type, parentId = null) => {
     setCommentTargetMsg(msg);
     setCommentInputType(type);
+    setCommentParentId(parentId);
     setCommentContent("");
     setCommentName("");
     setCommentPassword("");
@@ -21118,6 +21172,7 @@ function Guestbook({ showToast }) {
     try {
       const { error } = await supabase.from("guestbook_comments").insert({
         guestbook_id: commentTargetMsg.id,
+        parent_id: commentParentId || null,
         name,
         content: commentContent.trim(),
         password: commentInputType === "guest" ? commentPassword.trim() || null : null,
