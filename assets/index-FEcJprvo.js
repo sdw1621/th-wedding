@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "225"
+            "226"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -21107,7 +21107,21 @@ function Guestbook({ showToast }) {
             }, style: { touchAction: "manipulation" }, className: "absolute right-3 top-1/2 -translate-y-1/2 p-1 text-stone-400 active:text-stone-600 z-30", children: showNewPw ? /* @__PURE__ */ jsxRuntimeExports.jsx(EyeOff, { size: 15 }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Eye, { size: 15 }) })
           ] })
         ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { placeholder: "축하의 한마디를 남겨주세요.", value: newContent, onChange: (e) => setNewContent(e.target.value), className: "w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 h-28 resize-none focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 placeholder:text-[13px] relative z-20", maxLength: 100 }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { placeholder: "축하의 한마디를 남겨주세요.", value: newContent, onChange: (e) => setNewContent(e.target.value), className: "w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 h-28 resize-none focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 placeholder:text-[13px] relative z-20", maxLength: 100 }),
+          newContent && /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
+            {
+              type: "button",
+              onPointerDown: (e) => {
+                e.preventDefault();
+                setNewContent("");
+              },
+              className: "absolute right-2 top-2 p-1 rounded-full bg-stone-200 text-stone-500 active:bg-stone-300 z-30",
+              children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { size: 14 })
+            }
+          )
+        ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex space-x-2 relative z-10", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onClick: () => setReceiver("public"), style: { touchAction: "manipulation" }, className: `flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-stone-100 select-none ${receiver === "public" ? "bg-stone-100 border-stone-200 text-stone-700 shadow-sm" : "bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50"}`, children: "모두에게" }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onClick: () => setReceiver("groom"), style: { touchAction: "manipulation" }, className: `flex-1 py-3 rounded-xl border text-[13px] font-bold active:bg-blue-100 select-none ${receiver === "groom" ? "bg-blue-50 border-blue-200 text-blue-700 shadow-sm" : "bg-stone-50/50 text-stone-400 border-transparent hover:bg-stone-50"}`, children: "신랑에게" }),
@@ -21398,7 +21412,7 @@ const Mail = createLucideIcon("Mail", [
   ["rect", { width: "20", height: "16", x: "2", y: "4", rx: "2", key: "18n3k1" }],
   ["path", { d: "m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7", key: "1ocrg3" }]
 ]);
-function Share() {
+function Share({ onLightboxChange }) {
   const [ref, isVisible] = useScrollReveal();
   const [expanded, setExpanded] = reactExports.useState(false);
   reactExports.useEffect(() => {
@@ -21438,6 +21452,14 @@ function Share() {
     });
     if (closestIndex !== dogScrollIdx) setDogScrollIdx(closestIndex);
   };
+  reactExports.useEffect(() => {
+    if (onLightboxChange) {
+      onLightboxChange(dogSelectedIdx !== null, () => {
+        document.body.classList.remove("nav-hidden");
+        setDogSelectedIdx(null);
+      });
+    }
+  }, [dogSelectedIdx]);
   reactExports.useEffect(() => {
     const el = dogLightboxRef.current;
     if (!el) return;
@@ -22098,6 +22120,8 @@ function App() {
   const musicApiRef = reactExports.useRef(null);
   const isEnteredRef = reactExports.useRef(false);
   const galleryFullscreenRef = reactExports.useRef(false);
+  const dogLightboxRef = reactExports.useRef(false);
+  const dogLightboxCloseRef = reactExports.useRef(null);
   reactExports.useEffect(() => {
     isEnteredRef.current = isEntered;
   }, [isEntered]);
@@ -22113,10 +22137,12 @@ function App() {
   reactExports.useEffect(() => {
     history.pushState(null, "");
     const handlePopState = () => {
-      var _a;
+      var _a, _b;
       history.pushState(null, "");
       if (galleryFullscreenRef.current) {
         (_a = galleryCloseRef.current) == null ? void 0 : _a.call(galleryCloseRef);
+      } else if (dogLightboxRef.current) {
+        (_b = dogLightboxCloseRef.current) == null ? void 0 : _b.call(dogLightboxCloseRef);
       } else if (isEnteredRef.current) {
         setIsEntered(false);
       }
@@ -22196,7 +22222,10 @@ function App() {
         /* @__PURE__ */ jsxRuntimeExports.jsx(Location, {}),
         /* @__PURE__ */ jsxRuntimeExports.jsx(AccountInfo, { showToast }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(Guestbook, { showToast }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Share, {})
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Share, { onLightboxChange: (isOpen, closeFn) => {
+          dogLightboxRef.current = isOpen;
+          dogLightboxCloseRef.current = closeFn || null;
+        } })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsx(BottomNav, {})
     ] }),
