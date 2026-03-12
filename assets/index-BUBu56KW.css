@@ -1194,10 +1194,6 @@ video {
   width: 68px;
 }
 
-.w-\[80px\]{
-  width: 80px;
-}
-
 .w-\[80vw\]{
   width: 80vw;
 }
@@ -3299,14 +3295,6 @@ body.nav-hidden .app-back-btn {
   font-size: 11px;
 }
 
-.placeholder\:text-\[12px\]::-moz-placeholder{
-  font-size: 12px;
-}
-
-.placeholder\:text-\[12px\]::placeholder{
-  font-size: 12px;
-}
-
 .placeholder\:text-\[13px\]::-moz-placeholder{
   font-size: 13px;
 }
@@ -3380,11 +3368,6 @@ body.nav-hidden .app-back-btn {
   --tw-ring-color: rgb(245 245 244 / var(--tw-ring-opacity, 1));
 }
 
-.focus\:ring-stone-200:focus{
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(231 229 228 / var(--tw-ring-opacity, 1));
-}
-
 .active\:bg-\[\#009b2e\]:active{
   --tw-bg-opacity: 1;
   background-color: rgb(0 155 46 / var(--tw-bg-opacity, 1));
@@ -3403,6 +3386,11 @@ body.nav-hidden .app-back-btn {
 .active\:bg-blue-100:active{
   --tw-bg-opacity: 1;
   background-color: rgb(219 234 254 / var(--tw-bg-opacity, 1));
+}
+
+.active\:bg-blue-50:active{
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 246 255 / var(--tw-bg-opacity, 1));
 }
 
 .active\:bg-blue-600:active{

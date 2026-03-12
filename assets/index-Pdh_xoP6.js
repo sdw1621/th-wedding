@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "250"
+            "251"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20452,7 +20452,7 @@ const PinInput = reactExports.memo(({ value, onChange, show, onToggleShow, onEnt
     )
   ] });
 });
-const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModal, toggleUnlock, comments, openCommentModal }) => {
+const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModal, toggleUnlock, comments, openCommentModal, onManageComment }) => {
   const isLocked = msg.is_secret && !unlockedMessages[msg.id];
   const isDev = msg.is_dev === true;
   const sirenOn = isDev && msg.siren;
@@ -20521,8 +20521,8 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                 }, className: `p-3 -m-1 select-none ${isDev ? "text-stone-400 active:text-stone-200" : "text-stone-300 active:text-stone-600"}`, style: { touchAction: "manipulation" }, children: isLocked ? /* @__PURE__ */ jsxRuntimeExports.jsx(Lock, { size: 16 }) : /* @__PURE__ */ jsxRuntimeExports.jsx(LockOpen, { size: 16 }) }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
                   e.stopPropagation();
-                  openPasswordModal(msg, "reply");
-                }, className: "px-2 py-1 text-[11px] font-bold rounded-lg border select-none text-stone-400 border-stone-200 active:bg-stone-100", style: { touchAction: "manipulation" }, children: "답글" }),
+                  openCommentModal(msg, "guest");
+                }, className: `px-2 py-1 text-[11px] font-bold rounded-lg border select-none ${isDev ? "text-stone-400 border-stone-600 active:bg-stone-700" : "text-stone-400 border-stone-200 active:bg-stone-100"}`, style: { touchAction: "manipulation" }, children: "댓글" }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
                   e.stopPropagation();
                   openPasswordModal(msg, "edit");
@@ -20566,6 +20566,10 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                 /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1", children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
                     e.stopPropagation();
+                    openCommentModal(msg, "guest");
+                  }, className: "px-1.5 py-0.5 text-[10px] font-bold rounded border border-stone-200 select-none text-stone-400 active:bg-stone-100", style: { touchAction: "manipulation" }, children: "댓글" }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
+                    e.stopPropagation();
                     openPasswordModal(msg, "reply");
                   }, className: "px-1.5 py-0.5 text-[10px] font-bold rounded border border-stone-200 select-none text-stone-400 active:bg-stone-100", style: { touchAction: "manipulation" }, children: "수정" }),
                   /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
@@ -20588,10 +20592,22 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
             const showMore = guestComments.length > PREVIEW;
             return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `mt-2 ${msgComments.length > 0 ? `border-t border-dashed pt-2.5 ${isDev ? "border-stone-700" : "border-stone-100"}` : ""}`, children: [
               officialComments.map((c) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `rounded-xl p-2.5 border-l-2 mb-1.5 ${c.commenter_type === "groom" ? "bg-blue-50 border-blue-300" : "bg-rose-50 border-rose-300"}`, children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between mb-1", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[9px] text-stone-400", children: c.date }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1", children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
+                      e.stopPropagation();
+                      onManageComment(c, "edit");
+                    }, className: `px-1.5 py-0.5 text-[9px] font-bold rounded border select-none ${c.commenter_type === "groom" ? "border-blue-200 text-blue-400 active:bg-blue-50" : "border-rose-200 text-rose-400 active:bg-rose-50"}`, style: { touchAction: "manipulation" }, children: "수정" }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
+                      e.stopPropagation();
+                      onManageComment(c, "delete");
+                    }, className: "px-1.5 py-0.5 text-[9px] font-bold rounded border border-rose-200 select-none text-rose-400 active:bg-rose-50", style: { touchAction: "manipulation" }, children: "삭제" })
+                  ] })
+                ] }),
                 /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1.5 mb-0.5", children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[18px] leading-none", children: c.commenter_type === "groom" ? "🤵" : "👰" }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[10px] font-bold ${c.commenter_type === "groom" ? "text-blue-700" : "text-rose-700"}`, children: c.name }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[9px] text-stone-400 ml-auto", children: c.date })
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[10px] font-bold ${c.commenter_type === "groom" ? "text-blue-700" : "text-rose-700"}`, children: c.name })
                 ] }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: `text-[12px] font-medium leading-relaxed ${c.commenter_type === "groom" ? "text-blue-800" : "text-rose-800"}`, children: c.content })
               ] }, c.id)),
@@ -20621,7 +20637,7 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                 {
                   onClick: (e) => {
                     e.stopPropagation();
-                    openCommentModal(msg, "guest");
+                    msgComments.length > 0 ? setShowAllComments(true) : openCommentModal(msg, "guest");
                   },
                   className: "px-2 py-1 text-[10px] font-bold rounded-lg border select-none text-stone-500 border-stone-200 active:bg-stone-50",
                   style: { touchAction: "manipulation" },
@@ -20851,7 +20867,12 @@ function Guestbook({ showToast }) {
   const [commentPinValue, setCommentPinValue] = reactExports.useState("");
   const [showCommentPin, setShowCommentPin] = reactExports.useState(false);
   const commentPinRef = reactExports.useRef(null);
-  const isAnyModalOpen = isPasswordModalOpen || isDeleteModalOpen || isDeleteReplyModalOpen || isEditModalOpen || isReplyInputModalOpen || isFamilyFilterModalOpen || isNameFilterModalOpen || isFamilyPinModalOpen || isCommentModalOpen || isCommentPinModalOpen;
+  const [showCommentPw, setShowCommentPw] = reactExports.useState(false);
+  const [commentManageAction, setCommentManageAction] = reactExports.useState("create");
+  const [commentToManage, setCommentToManage] = reactExports.useState(null);
+  const [commentManageEditText, setCommentManageEditText] = reactExports.useState("");
+  const [isCommentManageEditModalOpen, setIsCommentManageEditModalOpen] = reactExports.useState(false);
+  const isAnyModalOpen = isPasswordModalOpen || isDeleteModalOpen || isDeleteReplyModalOpen || isEditModalOpen || isReplyInputModalOpen || isFamilyFilterModalOpen || isNameFilterModalOpen || isFamilyPinModalOpen || isCommentModalOpen || isCommentPinModalOpen || isCommentManageEditModalOpen;
   reactExports.useEffect(() => {
     if (isAnyModalOpen) {
       document.body.classList.add("nav-hidden");
@@ -20983,7 +21004,14 @@ function Guestbook({ showToast }) {
     const validPw = isGroom ? commentPinValue === GROOM_PW || commentPinValue === "0313" : commentPinValue === BRIDE_PW || commentPinValue === "0313";
     if (validPw) {
       setIsCommentPinModalOpen(false);
-      setIsCommentModalOpen(true);
+      if (commentManageAction === "delete") {
+        deleteComment();
+      } else if (commentManageAction === "edit") {
+        setCommentManageEditText(commentToManage.content);
+        setIsCommentManageEditModalOpen(true);
+      } else {
+        setIsCommentModalOpen(true);
+      }
     } else {
       showToast(isGroom ? "신랑 생일이 일치하지 않습니다." : "신부 생일이 일치하지 않습니다.");
       setCommentPinValue("");
@@ -20991,6 +21019,41 @@ function Guestbook({ showToast }) {
         var _a;
         return (_a = commentPinRef.current) == null ? void 0 : _a.focus({ preventScroll: true });
       }, 50);
+    }
+  };
+  const openCommentManageModal = reactExports.useCallback((comment, action) => {
+    setCommentToManage(comment);
+    setCommentManageAction(action);
+    setCommentInputType(comment.commenter_type);
+    setCommentPinValue("");
+    setShowCommentPin(false);
+    setIsCommentPinModalOpen(true);
+  }, []);
+  const deleteComment = async () => {
+    try {
+      const { error } = await supabase.from("guestbook_comments").delete().eq("id", commentToManage.id);
+      if (error) throw error;
+      showToast("댓글이 삭제됐습니다.");
+      setCommentToManage(null);
+    } catch (err) {
+      console.error(err);
+      showToast("삭제 오류: " + ((err == null ? void 0 : err.message) || ""));
+    }
+  };
+  const submitCommentEdit = async () => {
+    if (!commentManageEditText.trim()) {
+      showToast("내용을 입력해주세요.");
+      return;
+    }
+    try {
+      const { error } = await supabase.from("guestbook_comments").update({ content: commentManageEditText.trim() }).eq("id", commentToManage.id);
+      if (error) throw error;
+      showToast("댓글이 수정됐습니다.");
+      setIsCommentManageEditModalOpen(false);
+      setCommentToManage(null);
+    } catch (err) {
+      console.error(err);
+      showToast("수정 오류: " + ((err == null ? void 0 : err.message) || ""));
     }
   };
   const submitComment = async () => {
@@ -21342,7 +21405,7 @@ function Guestbook({ showToast }) {
     ] });
     if (filteredMessages.length === 0) return /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-center py-10 text-stone-400 text-sm italic font-medium", children: messageFilter === "mine" ? "아직 남긴 글이 없습니다." : "첫 번째 축하 메시지를 남겨주세요." });
     return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4", children: [
-      paginatedMessages.map((msg, idx) => /* @__PURE__ */ jsxRuntimeExports.jsx(MessageItem, { msg, unlockedMessages, openPasswordModal, toggleUnlock, comments: allComments[msg.id] || [], openCommentModal }, msg.id || idx)),
+      paginatedMessages.map((msg, idx) => /* @__PURE__ */ jsxRuntimeExports.jsx(MessageItem, { msg, unlockedMessages, openPasswordModal, toggleUnlock, comments: allComments[msg.id] || [], openCommentModal, onManageComment: openCommentManageModal }, msg.id || idx)),
       totalPages > 1 && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-center gap-1.5 pt-4 pb-2", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: goToPage(1), disabled: currentPage === 1, style: glassStyle, className: "p-2.5 rounded-xl border text-stone-500 disabled:opacity-30 disabled:cursor-not-allowed select-none", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronsLeft, { size: 18 }) }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: goToPage(Math.max(1, currentPage - 1)), disabled: currentPage === 1, style: glassStyle, className: "p-2.5 rounded-xl border text-stone-500 disabled:opacity-30 disabled:cursor-not-allowed select-none", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { size: 18 }) }),
@@ -21811,12 +21874,15 @@ function Guestbook({ showToast }) {
       ModernModal,
       {
         isOpen: isCommentModalOpen,
-        onClose: () => setIsCommentModalOpen(false),
-        title: commentInputType === "groom" ? "🤵 신랑 답글 달기" : commentInputType === "bride" ? "👰 신부 답글 달기" : "💬 댓글 달기",
-        description: commentInputType === "guest" ? `"${(commentTargetMsg == null ? void 0 : commentTargetMsg.name) || ""}"님의 메시지에 댓글을 남겨보세요.` : `"${(commentTargetMsg == null ? void 0 : commentTargetMsg.name) || ""}"님의 메시지에 답글을 남깁니다.`,
+        onClose: () => {
+          setIsCommentModalOpen(false);
+          setShowCommentPw(false);
+        },
+        title: "💬 댓글",
+        description: `"${(commentTargetMsg == null ? void 0 : commentTargetMsg.name) || ""}"님의 메시지에 댓글을 남겨보세요.`,
         onConfirm: submitComment,
         confirmLabel: "등록",
-        children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2.5", children: [
+        children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-3", children: [
           commentInputType === "guest" && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-2", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               "input",
@@ -21826,21 +21892,27 @@ function Guestbook({ showToast }) {
                 onChange: (e) => setCommentName(e.target.value),
                 placeholder: "이름",
                 maxLength: 10,
-                className: "w-[80px] shrink-0 bg-stone-50 border border-stone-200 rounded-xl px-3 py-3 text-[16px] text-stone-800 outline-none focus:ring-2 focus:ring-stone-200 placeholder:text-[12px] placeholder:text-stone-400"
+                className: "w-[68px] shrink-0 bg-stone-50 border border-stone-100 rounded-xl px-3 py-4 text-[16px] font-medium text-stone-800 outline-none focus:ring-2 focus:ring-rose-200 placeholder:text-stone-400 placeholder:text-[13px]"
               }
             ),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "input",
-              {
-                type: "password",
-                inputMode: "numeric",
-                value: commentPassword,
-                onChange: (e) => setCommentPassword(e.target.value.replace(/\D/g, "").slice(0, 4)),
-                placeholder: "비번 4자리",
-                maxLength: 4,
-                className: "flex-1 min-w-0 bg-stone-50 border border-stone-200 rounded-xl px-3 py-3 text-[16px] text-stone-800 outline-none focus:ring-2 focus:ring-stone-200 placeholder:text-[11px] placeholder:text-stone-400"
-              }
-            )
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative flex-1 min-w-0", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(
+                "input",
+                {
+                  type: showCommentPw ? "text" : "password",
+                  inputMode: "numeric",
+                  value: commentPassword,
+                  onChange: (e) => setCommentPassword(e.target.value.replace(/\D/g, "").slice(0, 4)),
+                  placeholder: "삭제용 비번 4자리",
+                  maxLength: 4,
+                  className: "w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 pr-10 text-[16px] font-medium text-stone-800 outline-none focus:ring-2 focus:ring-rose-200 placeholder:text-stone-400 placeholder:text-[13px]"
+                }
+              ),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onPointerDown: (e) => {
+                e.preventDefault();
+                setShowCommentPw((v) => !v);
+              }, style: { touchAction: "manipulation" }, className: "absolute right-3 top-1/2 -translate-y-1/2 p-1 text-stone-400 active:text-stone-600", children: showCommentPw ? /* @__PURE__ */ jsxRuntimeExports.jsx(EyeOff, { size: 15 }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Eye, { size: 15 }) })
+            ] })
           ] }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -21848,14 +21920,36 @@ function Guestbook({ showToast }) {
               {
                 value: commentContent,
                 onChange: (e) => setCommentContent(e.target.value),
-                placeholder: "댓글을 입력하세요.",
+                placeholder: "따뜻한 댓글을 남겨보세요.",
                 maxLength: 200,
-                className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 pr-9 text-[16px] text-stone-800 h-20 resize-none outline-none focus:ring-2 focus:ring-stone-100 placeholder:text-[13px] placeholder:text-stone-400"
+                className: "w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 h-28 resize-none outline-none focus:ring-2 focus:ring-rose-200 placeholder:text-stone-400 placeholder:text-[13px]"
               }
             ),
-            commentContent.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => setCommentContent(""), className: "absolute top-2 right-2 w-6 h-6 flex items-center justify-center rounded-full bg-stone-200 text-stone-500 text-[12px] font-bold active:bg-stone-300 select-none", style: { touchAction: "manipulation" }, children: "✕" })
+            commentContent.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onPointerDown: (e) => {
+              e.preventDefault();
+              setCommentContent("");
+            }, className: "absolute right-2 top-2 p-1 rounded-full bg-stone-200 text-stone-500 active:bg-stone-300 select-none", style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { size: 14 }) })
           ] })
         ] })
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      ModernModal,
+      {
+        isOpen: isCommentManageEditModalOpen,
+        onClose: () => setIsCommentManageEditModalOpen(false),
+        title: "💬 댓글 수정",
+        onConfirm: submitCommentEdit,
+        confirmLabel: "수정",
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "relative", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "textarea",
+          {
+            value: commentManageEditText,
+            onChange: (e) => setCommentManageEditText(e.target.value),
+            maxLength: 200,
+            className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 pr-9 text-[16px] text-stone-800 h-20 resize-none outline-none focus:ring-2 focus:ring-stone-100"
+          }
+        ) })
       }
     )
   ] });
