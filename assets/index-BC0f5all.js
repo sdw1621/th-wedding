@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "247"
+            "248"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20239,7 +20239,7 @@ function AccountInfo({ showToast }) {
               {
                 onPointerDown: () => handleCopy("카카오뱅크 3333-01-5650207"),
                 style: { touchAction: "manipulation" },
-                className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
+                className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl border border-stone-200 shadow-sm flex items-center active:bg-stone-200 select-none",
                 children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(Copy, { size: 13, className: "mr-1.5" }),
                   " 복사"
@@ -20261,7 +20261,7 @@ function AccountInfo({ showToast }) {
               {
                 onPointerDown: () => handleCopy("농협 735080-51-036329"),
                 style: { touchAction: "manipulation" },
-                className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
+                className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl border border-stone-200 shadow-sm flex items-center active:bg-stone-200 select-none",
                 children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(Copy, { size: 13, className: "mr-1.5" }),
                   " 복사"
@@ -20298,7 +20298,7 @@ function AccountInfo({ showToast }) {
               {
                 onPointerDown: () => handleCopy("우리은행 1002-837-547920"),
                 style: { touchAction: "manipulation" },
-                className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
+                className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl border border-stone-200 shadow-sm flex items-center active:bg-stone-200 select-none",
                 children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(Copy, { size: 13, className: "mr-1.5" }),
                   " 복사"
@@ -20320,7 +20320,7 @@ function AccountInfo({ showToast }) {
               {
                 onPointerDown: () => handleCopy("농협 352-0761-7396-23"),
                 style: { touchAction: "manipulation" },
-                className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
+                className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl border border-stone-200 shadow-sm flex items-center active:bg-stone-200 select-none",
                 children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(Copy, { size: 13, className: "mr-1.5" }),
                   " 복사"
@@ -20342,7 +20342,7 @@ function AccountInfo({ showToast }) {
               {
                 onPointerDown: () => handleCopy("우리은행 1002-734-796143"),
                 style: { touchAction: "manipulation" },
-                className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl flex items-center active:bg-stone-200 select-none",
+                className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl border border-stone-200 shadow-sm flex items-center active:bg-stone-200 select-none",
                 children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(Copy, { size: 13, className: "mr-1.5" }),
                   " 복사"
@@ -20452,13 +20452,14 @@ const PinInput = reactExports.memo(({ value, onChange, show, onToggleShow, onEnt
     )
   ] });
 });
-const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModal, toggleUnlock }) => {
+const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModal, toggleUnlock, comments, openCommentModal }) => {
   const isLocked = msg.is_secret && !unlockedMessages[msg.id];
   const isDev = msg.is_dev === true;
   const sirenOn = isDev && msg.siren;
   const FAMILY_NAMES = ["강영태", "김경자", "강다윤", "신현갑", "송현숙", "신동욱", "신민석", "모카"];
   const isFamily = !isDev && FAMILY_NAMES.includes(msg.name);
   const [showFullModal, setShowFullModal] = reactExports.useState(false);
+  const [showAllComments, setShowAllComments] = reactExports.useState(false);
   const MAX_CHARS = 60;
   const contentLong = !isLocked && msg.content && (msg.content.length > MAX_CHARS || msg.content.split("\n").length > 3);
   const replyLong = msg.reply && (msg.reply.length > MAX_CHARS || msg.reply.split("\n").length > 3);
@@ -20504,7 +20505,7 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
         children: [
           sirenOn && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1.5 bg-yellow-400/20 border border-yellow-400/40 rounded-md px-2.5 py-2 mb-2 -mt-1", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg leading-none", children: "🚨" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-yellow-700 text-[11px] font-bold", children: "긴급 알림" })
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-white text-[11px] font-bold", children: "긴급 알림" })
           ] }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-3", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between items-center mb-1.5", children: [
@@ -20578,9 +20579,131 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                 /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: `text-[11px] font-bold ${msg.receiver === "groom" ? "text-blue-400" : msg.receiver === "bride" ? "text-rose-400" : "text-stone-400"}`, children: "› 더보기" })
               ] }) : /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: `text-[13px] font-medium leading-relaxed ${msg.receiver === "groom" ? "text-blue-800" : msg.receiver === "bride" ? "text-rose-800" : "text-stone-700"}`, children: msg.reply })
             ] })
-          ] })
+          ] }),
+          (() => {
+            const msgComments = comments || [];
+            const officialComments = msgComments.filter((c) => c.commenter_type === "groom" || c.commenter_type === "bride");
+            const guestComments = msgComments.filter((c) => c.commenter_type === "guest");
+            const PREVIEW = 2;
+            const showMore = guestComments.length > PREVIEW;
+            return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `mt-2 ${msgComments.length > 0 ? `border-t border-dashed pt-2.5 ${isDev ? "border-stone-700" : "border-stone-100"}` : ""}`, children: [
+              officialComments.map((c) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `rounded-xl p-2.5 border-l-2 mb-1.5 ${c.commenter_type === "groom" ? "bg-blue-50 border-blue-300" : "bg-rose-50 border-rose-300"}`, children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1.5 mb-0.5", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[18px] leading-none", children: c.commenter_type === "groom" ? "🤵" : "👰" }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[10px] font-bold ${c.commenter_type === "groom" ? "text-blue-700" : "text-rose-700"}`, children: c.name }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[9px] text-stone-400 ml-auto", children: c.date })
+                ] }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: `text-[12px] font-medium leading-relaxed ${c.commenter_type === "groom" ? "text-blue-800" : "text-rose-800"}`, children: c.content })
+              ] }, c.id)),
+              guestComments.slice(0, PREVIEW).map((c) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `flex gap-2 rounded-lg px-2.5 py-1.5 mb-1 ${isDev ? "bg-white/5" : "bg-stone-50"}`, children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[10px] font-bold shrink-0 ${isDev ? "text-stone-300" : "text-stone-600"}`, children: c.name }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[11px] leading-snug flex-1 break-all ${isDev ? "text-stone-400" : "text-stone-500"}`, children: c.content }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[9px] text-stone-400 shrink-0 self-end", children: c.date })
+              ] }, c.id)),
+              showMore && /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                "button",
+                {
+                  onClick: (e) => {
+                    e.stopPropagation();
+                    setShowAllComments(true);
+                  },
+                  className: `text-[11px] font-bold px-1 py-0.5 mb-1 ${isDev ? "text-stone-400 active:text-stone-200" : "text-stone-400 active:text-stone-600"}`,
+                  style: { touchAction: "manipulation" },
+                  children: [
+                    "💬 ",
+                    guestComments.length - PREVIEW,
+                    "개 더보기"
+                  ]
+                }
+              ),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-1 flex-wrap mt-1.5", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                  "button",
+                  {
+                    onClick: (e) => {
+                      e.stopPropagation();
+                      openCommentModal(msg, "guest");
+                    },
+                    className: `px-2 py-1 text-[10px] font-bold rounded-lg border select-none ${isDev ? "text-stone-400 border-stone-600 active:bg-stone-700" : "text-stone-500 border-stone-200 active:bg-stone-50"}`,
+                    style: { touchAction: "manipulation" },
+                    children: [
+                      "💬 ",
+                      msgComments.length > 0 ? `댓글 ${msgComments.length}개` : "댓글 달기"
+                    ]
+                  }
+                ),
+                !isDev && (msg.receiver === "public" || msg.receiver === "groom") && /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  "button",
+                  {
+                    onClick: (e) => {
+                      e.stopPropagation();
+                      openCommentModal(msg, "groom");
+                    },
+                    className: "px-2 py-1 text-[10px] font-bold rounded-lg border select-none text-blue-400 border-blue-200 active:bg-blue-50",
+                    style: { touchAction: "manipulation" },
+                    children: "🤵 신랑 답글"
+                  }
+                ),
+                !isDev && (msg.receiver === "public" || msg.receiver === "bride") && /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  "button",
+                  {
+                    onClick: (e) => {
+                      e.stopPropagation();
+                      openCommentModal(msg, "bride");
+                    },
+                    className: "px-2 py-1 text-[10px] font-bold rounded-lg border select-none text-rose-400 border-rose-200 active:bg-rose-50",
+                    style: { touchAction: "manipulation" },
+                    children: "👰 신부 답글"
+                  }
+                )
+              ] })
+            ] });
+          })()
         ]
       }
+    ),
+    showAllComments && reactDomExports.createPortal(
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "fixed inset-0 z-[699] bg-stone-900/80 animate-in fade-in duration-200", onClick: () => setShowAllComments(false) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "fixed inset-0 z-[700] flex items-center justify-center p-6 pointer-events-none", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative bg-white w-full max-w-[320px] rounded-2xl shadow-2xl pointer-events-auto animate-in zoom-in-95 duration-200 overflow-hidden font-sans", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between px-4 pt-4 pb-2 border-b border-stone-100", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-[15px] font-bold text-stone-800", children: [
+              "💬 댓글 ",
+              (comments || []).length,
+              "개"
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => setShowAllComments(false), className: "w-7 h-7 rounded-full bg-stone-100 text-stone-500 text-[13px] font-bold flex items-center justify-center active:opacity-60 select-none", style: { touchAction: "manipulation" }, children: "✕" })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-4 py-3 max-h-[60vh] overflow-y-auto space-y-2", children: [
+            (comments || []).filter((c) => c.commenter_type === "groom" || c.commenter_type === "bride").map((c) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `rounded-xl p-2.5 border-l-2 ${c.commenter_type === "groom" ? "bg-blue-50 border-blue-300" : "bg-rose-50 border-rose-300"}`, children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1.5 mb-0.5", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[18px] leading-none", children: c.commenter_type === "groom" ? "🤵" : "👰" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[10px] font-bold ${c.commenter_type === "groom" ? "text-blue-700" : "text-rose-700"}`, children: c.name }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[9px] text-stone-400 ml-auto", children: c.date })
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: `text-[12px] font-medium leading-relaxed ${c.commenter_type === "groom" ? "text-blue-800" : "text-rose-800"}`, children: c.content })
+            ] }, c.id)),
+            (comments || []).filter((c) => c.commenter_type === "guest").map((c) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-2 rounded-lg px-2.5 py-1.5 bg-stone-50", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] font-bold shrink-0 text-stone-600", children: c.name }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[11px] leading-snug flex-1 break-all text-stone-500", children: c.content }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[9px] text-stone-400 shrink-0 self-end", children: c.date })
+            ] }, c.id))
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-4 pb-4 pt-2 border-t border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
+            {
+              onClick: (e) => {
+                setShowAllComments(false);
+                openCommentModal(msg, "guest");
+              },
+              className: "w-full py-3 bg-stone-800 text-white text-[14px] font-bold rounded-xl active:bg-stone-700 select-none",
+              style: { touchAction: "manipulation" },
+              children: "💬 댓글 달기"
+            }
+          ) })
+        ] }) })
+      ] }),
+      document.body
     ),
     showFullModal && reactDomExports.createPortal(
       /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
@@ -20743,7 +20866,18 @@ function Guestbook({ showToast }) {
   const [familyPinValue, setFamilyPinValue] = reactExports.useState("");
   const [showFamilyPin, setShowFamilyPin] = reactExports.useState(false);
   const familyPinRef = reactExports.useRef(null);
-  const isAnyModalOpen = isPasswordModalOpen || isDeleteModalOpen || isDeleteReplyModalOpen || isEditModalOpen || isReplyInputModalOpen || isFamilyFilterModalOpen || isNameFilterModalOpen || isFamilyPinModalOpen;
+  const [allComments, setAllComments] = reactExports.useState({});
+  const [isCommentModalOpen, setIsCommentModalOpen] = reactExports.useState(false);
+  const [commentTargetMsg, setCommentTargetMsg] = reactExports.useState(null);
+  const [commentInputType, setCommentInputType] = reactExports.useState("guest");
+  const [commentName, setCommentName] = reactExports.useState("");
+  const [commentPassword, setCommentPassword] = reactExports.useState("");
+  const [commentContent, setCommentContent] = reactExports.useState("");
+  const [isCommentPinModalOpen, setIsCommentPinModalOpen] = reactExports.useState(false);
+  const [commentPinValue, setCommentPinValue] = reactExports.useState("");
+  const [showCommentPin, setShowCommentPin] = reactExports.useState(false);
+  const commentPinRef = reactExports.useRef(null);
+  const isAnyModalOpen = isPasswordModalOpen || isDeleteModalOpen || isDeleteReplyModalOpen || isEditModalOpen || isReplyInputModalOpen || isFamilyFilterModalOpen || isNameFilterModalOpen || isFamilyPinModalOpen || isCommentModalOpen || isCommentPinModalOpen;
   reactExports.useEffect(() => {
     if (isAnyModalOpen) {
       document.body.classList.add("nav-hidden");
@@ -20802,6 +20936,28 @@ function Guestbook({ showToast }) {
       setInitialLoading(false);
     }
   }, []);
+  const fetchComments = reactExports.useCallback(async () => {
+    try {
+      const { data, error } = await supabase.from("guestbook_comments").select("*").order("created_at", { ascending: true });
+      if (error) {
+        console.log("guestbook_comments not ready:", error.message);
+        return;
+      }
+      if (data) {
+        const grouped = {};
+        for (const c of data) {
+          if (!grouped[c.guestbook_id]) grouped[c.guestbook_id] = [];
+          grouped[c.guestbook_id].push({
+            ...c,
+            date: new Date(c.created_at).toLocaleDateString("ko-KR").replace(/\. /g, ".").replace(/\.$/, "")
+          });
+        }
+        setAllComments(grouped);
+      }
+    } catch (e) {
+      console.log("Comments fetch error:", e);
+    }
+  }, []);
   const loadLocalMockData = () => {
     const saved = localStorage.getItem("wedding_guestbook");
     let currentMessages = saved ? JSON.parse(saved) : [];
@@ -20815,9 +20971,14 @@ function Guestbook({ showToast }) {
   };
   reactExports.useEffect(() => {
     fetchMessages();
-    const channel = supabase.channel("public:guestbook_changes").on("postgres_changes", { event: "*", schema: "public", table: "guestbook" }, () => fetchMessages(true)).subscribe();
-    return () => supabase.removeChannel(channel);
-  }, [fetchMessages]);
+    fetchComments();
+    const msgChannel = supabase.channel("public:guestbook_changes").on("postgres_changes", { event: "*", schema: "public", table: "guestbook" }, () => fetchMessages(true)).subscribe();
+    const commentChannel = supabase.channel("public:guestbook_comments_changes").on("postgres_changes", { event: "*", schema: "public", table: "guestbook_comments" }, () => fetchComments()).subscribe();
+    return () => {
+      supabase.removeChannel(msgChannel);
+      supabase.removeChannel(commentChannel);
+    };
+  }, [fetchMessages, fetchComments]);
   const openPasswordModal = reactExports.useCallback((msg, purpose) => {
     setSelectedMsg(msg);
     setModalPurpose(purpose);
@@ -20829,6 +20990,64 @@ function Guestbook({ showToast }) {
       return (_a = passwordInputRef.current) == null ? void 0 : _a.focus({ preventScroll: true });
     }, 80);
   }, []);
+  const openCommentModal = reactExports.useCallback((msg, type) => {
+    setCommentTargetMsg(msg);
+    setCommentInputType(type);
+    setCommentContent("");
+    setCommentName("");
+    setCommentPassword("");
+    setCommentPinValue("");
+    setShowCommentPin(false);
+    if (type === "groom" || type === "bride") {
+      setIsCommentPinModalOpen(true);
+    } else {
+      setIsCommentModalOpen(true);
+    }
+  }, []);
+  const handleCommentPinConfirm = () => {
+    const isGroom = commentInputType === "groom";
+    const validPw = isGroom ? commentPinValue === GROOM_PW || commentPinValue === "0313" : commentPinValue === BRIDE_PW || commentPinValue === "0313";
+    if (validPw) {
+      setIsCommentPinModalOpen(false);
+      setIsCommentModalOpen(true);
+    } else {
+      showToast(isGroom ? "신랑 생일이 일치하지 않습니다." : "신부 생일이 일치하지 않습니다.");
+      setCommentPinValue("");
+      setTimeout(() => {
+        var _a;
+        return (_a = commentPinRef.current) == null ? void 0 : _a.focus({ preventScroll: true });
+      }, 50);
+    }
+  };
+  const submitComment = async () => {
+    if (!commentContent.trim()) {
+      showToast("댓글 내용을 입력해주세요.");
+      return;
+    }
+    if (commentInputType === "guest" && !commentName.trim()) {
+      showToast("이름을 입력해주세요.");
+      return;
+    }
+    const name = commentInputType === "groom" ? "강태구" : commentInputType === "bride" ? "신희영" : commentName.trim();
+    try {
+      const { error } = await supabase.from("guestbook_comments").insert({
+        guestbook_id: commentTargetMsg.id,
+        name,
+        content: commentContent.trim(),
+        password: commentInputType === "guest" ? commentPassword.trim() || null : null,
+        commenter_type: commentInputType
+      });
+      if (error) throw error;
+      showToast("댓글이 등록됐습니다! 💬");
+      setIsCommentModalOpen(false);
+      setCommentContent("");
+      setCommentName("");
+      setCommentPassword("");
+    } catch (err) {
+      showToast("댓글 등록 중 오류가 발생했습니다.");
+      console.error(err);
+    }
+  };
   const toggleUnlock = reactExports.useCallback((id, status) => {
     setUnlockedMessages((prev) => ({ ...prev, [id]: status }));
   }, []);
@@ -21145,7 +21364,7 @@ function Guestbook({ showToast }) {
     ] });
     if (filteredMessages.length === 0) return /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-center py-10 text-stone-400 text-sm italic font-medium", children: messageFilter === "mine" ? "아직 남긴 글이 없습니다." : "첫 번째 축하 메시지를 남겨주세요." });
     return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4", children: [
-      paginatedMessages.map((msg, idx) => /* @__PURE__ */ jsxRuntimeExports.jsx(MessageItem, { msg, unlockedMessages, openPasswordModal, toggleUnlock }, msg.id || idx)),
+      paginatedMessages.map((msg, idx) => /* @__PURE__ */ jsxRuntimeExports.jsx(MessageItem, { msg, unlockedMessages, openPasswordModal, toggleUnlock, comments: allComments[msg.id] || [], openCommentModal }, msg.id || idx)),
       totalPages > 1 && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-center gap-1.5 pt-4 pb-2", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: goToPage(1), disabled: currentPage === 1, style: glassStyle, className: "p-2.5 rounded-xl border text-stone-500 disabled:opacity-30 disabled:cursor-not-allowed select-none", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronsLeft, { size: 18 }) }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: goToPage(Math.max(1, currentPage - 1)), disabled: currentPage === 1, style: glassStyle, className: "p-2.5 rounded-xl border text-stone-500 disabled:opacity-30 disabled:cursor-not-allowed select-none", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { size: 18 }) }),
@@ -21167,7 +21386,7 @@ function Guestbook({ showToast }) {
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-center text-[11px] text-stone-400 font-medium", children: messageFilter === "mine" ? `내 글 ${filteredMessages.length}개` : `총 ${messages.length}개의 메시지` })
     ] });
-  }, [messages, filteredMessages, paginatedMessages, unlockedMessages, initialLoading, openPasswordModal, toggleUnlock, currentPage, totalPages, messageFilter, goToPage]);
+  }, [messages, filteredMessages, paginatedMessages, unlockedMessages, allComments, initialLoading, openPasswordModal, toggleUnlock, openCommentModal, currentPage, totalPages, messageFilter, goToPage]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "pt-24 pb-6 px-6 bg-[#FDFBF7] relative z-10", id: "guestbook", ref, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-md mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-10 flex flex-col items-center", children: [
@@ -21586,6 +21805,79 @@ function Guestbook({ showToast }) {
             }
           ) })
         ]
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      ModernModal,
+      {
+        isOpen: isCommentPinModalOpen,
+        onClose: () => setIsCommentPinModalOpen(false),
+        title: commentInputType === "groom" ? "신랑 확인" : "신부 확인",
+        description: commentInputType === "groom" ? "신랑의 생일을 입력해주세요. (예: 0108)" : "신부의 생일을 입력해주세요. (예: 0315)",
+        onConfirm: handleCommentPinConfirm,
+        confirmLabel: "확인",
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          PinInput,
+          {
+            value: commentPinValue,
+            onChange: setCommentPinValue,
+            show: showCommentPin,
+            onToggleShow: () => setShowCommentPin((v) => !v),
+            onEnter: handleCommentPinConfirm,
+            inputRef: commentPinRef
+          }
+        )
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      ModernModal,
+      {
+        isOpen: isCommentModalOpen,
+        onClose: () => setIsCommentModalOpen(false),
+        title: commentInputType === "groom" ? "🤵 신랑 답글 달기" : commentInputType === "bride" ? "👰 신부 답글 달기" : "💬 댓글 달기",
+        description: commentInputType === "guest" ? `"${(commentTargetMsg == null ? void 0 : commentTargetMsg.name) || ""}"님의 메시지에 댓글을 남겨보세요.` : `"${(commentTargetMsg == null ? void 0 : commentTargetMsg.name) || ""}"님의 메시지에 답글을 남깁니다.`,
+        onConfirm: submitComment,
+        confirmLabel: "등록",
+        children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2.5", children: [
+          commentInputType === "guest" && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-2", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "input",
+              {
+                type: "text",
+                value: commentName,
+                onChange: (e) => setCommentName(e.target.value),
+                placeholder: "이름",
+                maxLength: 10,
+                className: "w-[80px] shrink-0 bg-stone-50 border border-stone-200 rounded-xl px-3 py-3 text-[16px] text-stone-800 outline-none focus:ring-2 focus:ring-stone-200 placeholder:text-[12px] placeholder:text-stone-400"
+              }
+            ),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "input",
+              {
+                type: "password",
+                inputMode: "numeric",
+                value: commentPassword,
+                onChange: (e) => setCommentPassword(e.target.value.replace(/\D/g, "").slice(0, 4)),
+                placeholder: "비번 4자리",
+                maxLength: 4,
+                className: "flex-1 bg-stone-50 border border-stone-200 rounded-xl px-3 py-3 text-[16px] text-stone-800 outline-none focus:ring-2 focus:ring-stone-200 placeholder:text-[11px] placeholder:text-stone-400"
+              }
+            )
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "textarea",
+              {
+                value: commentContent,
+                onChange: (e) => setCommentContent(e.target.value),
+                placeholder: "댓글을 입력하세요.",
+                maxLength: 200,
+                className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 pr-9 text-[16px] text-stone-800 h-20 resize-none outline-none focus:ring-2 focus:ring-stone-100 placeholder:text-[13px] placeholder:text-stone-400"
+              }
+            ),
+            commentContent.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => setCommentContent(""), className: "absolute top-2 right-2 w-6 h-6 flex items-center justify-center rounded-full bg-stone-200 text-stone-500 text-[12px] font-bold active:bg-stone-300 select-none", style: { touchAction: "manipulation" }, children: "✕" })
+          ] })
+        ] })
       }
     )
   ] });
