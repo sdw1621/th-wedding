@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "216"
+            "218"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -21124,7 +21124,7 @@ function Guestbook({ showToast }) {
               touchAction: "manipulation",
               ...messageFilter === "family" ? { background: "linear-gradient(135deg, #FFB3C6 0%, #FFCBA4 35%, #FFF0A0 60%, #B8F0C8 80%, #B3C8FF 100%)", borderColor: "transparent" } : glassStyle
             },
-            className: `flex-1 py-2.5 rounded-xl text-[13px] font-bold transition-all select-none border ${messageFilter === "family" ? "text-white shadow-md" : "text-stone-400"}`,
+            className: `flex-1 py-2.5 rounded-xl text-[13px] font-bold transition-all select-none border ${messageFilter === "family" ? "text-stone-700 shadow-md" : "text-stone-400"}`,
             children: messageFilter === "family" ? familyFilterName ? `"${familyFilterName}" ${filteredMessages.length}` : `직계가족 ${filteredMessages.length}` : /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
               "직계가족 ",
               /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-300", children: familyCount })
