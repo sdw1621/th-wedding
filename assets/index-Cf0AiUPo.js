@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "260"
+            "261"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20589,7 +20589,7 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
             const officialComments = msgComments.filter((c) => c.commenter_type === "groom" || c.commenter_type === "bride");
             const guestComments = msgComments.filter((c) => c.commenter_type === "guest");
             const totalCount = msgComments.length;
-            const getNameColor2 = (name) => {
+            const getNameColor = (name) => {
               const palette = [
                 { avatar: "bg-red-200", bubble: "bg-red-50", name: "text-red-700", content: "text-red-600" },
                 { avatar: "bg-orange-200", bubble: "bg-orange-50", name: "text-orange-700", content: "text-orange-600" },
@@ -20614,7 +20614,7 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                 nameCls = "text-stone-200";
                 contentCls = "text-stone-300";
               } else if (isJikgye) {
-                const col = getNameColor2(c.name);
+                const col = getNameColor(c.name);
                 avatarBg = col.avatar;
                 bubbleBg = col.bubble;
                 nameCls = col.name;
@@ -20788,6 +20788,20 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
               "첫 번째 댓글을 남겨보세요!"
             ] }),
             (() => {
+              const getNameColor = (name) => {
+                const palette = [
+                  { avatar: "bg-red-200", bubble: "bg-red-50", name: "text-red-700", content: "text-red-600" },
+                  { avatar: "bg-orange-200", bubble: "bg-orange-50", name: "text-orange-700", content: "text-orange-600" },
+                  { avatar: "bg-amber-200", bubble: "bg-amber-50", name: "text-amber-700", content: "text-amber-600" },
+                  { avatar: "bg-green-200", bubble: "bg-green-50", name: "text-green-700", content: "text-green-600" },
+                  { avatar: "bg-teal-200", bubble: "bg-teal-50", name: "text-teal-700", content: "text-teal-600" },
+                  { avatar: "bg-violet-200", bubble: "bg-violet-50", name: "text-violet-700", content: "text-violet-600" },
+                  { avatar: "bg-pink-200", bubble: "bg-pink-50", name: "text-pink-700", content: "text-pink-600" }
+                ];
+                let hash = 0;
+                for (let i = 0; i < ((name == null ? void 0 : name.length) || 0); i++) hash += name.charCodeAt(i);
+                return palette[hash % palette.length];
+              };
               const allC = comments || [];
               const officials = allC.filter((c) => c.commenter_type === "groom" || c.commenter_type === "bride");
               const guests = allC.filter((c) => c.commenter_type === "guest");
