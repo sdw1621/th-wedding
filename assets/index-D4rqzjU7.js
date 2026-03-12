@@ -19669,7 +19669,7 @@ function Gallery({ onFullscreenChange }) {
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             "button",
             {
-              className: "absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/70 backdrop-blur-md text-stone-800 shadow-lg active:bg-white/90 transition-colors select-none",
+              className: "absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-stone-800/75 backdrop-blur-md text-white shadow-lg active:bg-stone-900/90 transition-colors select-none",
               style: { touchAction: "manipulation" },
               onPointerDown: (e) => {
                 e.stopPropagation();
@@ -19681,7 +19681,7 @@ function Gallery({ onFullscreenChange }) {
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             "button",
             {
-              className: "absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/70 backdrop-blur-md text-stone-800 shadow-lg active:bg-white/90 transition-colors select-none",
+              className: "absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-stone-800/75 backdrop-blur-md text-white shadow-lg active:bg-stone-900/90 transition-colors select-none",
               style: { touchAction: "manipulation" },
               onPointerDown: (e) => {
                 e.stopPropagation();
@@ -21247,6 +21247,28 @@ function App() {
   const [galleryFullscreen, setGalleryFullscreen] = reactExports.useState(false);
   const galleryCloseRef = reactExports.useRef(null);
   const musicApiRef = reactExports.useRef(null);
+  const isEnteredRef = reactExports.useRef(false);
+  const galleryFullscreenRef = reactExports.useRef(false);
+  reactExports.useEffect(() => {
+    isEnteredRef.current = isEntered;
+  }, [isEntered]);
+  reactExports.useEffect(() => {
+    galleryFullscreenRef.current = galleryFullscreen;
+  }, [galleryFullscreen]);
+  reactExports.useEffect(() => {
+    history.pushState(null, "");
+    const handlePopState = () => {
+      var _a;
+      history.pushState(null, "");
+      if (galleryFullscreenRef.current) {
+        (_a = galleryCloseRef.current) == null ? void 0 : _a.call(galleryCloseRef);
+      } else if (isEnteredRef.current) {
+        setIsEntered(false);
+      }
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
   reactExports.useEffect(() => {
     const kst = new Date(Date.now() + 9 * 60 * 60 * 1e3);
     const today = kst.toISOString().split("T")[0];
@@ -21304,7 +21326,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "178"
+        "179"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(

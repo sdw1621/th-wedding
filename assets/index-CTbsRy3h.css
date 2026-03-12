@@ -1793,6 +1793,10 @@ video {
   background-color: rgb(41 37 36 / var(--tw-bg-opacity, 1));
 }
 
+.bg-stone-800\/75{
+  background-color: rgb(41 37 36 / 0.75);
+}
+
 .bg-stone-900{
   --tw-bg-opacity: 1;
   background-color: rgb(28 25 23 / var(--tw-bg-opacity, 1));
@@ -3123,13 +3127,13 @@ body.nav-hidden .fixed.bottom-0 {
   background-color: rgb(28 25 23 / var(--tw-bg-opacity, 1));
 }
 
+.active\:bg-stone-900\/90:active{
+  background-color: rgb(28 25 23 / 0.9);
+}
+
 .active\:bg-white:active{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
-}
-
-.active\:bg-white\/90:active{
-  background-color: rgb(255 255 255 / 0.9);
 }
 
 .active\:text-rose-400:active{
