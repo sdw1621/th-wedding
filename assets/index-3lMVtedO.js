@@ -19716,6 +19716,7 @@ function Gallery({ onFullscreenChange }) {
     )
   ] });
 }
+var reactDomExports = requireReactDom();
 /**
  * @license lucide-react v0.460.0 - ISC
  *
@@ -19771,6 +19772,26 @@ function Location() {
   const [pw, setPw] = reactExports.useState("");
   const [pwError, setPwError] = reactExports.useState("");
   const pwInputRef = reactExports.useRef(null);
+  const [vpStyle, setVpStyle] = reactExports.useState({});
+  reactExports.useEffect(() => {
+    var _a, _b;
+    if (!showModal) return;
+    const HEADER = 56, BOTTOM_NAV = 80;
+    const update = () => {
+      const vv = window.visualViewport;
+      const top = (vv ? vv.offsetTop : 0) + HEADER;
+      const height = (vv ? vv.height : window.innerHeight) - HEADER - BOTTOM_NAV;
+      setVpStyle({ position: "fixed", left: 0, right: 0, top, height, zIndex: 600, display: "flex", alignItems: "center", justifyContent: "center", padding: "0 16px", pointerEvents: "none" });
+    };
+    update();
+    (_a = window.visualViewport) == null ? void 0 : _a.addEventListener("resize", update);
+    (_b = window.visualViewport) == null ? void 0 : _b.addEventListener("scroll", update);
+    return () => {
+      var _a2, _b2;
+      (_a2 = window.visualViewport) == null ? void 0 : _a2.removeEventListener("resize", update);
+      (_b2 = window.visualViewport) == null ? void 0 : _b2.removeEventListener("scroll", update);
+    };
+  }, [showModal]);
   const handleUnlockClick = () => {
     setPw("");
     setPwError("");
@@ -19827,59 +19848,42 @@ function Location() {
       /* @__PURE__ */ jsxRuntimeExports.jsx(LockOpen, { size: 12 }),
       "직계가족만 공개됨"
     ] }),
-    showModal && /* @__PURE__ */ jsxRuntimeExports.jsx(
-      "div",
-      {
-        className: "fixed inset-0 z-[600] flex items-center justify-center bg-black/40 backdrop-blur-sm",
-        onPointerDown: (e) => {
-          if (e.target === e.currentTarget) setShowModal(false);
-        },
-        children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-white rounded-3xl shadow-2xl p-7 mx-6 w-full max-w-xs animate-in zoom-in-95 duration-200", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-5", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-12 h-12 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-3", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Lock, { size: 22, className: "text-stone-600" }) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-base font-bold text-stone-800", children: "직계가족만 확인" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[12px] text-stone-400 mt-1", children: "직계가족 히든 번호 4자리 입력해주세요." })
+    showModal && reactDomExports.createPortal(
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "fixed inset-0 z-[599] bg-stone-900/80 animate-in fade-in duration-300", onPointerDown: () => setShowModal(false) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: vpStyle, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative bg-white w-full max-w-[320px] rounded-[24px] shadow-2xl border border-white/20 animate-in fade-in zoom-in duration-200 pointer-events-auto flex flex-col font-sans", style: { maxHeight: "100%", overflowY: "auto" }, onPointerDown: (e) => e.stopPropagation(), children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 text-center", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-[17px] font-bold text-stone-900 mb-1", children: "직계가족만 확인" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[13px] text-stone-500 font-medium leading-tight", children: "직계가족 히든 번호 4자리 입력해주세요." }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-4", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(
+                "input",
+                {
+                  ref: pwInputRef,
+                  type: "password",
+                  inputMode: "numeric",
+                  value: pw,
+                  onChange: (e) => {
+                    setPw(e.target.value);
+                    setPwError("");
+                  },
+                  onKeyDown: (e) => e.key === "Enter" && handleConfirm(),
+                  className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-center text-lg tracking-[0.5em] focus:ring-2 focus:ring-stone-100 outline-none",
+                  placeholder: "••••",
+                  maxLength: 6,
+                  autoFocus: true
+                }
+              ),
+              pwError && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-rose-400 text-center mt-2", children: pwError })
+            ] })
           ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "input",
-            {
-              ref: pwInputRef,
-              type: "password",
-              inputMode: "numeric",
-              value: pw,
-              onChange: (e) => {
-                setPw(e.target.value);
-                setPwError("");
-              },
-              onKeyDown: (e) => e.key === "Enter" && handleConfirm(),
-              className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-center text-lg tracking-[0.5em] focus:ring-2 focus:ring-stone-200 outline-none mb-1",
-              placeholder: "••••",
-              maxLength: 6
-            }
-          ),
-          pwError && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-rose-400 text-center mb-2", children: pwError }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-2 mt-4", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "button",
-              {
-                onPointerDown: () => setShowModal(false),
-                style: { touchAction: "manipulation" },
-                className: "flex-1 py-3 rounded-xl bg-stone-100 text-stone-600 font-bold text-[13px] active:bg-stone-200",
-                children: "취소"
-              }
-            ),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "button",
-              {
-                onPointerDown: handleConfirm,
-                style: { touchAction: "manipulation" },
-                className: "flex-1 py-3 rounded-xl bg-stone-800 text-white font-bold text-[13px] active:bg-stone-900",
-                children: "확인"
-              }
-            )
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col border-t border-stone-100", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onPointerDown: handleConfirm, style: { touchAction: "manipulation" }, className: "py-4 text-[15px] font-bold border-b border-stone-100 active:bg-stone-50 select-none text-blue-500", children: "확인" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onPointerDown: () => setShowModal(false), style: { touchAction: "manipulation" }, className: "py-4 text-[15px] font-medium text-stone-400 active:bg-stone-50 select-none", children: "취소" })
           ] })
-        ] })
-      }
+        ] }) })
+      ] }),
+      document.body
     ),
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `transition-all duration-500 overflow-hidden ${unlocked ? "opacity-100 max-h-[9999px]" : "opacity-0 max-h-0 pointer-events-none"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-white p-4 rounded-2xl shadow-sm border border-stone-100 mb-6", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "w-full h-56 bg-stone-100 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden group", children: [
@@ -20226,7 +20230,6 @@ function AccountInfo({ showToast }) {
     ] })
   ] }) });
 }
-var reactDomExports = requireReactDom();
 /**
  * @license lucide-react v0.460.0 - ISC
  *
@@ -21262,7 +21265,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "174"
+        "175"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
