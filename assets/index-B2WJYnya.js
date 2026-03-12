@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "235"
+            "236"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -21332,7 +21332,7 @@ function Guestbook({ showToast }) {
                 cs
               ))
             ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-wrap gap-2 justify-center mb-3", children: (allNamesWithMessages.length >= 10 ? nameFilterConsonant ? namesGroupedByChosung[nameFilterConsonant] || [] : allNamesWithMessages : allNamesWithMessages).map((name) => {
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-wrap gap-2 justify-center mb-3 max-h-40 overflow-y-auto", children: (allNamesWithMessages.length >= 10 ? nameFilterConsonant ? namesGroupedByChosung[nameFilterConsonant] || [] : allNamesWithMessages : allNamesWithMessages).map((name) => {
               const isSelected = selectedFilterNames.has(name);
               return /* @__PURE__ */ jsxRuntimeExports.jsx(
                 "button",
@@ -21386,7 +21386,7 @@ function Guestbook({ showToast }) {
                   }
                 },
                 placeholder: "목록에 없으면 직접 입력 후 Enter",
-                className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3.5 text-[16px] text-stone-800 focus:ring-2 focus:ring-stone-100 outline-none pr-11"
+                className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3.5 text-[16px] placeholder:text-[11px] text-stone-800 focus:ring-2 focus:ring-stone-100 outline-none pr-11"
               }
             ),
             filterNameInput && /* @__PURE__ */ jsxRuntimeExports.jsx(

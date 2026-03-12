@@ -1038,6 +1038,10 @@ video {
   max-height: 0px;
 }
 
+.max-h-40{
+  max-height: 10rem;
+}
+
 .max-h-72{
   max-height: 18rem;
 }
@@ -3222,6 +3226,14 @@ body.nav-hidden .app-back-btn {
 .selection\:bg-rose-200::selection{
   --tw-bg-opacity: 1;
   background-color: rgb(254 205 211 / var(--tw-bg-opacity, 1));
+}
+
+.placeholder\:text-\[11px\]::-moz-placeholder{
+  font-size: 11px;
+}
+
+.placeholder\:text-\[11px\]::placeholder{
+  font-size: 11px;
 }
 
 .placeholder\:text-\[13px\]::-moz-placeholder{
