@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "241"
+            "243"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -21337,8 +21337,8 @@ function Guestbook({ showToast }) {
       {
         isOpen: isPasswordModalOpen,
         onClose: () => setIsPasswordModalOpen(false),
-        title: modalPurpose === "siren" ? "🚨 긴급 토글" : (selectedMsg == null ? void 0 : selectedMsg.is_dev) === true ? "관리자 확인" : (modalPurpose === "reply" || modalPurpose === "deleteReply") && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑 확인" : (modalPurpose === "reply" || modalPurpose === "deleteReply") && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부 확인" : modalPurpose === "reply" || modalPurpose === "deleteReply" ? "관리자 확인" : modalPurpose === "unlock" && ((selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" || (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride") ? "생일 확인" : "전화번호 확인",
-        description: modalPurpose === "siren" ? "개발자 비밀번호를 입력해주세요." : (selectedMsg == null ? void 0 : selectedMsg.is_dev) === true ? "관리자 비밀번호를 입력해주세요." : (modalPurpose === "reply" || modalPurpose === "deleteReply") && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑의 생일을 입력해주세요. (예: 0108)" : (modalPurpose === "reply" || modalPurpose === "deleteReply") && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부의 생일을 입력해주세요. (예: 0315)" : modalPurpose === "reply" || modalPurpose === "deleteReply" ? "신랑/신부 전용 비밀번호를 입력해주세요." : modalPurpose === "unlock" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑의 생일을 입력해주세요. (예: 0108)" : modalPurpose === "unlock" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부의 생일을 입력해주세요. (예: 0315)" : "전화번호 뒷 4자리를 입력해주세요.",
+        title: modalPurpose === "siren" ? "🚨 긴급 토글" : (modalPurpose === "reply" || modalPurpose === "deleteReply") && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑 확인" : (modalPurpose === "reply" || modalPurpose === "deleteReply") && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부 확인" : modalPurpose === "reply" || modalPurpose === "deleteReply" ? "관리자 확인" : (selectedMsg == null ? void 0 : selectedMsg.is_dev) === true ? "관리자 확인" : modalPurpose === "unlock" && ((selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" || (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride") ? "생일 확인" : "전화번호 확인",
+        description: modalPurpose === "siren" ? "개발자 비밀번호를 입력해주세요." : (modalPurpose === "reply" || modalPurpose === "deleteReply") && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑의 생일을 입력해주세요. (예: 0108)" : (modalPurpose === "reply" || modalPurpose === "deleteReply") && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부의 생일을 입력해주세요. (예: 0315)" : modalPurpose === "reply" || modalPurpose === "deleteReply" ? "신랑/신부 전용 비밀번호를 입력해주세요." : (selectedMsg == null ? void 0 : selectedMsg.is_dev) === true ? "관리자 비밀번호를 입력해주세요." : modalPurpose === "unlock" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑의 생일을 입력해주세요. (예: 0108)" : modalPurpose === "unlock" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부의 생일을 입력해주세요. (예: 0315)" : "전화번호 뒷 4자리를 입력해주세요.",
         onConfirm: handleModalConfirm,
         children: /* @__PURE__ */ jsxRuntimeExports.jsx(
           PinInput,
