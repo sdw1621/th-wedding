@@ -740,6 +740,10 @@ video {
   z-index: 700;
 }
 
+.-m-0\.5{
+  margin: -0.125rem;
+}
+
 .-m-1{
   margin: -0.25rem;
 }
@@ -2417,6 +2421,16 @@ video {
   color: rgb(57 27 27 / var(--tw-text-opacity, 1));
 }
 
+.text-amber-200{
+  --tw-text-opacity: 1;
+  color: rgb(253 230 138 / var(--tw-text-opacity, 1));
+}
+
+.text-amber-300{
+  --tw-text-opacity: 1;
+  color: rgb(252 211 77 / var(--tw-text-opacity, 1));
+}
+
 .text-amber-400{
   --tw-text-opacity: 1;
   color: rgb(251 191 36 / var(--tw-text-opacity, 1));
@@ -2425,6 +2439,16 @@ video {
 .text-amber-700{
   --tw-text-opacity: 1;
   color: rgb(180 83 9 / var(--tw-text-opacity, 1));
+}
+
+.text-blue-200{
+  --tw-text-opacity: 1;
+  color: rgb(191 219 254 / var(--tw-text-opacity, 1));
+}
+
+.text-blue-300{
+  --tw-text-opacity: 1;
+  color: rgb(147 197 253 / var(--tw-text-opacity, 1));
 }
 
 .text-blue-400{
@@ -3383,6 +3407,11 @@ body.nav-hidden .app-back-btn {
   background-color: rgb(255 255 255 / 0.95);
 }
 
+.active\:text-amber-600:active{
+  --tw-text-opacity: 1;
+  color: rgb(217 119 6 / var(--tw-text-opacity, 1));
+}
+
 .active\:text-blue-600:active{
   --tw-text-opacity: 1;
   color: rgb(37 99 235 / var(--tw-text-opacity, 1));
@@ -3401,6 +3430,11 @@ body.nav-hidden .app-back-btn {
 .active\:text-rose-500:active{
   --tw-text-opacity: 1;
   color: rgb(244 63 94 / var(--tw-text-opacity, 1));
+}
+
+.active\:text-rose-600:active{
+  --tw-text-opacity: 1;
+  color: rgb(225 29 72 / var(--tw-text-opacity, 1));
 }
 
 .active\:text-stone-200:active{
