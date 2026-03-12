@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "232"
+            "233"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20512,7 +20512,7 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
   const WEDDING_EMOJIS = ["💒", "💍", "💐", "🌸", "🥂", "🎊", "🎉", "🌹", "💕", "💝", "🎀", "🕊️", "🌷", "✨", "🌺"];
   const emojiSeed = msg.id ? msg.id.toString().split("").reduce((acc, c) => acc + c.charCodeAt(0), 0) : 0;
   const randomEmoji = WEDDING_EMOJIS[emojiSeed % WEDDING_EMOJIS.length];
-  const guestEmoji = msg.name === "모카" ? "🐩" : randomEmoji;
+  const guestEmoji = msg.name === "모카" ? "🐾" : randomEmoji;
   const modalBg = isDev ? {
     background: "linear-gradient(145deg, rgba(14,12,24,0.99) 0%, rgba(26,20,40,1) 100%)",
     borderColor: "rgba(105,88,140,0.6)"
@@ -20531,9 +20531,9 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
         style: cardStyle,
         onClick: hasLongContent ? () => setShowFullModal(true) : void 0,
         children: [
-          sirenOn && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center gap-2 mb-3 -mt-1", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-4xl leading-none", style: { filter: "drop-shadow(0 0 6px rgba(255,80,80,0.6))" }, children: "🚨" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center gap-1.5 bg-red-500/20 text-red-400 text-[11px] font-bold py-1.5 px-4 rounded-lg w-full", children: "긴급 알림" })
+          sirenOn && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1.5 bg-yellow-400/20 border border-yellow-400/40 rounded-md px-2.5 py-2 mb-2 -mt-1", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg leading-none", children: "🚨" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-yellow-700 text-[11px] font-bold", children: "긴급 알림" })
           ] }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-3", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between items-center mb-1.5", children: [
@@ -21472,6 +21472,7 @@ function Share({ onLightboxChange }) {
   const [dogScrollIdx, setDogScrollIdx] = reactExports.useState(0);
   const dogScrollRef = reactExports.useRef(null);
   const dogLightboxRef = reactExports.useRef(null);
+  const savedScrollY = reactExports.useRef(0);
   const touchStartX = reactExports.useRef(0);
   const touchEndX = reactExports.useRef(0);
   const touchStartY = reactExports.useRef(0);
@@ -21499,6 +21500,15 @@ function Share({ onLightboxChange }) {
         setDogSelectedIdx(null);
       });
     }
+  }, [dogSelectedIdx]);
+  const prevDogIdx = reactExports.useRef(null);
+  reactExports.useEffect(() => {
+    if (prevDogIdx.current !== null && dogSelectedIdx === null) {
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: savedScrollY.current, behavior: "instant" });
+      });
+    }
+    prevDogIdx.current = dogSelectedIdx;
   }, [dogSelectedIdx]);
   reactExports.useEffect(() => {
     const el = dogLightboxRef.current;
@@ -21663,10 +21673,11 @@ function Share({ onLightboxChange }) {
               className: "rounded-2xl overflow-hidden shadow-sm cursor-zoom-in active:opacity-90",
               style: { touchAction: "manipulation" },
               onPointerDown: () => {
+                savedScrollY.current = window.scrollY;
                 document.body.classList.add("nav-hidden");
                 setDogSelectedIdx(idx);
               },
-              children: /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: img.src, alt: img.alt, loading: "lazy", decoding: "async", className: "w-full h-auto block", draggable: false })
+              children: /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: img.src, alt: img.alt, loading: "lazy", decoding: "async", className: "w-full h-auto block select-none pointer-events-none", draggable: false })
             }
           ) }, idx)) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -22222,12 +22233,14 @@ function App() {
     /* @__PURE__ */ jsxRuntimeExports.jsx(MusicPlayer, { forcePlay: shouldMusicPlay, onPlayerReady: (api) => {
       musicApiRef.current = api;
     } }),
-    isEntered && !galleryFullscreen && /* @__PURE__ */ jsxRuntimeExports.jsx(
+    isEntered && !galleryFullscreen && !dogLightboxRef.current && /* @__PURE__ */ jsxRuntimeExports.jsx(
       "button",
       {
         onPointerDown: () => {
           if (galleryFullscreen && galleryCloseRef.current) {
             galleryCloseRef.current();
+          } else if (dogLightboxRef.current && dogLightboxCloseRef.current) {
+            dogLightboxCloseRef.current();
           } else {
             setIsEntered(false);
           }
