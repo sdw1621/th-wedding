@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "248"
+            "249"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20239,7 +20239,7 @@ function AccountInfo({ showToast }) {
               {
                 onPointerDown: () => handleCopy("카카오뱅크 3333-01-5650207"),
                 style: { touchAction: "manipulation" },
-                className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl border border-stone-200 shadow-sm flex items-center active:bg-stone-200 select-none",
+                className: "text-[11px] px-3.5 py-2.5 bg-stone-900 text-white font-bold rounded-xl border border-stone-900 shadow-sm flex items-center active:bg-stone-700 select-none",
                 children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(Copy, { size: 13, className: "mr-1.5" }),
                   " 복사"
@@ -20261,7 +20261,7 @@ function AccountInfo({ showToast }) {
               {
                 onPointerDown: () => handleCopy("농협 735080-51-036329"),
                 style: { touchAction: "manipulation" },
-                className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl border border-stone-200 shadow-sm flex items-center active:bg-stone-200 select-none",
+                className: "text-[11px] px-3.5 py-2.5 bg-stone-900 text-white font-bold rounded-xl border border-stone-900 shadow-sm flex items-center active:bg-stone-700 select-none",
                 children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(Copy, { size: 13, className: "mr-1.5" }),
                   " 복사"
@@ -20298,7 +20298,7 @@ function AccountInfo({ showToast }) {
               {
                 onPointerDown: () => handleCopy("우리은행 1002-837-547920"),
                 style: { touchAction: "manipulation" },
-                className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl border border-stone-200 shadow-sm flex items-center active:bg-stone-200 select-none",
+                className: "text-[11px] px-3.5 py-2.5 bg-stone-900 text-white font-bold rounded-xl border border-stone-900 shadow-sm flex items-center active:bg-stone-700 select-none",
                 children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(Copy, { size: 13, className: "mr-1.5" }),
                   " 복사"
@@ -20320,7 +20320,7 @@ function AccountInfo({ showToast }) {
               {
                 onPointerDown: () => handleCopy("농협 352-0761-7396-23"),
                 style: { touchAction: "manipulation" },
-                className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl border border-stone-200 shadow-sm flex items-center active:bg-stone-200 select-none",
+                className: "text-[11px] px-3.5 py-2.5 bg-stone-900 text-white font-bold rounded-xl border border-stone-900 shadow-sm flex items-center active:bg-stone-700 select-none",
                 children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(Copy, { size: 13, className: "mr-1.5" }),
                   " 복사"
@@ -20342,7 +20342,7 @@ function AccountInfo({ showToast }) {
               {
                 onPointerDown: () => handleCopy("우리은행 1002-734-796143"),
                 style: { touchAction: "manipulation" },
-                className: "text-[11px] px-3.5 py-2.5 bg-stone-100 text-stone-700 font-bold rounded-xl border border-stone-200 shadow-sm flex items-center active:bg-stone-200 select-none",
+                className: "text-[11px] px-3.5 py-2.5 bg-stone-900 text-white font-bold rounded-xl border border-stone-900 shadow-sm flex items-center active:bg-stone-700 select-none",
                 children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(Copy, { size: 13, className: "mr-1.5" }),
                   " 복사"
@@ -21028,6 +21028,10 @@ function Guestbook({ showToast }) {
       showToast("이름을 입력해주세요.");
       return;
     }
+    if (!(commentTargetMsg == null ? void 0 : commentTargetMsg.id) || String(commentTargetMsg.id).startsWith("mock-")) {
+      showToast("테스트 메시지에는 댓글을 달 수 없습니다.");
+      return;
+    }
     const name = commentInputType === "groom" ? "강태구" : commentInputType === "bride" ? "신희영" : commentName.trim();
     try {
       const { error } = await supabase.from("guestbook_comments").insert({
@@ -21044,8 +21048,8 @@ function Guestbook({ showToast }) {
       setCommentName("");
       setCommentPassword("");
     } catch (err) {
-      showToast("댓글 등록 중 오류가 발생했습니다.");
-      console.error(err);
+      console.error("Comment insert error:", err);
+      showToast("댓글 등록 오류: " + ((err == null ? void 0 : err.message) || "알 수 없는 오류"));
     }
   };
   const toggleUnlock = reactExports.useCallback((id, status) => {
@@ -21860,7 +21864,7 @@ function Guestbook({ showToast }) {
                 onChange: (e) => setCommentPassword(e.target.value.replace(/\D/g, "").slice(0, 4)),
                 placeholder: "비번 4자리",
                 maxLength: 4,
-                className: "flex-1 bg-stone-50 border border-stone-200 rounded-xl px-3 py-3 text-[16px] text-stone-800 outline-none focus:ring-2 focus:ring-stone-200 placeholder:text-[11px] placeholder:text-stone-400"
+                className: "flex-1 min-w-0 bg-stone-50 border border-stone-200 rounded-xl px-3 py-3 text-[16px] text-stone-800 outline-none focus:ring-2 focus:ring-stone-200 placeholder:text-[11px] placeholder:text-stone-400"
               }
             )
           ] }),

@@ -1730,6 +1730,11 @@ video {
   border-color: rgb(41 37 36 / var(--tw-border-opacity, 1));
 }
 
+.border-stone-900{
+  --tw-border-opacity: 1;
+  border-color: rgb(28 25 23 / var(--tw-border-opacity, 1));
+}
+
 .border-transparent{
   border-color: transparent;
 }
@@ -3433,11 +3438,6 @@ body.nav-hidden .app-back-btn {
 .active\:bg-stone-100:active{
   --tw-bg-opacity: 1;
   background-color: rgb(245 245 244 / var(--tw-bg-opacity, 1));
-}
-
-.active\:bg-stone-200:active{
-  --tw-bg-opacity: 1;
-  background-color: rgb(231 229 228 / var(--tw-bg-opacity, 1));
 }
 
 .active\:bg-stone-300:active{
