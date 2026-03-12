@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "251"
+            "252"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20637,13 +20637,13 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                 {
                   onClick: (e) => {
                     e.stopPropagation();
-                    msgComments.length > 0 ? setShowAllComments(true) : openCommentModal(msg, "guest");
+                    setShowAllComments(true);
                   },
                   className: "px-2 py-1 text-[10px] font-bold rounded-lg border select-none text-stone-500 border-stone-200 active:bg-stone-50",
                   style: { touchAction: "manipulation" },
                   children: [
-                    "💬 ",
-                    msgComments.length > 0 ? `댓글 ${msgComments.length}개` : "댓글 달기"
+                    "💬 댓글 더보기",
+                    msgComments.length > 0 ? ` (${msgComments.length})` : ""
                   ]
                 }
               ) })
@@ -20665,6 +20665,11 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
             /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => setShowAllComments(false), className: "w-7 h-7 rounded-full bg-stone-100 text-stone-500 text-[13px] font-bold flex items-center justify-center active:opacity-60 select-none", style: { touchAction: "manipulation" }, children: "✕" })
           ] }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-4 py-3 max-h-[60vh] overflow-y-auto space-y-2", children: [
+            (comments || []).length === 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-center text-stone-400 text-[13px] py-6", children: [
+              "아직 댓글이 없어요.",
+              /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+              "첫 번째 댓글을 남겨보세요!"
+            ] }),
             (comments || []).filter((c) => c.commenter_type === "groom" || c.commenter_type === "bride").map((c) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `rounded-xl p-2.5 border-l-2 ${c.commenter_type === "groom" ? "bg-blue-50 border-blue-300" : "bg-rose-50 border-rose-300"}`, children: [
               /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1.5 mb-0.5", children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[18px] leading-none", children: c.commenter_type === "groom" ? "🤵" : "👰" }),
