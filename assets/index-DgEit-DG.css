@@ -1628,10 +1628,6 @@ video {
   border-color: rgb(250 250 249 / var(--tw-border-opacity, 1));
 }
 
-.border-stone-700\/80{
-  border-color: rgb(68 64 60 / 0.8);
-}
-
 .border-transparent{
   border-color: transparent;
 }
@@ -1831,10 +1827,6 @@ video {
   background-color: rgb(28 25 23 / 0.8);
 }
 
-.bg-stone-900\/90{
-  background-color: rgb(28 25 23 / 0.9);
-}
-
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
@@ -1846,6 +1838,10 @@ video {
 
 .bg-white\/5{
   background-color: rgb(255 255 255 / 0.05);
+}
+
+.bg-white\/50{
+  background-color: rgb(255 255 255 / 0.5);
 }
 
 .bg-white\/80{
@@ -2428,11 +2424,6 @@ video {
 .text-stone-100{
   --tw-text-opacity: 1;
   color: rgb(245 245 244 / var(--tw-text-opacity, 1));
-}
-
-.text-stone-200{
-  --tw-text-opacity: 1;
-  color: rgb(231 229 228 / var(--tw-text-opacity, 1));
 }
 
 .text-stone-300{
@@ -3212,11 +3203,6 @@ body.nav-hidden .fixed.bottom-0 {
 .active\:text-rose-500:active{
   --tw-text-opacity: 1;
   color: rgb(244 63 94 / var(--tw-text-opacity, 1));
-}
-
-.active\:text-stone-300:active{
-  --tw-text-opacity: 1;
-  color: rgb(214 211 209 / var(--tw-text-opacity, 1));
 }
 
 .active\:text-stone-600:active{
