@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "231"
+            "232"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20533,7 +20533,7 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
         children: [
           sirenOn && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center gap-2 mb-3 -mt-1", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-4xl leading-none", style: { filter: "drop-shadow(0 0 6px rgba(255,80,80,0.6))" }, children: "🚨" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center gap-1.5 bg-red-500/20 text-red-400 text-[11px] font-bold py-1.5 px-4 rounded-lg w-full", children: "🚨 긴급 알림 🚨" })
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center gap-1.5 bg-red-500/20 text-red-400 text-[11px] font-bold py-1.5 px-4 rounded-lg w-full", children: "긴급 알림" })
           ] }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-3", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between items-center mb-1.5", children: [
