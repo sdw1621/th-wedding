@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "259"
+            "260"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20589,13 +20589,42 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
             const officialComments = msgComments.filter((c) => c.commenter_type === "groom" || c.commenter_type === "bride");
             const guestComments = msgComments.filter((c) => c.commenter_type === "guest");
             const totalCount = msgComments.length;
+            const getNameColor2 = (name) => {
+              const palette = [
+                { avatar: "bg-red-200", bubble: "bg-red-50", name: "text-red-700", content: "text-red-600" },
+                { avatar: "bg-orange-200", bubble: "bg-orange-50", name: "text-orange-700", content: "text-orange-600" },
+                { avatar: "bg-amber-200", bubble: "bg-amber-50", name: "text-amber-700", content: "text-amber-600" },
+                { avatar: "bg-green-200", bubble: "bg-green-50", name: "text-green-700", content: "text-green-600" },
+                { avatar: "bg-teal-200", bubble: "bg-teal-50", name: "text-teal-700", content: "text-teal-600" },
+                { avatar: "bg-violet-200", bubble: "bg-violet-50", name: "text-violet-700", content: "text-violet-600" },
+                { avatar: "bg-pink-200", bubble: "bg-pink-50", name: "text-pink-700", content: "text-pink-600" }
+              ];
+              let hash = 0;
+              for (let i = 0; i < ((name == null ? void 0 : name.length) || 0); i++) hash += name.charCodeAt(i);
+              return palette[hash % palette.length];
+            };
             const CommentBubble = ({ c, parentType, onEdit, onDelete, indent = false }) => {
               var _a;
               const isDevC = c.is_dev;
-              const avatarBg = isDevC ? "bg-stone-700" : parentType === "groom" ? "bg-blue-100" : parentType === "bride" ? "bg-rose-100" : "bg-stone-200";
-              const bubbleBg = isDevC ? "bg-stone-800" : parentType === "groom" ? "bg-blue-50" : parentType === "bride" ? "bg-rose-50" : isDev ? "bg-white/10" : "bg-stone-100";
-              const nameCls = isDevC ? "text-stone-200" : parentType === "groom" ? "text-blue-700" : parentType === "bride" ? "text-rose-700" : isDev ? "text-stone-200" : "text-stone-700";
-              const contentCls = isDevC ? "text-stone-300" : parentType === "groom" ? "text-blue-700" : parentType === "bride" ? "text-rose-700" : isDev ? "text-stone-300" : "text-stone-600";
+              const isJikgye = !!parentType;
+              let avatarBg, bubbleBg, nameCls, contentCls;
+              if (isDevC) {
+                avatarBg = "bg-stone-800";
+                bubbleBg = "bg-stone-800";
+                nameCls = "text-stone-200";
+                contentCls = "text-stone-300";
+              } else if (isJikgye) {
+                const col = getNameColor2(c.name);
+                avatarBg = col.avatar;
+                bubbleBg = col.bubble;
+                nameCls = col.name;
+                contentCls = col.content;
+              } else {
+                avatarBg = "bg-stone-200";
+                bubbleBg = "bg-white";
+                nameCls = "text-stone-700";
+                contentCls = "text-stone-600";
+              }
               const avatarSize = indent ? "w-6 h-6 text-[10px]" : "w-7 h-7 text-[13px]";
               return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `flex gap-2 ${indent ? "ml-9" : ""} mt-1.5`, children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `${avatarSize} rounded-full ${avatarBg} flex items-center justify-center shrink-0 mt-0.5`, children: isDevC ? "👨‍💻" : ((_a = c.name) == null ? void 0 : _a[0]) || "?" }),
@@ -20765,10 +20794,25 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
               const ModalCommentBubble = ({ c, parentType, onEdit, onDelete, indent = false }) => {
                 var _a;
                 const isDevC = c.is_dev;
-                const avatarBg = isDevC ? "bg-stone-700" : parentType === "groom" ? "bg-blue-100" : parentType === "bride" ? "bg-rose-100" : "bg-stone-200";
-                const bubbleBg = isDevC ? "bg-stone-800" : parentType === "groom" ? "bg-blue-50" : parentType === "bride" ? "bg-rose-50" : "bg-stone-100";
-                const nameCls = isDevC ? "text-stone-200" : parentType === "groom" ? "text-blue-700" : parentType === "bride" ? "text-rose-700" : "text-stone-700";
-                const contentCls = isDevC ? "text-stone-300" : parentType === "groom" ? "text-blue-700" : parentType === "bride" ? "text-rose-700" : "text-stone-600";
+                const isJikgye = !!parentType;
+                let avatarBg, bubbleBg, nameCls, contentCls;
+                if (isDevC) {
+                  avatarBg = "bg-stone-800";
+                  bubbleBg = "bg-stone-800";
+                  nameCls = "text-stone-200";
+                  contentCls = "text-stone-300";
+                } else if (isJikgye) {
+                  const col = getNameColor(c.name);
+                  avatarBg = col.avatar;
+                  bubbleBg = col.bubble;
+                  nameCls = col.name;
+                  contentCls = col.content;
+                } else {
+                  avatarBg = "bg-stone-200";
+                  bubbleBg = "bg-white";
+                  nameCls = "text-stone-700";
+                  contentCls = "text-stone-600";
+                }
                 return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `flex gap-2 ${indent ? "ml-9" : ""} mt-1.5`, children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `${indent ? "w-6 h-6 text-[10px]" : "w-7 h-7 text-[13px]"} rounded-full ${avatarBg} flex items-center justify-center shrink-0 mt-0.5`, children: isDevC ? "👨‍💻" : ((_a = c.name) == null ? void 0 : _a[0]) || "?" }),
                   /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
@@ -20889,19 +20933,7 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                 ))
               ] });
             })()
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-4 pb-4 pt-2 border-t border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "button",
-            {
-              onClick: (e) => {
-                setShowAllComments(false);
-                openCommentModal(msg, "guest");
-              },
-              className: "w-full py-3 bg-stone-800 text-white text-[14px] font-bold rounded-xl active:bg-stone-700 select-none",
-              style: { touchAction: "manipulation" },
-              children: "💬 댓글 달기"
-            }
-          ) })
+          ] })
         ] }) })
       ] }),
       document.body
