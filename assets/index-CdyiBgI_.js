@@ -20809,8 +20809,8 @@ function Guestbook({ showToast }) {
           {
             onClick: () => setCurrentPage((p) => Math.max(1, p - 1)),
             disabled: currentPage === 1,
-            style: { touchAction: "manipulation" },
-            className: "p-2.5 rounded-xl bg-white border border-stone-200 text-stone-500 disabled:opacity-30 disabled:cursor-not-allowed active:bg-stone-50 select-none shadow-sm",
+            style: { touchAction: "manipulation", background: "linear-gradient(145deg, rgba(255,255,255,1) 0%, rgba(248,248,255,0.96) 100%)", boxShadow: "inset 0 1.5px 0 rgba(255,255,255,1), 0 2px 8px rgba(0,0,0,0.06)", borderColor: "rgba(215,215,240,0.8)" },
+            className: "p-2.5 rounded-xl border text-stone-500 disabled:opacity-30 disabled:cursor-not-allowed select-none",
             children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { size: 18 })
           }
         ),
@@ -20818,8 +20818,8 @@ function Guestbook({ showToast }) {
           "button",
           {
             onClick: () => setCurrentPage(page),
-            style: { touchAction: "manipulation" },
-            className: `w-8 h-8 rounded-lg text-xs font-bold select-none transition-all duration-200 ${page === currentPage ? "bg-rose-500 text-white shadow-sm" : "bg-white border border-stone-200 text-stone-400 active:bg-stone-50"}`,
+            style: page === currentPage ? { touchAction: "manipulation", background: "linear-gradient(145deg, #f43f5e 0%, #e11d48 100%)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.25), 0 3px 8px rgba(244,63,94,0.35)", borderColor: "rgba(225,29,72,0.4)" } : { touchAction: "manipulation", background: "linear-gradient(145deg, rgba(255,255,255,1) 0%, rgba(248,248,255,0.96) 100%)", boxShadow: "inset 0 1.5px 0 rgba(255,255,255,1), inset 1px 0 0 rgba(255,255,255,0.7), 0 2px 6px rgba(0,0,0,0.05)", borderColor: "rgba(215,215,240,0.8)" },
+            className: `w-8 h-8 rounded-lg text-xs font-bold select-none transition-all duration-200 border ${page === currentPage ? "text-white" : "text-stone-400"}`,
             children: page
           },
           page
@@ -20829,8 +20829,8 @@ function Guestbook({ showToast }) {
           {
             onClick: () => setCurrentPage((p) => Math.min(totalPages, p + 1)),
             disabled: currentPage === totalPages,
-            style: { touchAction: "manipulation" },
-            className: "p-2.5 rounded-xl bg-white border border-stone-200 text-stone-500 disabled:opacity-30 disabled:cursor-not-allowed active:bg-stone-50 select-none shadow-sm",
+            style: { touchAction: "manipulation", background: "linear-gradient(145deg, rgba(255,255,255,1) 0%, rgba(248,248,255,0.96) 100%)", boxShadow: "inset 0 1.5px 0 rgba(255,255,255,1), 0 2px 8px rgba(0,0,0,0.06)", borderColor: "rgba(215,215,240,0.8)" },
+            className: "p-2.5 rounded-xl border text-stone-500 disabled:opacity-30 disabled:cursor-not-allowed select-none",
             children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { size: 18 })
           }
         )
@@ -21542,7 +21542,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "195"
+        "196"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
