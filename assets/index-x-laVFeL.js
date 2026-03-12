@@ -20836,8 +20836,8 @@ function Guestbook({ showToast }) {
 function Share() {
   const [ref, isVisible] = useScrollReveal();
   const [expanded, setExpanded] = reactExports.useState(true);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "-mt-20 pt-0 pb-8 bg-white relative rounded-t-[2rem] shadow-[0_-14px_40px_rgba(0,0,0,0.07)]", id: "share", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `max-w-md mx-auto text-center transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-4 pt-12 mb-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-white rounded-2xl border border-stone-200 shadow-sm overflow-hidden", children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "pb-8 bg-[#FDFBF7] relative", id: "share", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `max-w-md mx-auto text-center transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-4 pt-6 mb-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-white rounded-2xl border border-stone-200 shadow-sm overflow-hidden", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
         "button",
         {
@@ -21407,7 +21407,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "183"
+        "184"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
