@@ -22042,9 +22042,9 @@ function Guestbook({ showToast }) {
                   inputMode: "numeric",
                   value: commentPassword,
                   onChange: (e) => setCommentPassword(e.target.value.replace(/\D/g, "").slice(0, 4)),
-                  placeholder: "전번뒤4·신랑·신부·개발자 비번",
+                  placeholder: "전번뒤·신랑·신부·개발 4자리",
                   maxLength: 4,
-                  className: "w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 pr-10 text-[16px] font-medium text-stone-800 outline-none focus:ring-2 focus:ring-rose-200 placeholder:text-stone-400 placeholder:text-[13px]"
+                  className: "w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 pr-10 text-[16px] font-medium text-stone-800 outline-none focus:ring-2 focus:ring-rose-200 placeholder:text-stone-400 placeholder:text-[11px]"
                 }
               ),
               /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onPointerDown: (e) => {
