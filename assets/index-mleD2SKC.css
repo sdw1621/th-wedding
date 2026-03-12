@@ -863,10 +863,6 @@ video {
   margin-top: 0.25rem;
 }
 
-.mt-10{
-  margin-top: 2.5rem;
-}
-
 .mt-16{
   margin-top: 4rem;
 }
@@ -885,6 +881,10 @@ video {
 
 .mt-5{
   margin-top: 1.25rem;
+}
+
+.mt-6{
+  margin-top: 1.5rem;
 }
 
 .mt-7{
@@ -2137,8 +2137,8 @@ video {
   padding-bottom: 10rem;
 }
 
-.pb-48{
-  padding-bottom: 12rem;
+.pb-44{
+  padding-bottom: 11rem;
 }
 
 .pb-5{
@@ -2548,6 +2548,10 @@ video {
   color: rgb(255 255 255 / 0.7);
 }
 
+.text-white\/80{
+  color: rgb(255 255 255 / 0.8);
+}
+
 .underline{
   text-decoration-line: underline;
 }
@@ -2816,6 +2820,7 @@ select {
   -moz-appearance: none;
   appearance: none;
   font-size: 16px !important; /* iOS 자동 줌 방지 */
+  font-family: inherit; /* body의 Noto Serif KR 상속 */
 }
 
 /* 저사양 모바일 성능 최적화 - 불필요한 애니메이션 줄이기 */
@@ -3146,6 +3151,26 @@ body.nav-hidden .app-back-btn {
 
 .urgent-box {
   animation: urgent-box-glow 2s ease-in-out infinite;
+}
+
+@keyframes urgentDark {
+  0%, 100% {
+    background: linear-gradient(145deg, #1a0008 0%, #2d0014 100%);
+    box-shadow: 0 0 14px rgba(244,63,94,0.28), inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+  50% {
+    background: linear-gradient(145deg, #2d0010 0%, #450020 100%);
+    box-shadow: 0 0 28px rgba(244,63,94,0.55), inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+}
+
+@keyframes countdownPulse {
+  0%, 100% { color: #f472b6; } /* pink-400 */
+  50%      { color: #ffffff; } /* white */
+}
+
+.countdown-num {
+  animation: countdownPulse 2s ease-in-out infinite;
 }
 
 /* 카운트다운 파랑 백라이트 */

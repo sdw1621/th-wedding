@@ -18969,26 +18969,26 @@ function Countdown() {
     { label: "SEC", value: timeLeft.seconds }
   ];
   const isUrgent = timeLeft.days === 0;
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative flex space-x-3 mt-8", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "countdown-backlight" }),
-    units.map((unit, idx) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center relative z-10", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        "div",
-        {
-          className: `w-[62px] h-[62px] rounded-2xl flex items-center justify-center mb-2 border ${isUrgent ? "urgent-box" : ""}`,
-          style: isUrgent ? {
-            borderColor: "rgba(251,146,60,0.3)"
-          } : {
-            background: "linear-gradient(145deg, rgba(255,255,255,0.92) 0%, rgba(248,248,255,0.88) 100%)",
-            boxShadow: "inset 0 1.5px 0 rgba(255,255,255,1), inset 1px 0 0 rgba(255,255,255,0.7), 0 2px 10px rgba(0,0,0,0.07)",
-            borderColor: "rgba(215,215,240,0.8)"
-          },
-          children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-2xl font-semibold tabular-nums ${isUrgent ? "urgent-number" : "text-stone-700"}`, children: String(unit.value).padStart(2, "0") })
-        }
-      ),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] tracking-widest font-black text-stone-600", children: unit.label })
-    ] }, idx))
-  ] });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "relative flex space-x-3 mt-8", children: units.map((unit, idx) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center relative z-10", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "div",
+      {
+        className: "w-[62px] h-[62px] rounded-2xl flex items-center justify-center mb-2 border",
+        style: isUrgent ? {
+          background: "linear-gradient(145deg, #1a0008 0%, #2d0014 100%)",
+          borderColor: "rgba(244,63,94,0.4)",
+          boxShadow: "0 0 18px rgba(244,63,94,0.35), inset 0 1px 0 rgba(255,255,255,0.05)",
+          animation: "urgentDark 2s ease-in-out infinite"
+        } : {
+          background: "linear-gradient(145deg, #111111 0%, #1c1c1e 100%)",
+          borderColor: "rgba(255,255,255,0.1)",
+          boxShadow: "inset 0 1px 0 rgba(255,255,255,0.06), 0 4px 16px rgba(0,0,0,0.5)"
+        },
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-2xl font-semibold tabular-nums countdown-num", children: String(unit.value).padStart(2, "0") })
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] tracking-widest font-black text-stone-900", children: unit.label })
+  ] }, idx)) });
 }
 function Hero() {
   const [ref, isVisible] = useScrollReveal();
@@ -19001,7 +19001,7 @@ function Hero() {
     const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
     window.open(googleCalendarUrl, "_blank");
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative w-full h-screen overflow-hidden flex flex-col items-center justify-between pb-48", id: "home", children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative w-full h-screen overflow-hidden flex flex-col items-center justify-between pb-44", id: "home", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute inset-0", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(
         "img",
@@ -19036,11 +19036,11 @@ function Hero() {
           onPointerDown: addToCalendar,
           style: {
             touchAction: "manipulation",
-            background: "linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(248,248,255,0.92) 100%)",
-            boxShadow: "inset 0 1.5px 0 rgba(255,255,255,1), inset 1px 0 0 rgba(255,255,255,0.7), 0 2px 10px rgba(0,0,0,0.07)",
-            borderColor: "rgba(215,215,240,0.8)"
+            background: "linear-gradient(145deg, #111111 0%, #1c1c1e 100%)",
+            borderColor: "rgba(255,255,255,0.1)",
+            boxShadow: "inset 0 1px 0 rgba(255,255,255,0.06), 0 4px 16px rgba(0,0,0,0.5)"
           },
-          className: "mt-10 flex items-center space-x-2 px-6 py-2.5 border rounded-2xl text-stone-600 text-[11px] font-bold active:opacity-70 select-none",
+          className: "mt-6 flex items-center space-x-2 px-6 py-2.5 border rounded-2xl text-white/80 text-[11px] font-bold active:opacity-70 select-none",
           children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(Calendar, { size: 14 }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "캘린더에 일정 추가" })
@@ -20630,7 +20630,7 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
   ] });
 });
 const ModernModal = reactExports.memo(({ isOpen, onClose, title, description, children, onConfirm, confirmLabel = "확인", cancelLabel = "취소", isDestructive = false }) => {
-  const [vpStyle, setVpStyle] = reactExports.useState({});
+  const [vpStyle, setVpStyle] = reactExports.useState({ position: "fixed", left: 0, right: 0, top: 56, zIndex: 600, display: "flex", alignItems: "center", justifyContent: "center", padding: "0 16px", pointerEvents: "none" });
   reactExports.useEffect(() => {
     var _a, _b;
     if (!isOpen) return;
@@ -20708,7 +20708,7 @@ function Guestbook({ showToast }) {
   const [familyFilterName, setFamilyFilterName] = reactExports.useState("");
   const [isFamilyFilterModalOpen, setIsFamilyFilterModalOpen] = reactExports.useState(false);
   const [filterFamilyInput, setFilterFamilyInput] = reactExports.useState("");
-  const isAnyModalOpen = isPasswordModalOpen || isDeleteModalOpen || isEditModalOpen || isReplyInputModalOpen || isFamilyFilterModalOpen;
+  const isAnyModalOpen = isPasswordModalOpen || isDeleteModalOpen || isEditModalOpen || isReplyInputModalOpen || isFamilyFilterModalOpen || isNameFilterModalOpen;
   reactExports.useEffect(() => {
     if (isAnyModalOpen) {
       document.body.classList.add("nav-hidden");
@@ -22058,7 +22058,7 @@ function App() {
         children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-9 h-9 rounded-full flex items-center justify-center hover:bg-stone-100 text-stone-500 transition-colors", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { size: 18 }) })
       }
     ),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `fixed bottom-20 right-3 z-[400] flex flex-col gap-1 items-stretch select-none pointer-events-none font-mono text-[10px] text-stone-400 transition-opacity duration-300 ${galleryFullscreen ? "opacity-0" : "opacity-100"}`, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `fixed bottom-20 left-3 z-[400] flex flex-col gap-1 items-stretch select-none pointer-events-none font-mono text-[10px] text-stone-400 transition-opacity duration-300 ${galleryFullscreen ? "opacity-0" : "opacity-100"}`, children: [
       (totalVisitors !== null || todayVisitors !== null) && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "total : ",
         totalVisitors ?? "-",
@@ -22067,7 +22067,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "211"
+        "212"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
