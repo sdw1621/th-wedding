@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "229"
+            "230"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20780,6 +20780,7 @@ function Guestbook({ showToast }) {
             receiver: doc.receiver || parsedReceiver,
             reply: doc.reply || parsedReply,
             siren: parsedSiren,
+            is_dev: doc.is_dev === true || doc.name === "개발자",
             date: new Date(doc.created_at).toLocaleDateString("ko-KR").replace(/\. /g, ".").replace(/\.$/, "") || ""
           };
         });
@@ -20955,8 +20956,9 @@ function Guestbook({ showToast }) {
     try {
       const dateStr = (/* @__PURE__ */ new Date()).toLocaleDateString("ko-KR").replace(/\. /g, ".").replace(/\.$/, "");
       const dbContent = JSON.stringify({ text: trimmedContent, receiver, reply: existingMsg ? existingMsg.reply : "" });
-      const messageDataDB = { name: trimmedName, content: dbContent, password: trimmedPassword, is_secret: receiver !== "public", receiver };
-      const messageDataLocal = { name: trimmedName, content: trimmedContent, password: trimmedPassword, is_secret: receiver !== "public", receiver };
+      const isDevMsg = trimmedName === "개발자" && trimmedPassword === "0000";
+      const messageDataDB = { name: trimmedName, content: dbContent, password: trimmedPassword, is_secret: receiver !== "public", receiver, ...isDevMsg ? { is_dev: true } : {} };
+      const messageDataLocal = { name: trimmedName, content: trimmedContent, password: trimmedPassword, is_secret: receiver !== "public", receiver, ...isDevMsg ? { is_dev: true } : {} };
       if (existingMsg) {
         const { error: upError } = await supabase.from("guestbook").update(messageDataDB).eq("id", existingMsg.id);
         if (upError || typeof existingMsg.id === "string" && (existingMsg.id.startsWith("mock-") || existingMsg.id.startsWith("local-"))) {
@@ -21188,10 +21190,10 @@ function Guestbook({ showToast }) {
             style: { touchAction: "manipulation", ...messageFilter === "dev" ? { background: "linear-gradient(145deg, rgba(14,12,24,0.99) 0%, rgba(26,20,40,1) 100%)", borderColor: "rgba(105,88,140,0.6)", boxShadow: "0 3px 8px rgba(0,0,0,0.5)" } : glassStyle },
             className: `flex-1 py-2.5 rounded-xl text-[13px] font-bold transition-all select-none border ${messageFilter === "dev" ? "text-stone-200 shadow-md" : "text-stone-400"}`,
             children: messageFilter === "dev" ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-              "👨‍💻 공지 ",
+              "공지 ",
               /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-400", children: filteredMessages.length })
             ] }) : /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-              "👨‍💻 ",
+              "공지 ",
               /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-300", children: devCount })
             ] })
           }
