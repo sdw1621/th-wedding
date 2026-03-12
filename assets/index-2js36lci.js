@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "239"
+            "240"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -19684,7 +19684,7 @@ function Gallery({ onFullscreenChange }) {
             {
               className: "absolute top-3 right-3 z-[510] flex items-center bg-white/95 border border-stone-200 rounded-full shadow-md p-1 active:shadow-lg transition-all select-none",
               style: { touchAction: "manipulation" },
-              onPointerDown: (e) => {
+              onClick: (e) => {
                 e.stopPropagation();
                 document.body.classList.remove("music-hidden");
                 document.body.classList.remove("nav-hidden");
@@ -20716,8 +20716,8 @@ const ModernModal = reactExports.memo(({ isOpen, onClose, title, description, ch
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-4", children })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col border-t border-stone-100", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onPointerDown: onConfirm, style: { touchAction: "manipulation" }, className: `py-4 text-[15px] font-bold border-b border-stone-100 active:bg-stone-50 select-none ${isDestructive ? "text-rose-600" : "text-rose-500"}`, children: confirmLabel }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onPointerDown: onCancel ?? handleClose, style: { touchAction: "manipulation" }, className: "py-4 text-[15px] font-medium text-blue-400 active:bg-stone-50 select-none", children: cancelLabel })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: onConfirm, style: { touchAction: "manipulation" }, className: `py-4 text-[15px] font-bold border-b border-stone-100 active:bg-stone-50 select-none ${isDestructive ? "text-rose-600" : "text-rose-500"}`, children: confirmLabel }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: onCancel ?? handleClose, style: { touchAction: "manipulation" }, className: "py-4 text-[15px] font-medium text-blue-400 active:bg-stone-50 select-none", children: cancelLabel })
         ] })
       ] }) })
     ] }),
