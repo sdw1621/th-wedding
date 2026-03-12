@@ -19031,9 +19031,17 @@ function Hero() {
 function Greeting() {
   const [ref, isVisible] = useScrollReveal();
   return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 text-center", id: "greeting", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx(Heart, { className: "mx-auto text-rose-200 mb-8", size: 28, strokeWidth: 1.5 }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-2xl font-serif tracking-[0.2em] text-stone-900 font-bold mb-3", children: "결혼합니다" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-center mb-8", children: /* @__PURE__ */ jsxRuntimeExports.jsx("svg", { viewBox: "0 0 192 14", className: "w-48", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M0 9 L84 9 L96 3 L108 9 L192 9", stroke: "#f87171", strokeWidth: "1.5", strokeLinecap: "round", strokeLinejoin: "round" }) }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Heart, { className: "mx-auto text-rose-200 mb-3", size: 28, strokeWidth: 1.5 }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-center mb-3", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("svg", { viewBox: "0 0 240 24", height: "24", className: "w-56", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("line", { x1: "0", y1: "12", x2: "78", y2: "12", stroke: "#fca5a5", strokeWidth: "1", strokeLinecap: "round", opacity: "0.5" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "83", cy: "12", r: "1.5", fill: "#fca5a5", opacity: "0.6" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M95 9 L98 12 L95 15 L92 12 Z", fill: "#fca5a5" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M120 4 L122.3 9.7 L128 12 L122.3 14.3 L120 20 L117.7 14.3 L112 12 L117.7 9.7 Z", fill: "#f87171" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M145 9 L148 12 L145 15 L142 12 Z", fill: "#fca5a5" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "157", cy: "12", r: "1.5", fill: "#fca5a5", opacity: "0.6" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("line", { x1: "162", y1: "12", x2: "240", y2: "12", stroke: "#fca5a5", strokeWidth: "1", strokeLinecap: "round", opacity: "0.5" })
+    ] }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-2xl font-serif tracking-[0.2em] text-stone-900 font-bold mb-8", children: "결혼합니다" }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-6 text-stone-700 leading-relaxed text-[15px] break-keep font-medium", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { children: [
         "서로를 마주 보며 다져온 인연을",
@@ -19487,9 +19495,17 @@ function Gallery({ onFullscreenChange }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "py-24 bg-white overflow-hidden", id: "gallery", ref, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-2xl mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-8 px-6", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Camera, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-2xl font-serif tracking-[0.2em] text-stone-900 font-bold mb-3", children: "우리의 빛나는 순간" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx("svg", { viewBox: "0 0 192 14", className: "w-48", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M0 9 L84 9 L96 3 L108 9 L192 9", stroke: "#f87171", strokeWidth: "1.5", strokeLinecap: "round", strokeLinejoin: "round" }) }) })
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Camera, { className: "mx-auto text-rose-200 mb-3", size: 28, strokeWidth: 1.5 }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-center mb-3", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("svg", { viewBox: "0 0 240 24", height: "24", className: "w-56", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("line", { x1: "0", y1: "12", x2: "78", y2: "12", stroke: "#fca5a5", strokeWidth: "1", strokeLinecap: "round", opacity: "0.5" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "83", cy: "12", r: "1.5", fill: "#fca5a5", opacity: "0.6" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M95 9 L98 12 L95 15 L92 12 Z", fill: "#fca5a5" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M120 4 L122.3 9.7 L128 12 L122.3 14.3 L120 20 L117.7 14.3 L112 12 L117.7 9.7 Z", fill: "#f87171" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M145 9 L148 12 L145 15 L142 12 Z", fill: "#fca5a5" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "157", cy: "12", r: "1.5", fill: "#fca5a5", opacity: "0.6" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("line", { x1: "162", y1: "12", x2: "240", y2: "12", stroke: "#fca5a5", strokeWidth: "1", strokeLinecap: "round", opacity: "0.5" })
+        ] }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-2xl font-serif tracking-[0.2em] text-stone-900 font-bold mb-3", children: "우리의 빛나는 순간" })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-center mb-4 px-6", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-stone-500 font-medium whitespace-nowrap", children: "크게 보시고 싶으시면 영상 터치 후 Youtube 로고를 눌러주세요 👆" }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-6 mb-6 relative z-30", ref: ytContainerRef, children: [
@@ -19871,9 +19887,17 @@ function Location() {
   };
   return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 bg-[#FDFBF7]", id: "location", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `max-w-lg mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-10", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(MapPin, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-2xl font-serif tracking-[0.2em] text-stone-900 font-bold mb-3", children: "식사 자리 안내" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx("svg", { viewBox: "0 0 192 14", className: "w-48", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M0 9 L84 9 L96 3 L108 9 L192 9", stroke: "#f87171", strokeWidth: "1.5", strokeLinecap: "round", strokeLinejoin: "round" }) }) })
+      /* @__PURE__ */ jsxRuntimeExports.jsx(MapPin, { className: "mx-auto text-rose-200 mb-3", size: 28, strokeWidth: 1.5 }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-center mb-3", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("svg", { viewBox: "0 0 240 24", height: "24", className: "w-56", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("line", { x1: "0", y1: "12", x2: "78", y2: "12", stroke: "#fca5a5", strokeWidth: "1", strokeLinecap: "round", opacity: "0.5" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "83", cy: "12", r: "1.5", fill: "#fca5a5", opacity: "0.6" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M95 9 L98 12 L95 15 L92 12 Z", fill: "#fca5a5" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M120 4 L122.3 9.7 L128 12 L122.3 14.3 L120 20 L117.7 14.3 L112 12 L117.7 9.7 Z", fill: "#f87171" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M145 9 L148 12 L145 15 L142 12 Z", fill: "#fca5a5" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "157", cy: "12", r: "1.5", fill: "#fca5a5", opacity: "0.6" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("line", { x1: "162", y1: "12", x2: "240", y2: "12", stroke: "#fca5a5", strokeWidth: "1", strokeLinecap: "round", opacity: "0.5" })
+      ] }) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-2xl font-serif tracking-[0.2em] text-stone-900 font-bold mb-3", children: "식사 자리 안내" })
     ] }),
     !unlocked && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-6 flex flex-col items-center gap-3", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20146,9 +20170,17 @@ function AccountInfo({ showToast }) {
   };
   return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 bg-stone-50", id: "account", ref, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-md mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-10", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Gift, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Gift, { className: "mx-auto text-rose-200 mb-3", size: 28, strokeWidth: 1.5 }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-center mb-3", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("svg", { viewBox: "0 0 240 24", height: "24", className: "w-56", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("line", { x1: "0", y1: "12", x2: "78", y2: "12", stroke: "#fca5a5", strokeWidth: "1", strokeLinecap: "round", opacity: "0.5" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "83", cy: "12", r: "1.5", fill: "#fca5a5", opacity: "0.6" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M95 9 L98 12 L95 15 L92 12 Z", fill: "#fca5a5" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M120 4 L122.3 9.7 L128 12 L122.3 14.3 L120 20 L117.7 14.3 L112 12 L117.7 9.7 Z", fill: "#f87171" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M145 9 L148 12 L145 15 L142 12 Z", fill: "#fca5a5" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "157", cy: "12", r: "1.5", fill: "#fca5a5", opacity: "0.6" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("line", { x1: "162", y1: "12", x2: "240", y2: "12", stroke: "#fca5a5", strokeWidth: "1", strokeLinecap: "round", opacity: "0.5" })
+      ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-2xl font-serif tracking-[0.2em] text-stone-900 font-bold mb-3", children: "마음 전하실 곳" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-center mb-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx("svg", { viewBox: "0 0 192 14", className: "w-48", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M0 9 L84 9 L96 3 L108 9 L192 9", stroke: "#f87171", strokeWidth: "1.5", strokeLinecap: "round", strokeLinejoin: "round" }) }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm text-stone-600 mt-4 leading-relaxed font-medium", children: [
         "따뜻한 마음으로 축하해 주시는",
         /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
@@ -20360,21 +20392,24 @@ const BRIDE_PW = "0407";
 const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModal, toggleUnlock }) => {
   const isLocked = msg.is_secret && !unlockedMessages[msg.id];
   const isDev = msg.name === "0000";
-  let cardColorClass = isDev ? "bg-zinc-800/[0.07] border-zinc-500/50" : msg.receiver === "groom" ? "bg-blue-50/60 border-blue-100" : msg.receiver === "bride" ? "bg-rose-50/60 border-rose-100" : "bg-white border-stone-100";
+  const sirenOn = isDev && msg.siren;
+  let cardColorClass = isDev ? "bg-stone-900 border-stone-700" : msg.receiver === "groom" ? "bg-blue-50/60 border-blue-100" : msg.receiver === "bride" ? "bg-rose-50/60 border-rose-100" : "bg-white border-stone-100";
   const guestEmoji = msg.receiver === "groom" ? "💙" : msg.receiver === "bride" ? "💗" : "✨";
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `${cardColorClass} p-5 rounded-2xl shadow-sm border flex flex-col relative group transition-all duration-300`, children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `${cardColorClass} p-5 rounded-2xl shadow-sm border flex flex-col relative group transition-all duration-300 ${sirenOn ? "ring-2 ring-red-500" : ""}`, children: [
+    sirenOn && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-3 -mt-1 flex items-center justify-center gap-1.5 bg-red-500/20 text-red-400 text-[11px] font-bold py-1 px-3 rounded-lg", children: "🚨 긴급 알림 활성화됨 🚨" }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-3", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between items-center mb-1.5", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[11px] font-medium text-stone-400", children: msg.date }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[11px] font-medium ${isDev ? "text-stone-500" : "text-stone-400"}`, children: msg.date }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center space-x-1 -mr-2", children: [
-          msg.is_secret && /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => isLocked ? openPasswordModal(msg, "unlock") : toggleUnlock(msg.id, false), className: "p-3 -m-1 select-none text-stone-300 active:text-stone-600", style: { touchAction: "manipulation" }, children: isLocked ? /* @__PURE__ */ jsxRuntimeExports.jsx(Lock, { size: 16 }) : /* @__PURE__ */ jsxRuntimeExports.jsx(LockOpen, { size: 16 }) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => openPasswordModal(msg, "reply"), className: "p-3 -m-1 select-none text-stone-300 active:text-stone-600", style: { touchAction: "manipulation" }, title: "답글 남기기", children: /* @__PURE__ */ jsxRuntimeExports.jsx(MessageSquare, { size: 16 }) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => openPasswordModal(msg, "edit"), className: "p-3 -m-1 select-none text-stone-300 active:text-stone-600", style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Pencil, { size: 16 }) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => openPasswordModal(msg, "delete"), className: "p-3 -m-1 select-none text-stone-300 active:text-rose-400", style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Trash2, { size: 16 }) })
+          isDev && /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => openPasswordModal(msg, "siren"), className: `p-3 -m-1 select-none text-lg leading-none ${sirenOn ? "opacity-100" : "opacity-30 active:opacity-70"}`, style: { touchAction: "manipulation" }, children: "🚨" }),
+          msg.is_secret && /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => isLocked ? openPasswordModal(msg, "unlock") : toggleUnlock(msg.id, false), className: `p-3 -m-1 select-none ${isDev ? "text-stone-500 active:text-stone-300" : "text-stone-300 active:text-stone-600"}`, style: { touchAction: "manipulation" }, children: isLocked ? /* @__PURE__ */ jsxRuntimeExports.jsx(Lock, { size: 16 }) : /* @__PURE__ */ jsxRuntimeExports.jsx(LockOpen, { size: 16 }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => openPasswordModal(msg, "reply"), className: `p-3 -m-1 select-none ${isDev ? "text-stone-500 active:text-stone-300" : "text-stone-300 active:text-stone-600"}`, style: { touchAction: "manipulation" }, title: "답글 남기기", children: /* @__PURE__ */ jsxRuntimeExports.jsx(MessageSquare, { size: 16 }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => openPasswordModal(msg, "edit"), className: `p-3 -m-1 select-none ${isDev ? "text-stone-500 active:text-stone-300" : "text-stone-300 active:text-stone-600"}`, style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Pencil, { size: 16 }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => openPasswordModal(msg, "delete"), className: `p-3 -m-1 select-none ${isDev ? "text-stone-500 active:text-red-400" : "text-stone-300 active:text-rose-400"}`, style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Trash2, { size: 16 }) })
         ] })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center space-x-2", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: `font-bold text-sm px-2.5 py-1 rounded-md bg-white/80 ${isDev ? "text-stone-800" : msg.receiver === "groom" ? "text-blue-700" : msg.receiver === "bride" ? "text-rose-700" : "text-stone-800"}`, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: `font-bold text-sm px-2.5 py-1 rounded-md ${isDev ? "bg-stone-800 text-stone-200" : "bg-white/80 " + (msg.receiver === "groom" ? "text-blue-700" : msg.receiver === "bride" ? "text-rose-700" : "text-stone-800")}`, children: [
           msg.name,
           isDev ? /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "ml-1", children: "👨‍💻" }) : /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "ml-1", children: guestEmoji })
         ] }),
@@ -20390,7 +20425,7 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
       msg.receiver === "groom" ? "신랑" : msg.receiver === "bride" ? "신부" : "작성자",
       "만 확인 가능"
     ] }) : /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-3", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: `text-sm leading-relaxed font-medium whitespace-pre-wrap ${msg.receiver === "groom" ? "text-blue-900" : msg.receiver === "bride" ? "text-rose-900" : "text-stone-700"}`, children: msg.content }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: `text-sm leading-relaxed font-medium whitespace-pre-wrap ${isDev ? "text-stone-200" : msg.receiver === "groom" ? "text-blue-900" : msg.receiver === "bride" ? "text-rose-900" : "text-stone-700"}`, children: msg.content }),
       msg.reply && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `rounded-xl p-3 border-l-2 animate-in slide-in-from-left-2 duration-300 ${msg.receiver === "groom" ? "bg-blue-50 border-blue-300" : msg.receiver === "bride" ? "bg-rose-50 border-rose-300" : "bg-amber-50 border-amber-200"}`, children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1.5 mb-1.5", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[22px] leading-none", children: msg.receiver === "groom" ? "🤵" : msg.receiver === "bride" ? "👰" : "🤵👰" }),
@@ -20502,11 +20537,17 @@ function Guestbook({ showToast }) {
             }
           } catch (e) {
           }
+          let parsedSiren = false;
+          if (parsedContent && parsedContent.startsWith("🚨||")) {
+            parsedSiren = true;
+            parsedContent = parsedContent.slice("🚨||".length);
+          }
           return {
             ...doc,
             content: parsedContent,
             receiver: doc.receiver || parsedReceiver,
             reply: doc.reply || parsedReply,
+            siren: parsedSiren,
             date: new Date(doc.created_at).toLocaleDateString("ko-KR").replace(/\. /g, ".").replace(/\.$/, "") || ""
           };
         });
@@ -20598,6 +20639,23 @@ function Guestbook({ showToast }) {
         showToast(errMsg);
         refocusPasswordInput();
       }
+    } else if (modalPurpose === "siren") {
+      if (modalPassword !== "0313") {
+        showToast("관리자 비밀번호가 아닙니다.");
+        refocusPasswordInput();
+        return;
+      }
+      const newSiren = !selectedMsg.siren;
+      const prefix = newSiren ? "🚨||" : "";
+      const newText = prefix + selectedMsg.content;
+      const dbContent = JSON.stringify({ text: newText, receiver: selectedMsg.receiver || "public", reply: selectedMsg.reply || "" });
+      try {
+        await supabase.from("guestbook").update({ content: dbContent }).eq("id", selectedMsg.id);
+        showToast(newSiren ? "🚨 긴급 모드 ON" : "긴급 해제됨");
+      } catch (err) {
+        showToast("오류가 발생했습니다.");
+      }
+      setIsPasswordModalOpen(false);
     }
   };
   const confirmDelete = async () => {
@@ -20765,9 +20823,17 @@ function Guestbook({ showToast }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "pt-24 pb-6 px-6 bg-[#FDFBF7] relative z-10", id: "guestbook", ref, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-md mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-10 flex flex-col items-center", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx(MessageSquare, { className: "mx-auto text-rose-200", size: 28, strokeWidth: 1.5 }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-3", children: /* @__PURE__ */ jsxRuntimeExports.jsx(MessageSquare, { className: "mx-auto text-rose-200", size: 28, strokeWidth: 1.5 }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-center mb-3", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("svg", { viewBox: "0 0 240 24", height: "24", className: "w-56", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("line", { x1: "0", y1: "12", x2: "78", y2: "12", stroke: "#fca5a5", strokeWidth: "1", strokeLinecap: "round", opacity: "0.5" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "83", cy: "12", r: "1.5", fill: "#fca5a5", opacity: "0.6" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M95 9 L98 12 L95 15 L92 12 Z", fill: "#fca5a5" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M120 4 L122.3 9.7 L128 12 L122.3 14.3 L120 20 L117.7 14.3 L112 12 L117.7 9.7 Z", fill: "#f87171" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M145 9 L148 12 L145 15 L142 12 Z", fill: "#fca5a5" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("circle", { cx: "157", cy: "12", r: "1.5", fill: "#fca5a5", opacity: "0.6" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("line", { x1: "162", y1: "12", x2: "240", y2: "12", stroke: "#fca5a5", strokeWidth: "1", strokeLinecap: "round", opacity: "0.5" })
+        ] }) }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-2xl font-serif tracking-[0.2em] text-stone-900 font-bold mb-3", children: "방명록" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx("svg", { viewBox: "0 0 192 14", className: "w-48", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: /* @__PURE__ */ jsxRuntimeExports.jsx("path", { d: "M0 9 L84 9 L96 3 L108 9 L192 9", stroke: "#f87171", strokeWidth: "1.5", strokeLinecap: "round", strokeLinejoin: "round" }) }) }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-[14px] text-stone-600 font-medium leading-relaxed break-keep mt-7", children: [
           "가족식으로 진행되어 하객 초청은 하지 않습니다.",
           /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
@@ -20805,8 +20871,8 @@ function Guestbook({ showToast }) {
       {
         isOpen: isPasswordModalOpen,
         onClose: () => setIsPasswordModalOpen(false),
-        title: modalPurpose === "reply" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑 확인" : modalPurpose === "reply" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부 확인" : modalPurpose === "reply" ? "관리자 확인" : modalPurpose === "unlock" && ((selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" || (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride") ? "생일 확인" : "전화번호 확인",
-        description: modalPurpose === "reply" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑의 생일을 입력해주세요. (예: 0108)" : modalPurpose === "reply" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부의 생일을 입력해주세요. (예: 0315)" : modalPurpose === "reply" ? "신랑/신부 전용 비밀번호를 입력해주세요." : modalPurpose === "unlock" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑의 생일을 입력해주세요. (예: 0108)" : modalPurpose === "unlock" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부의 생일을 입력해주세요. (예: 0315)" : "전화번호 뒷 4자리를 입력해주세요.",
+        title: modalPurpose === "siren" ? "🚨 긴급 토글" : modalPurpose === "reply" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑 확인" : modalPurpose === "reply" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부 확인" : modalPurpose === "reply" ? "관리자 확인" : modalPurpose === "unlock" && ((selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" || (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride") ? "생일 확인" : "전화번호 확인",
+        description: modalPurpose === "siren" ? "관리자 비밀번호를 입력해주세요." : modalPurpose === "reply" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑의 생일을 입력해주세요. (예: 0108)" : modalPurpose === "reply" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부의 생일을 입력해주세요. (예: 0315)" : modalPurpose === "reply" ? "신랑/신부 전용 비밀번호를 입력해주세요." : modalPurpose === "unlock" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑의 생일을 입력해주세요. (예: 0108)" : modalPurpose === "unlock" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부의 생일을 입력해주세요. (예: 0315)" : "전화번호 뒷 4자리를 입력해주세요.",
         onConfirm: handleModalConfirm,
         children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -20835,6 +20901,31 @@ function Guestbook({ showToast }) {
     /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isReplyInputModalOpen, onClose: () => setIsReplyInputModalOpen(false), title: "답글 남기기", description: "게스트에게 전할 소중한 메시지를 입력하세요.", onConfirm: confirmReply, confirmLabel: "답글저장", children: /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalReplyText, onChange: (e) => setModalReplyText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "감사의 인사를 남겨주세요." }) })
   ] });
 }
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const Phone = createLucideIcon("Phone", [
+  [
+    "path",
+    {
+      d: "M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z",
+      key: "foiqr5"
+    }
+  ]
+]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const Mail = createLucideIcon("Mail", [
+  ["rect", { width: "20", height: "16", x: "2", y: "4", rx: "2", key: "18n3k1" }],
+  ["path", { d: "m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7", key: "1ocrg3" }]
+]);
 function Share() {
   const [ref, isVisible] = useScrollReveal();
   const [expanded, setExpanded] = reactExports.useState(true);
@@ -20863,10 +20954,30 @@ function Share() {
               draggable: false
             }
           ),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-left", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-left flex-1", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-bold text-stone-800 text-[15px] leading-tight", children: "신동욱" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[12px] text-stone-400 mt-0.5", children: "Shin Dong-wook" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[12px] text-rose-400 font-semibold mt-1", children: "AIINTERSYS CEO / 융합공학 박사" })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-2 shrink-0", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "a",
+              {
+                href: "tel:01027312579",
+                style: { touchAction: "manipulation" },
+                className: "w-12 h-12 rounded-xl bg-emerald-500 flex items-center justify-center shadow-sm active:bg-emerald-600 select-none",
+                children: /* @__PURE__ */ jsxRuntimeExports.jsx(Phone, { size: 22, className: "text-white", strokeWidth: 2 })
+              }
+            ),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "a",
+              {
+                href: "mailto:sdw1904@naver.com",
+                style: { touchAction: "manipulation" },
+                className: "w-12 h-12 rounded-xl bg-blue-500 flex items-center justify-center shadow-sm active:bg-blue-600 select-none",
+                children: /* @__PURE__ */ jsxRuntimeExports.jsx(Mail, { size: 22, className: "text-white", strokeWidth: 2 })
+              }
+            )
           ] })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("hr", { className: "border-stone-100" }),
@@ -21409,7 +21520,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "186"
+        "187"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
