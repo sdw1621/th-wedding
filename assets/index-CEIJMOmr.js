@@ -19028,8 +19028,13 @@ function Hero() {
         "button",
         {
           onPointerDown: addToCalendar,
-          style: { touchAction: "manipulation" },
-          className: "mt-10 flex items-center space-x-2 px-6 py-2.5 bg-white/90 border border-stone-200 rounded-full text-stone-600 text-[11px] font-bold active:bg-stone-50 shadow-sm select-none",
+          style: {
+            touchAction: "manipulation",
+            background: "linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(248,248,255,0.92) 100%)",
+            boxShadow: "inset 0 1.5px 0 rgba(255,255,255,1), inset 1px 0 0 rgba(255,255,255,0.7), 0 2px 10px rgba(0,0,0,0.07)",
+            borderColor: "rgba(215,215,240,0.8)"
+          },
+          className: "mt-10 flex items-center space-x-2 px-6 py-2.5 border rounded-2xl text-stone-600 text-[11px] font-bold active:opacity-70 select-none",
           children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(Calendar, { size: 14 }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "캘린더에 일정 추가" })
@@ -21656,7 +21661,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "198"
+        "199"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
