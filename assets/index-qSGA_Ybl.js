@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "246"
+            "247"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20521,15 +20521,15 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                 /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
                   e.stopPropagation();
                   openPasswordModal(msg, "reply");
-                }, className: `px-2 py-1 text-[11px] font-bold rounded-lg select-none ${isDev ? "text-stone-400 active:bg-stone-700" : "text-stone-400 active:bg-stone-100"}`, style: { touchAction: "manipulation" }, children: "답글" }),
+                }, className: `px-2 py-1 text-[11px] font-bold rounded-lg border select-none ${isDev ? "text-stone-400 border-stone-600 active:bg-stone-700" : "text-stone-400 border-stone-200 active:bg-stone-100"}`, style: { touchAction: "manipulation" }, children: "답글" }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
                   e.stopPropagation();
                   openPasswordModal(msg, "edit");
-                }, className: `px-2 py-1 text-[11px] font-bold rounded-lg select-none ${isDev ? "text-stone-400 active:bg-stone-700" : "text-stone-400 active:bg-stone-100"}`, style: { touchAction: "manipulation" }, children: "수정" }),
+                }, className: `px-2 py-1 text-[11px] font-bold rounded-lg border select-none ${isDev ? "text-stone-400 border-stone-600 active:bg-stone-700" : "text-stone-400 border-stone-200 active:bg-stone-100"}`, style: { touchAction: "manipulation" }, children: "수정" }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
                   e.stopPropagation();
                   openPasswordModal(msg, "delete");
-                }, className: `px-2 py-1 text-[11px] font-bold rounded-lg select-none ${isDev ? "text-stone-400 active:bg-stone-700" : "text-rose-400 active:bg-rose-50"}`, style: { touchAction: "manipulation" }, children: "삭제" })
+                }, className: `px-2 py-1 text-[11px] font-bold rounded-lg border select-none ${isDev ? "text-stone-400 border-stone-600 active:bg-stone-700" : "text-rose-400 border-rose-200 active:bg-rose-50"}`, style: { touchAction: "manipulation" }, children: "삭제" })
               ] })
             ] }),
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center space-x-2", children: [
@@ -20566,11 +20566,11 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                   /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
                     e.stopPropagation();
                     openPasswordModal(msg, "reply");
-                  }, className: "px-1.5 py-0.5 text-[10px] font-bold rounded select-none text-stone-400 active:bg-stone-100", style: { touchAction: "manipulation" }, children: "수정" }),
+                  }, className: "px-1.5 py-0.5 text-[10px] font-bold rounded border border-stone-200 select-none text-stone-400 active:bg-stone-100", style: { touchAction: "manipulation" }, children: "수정" }),
                   /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
                     e.stopPropagation();
                     openPasswordModal(msg, "deleteReply");
-                  }, className: "px-1.5 py-0.5 text-[10px] font-bold rounded select-none text-rose-400 active:bg-rose-50", style: { touchAction: "manipulation" }, children: "삭제" })
+                  }, className: "px-1.5 py-0.5 text-[10px] font-bold rounded border border-rose-200 select-none text-rose-400 active:bg-rose-50", style: { touchAction: "manipulation" }, children: "삭제" })
                 ] })
               ] }),
               replyLong ? /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
@@ -20628,12 +20628,12 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                         e.stopPropagation();
                         openPasswordModal(msg, "reply");
                         setShowFullModal(false);
-                      }, className: "px-1.5 py-0.5 text-[10px] font-bold rounded select-none text-stone-400 active:bg-stone-100", style: { touchAction: "manipulation" }, children: "수정" }),
+                      }, className: "px-1.5 py-0.5 text-[10px] font-bold rounded border border-stone-200 select-none text-stone-400 active:bg-stone-100", style: { touchAction: "manipulation" }, children: "수정" }),
                       /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
                         e.stopPropagation();
                         openPasswordModal(msg, "deleteReply");
                         setShowFullModal(false);
-                      }, className: "px-1.5 py-0.5 text-[10px] font-bold rounded select-none text-rose-400 active:bg-rose-50", style: { touchAction: "manipulation" }, children: "삭제" })
+                      }, className: "px-1.5 py-0.5 text-[10px] font-bold rounded border border-rose-200 select-none text-rose-400 active:bg-rose-50", style: { touchAction: "manipulation" }, children: "삭제" })
                     ] })
                   ] }),
                   /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: `text-[13px] font-medium leading-relaxed whitespace-pre-wrap ${msg.receiver === "groom" ? "text-blue-800" : msg.receiver === "bride" ? "text-rose-800" : "text-stone-700"}`, children: msg.reply })
@@ -21309,7 +21309,7 @@ function Guestbook({ showToast }) {
       {
         isOpen: isPasswordModalOpen,
         onClose: () => setIsPasswordModalOpen(false),
-        sender: selectedMsg == null ? void 0 : selectedMsg.name,
+        sender: modalPurpose !== "reply" && modalPurpose !== "deleteReply" ? selectedMsg == null ? void 0 : selectedMsg.name : void 0,
         title: modalPurpose === "siren" ? "🚨 긴급 토글" : (modalPurpose === "reply" || modalPurpose === "deleteReply") && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑 확인" : (modalPurpose === "reply" || modalPurpose === "deleteReply") && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부 확인" : modalPurpose === "reply" || modalPurpose === "deleteReply" ? "관리자 확인" : (selectedMsg == null ? void 0 : selectedMsg.is_dev) === true ? "관리자 확인" : modalPurpose === "unlock" && ((selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" || (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride") ? "생일 확인" : "전화번호 확인",
         description: modalPurpose === "siren" ? "개발자 비밀번호를 입력해주세요." : (modalPurpose === "reply" || modalPurpose === "deleteReply") && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑의 생일을 입력해주세요. (예: 0108)" : (modalPurpose === "reply" || modalPurpose === "deleteReply") && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부의 생일을 입력해주세요. (예: 0315)" : modalPurpose === "reply" || modalPurpose === "deleteReply" ? "신랑/신부 전용 비밀번호를 입력해주세요." : (selectedMsg == null ? void 0 : selectedMsg.is_dev) === true ? "관리자 비밀번호를 입력해주세요." : modalPurpose === "unlock" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑의 생일을 입력해주세요. (예: 0108)" : modalPurpose === "unlock" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부의 생일을 입력해주세요. (예: 0315)" : "전화번호 뒷 4자리를 입력해주세요.",
         onConfirm: handleModalConfirm,
