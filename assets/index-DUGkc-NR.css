@@ -1426,6 +1426,10 @@ video {
   justify-content: space-around;
 }
 
+.gap-0{
+  gap: 0px;
+}
+
 .gap-1{
   gap: 0.25rem;
 }
@@ -2601,6 +2605,10 @@ video {
   opacity: 0.3;
 }
 
+.opacity-40{
+  opacity: 0.4;
+}
+
 .opacity-50{
   opacity: 0.5;
 }
@@ -3394,16 +3402,6 @@ body.nav-hidden .app-back-btn {
 .active\:text-blue-600:active{
   --tw-text-opacity: 1;
   color: rgb(37 99 235 / var(--tw-text-opacity, 1));
-}
-
-.active\:text-red-400:active{
-  --tw-text-opacity: 1;
-  color: rgb(248 113 113 / var(--tw-text-opacity, 1));
-}
-
-.active\:text-rose-400:active{
-  --tw-text-opacity: 1;
-  color: rgb(251 113 133 / var(--tw-text-opacity, 1));
 }
 
 .active\:text-rose-500:active{

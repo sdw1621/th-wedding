@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "243"
+            "244"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20377,35 +20377,6 @@ const Send = createLucideIcon("Send", [
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const Trash2 = createLucideIcon("Trash2", [
-  ["path", { d: "M3 6h18", key: "d0wm0j" }],
-  ["path", { d: "M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6", key: "4alrt4" }],
-  ["path", { d: "M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2", key: "v07s0e" }],
-  ["line", { x1: "10", x2: "10", y1: "11", y2: "17", key: "1uufr5" }],
-  ["line", { x1: "14", x2: "14", y1: "11", y2: "17", key: "xtxkd" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const Pencil = createLucideIcon("Pencil", [
-  [
-    "path",
-    {
-      d: "M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z",
-      key: "1a8usu"
-    }
-  ],
-  ["path", { d: "m15 5 4 4", key: "1mk7zo" }]
-]);
-/**
- * @license lucide-react v0.460.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
 const MessageSquare = createLucideIcon("MessageSquare", [
   ["path", { d: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z", key: "1lielz" }]
 ]);
@@ -20550,15 +20521,15 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                 /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
                   e.stopPropagation();
                   openPasswordModal(msg, "reply");
-                }, className: `p-3 -m-1 select-none ${isDev ? "text-stone-400 active:text-stone-200" : "text-stone-300 active:text-stone-600"}`, style: { touchAction: "manipulation" }, title: "답글 남기기", children: /* @__PURE__ */ jsxRuntimeExports.jsx(MessageSquare, { size: 16 }) }),
+                }, className: "p-3 -m-1 select-none text-lg leading-none opacity-40 active:opacity-80", style: { touchAction: "manipulation" }, title: "답글 남기기", children: "💬" }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
                   e.stopPropagation();
                   openPasswordModal(msg, "edit");
-                }, className: `p-3 -m-1 select-none ${isDev ? "text-stone-400 active:text-stone-200" : "text-stone-300 active:text-stone-600"}`, style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Pencil, { size: 16 }) }),
+                }, className: "p-3 -m-1 select-none text-lg leading-none opacity-40 active:opacity-80", style: { touchAction: "manipulation" }, children: "✏️" }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
                   e.stopPropagation();
                   openPasswordModal(msg, "delete");
-                }, className: `p-3 -m-1 select-none ${isDev ? "text-stone-400 active:text-red-400" : "text-stone-300 active:text-rose-400"}`, style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Trash2, { size: 16 }) })
+                }, className: "p-3 -m-1 select-none text-lg leading-none opacity-40 active:opacity-80", style: { touchAction: "manipulation" }, children: "🗑️" })
               ] })
             ] }),
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center space-x-2", children: [
@@ -20591,15 +20562,15 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                   /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[22px] leading-none", children: msg.receiver === "groom" ? "🤵" : msg.receiver === "bride" ? "👰" : "🤵👰" }),
                   /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[11px] font-bold px-1.5 py-0.5 rounded ${msg.receiver === "groom" ? "bg-blue-100 text-blue-700" : msg.receiver === "bride" ? "bg-rose-100 text-rose-700" : "bg-amber-100 text-amber-700"}`, children: msg.receiver === "groom" ? "강태구" : msg.receiver === "bride" ? "신희영" : "강태구 & 신희영" })
                 ] }),
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-0", children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
                     e.stopPropagation();
                     openPasswordModal(msg, "reply");
-                  }, className: "p-1.5 -m-0.5 rounded-lg select-none text-stone-300 active:text-stone-600", style: { touchAction: "manipulation" }, title: "답글 수정", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Pencil, { size: 13 }) }),
+                  }, className: "p-1.5 -m-0.5 select-none text-[15px] leading-none opacity-40 active:opacity-80", style: { touchAction: "manipulation" }, title: "답글 수정", children: "✏️" }),
                   /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
                     e.stopPropagation();
                     openPasswordModal(msg, "deleteReply");
-                  }, className: "p-1.5 -m-0.5 rounded-lg select-none text-stone-300 active:text-rose-400", style: { touchAction: "manipulation" }, title: "답글 삭제", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Trash2, { size: 13 }) })
+                  }, className: "p-1.5 -m-0.5 select-none text-[15px] leading-none opacity-40 active:opacity-80", style: { touchAction: "manipulation" }, title: "답글 삭제", children: "🗑️" })
                 ] })
               ] }),
               replyLong ? /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
@@ -20652,17 +20623,17 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                       /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[22px] leading-none", children: msg.receiver === "groom" ? "🤵" : msg.receiver === "bride" ? "👰" : "🤵👰" }),
                       /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[11px] font-bold px-1.5 py-0.5 rounded ${msg.receiver === "groom" ? "bg-blue-100 text-blue-700" : msg.receiver === "bride" ? "bg-rose-100 text-rose-700" : "bg-amber-100 text-amber-700"}`, children: msg.receiver === "groom" ? "강태구" : msg.receiver === "bride" ? "신희영" : "강태구 & 신희영" })
                     ] }),
-                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1", children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-0", children: [
                       /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
                         e.stopPropagation();
                         openPasswordModal(msg, "reply");
                         setShowFullModal(false);
-                      }, className: "p-1.5 rounded-lg select-none text-stone-300 active:text-stone-600", style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Pencil, { size: 13 }) }),
+                      }, className: "p-1.5 select-none text-[15px] leading-none opacity-40 active:opacity-80", style: { touchAction: "manipulation" }, children: "✏️" }),
                       /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
                         e.stopPropagation();
                         openPasswordModal(msg, "deleteReply");
                         setShowFullModal(false);
-                      }, className: "p-1.5 rounded-lg select-none text-stone-300 active:text-rose-400", style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Trash2, { size: 13 }) })
+                      }, className: "p-1.5 select-none text-[15px] leading-none opacity-40 active:opacity-80", style: { touchAction: "manipulation" }, children: "🗑️" })
                     ] })
                   ] }),
                   /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: `text-[13px] font-medium leading-relaxed whitespace-pre-wrap ${msg.receiver === "groom" ? "text-blue-800" : msg.receiver === "bride" ? "text-rose-800" : "text-stone-700"}`, children: msg.reply })
