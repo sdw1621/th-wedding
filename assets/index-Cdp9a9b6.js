@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "240"
+            "241"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20595,11 +20595,11 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                   /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
                     e.stopPropagation();
                     openPasswordModal(msg, "reply");
-                  }, className: `p-1.5 -m-0.5 rounded-lg select-none ${msg.receiver === "groom" ? "text-blue-300 active:text-blue-600" : msg.receiver === "bride" ? "text-rose-300 active:text-rose-600" : "text-amber-300 active:text-amber-600"}`, style: { touchAction: "manipulation" }, title: "답글 수정", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Pencil, { size: 13 }) }),
+                  }, className: "p-1.5 -m-0.5 rounded-lg select-none text-stone-300 active:text-stone-600", style: { touchAction: "manipulation" }, title: "답글 수정", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Pencil, { size: 13 }) }),
                   /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
                     e.stopPropagation();
                     openPasswordModal(msg, "deleteReply");
-                  }, className: `p-1.5 -m-0.5 rounded-lg select-none ${msg.receiver === "groom" ? "text-blue-200 active:text-red-400" : msg.receiver === "bride" ? "text-rose-200 active:text-red-400" : "text-amber-200 active:text-red-400"}`, style: { touchAction: "manipulation" }, title: "답글 삭제", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Trash2, { size: 13 }) })
+                  }, className: "p-1.5 -m-0.5 rounded-lg select-none text-stone-300 active:text-rose-400", style: { touchAction: "manipulation" }, title: "답글 삭제", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Trash2, { size: 13 }) })
                 ] })
               ] }),
               replyLong ? /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
@@ -20657,12 +20657,12 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                         e.stopPropagation();
                         openPasswordModal(msg, "reply");
                         setShowFullModal(false);
-                      }, className: `p-1.5 rounded-lg select-none ${msg.receiver === "groom" ? "text-blue-300 active:text-blue-600" : msg.receiver === "bride" ? "text-rose-300 active:text-rose-600" : "text-amber-300 active:text-amber-600"}`, style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Pencil, { size: 13 }) }),
+                      }, className: "p-1.5 rounded-lg select-none text-stone-300 active:text-stone-600", style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Pencil, { size: 13 }) }),
                       /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
                         e.stopPropagation();
                         openPasswordModal(msg, "deleteReply");
                         setShowFullModal(false);
-                      }, className: `p-1.5 rounded-lg select-none ${msg.receiver === "groom" ? "text-blue-200 active:text-red-400" : msg.receiver === "bride" ? "text-rose-200 active:text-red-400" : "text-amber-200 active:text-red-400"}`, style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Trash2, { size: 13 }) })
+                      }, className: "p-1.5 rounded-lg select-none text-stone-300 active:text-rose-400", style: { touchAction: "manipulation" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Trash2, { size: 13 }) })
                     ] })
                   ] }),
                   /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: `text-[13px] font-medium leading-relaxed whitespace-pre-wrap ${msg.receiver === "groom" ? "text-blue-800" : msg.receiver === "bride" ? "text-rose-800" : "text-stone-700"}`, children: msg.reply })
@@ -21355,8 +21355,14 @@ function Guestbook({ showToast }) {
     ),
     /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isDeleteModalOpen, onClose: () => setIsDeleteModalOpen(false), title: "메시지 삭제", description: (selectedMsg == null ? void 0 : selectedMsg.reply) ? "이 메시지에는 답글이 달려 있습니다. 삭제 시 답글도 함께 삭제됩니다." : "삭제하면 되돌릴 수 없습니다. 정말 삭제할까요?", onConfirm: confirmDelete, confirmLabel: "삭제", isDestructive: true }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isDeleteReplyModalOpen, onClose: () => setIsDeleteReplyModalOpen(false), title: "답글 삭제", description: "답글을 삭제하면 되돌릴 수 없습니다. 정말 삭제할까요?", onConfirm: confirmDeleteReply, confirmLabel: "삭제", isDestructive: true }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isEditModalOpen, onClose: () => setIsEditModalOpen(false), title: "메시지 수정", onConfirm: confirmEdit, confirmLabel: "수정완료", children: /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalEditText, onChange: (e) => setModalEditText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none" }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isReplyInputModalOpen, onClose: () => setIsReplyInputModalOpen(false), title: "답글 남기기", description: "게스트에게 전할 소중한 메시지를 입력하세요.", onConfirm: confirmReply, confirmLabel: "답글저장", children: /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalReplyText, onChange: (e) => setModalReplyText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "감사의 인사를 남겨주세요." }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isEditModalOpen, onClose: () => setIsEditModalOpen(false), title: "메시지 수정", onConfirm: confirmEdit, confirmLabel: "수정완료", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalEditText, onChange: (e) => setModalEditText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 pr-9 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none" }),
+      modalEditText.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => setModalEditText(""), className: "absolute top-2 right-2 w-6 h-6 flex items-center justify-center rounded-full bg-stone-200 text-stone-500 text-[12px] font-bold active:bg-stone-300 select-none", style: { touchAction: "manipulation" }, children: "✕" })
+    ] }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isReplyInputModalOpen, onClose: () => setIsReplyInputModalOpen(false), title: "답글 남기기", description: "게스트에게 전할 소중한 메시지를 입력하세요.", onConfirm: confirmReply, confirmLabel: "답글저장", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("textarea", { value: modalReplyText, onChange: (e) => setModalReplyText(e.target.value), className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-4 pr-9 text-[16px] text-stone-800 h-24 resize-none focus:ring-2 focus:ring-stone-100 outline-none", placeholder: "감사의 인사를 남겨주세요." }),
+      modalReplyText.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => setModalReplyText(""), className: "absolute top-2 right-2 w-6 h-6 flex items-center justify-center rounded-full bg-stone-200 text-stone-500 text-[12px] font-bold active:bg-stone-300 select-none", style: { touchAction: "manipulation" }, children: "✕" })
+    ] }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs(
       ModernModal,
       {
