@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "228"
+            "229"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20994,6 +20994,7 @@ function Guestbook({ showToast }) {
     }
   };
   const familyCount = reactExports.useMemo(() => messages.filter((m) => FAMILY_NAMES_FILTER.includes(m.name)).length, [messages, FAMILY_NAMES_FILTER]);
+  const devCount = reactExports.useMemo(() => messages.filter((m) => m.is_dev === true).length, [messages]);
   const familyNamesWithMessages = reactExports.useMemo(
     () => FAMILY_NAMES_FILTER.filter((name) => messages.some((m) => m.name === name)),
     [messages, FAMILY_NAMES_FILTER]
@@ -21007,6 +21008,9 @@ function Guestbook({ showToast }) {
         return messages.filter((m) => m.name === familyFilterName);
       }
       return messages.filter((m) => FAMILY_NAMES_FILTER.includes(m.name));
+    }
+    if (messageFilter === "dev") {
+      return messages.filter((m) => m.is_dev === true);
     }
     return messages;
   }, [messages, messageFilter, myName, familyFilterName, FAMILY_NAMES_FILTER]);
@@ -21175,6 +21179,21 @@ function Guestbook({ showToast }) {
             style: { touchAction: "manipulation", ...messageFilter === "mine" ? {} : glassStyle },
             className: `flex-1 py-2.5 rounded-xl text-[13px] font-bold transition-all select-none border ${messageFilter === "mine" ? "bg-rose-500 text-white border-rose-500 shadow-md" : "text-stone-400"}`,
             children: messageFilter === "mine" ? `"${myName}" ${filteredMessages.length}개` : "내가 쓴 글"
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "button",
+          {
+            onClick: () => setMessageFilter(messageFilter === "dev" ? "all" : "dev"),
+            style: { touchAction: "manipulation", ...messageFilter === "dev" ? { background: "linear-gradient(145deg, rgba(14,12,24,0.99) 0%, rgba(26,20,40,1) 100%)", borderColor: "rgba(105,88,140,0.6)", boxShadow: "0 3px 8px rgba(0,0,0,0.5)" } : glassStyle },
+            className: `flex-1 py-2.5 rounded-xl text-[13px] font-bold transition-all select-none border ${messageFilter === "dev" ? "text-stone-200 shadow-md" : "text-stone-400"}`,
+            children: messageFilter === "dev" ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+              "👨‍💻 공지 ",
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-400", children: filteredMessages.length })
+            ] }) : /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+              "👨‍💻 ",
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-300", children: devCount })
+            ] })
           }
         )
       ] }),
