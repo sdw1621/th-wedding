@@ -19572,7 +19572,7 @@ function Gallery({ onFullscreenChange }) {
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           "button",
           {
-            className: `absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-stone-600 z-10 active:bg-white select-none transition-opacity duration-200 ${currentScrollIdx === 0 ? "opacity-0 pointer-events-none" : "opacity-100"}`,
+            className: `absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-stone-800/80 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-white z-10 active:bg-stone-900 select-none transition-opacity duration-200 ${currentScrollIdx === 0 ? "opacity-0 pointer-events-none" : "opacity-100"}`,
             style: { touchAction: "manipulation" },
             onPointerDown: (e) => {
               e.stopPropagation();
@@ -19614,7 +19614,7 @@ function Gallery({ onFullscreenChange }) {
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           "button",
           {
-            className: `absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-stone-600 z-10 active:bg-white select-none transition-opacity duration-200 ${currentScrollIdx === images.length - 1 ? "opacity-0 pointer-events-none" : "opacity-100"}`,
+            className: `absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-stone-800/80 backdrop-blur-sm shadow-md rounded-full flex items-center justify-center text-white z-10 active:bg-stone-900 select-none transition-opacity duration-200 ${currentScrollIdx === images.length - 1 ? "opacity-0 pointer-events-none" : "opacity-100"}`,
             style: { touchAction: "manipulation" },
             onPointerDown: (e) => {
               e.stopPropagation();
@@ -19669,7 +19669,7 @@ function Gallery({ onFullscreenChange }) {
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             "button",
             {
-              className: "absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-stone-800/75 backdrop-blur-md text-white shadow-lg active:bg-stone-900/90 transition-colors select-none",
+              className: "absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-stone-800 shadow-lg active:bg-white/95 transition-colors select-none",
               style: { touchAction: "manipulation" },
               onPointerDown: (e) => {
                 e.stopPropagation();
@@ -19681,7 +19681,7 @@ function Gallery({ onFullscreenChange }) {
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             "button",
             {
-              className: "absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-stone-800/75 backdrop-blur-md text-white shadow-lg active:bg-stone-900/90 transition-colors select-none",
+              className: "absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-stone-800 shadow-lg active:bg-white/95 transition-colors select-none",
               style: { touchAction: "manipulation" },
               onPointerDown: (e) => {
                 e.stopPropagation();
@@ -21326,7 +21326,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "179"
+        "180"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
