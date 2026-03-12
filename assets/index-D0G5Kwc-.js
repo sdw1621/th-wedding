@@ -19032,7 +19032,12 @@ function Greeting() {
   const [ref, isVisible] = useScrollReveal();
   return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 text-center", id: "greeting", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(Heart, { className: "mx-auto text-rose-200 mb-8", size: 28, strokeWidth: 1.5 }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest mb-12 text-stone-800 font-bold", children: "결혼합니다" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-2xl font-serif tracking-[0.2em] text-stone-900 font-bold mb-3", children: "결혼합니다" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-center gap-2 mb-12", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-[1.5px] w-10 bg-gradient-to-r from-transparent to-red-400 rounded-full" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-1.5 h-1.5 rotate-45 bg-red-400 flex-shrink-0" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-[1.5px] w-10 bg-gradient-to-l from-transparent to-red-400 rounded-full" })
+    ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-6 text-stone-700 leading-relaxed text-[15px] break-keep font-medium", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { children: [
         "서로를 마주 보며 다져온 인연을",
@@ -19487,7 +19492,12 @@ function Gallery({ onFullscreenChange }) {
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-2xl mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-8 px-6", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(Camera, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "우리의 빛나는 순간" })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-2xl font-serif tracking-[0.2em] text-stone-900 font-bold mb-3", children: "우리의 빛나는 순간" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-center gap-2", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-[1.5px] w-10 bg-gradient-to-r from-transparent to-red-400 rounded-full" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-1.5 h-1.5 rotate-45 bg-red-400 flex-shrink-0" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-[1.5px] w-10 bg-gradient-to-l from-transparent to-red-400 rounded-full" })
+        ] })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-center mb-4 px-6", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-stone-500 font-medium whitespace-nowrap", children: "크게 보시고 싶으시면 영상 터치 후 Youtube 로고를 눌러주세요 👆" }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-6 mb-6 relative z-30", ref: ytContainerRef, children: [
@@ -19870,7 +19880,12 @@ function Location() {
   return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 bg-[#FDFBF7]", id: "location", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `max-w-lg mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-10", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(MapPin, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "식사 자리 안내" })
+      /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-2xl font-serif tracking-[0.2em] text-stone-900 font-bold mb-3", children: "식사 자리 안내" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-center gap-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-[1.5px] w-10 bg-gradient-to-r from-transparent to-red-400 rounded-full" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-1.5 h-1.5 rotate-45 bg-red-400 flex-shrink-0" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-[1.5px] w-10 bg-gradient-to-l from-transparent to-red-400 rounded-full" })
+      ] })
     ] }),
     !unlocked && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-6 flex flex-col items-center gap-3", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20144,7 +20159,12 @@ function AccountInfo({ showToast }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-24 px-6 bg-stone-50", id: "account", ref, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-md mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-10", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(Gift, { className: "mx-auto text-rose-200 mb-4", size: 28, strokeWidth: 1.5 }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-xl font-serif tracking-widest text-stone-800 font-bold", children: "마음 전하실 곳" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-2xl font-serif tracking-[0.2em] text-stone-900 font-bold mb-3", children: "마음 전하실 곳" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-center gap-2 mb-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-[1.5px] w-10 bg-gradient-to-r from-transparent to-red-400 rounded-full" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-1.5 h-1.5 rotate-45 bg-red-400 flex-shrink-0" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-[1.5px] w-10 bg-gradient-to-l from-transparent to-red-400 rounded-full" })
+      ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm text-stone-600 mt-4 leading-relaxed font-medium", children: [
         "따뜻한 마음으로 축하해 주시는",
         /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
@@ -20762,9 +20782,11 @@ function Guestbook({ showToast }) {
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-md mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-10 flex flex-col items-center", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx(MessageSquare, { className: "mx-auto text-rose-200", size: 28, strokeWidth: 1.5 }) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "text-2xl font-serif tracking-[0.2em] text-stone-900 font-bold mb-3 relative", children: [
-          "방명록",
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -bottom-3 left-0 w-full h-[2px] bg-red-600" })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-2xl font-serif tracking-[0.2em] text-stone-900 font-bold mb-3", children: "방명록" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-center gap-2", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-[1.5px] w-10 bg-gradient-to-r from-transparent to-red-400 rounded-full" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-1.5 h-1.5 rotate-45 bg-red-400 flex-shrink-0" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-[1.5px] w-10 bg-gradient-to-l from-transparent to-red-400 rounded-full" })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-[14px] text-stone-600 font-medium leading-relaxed break-keep mt-7", children: [
           "가족식으로 진행되어 하객 초청은 하지 않습니다.",
@@ -21407,7 +21429,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "184"
+        "185"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
