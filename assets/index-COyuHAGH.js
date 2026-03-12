@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "230"
+            "231"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -21179,7 +21179,7 @@ function Guestbook({ showToast }) {
               setIsNameFilterModalOpen(true);
             },
             style: { touchAction: "manipulation", ...messageFilter === "mine" ? {} : glassStyle },
-            className: `flex-1 py-2.5 rounded-xl text-[13px] font-bold transition-all select-none border ${messageFilter === "mine" ? "bg-rose-500 text-white border-rose-500 shadow-md" : "text-stone-400"}`,
+            className: `flex-1 py-2.5 rounded-xl font-bold transition-all select-none border whitespace-nowrap overflow-hidden ${messageFilter === "mine" ? "bg-rose-500 text-white border-rose-500 shadow-md text-[11px]" : "text-stone-400 text-[13px]"}`,
             children: messageFilter === "mine" ? `"${myName}" ${filteredMessages.length}개` : "내가 쓴 글"
           }
         ),
