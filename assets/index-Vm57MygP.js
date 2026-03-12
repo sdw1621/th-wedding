@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "236"
+            "237"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20736,9 +20736,10 @@ function Guestbook({ showToast }) {
   const [filterNameInput, setFilterNameInput] = reactExports.useState("");
   const [selectedFilterNames, setSelectedFilterNames] = reactExports.useState(/* @__PURE__ */ new Set());
   const [nameFilterConsonant, setNameFilterConsonant] = reactExports.useState(null);
-  const [familyFilterName, setFamilyFilterName] = reactExports.useState("");
+  const [familyFilterNames, setFamilyFilterNames] = reactExports.useState([]);
   const [isFamilyFilterModalOpen, setIsFamilyFilterModalOpen] = reactExports.useState(false);
-  const [filterFamilyInput, setFilterFamilyInput] = reactExports.useState("");
+  const [selectedFamilyFilterNames, setSelectedFamilyFilterNames] = reactExports.useState(/* @__PURE__ */ new Set());
+  const [familyFilterConsonant, setFamilyFilterConsonant] = reactExports.useState(null);
   const [isFamilyPinModalOpen, setIsFamilyPinModalOpen] = reactExports.useState(false);
   const [familyPinValue, setFamilyPinValue] = reactExports.useState("");
   const [showFamilyPin, setShowFamilyPin] = reactExports.useState(false);
@@ -21012,6 +21013,25 @@ function Guestbook({ showToast }) {
     () => FAMILY_NAMES_FILTER.filter((name) => messages.some((m) => m.name === name)),
     [messages, FAMILY_NAMES_FILTER]
   );
+  const familyNamesGroupedByChosung = reactExports.useMemo(() => {
+    const groups = {};
+    for (const name of familyNamesWithMessages) {
+      const cs = getChosung(name);
+      if (!groups[cs]) groups[cs] = [];
+      groups[cs].push(name);
+    }
+    return groups;
+  }, [familyNamesWithMessages]);
+  const availableFamilyChosungs = reactExports.useMemo(
+    () => {
+      var _a;
+      return CHOSUNG.filter((cs) => {
+        var _a2;
+        return ((_a2 = familyNamesGroupedByChosung[cs]) == null ? void 0 : _a2.length) > 0;
+      }).concat(((_a = familyNamesGroupedByChosung["기타"]) == null ? void 0 : _a.length) > 0 ? ["기타"] : []);
+    },
+    [familyNamesGroupedByChosung]
+  );
   const CHOSUNG = ["ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ", "ㄹ", "ㅁ", "ㅂ", "ㅃ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅉ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"];
   const getChosung = (str) => {
     if (!str) return "기타";
@@ -21054,8 +21074,8 @@ function Guestbook({ showToast }) {
       return messages.filter((m) => myNames.includes(m.name));
     }
     if (messageFilter === "family") {
-      if (familyFilterName) {
-        return messages.filter((m) => m.name === familyFilterName);
+      if (familyFilterNames.length > 0) {
+        return messages.filter((m) => familyFilterNames.includes(m.name));
       }
       return messages.filter((m) => FAMILY_NAMES_FILTER.includes(m.name));
     }
@@ -21063,7 +21083,7 @@ function Guestbook({ showToast }) {
       return messages.filter((m) => m.is_dev === true);
     }
     return messages;
-  }, [messages, messageFilter, myNames, familyFilterName, FAMILY_NAMES_FILTER]);
+  }, [messages, messageFilter, myNames, familyFilterNames, FAMILY_NAMES_FILTER]);
   const totalPages = Math.max(1, Math.ceil(filteredMessages.length / MESSAGES_PER_PAGE));
   const prevMsgCount = React.useRef(messages.length);
   reactExports.useEffect(() => {
@@ -21206,14 +21226,22 @@ function Guestbook({ showToast }) {
             onClick: () => {
               setFamilyPinValue("");
               setShowFamilyPin(false);
+              setSelectedFamilyFilterNames(new Set(familyFilterNames));
+              setFamilyFilterConsonant(null);
               setIsFamilyPinModalOpen(true);
             },
             style: {
               touchAction: "manipulation",
               ...messageFilter === "family" ? { background: "linear-gradient(135deg, #FFB3C6 0%, #FFCBA4 35%, #FFF0A0 60%, #B8F0C8 80%, #B3C8FF 100%)", borderColor: "transparent" } : glassStyle
             },
-            className: `flex-1 py-2.5 rounded-xl text-[13px] font-bold transition-all select-none border ${messageFilter === "family" ? "text-stone-700 shadow-md" : "text-stone-400"}`,
-            children: messageFilter === "family" ? familyFilterName ? `"${familyFilterName}" ${filteredMessages.length}` : `직계가족 ${filteredMessages.length}` : /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+            className: `flex-1 py-2 rounded-xl font-bold transition-all select-none border leading-tight text-center ${messageFilter === "family" && familyFilterNames.length > 0 ? "text-stone-700 shadow-md" : messageFilter === "family" ? "text-stone-700 shadow-md text-[13px]" : "text-stone-400 text-[13px]"}`,
+            children: messageFilter === "family" ? familyFilterNames.length > 0 ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "block text-[10px]", children: familyFilterNames.length > 1 ? `${familyFilterNames[0]} 외 ${familyFilterNames.length - 1}명` : `"${familyFilterNames[0]}"` }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "block text-[10px]", children: [
+                filteredMessages.length,
+                "개"
+              ] })
+            ] }) : `직계가족 ${filteredMessages.length}` : /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
               "직계가족 ",
               /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-300", children: familyCount })
             ] })
@@ -21416,7 +21444,6 @@ function Guestbook({ showToast }) {
         onConfirm: () => {
           if (familyPinValue === "0313") {
             setIsFamilyPinModalOpen(false);
-            setFilterFamilyInput(familyFilterName);
             setIsFamilyFilterModalOpen(true);
           } else {
             showToast("비밀번호가 틀렸습니다.");
@@ -21437,7 +21464,6 @@ function Guestbook({ showToast }) {
             onEnter: () => {
               if (familyPinValue === "0313") {
                 setIsFamilyPinModalOpen(false);
-                setFilterFamilyInput(familyFilterName);
                 setIsFamilyFilterModalOpen(true);
               } else {
                 showToast("비밀번호가 틀렸습니다.");
@@ -21459,70 +21485,79 @@ function Guestbook({ showToast }) {
         isOpen: isFamilyFilterModalOpen,
         onClose: () => setIsFamilyFilterModalOpen(false),
         title: "가족 찾기",
-        description: /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: "이름을 선택하거나 직접 입력하세요." }),
-        confirmLabel: "찾기",
+        description: /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+          "이름을 선택하거나 직접 입력하세요.",
+          /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+          "여러 명 동시 선택도 가능해요."
+        ] }),
+        confirmLabel: `찾기${selectedFamilyFilterNames.size > 0 ? ` (${selectedFamilyFilterNames.size}명)` : ""}`,
         onConfirm: () => {
-          const trimmed = filterFamilyInput.trim();
-          setFamilyFilterName(trimmed);
+          const arr = Array.from(selectedFamilyFilterNames);
+          setFamilyFilterNames(arr);
           setMessageFilter("family");
           setIsFamilyFilterModalOpen(false);
         },
         children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-wrap gap-2 justify-center mb-3", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "button",
-              {
-                type: "button",
-                onPointerDown: () => setFilterFamilyInput(""),
-                style: { touchAction: "manipulation" },
-                className: `px-3 py-1.5 rounded-xl text-xs font-bold border select-none ${!filterFamilyInput ? "bg-rose-500 text-white border-rose-400" : "bg-stone-50 text-stone-500 border-stone-200 active:bg-stone-100"}`,
-                children: "전체"
-              }
-            ),
-            familyNamesWithMessages.map((name) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "button",
-              {
-                type: "button",
-                onPointerDown: () => setFilterFamilyInput(name),
-                style: { touchAction: "manipulation" },
-                className: `px-3 py-1.5 rounded-xl text-xs font-bold border select-none ${filterFamilyInput === name ? "bg-rose-500 text-white border-rose-400" : "bg-stone-50 text-stone-500 border-stone-200 active:bg-stone-100"}`,
-                children: name
-              },
-              name
-            ))
+          familyNamesWithMessages.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+            familyNamesWithMessages.length >= 10 && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-wrap gap-1.5 justify-center mb-2", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(
+                "button",
+                {
+                  type: "button",
+                  onPointerDown: () => setFamilyFilterConsonant(null),
+                  style: { touchAction: "manipulation" },
+                  className: `px-2.5 py-1 rounded-lg text-xs font-bold border select-none ${familyFilterConsonant === null ? "bg-stone-600 text-white border-stone-500" : "bg-stone-50 text-stone-500 border-stone-200 active:bg-stone-100"}`,
+                  children: "전체"
+                }
+              ),
+              availableFamilyChosungs.map((cs) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+                "button",
+                {
+                  type: "button",
+                  onPointerDown: () => setFamilyFilterConsonant(cs),
+                  style: { touchAction: "manipulation" },
+                  className: `px-2.5 py-1 rounded-lg text-xs font-bold border select-none ${familyFilterConsonant === cs ? "bg-stone-600 text-white border-stone-500" : "bg-stone-50 text-stone-500 border-stone-200 active:bg-stone-100"}`,
+                  children: cs
+                },
+                cs
+              ))
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-wrap gap-2 justify-center mb-3 max-h-40 overflow-y-auto", children: (familyNamesWithMessages.length >= 10 ? familyFilterConsonant ? familyNamesGroupedByChosung[familyFilterConsonant] || [] : familyNamesWithMessages : familyNamesWithMessages).map((name) => {
+              const isSelected = selectedFamilyFilterNames.has(name);
+              return /* @__PURE__ */ jsxRuntimeExports.jsx(
+                "button",
+                {
+                  type: "button",
+                  onPointerDown: () => setSelectedFamilyFilterNames((prev) => {
+                    const next = new Set(prev);
+                    if (next.has(name)) next.delete(name);
+                    else next.add(name);
+                    return next;
+                  }),
+                  style: { touchAction: "manipulation" },
+                  className: `px-2 py-1 rounded-lg text-[11px] font-bold border select-none ${isSelected ? "bg-rose-500 text-white border-rose-400" : "bg-stone-50 text-stone-500 border-stone-200 active:bg-stone-100"}`,
+                  children: name
+                },
+                name
+              );
+            }) })
           ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "input",
-              {
-                type: "text",
-                value: filterFamilyInput,
-                onChange: (e) => setFilterFamilyInput(e.target.value),
-                onKeyDown: (e) => {
-                  if (e.key === "Enter") {
-                    setFamilyFilterName(filterFamilyInput.trim());
-                    setMessageFilter("family");
-                    setIsFamilyFilterModalOpen(false);
-                  }
-                },
-                placeholder: "직접 이름 입력",
-                className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3.5 pr-11 text-[16px] text-stone-800 focus:ring-2 focus:ring-stone-100 outline-none"
-              }
-            ),
-            filterFamilyInput && /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "button",
-              {
-                type: "button",
-                onPointerDown: (e) => {
-                  e.preventDefault();
-                  setFilterFamilyInput("");
-                },
-                style: { touchAction: "manipulation" },
-                className: "absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-full bg-stone-200 text-stone-500 active:bg-stone-300",
-                children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { size: 14 })
-              }
-            )
-          ] })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-end mb-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
+            {
+              type: "button",
+              onPointerDown: (e) => {
+                e.preventDefault();
+                setMessageFilter("all");
+                setFamilyFilterNames([]);
+                setSelectedFamilyFilterNames(/* @__PURE__ */ new Set());
+                setIsFamilyFilterModalOpen(false);
+              },
+              style: { touchAction: "manipulation" },
+              className: "text-[12px] text-blue-400 font-medium active:text-blue-600 select-none border border-blue-200 rounded-lg px-2.5 py-1",
+              children: "필터 초기화"
+            }
+          ) })
         ]
       }
     )
