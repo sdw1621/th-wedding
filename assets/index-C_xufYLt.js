@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "253"
+            "254"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20691,7 +20691,8 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                 {
                   onClick: (e) => {
                     e.stopPropagation();
-                    onManageComment(c, "delete");
+                    setShowAllComments(false);
+                    setTimeout(() => onManageComment(c, "delete"), 150);
                   },
                   className: "shrink-0 self-start mt-0.5 px-1.5 py-0.5 text-[9px] font-bold text-rose-400 border border-rose-200 rounded active:bg-rose-50 select-none",
                   style: { touchAction: "manipulation" },
