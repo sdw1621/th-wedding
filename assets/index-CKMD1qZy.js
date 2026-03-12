@@ -19888,10 +19888,19 @@ function Location() {
       ),
       /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-stone-400", children: "가족 전용 공간 안내입니다." })
     ] }),
-    unlocked && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-4 flex items-center justify-center gap-1.5 text-[11px] text-emerald-500 font-bold", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(LockOpen, { size: 12 }),
-      "직계가족만 공개됨"
-    ] }),
+    unlocked && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-4 flex items-center justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      "button",
+      {
+        onPointerDown: () => setUnlocked(false),
+        style: { touchAction: "manipulation" },
+        className: "flex items-center gap-1.5 text-[11px] text-emerald-500 font-bold px-3 py-1.5 rounded-full border border-emerald-200 active:bg-emerald-50 select-none",
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(LockOpen, { size: 12 }),
+          "직계가족만 공개됨",
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Lock, { size: 11, className: "ml-0.5 text-emerald-400/70" })
+        ]
+      }
+    ) }),
     showModal && reactDomExports.createPortal(
       /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "fixed inset-0 z-[599] bg-stone-900/80 animate-in fade-in duration-300", onPointerDown: () => setShowModal(false) }),
@@ -21398,7 +21407,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "182"
+        "183"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
