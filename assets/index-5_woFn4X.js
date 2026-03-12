@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "249"
+            "250"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20522,7 +20522,7 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                 /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
                   e.stopPropagation();
                   openPasswordModal(msg, "reply");
-                }, className: `px-2 py-1 text-[11px] font-bold rounded-lg border select-none ${isDev ? "text-stone-400 border-stone-600 active:bg-stone-700" : "text-stone-400 border-stone-200 active:bg-stone-100"}`, style: { touchAction: "manipulation" }, children: "답글" }),
+                }, className: "px-2 py-1 text-[11px] font-bold rounded-lg border select-none text-stone-400 border-stone-200 active:bg-stone-100", style: { touchAction: "manipulation" }, children: "답글" }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
                   e.stopPropagation();
                   openPasswordModal(msg, "edit");
@@ -20616,47 +20616,21 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                   ]
                 }
               ),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-1 flex-wrap mt-1.5", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                  "button",
-                  {
-                    onClick: (e) => {
-                      e.stopPropagation();
-                      openCommentModal(msg, "guest");
-                    },
-                    className: `px-2 py-1 text-[10px] font-bold rounded-lg border select-none ${isDev ? "text-stone-400 border-stone-600 active:bg-stone-700" : "text-stone-500 border-stone-200 active:bg-stone-50"}`,
-                    style: { touchAction: "manipulation" },
-                    children: [
-                      "💬 ",
-                      msgComments.length > 0 ? `댓글 ${msgComments.length}개` : "댓글 달기"
-                    ]
-                  }
-                ),
-                !isDev && (msg.receiver === "public" || msg.receiver === "groom") && /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  "button",
-                  {
-                    onClick: (e) => {
-                      e.stopPropagation();
-                      openCommentModal(msg, "groom");
-                    },
-                    className: "px-2 py-1 text-[10px] font-bold rounded-lg border select-none text-blue-400 border-blue-200 active:bg-blue-50",
-                    style: { touchAction: "manipulation" },
-                    children: "🤵 신랑 답글"
-                  }
-                ),
-                !isDev && (msg.receiver === "public" || msg.receiver === "bride") && /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  "button",
-                  {
-                    onClick: (e) => {
-                      e.stopPropagation();
-                      openCommentModal(msg, "bride");
-                    },
-                    className: "px-2 py-1 text-[10px] font-bold rounded-lg border select-none text-rose-400 border-rose-200 active:bg-rose-50",
-                    style: { touchAction: "manipulation" },
-                    children: "👰 신부 답글"
-                  }
-                )
-              ] })
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex gap-1 flex-wrap mt-1.5", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                "button",
+                {
+                  onClick: (e) => {
+                    e.stopPropagation();
+                    openCommentModal(msg, "guest");
+                  },
+                  className: "px-2 py-1 text-[10px] font-bold rounded-lg border select-none text-stone-500 border-stone-200 active:bg-stone-50",
+                  style: { touchAction: "manipulation" },
+                  children: [
+                    "💬 ",
+                    msgComments.length > 0 ? `댓글 ${msgComments.length}개` : "댓글 달기"
+                  ]
+                }
+              ) })
             ] });
           })()
         ]
