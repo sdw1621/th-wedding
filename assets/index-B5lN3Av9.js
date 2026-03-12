@@ -20291,7 +20291,7 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
   const isLocked = msg.is_secret && !unlockedMessages[msg.id];
   const isDev = msg.name === "신동욱";
   let cardColorClass = isDev ? "bg-stone-50 border-stone-200" : msg.receiver === "groom" ? "bg-blue-50/60 border-blue-100" : msg.receiver === "bride" ? "bg-rose-50/60 border-rose-100" : "bg-white border-stone-100";
-  const guestEmoji = msg.receiver === "groom" ? "💙" : msg.receiver === "bride" ? "💗" : "🎊";
+  const guestEmoji = msg.receiver === "groom" ? "💙" : msg.receiver === "bride" ? "💗" : "✨";
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `${cardColorClass} p-5 rounded-2xl shadow-sm border flex flex-col relative group transition-all duration-300`, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-3", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-between items-center mb-1.5", children: [
@@ -20756,16 +20756,7 @@ function Share() {
   const [ref, isVisible] = useScrollReveal();
   const [expanded, setExpanded] = reactExports.useState(true);
   return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "-mt-20 pt-0 pb-8 bg-white relative rounded-t-[2rem] shadow-[0_-14px_40px_rgba(0,0,0,0.07)] overflow-hidden", id: "share", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref, className: `max-w-md mx-auto text-center transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      "img",
-      {
-        src: `${"/th-wedding/"}img/wedding-couple.png`,
-        alt: "모카와 리트리버 축하",
-        className: "w-full",
-        draggable: false
-      }
-    ),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-white rounded-2xl border border-stone-200 shadow-sm overflow-hidden", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-4 pt-8 mb-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-white rounded-2xl border border-stone-200 shadow-sm overflow-hidden", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
         "button",
         {
@@ -20865,7 +20856,16 @@ function Share() {
         ),
         /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] text-stone-300 text-center", children: "© 2026 AI Intersys. All rights reserved." })
       ] }) })
-    ] }) })
+    ] }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-4 pb-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "img",
+      {
+        src: `${"/th-wedding/"}img/wedding-couple.png`,
+        alt: "모카와 리트리버 축하",
+        className: "w-full rounded-2xl",
+        draggable: false
+      }
+    ) })
   ] }) });
 }
 /**
@@ -21304,7 +21304,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "177"
+        "178"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
