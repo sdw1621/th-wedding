@@ -20959,14 +20959,14 @@ function Share() {
             /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[12px] text-stone-400 mt-0.5", children: "Shin Dong-wook" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[12px] text-rose-400 font-semibold mt-1", children: "AIINTERSYS CEO / 융합공학 박사" })
           ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-2 shrink-0", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-row gap-2 shrink-0", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               "a",
               {
                 href: "tel:01027312579",
                 style: { touchAction: "manipulation" },
-                className: "w-12 h-12 rounded-xl bg-emerald-500 flex items-center justify-center shadow-sm active:bg-emerald-600 select-none",
-                children: /* @__PURE__ */ jsxRuntimeExports.jsx(Phone, { size: 22, className: "text-white", strokeWidth: 2 })
+                className: "w-11 h-11 rounded-xl bg-emerald-500 flex items-center justify-center shadow-sm active:bg-emerald-600 select-none",
+                children: /* @__PURE__ */ jsxRuntimeExports.jsx(Phone, { size: 20, className: "text-white", strokeWidth: 2 })
               }
             ),
             /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -20974,8 +20974,8 @@ function Share() {
               {
                 href: "mailto:sdw1904@naver.com",
                 style: { touchAction: "manipulation" },
-                className: "w-12 h-12 rounded-xl bg-blue-500 flex items-center justify-center shadow-sm active:bg-blue-600 select-none",
-                children: /* @__PURE__ */ jsxRuntimeExports.jsx(Mail, { size: 22, className: "text-white", strokeWidth: 2 })
+                className: "w-11 h-11 rounded-xl bg-blue-500 flex items-center justify-center shadow-sm active:bg-blue-600 select-none",
+                children: /* @__PURE__ */ jsxRuntimeExports.jsx(Mail, { size: 20, className: "text-white", strokeWidth: 2 })
               }
             )
           ] })
@@ -21520,7 +21520,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "187"
+        "188"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(

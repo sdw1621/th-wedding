@@ -915,6 +915,10 @@ video {
   height: 2.5rem;
 }
 
+.h-11{
+  height: 2.75rem;
+}
+
 .h-12{
   height: 3rem;
 }
@@ -1041,6 +1045,10 @@ video {
 
 .w-10{
   width: 2.5rem;
+}
+
+.w-11{
+  width: 2.75rem;
 }
 
 .w-12{
@@ -1317,6 +1325,10 @@ video {
 
 .snap-center{
   scroll-snap-align: center;
+}
+
+.flex-row{
+  flex-direction: row;
 }
 
 .flex-col{
