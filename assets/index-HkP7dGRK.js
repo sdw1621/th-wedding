@@ -20627,7 +20627,7 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                 ] })
               ] });
             })(),
-            msg.reply && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `rounded-xl px-3 py-2.5 border-l-2 ${msg.receiver === "groom" ? "bg-blue-50 border-blue-300" : msg.receiver === "bride" ? "bg-rose-50 border-rose-300" : "bg-amber-50 border-amber-200"}`, children: [
+            msg.reply && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `ml-4 rounded-xl px-3 py-2.5 border-l-2 ${msg.receiver === "groom" ? "bg-blue-50 border-blue-300" : msg.receiver === "bride" ? "bg-rose-50 border-rose-300" : "bg-amber-50 border-amber-200"}`, children: [
               /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between mb-1", children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1.5", children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[18px] leading-none", children: msg.receiver === "groom" ? "🤵" : msg.receiver === "bride" ? "👰" : "🤵👰" }),
