@@ -2758,6 +2758,10 @@ video {
   color: rgb(255 255 255 / 0.8);
 }
 
+.text-yellow-300\/80{
+  color: rgb(253 224 71 / 0.8);
+}
+
 .underline{
   text-decoration-line: underline;
 }
