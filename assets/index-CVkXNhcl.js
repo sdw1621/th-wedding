@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "252"
+            "253"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20679,9 +20679,25 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
               /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: `text-[12px] font-medium leading-relaxed ${c.commenter_type === "groom" ? "text-blue-800" : "text-rose-800"}`, children: c.content })
             ] }, c.id)),
             (comments || []).filter((c) => c.commenter_type === "guest").map((c) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-2 rounded-lg px-2.5 py-1.5 bg-stone-50", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] font-bold shrink-0 text-stone-600", children: c.name }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[11px] leading-snug flex-1 break-all text-stone-500", children: c.content }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[9px] text-stone-400 shrink-0 self-end", children: c.date })
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1.5 mb-0.5", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] font-bold text-stone-600", children: c.name }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[9px] text-stone-400", children: c.date })
+                ] }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[11px] leading-snug break-all text-stone-500", children: c.content })
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(
+                "button",
+                {
+                  onClick: (e) => {
+                    e.stopPropagation();
+                    onManageComment(c, "delete");
+                  },
+                  className: "shrink-0 self-start mt-0.5 px-1.5 py-0.5 text-[9px] font-bold text-rose-400 border border-rose-200 rounded active:bg-rose-50 select-none",
+                  style: { touchAction: "manipulation" },
+                  children: "삭제"
+                }
+              )
             ] }, c.id))
           ] }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-4 pb-4 pt-2 border-t border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -21005,8 +21021,14 @@ function Guestbook({ showToast }) {
     }
   }, []);
   const handleCommentPinConfirm = () => {
-    const isGroom = commentInputType === "groom";
-    const validPw = isGroom ? commentPinValue === GROOM_PW || commentPinValue === "0313" : commentPinValue === BRIDE_PW || commentPinValue === "0313";
+    let validPw;
+    if (commentInputType === "groom") {
+      validPw = commentPinValue === GROOM_PW || commentPinValue === "0313";
+    } else if (commentInputType === "bride") {
+      validPw = commentPinValue === BRIDE_PW || commentPinValue === "0313";
+    } else {
+      validPw = (commentToManage == null ? void 0 : commentToManage.password) && commentPinValue === commentToManage.password || commentPinValue === "0313";
+    }
     if (validPw) {
       setIsCommentPinModalOpen(false);
       if (commentManageAction === "delete") {
@@ -21018,7 +21040,8 @@ function Guestbook({ showToast }) {
         setIsCommentModalOpen(true);
       }
     } else {
-      showToast(isGroom ? "신랑 생일이 일치하지 않습니다." : "신부 생일이 일치하지 않습니다.");
+      const msg = commentInputType === "groom" ? "신랑 생일이 일치하지 않습니다." : commentInputType === "bride" ? "신부 생일이 일치하지 않습니다." : "비밀번호가 일치하지 않습니다.";
+      showToast(msg);
       setCommentPinValue("");
       setTimeout(() => {
         var _a;
@@ -21858,8 +21881,8 @@ function Guestbook({ showToast }) {
       {
         isOpen: isCommentPinModalOpen,
         onClose: () => setIsCommentPinModalOpen(false),
-        title: commentInputType === "groom" ? "신랑 확인" : "신부 확인",
-        description: commentInputType === "groom" ? "신랑의 생일을 입력해주세요. (예: 0108)" : "신부의 생일을 입력해주세요. (예: 0315)",
+        title: commentInputType === "groom" ? "신랑 확인" : commentInputType === "bride" ? "신부 확인" : "댓글 관리",
+        description: commentInputType === "groom" ? "신랑의 생일을 입력해주세요. (예: 0108)" : commentInputType === "bride" ? "신부의 생일을 입력해주세요. (예: 0315)" : "등록 시 입력한 비번 4자리를 입력해주세요.",
         onConfirm: handleCommentPinConfirm,
         confirmLabel: "확인",
         children: /* @__PURE__ */ jsxRuntimeExports.jsx(
