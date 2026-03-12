@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "268"
+            "270"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -22042,7 +22042,7 @@ function Guestbook({ showToast }) {
                   inputMode: "numeric",
                   value: commentPassword,
                   onChange: (e) => setCommentPassword(e.target.value.replace(/\D/g, "").slice(0, 4)),
-                  placeholder: "전화번호 뒤4·신랑·신부·개발자",
+                  placeholder: "전번뒤4·신랑·신부·개발자 비번",
                   maxLength: 4,
                   className: "w-full bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 pr-10 text-[16px] font-medium text-stone-800 outline-none focus:ring-2 focus:ring-rose-200 placeholder:text-stone-400 placeholder:text-[13px]"
                 }
