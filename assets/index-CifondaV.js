@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "261"
+            "262"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20458,6 +20458,7 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
   const sirenOn = isDev && msg.siren;
   const FAMILY_NAMES = ["강영태", "김경자", "강다윤", "신현갑", "송현숙", "신동욱", "신민석", "모카"];
   const isFamily = !isDev && FAMILY_NAMES.includes(msg.name);
+  const isBrideAuthor = !isDev && !isFamily && msg.name === "신희영";
   const [showFullModal, setShowFullModal] = reactExports.useState(false);
   const [showAllComments, setShowAllComments] = reactExports.useState(false);
   const MAX_CHARS = 60;
@@ -20473,6 +20474,12 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
   } : isFamily ? {
     background: "linear-gradient(135deg, rgba(255,200,210,0.35) 0%, rgba(255,225,190,0.35) 20%, rgba(255,250,200,0.35) 40%, rgba(200,245,215,0.35) 60%, rgba(200,220,255,0.35) 80%, rgba(220,200,255,0.35) 100%)",
     borderColor: "rgba(200,190,230,0.5)"
+  } : isBrideAuthor ? {
+    background: "linear-gradient(145deg, rgba(255,245,250,1) 0%, rgba(255,228,240,0.95) 100%)",
+    backdropFilter: "blur(8px)",
+    WebkitBackdropFilter: "blur(8px)",
+    boxShadow: "inset 0 1.5px 0 rgba(255,255,255,1), inset 1px 0 0 rgba(255,255,255,0.7), 0 2px 10px rgba(0,0,0,0.06)",
+    borderColor: "rgba(255,175,210,0.7)"
   } : {
     background: msg.receiver === "groom" ? "linear-gradient(145deg, rgba(245,250,255,1) 0%, rgba(228,242,255,0.95) 100%)" : msg.receiver === "bride" ? "linear-gradient(145deg, rgba(255,245,250,1) 0%, rgba(255,228,240,0.95) 100%)" : "linear-gradient(145deg, rgba(255,255,255,1) 0%, rgba(248,248,255,0.96) 100%)",
     backdropFilter: "blur(8px)",
@@ -20605,36 +20612,36 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
             };
             const CommentBubble = ({ c, parentType, onEdit, onDelete, indent = false }) => {
               var _a;
-              const isDevC = c.is_dev;
+              const isDevC = c.is_dev === true || c.name === "개발자";
               const isJikgye = !!parentType;
-              let avatarBg, bubbleBg, nameCls, contentCls;
+              let avatarBg, cellBg, nameCls, contentCls;
               if (isDevC) {
-                avatarBg = "bg-stone-800";
-                bubbleBg = "bg-stone-800";
+                avatarBg = "bg-stone-600";
+                cellBg = "bg-stone-800";
                 nameCls = "text-stone-200";
                 contentCls = "text-stone-300";
               } else if (isJikgye) {
                 const col = getNameColor(c.name);
                 avatarBg = col.avatar;
-                bubbleBg = col.bubble;
+                cellBg = col.bubble;
                 nameCls = col.name;
                 contentCls = col.content;
               } else {
                 avatarBg = "bg-stone-200";
-                bubbleBg = "bg-white";
+                cellBg = "bg-stone-50";
                 nameCls = "text-stone-700";
                 contentCls = "text-stone-600";
               }
               const avatarSize = indent ? "w-6 h-6 text-[10px]" : "w-7 h-7 text-[13px]";
-              return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `flex gap-2 ${indent ? "ml-9" : ""} mt-1.5`, children: [
+              return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `flex gap-2 ${indent ? "ml-9" : ""} mt-1.5 rounded-2xl px-3 py-2 ${cellBg}`, children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `${avatarSize} rounded-full ${avatarBg} flex items-center justify-center shrink-0 mt-0.5`, children: isDevC ? "👨‍💻" : ((_a = c.name) == null ? void 0 : _a[0]) || "?" }),
                 /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `rounded-2xl px-3 py-2 ${bubbleBg} inline-block max-w-full`, children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
                     /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[11px] font-bold mr-1.5 ${nameCls}`, children: c.name }),
                     /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[12px] leading-snug break-all ${contentCls}`, children: c.content })
                   ] }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2.5 mt-0.5 px-1", children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[9px] ${isDevC ? "text-stone-500" : isDev ? "text-stone-500" : "text-stone-400"}`, children: c.date }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2.5 mt-1", children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[9px] ${isDevC ? "text-stone-500" : "text-stone-400"}`, children: c.date }),
                     /* @__PURE__ */ jsxRuntimeExports.jsx(
                       "button",
                       {
@@ -20642,7 +20649,7 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                           e.stopPropagation();
                           onEdit();
                         },
-                        className: `text-[10px] font-bold select-none active:opacity-60 ${isDevC ? "text-stone-400" : isDev ? "text-stone-400" : "text-stone-400"}`,
+                        className: `text-[10px] font-bold select-none active:opacity-60 text-stone-400`,
                         style: { touchAction: "manipulation" },
                         children: "수정"
                       }
@@ -20670,14 +20677,14 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                 const replies = guestComments.filter((g) => g.parent_id === c.id);
                 const showMoreReplies = replies.length > 1;
                 return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-2", children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-2", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `flex gap-2 rounded-2xl px-3 py-2 ${c.commenter_type === "groom" ? "bg-blue-50" : "bg-rose-50"}`, children: [
                     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `w-8 h-8 rounded-full flex items-center justify-center shrink-0 text-[18px] mt-0.5 ${c.commenter_type === "groom" ? "bg-blue-100" : "bg-rose-100"}`, children: c.commenter_type === "groom" ? "🤵" : "👰" }),
                     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `rounded-2xl px-3 py-2 inline-block max-w-full ${c.commenter_type === "groom" ? "bg-blue-50" : "bg-rose-50"}`, children: [
+                      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
                         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[11px] font-bold mr-1.5 ${c.commenter_type === "groom" ? "text-blue-700" : "text-rose-700"}`, children: c.name }),
                         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[12px] font-medium leading-snug ${c.commenter_type === "groom" ? "text-blue-800" : "text-rose-800"}`, children: c.content })
                       ] }),
-                      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2.5 mt-0.5 px-1", children: [
+                      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2.5 mt-1", children: [
                         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[9px] text-stone-400", children: c.date }),
                         /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: (e) => {
                           e.stopPropagation();
@@ -20807,34 +20814,35 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
               const guests = allC.filter((c) => c.commenter_type === "guest");
               const ModalCommentBubble = ({ c, parentType, onEdit, onDelete, indent = false }) => {
                 var _a;
-                const isDevC = c.is_dev;
+                const isDevC = c.is_dev === true || c.name === "개발자";
                 const isJikgye = !!parentType;
-                let avatarBg, bubbleBg, nameCls, contentCls;
+                let avatarBg, cellBg, nameCls, contentCls;
                 if (isDevC) {
-                  avatarBg = "bg-stone-800";
-                  bubbleBg = "bg-stone-800";
+                  avatarBg = "bg-stone-600";
+                  cellBg = "bg-stone-800";
                   nameCls = "text-stone-200";
                   contentCls = "text-stone-300";
                 } else if (isJikgye) {
                   const col = getNameColor(c.name);
                   avatarBg = col.avatar;
-                  bubbleBg = col.bubble;
+                  cellBg = col.bubble;
                   nameCls = col.name;
                   contentCls = col.content;
                 } else {
                   avatarBg = "bg-stone-200";
-                  bubbleBg = "bg-white";
+                  cellBg = "bg-stone-50";
                   nameCls = "text-stone-700";
                   contentCls = "text-stone-600";
                 }
-                return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `flex gap-2 ${indent ? "ml-9" : ""} mt-1.5`, children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `${indent ? "w-6 h-6 text-[10px]" : "w-7 h-7 text-[13px]"} rounded-full ${avatarBg} flex items-center justify-center shrink-0 mt-0.5`, children: isDevC ? "👨‍💻" : ((_a = c.name) == null ? void 0 : _a[0]) || "?" }),
+                const avatarSize = indent ? "w-6 h-6 text-[10px]" : "w-7 h-7 text-[13px]";
+                return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `flex gap-2 ${indent ? "ml-9" : ""} mt-1.5 rounded-2xl px-3 py-2 ${cellBg}`, children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `${avatarSize} rounded-full ${avatarBg} flex items-center justify-center shrink-0 mt-0.5`, children: isDevC ? "👨‍💻" : ((_a = c.name) == null ? void 0 : _a[0]) || "?" }),
                   /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `rounded-2xl px-3 py-2 ${bubbleBg} inline-block max-w-full`, children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
                       /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[11px] font-bold mr-1.5 ${nameCls}`, children: c.name }),
                       /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[12px] leading-snug break-all ${contentCls}`, children: c.content })
                     ] }),
-                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2.5 mt-0.5 px-1", children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2.5 mt-1", children: [
                       /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[9px] ${isDevC ? "text-stone-500" : "text-stone-400"}`, children: c.date }),
                       /* @__PURE__ */ jsxRuntimeExports.jsx(
                         "button",
@@ -20870,15 +20878,16 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
               return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
                 officials.map((c) => {
                   const replies = guests.filter((g) => g.parent_id === c.id);
+                  const isGroom = c.commenter_type === "groom";
                   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-2", children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-2", children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `w-8 h-8 rounded-full flex items-center justify-center shrink-0 text-[18px] mt-0.5 ${c.commenter_type === "groom" ? "bg-blue-100" : "bg-rose-100"}`, children: c.commenter_type === "groom" ? "🤵" : "👰" }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `flex gap-2 rounded-2xl px-3 py-2 ${isGroom ? "bg-blue-50" : "bg-rose-50"}`, children: [
+                      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `w-8 h-8 rounded-full flex items-center justify-center shrink-0 text-[18px] mt-0.5 ${isGroom ? "bg-blue-100" : "bg-rose-100"}`, children: isGroom ? "🤵" : "👰" }),
                       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
-                        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `rounded-2xl px-3 py-2 inline-block max-w-full ${c.commenter_type === "groom" ? "bg-blue-50" : "bg-rose-50"}`, children: [
-                          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[11px] font-bold mr-1.5 ${c.commenter_type === "groom" ? "text-blue-700" : "text-rose-700"}`, children: c.name }),
-                          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[12px] font-medium leading-snug ${c.commenter_type === "groom" ? "text-blue-800" : "text-rose-800"}`, children: c.content })
+                        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+                          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[11px] font-bold mr-1.5 ${isGroom ? "text-blue-700" : "text-rose-700"}`, children: c.name }),
+                          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[12px] font-medium leading-snug ${isGroom ? "text-blue-800" : "text-rose-800"}`, children: c.content })
                         ] }),
-                        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2.5 mt-0.5 px-1", children: [
+                        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2.5 mt-1", children: [
                           /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[9px] text-stone-400", children: c.date }),
                           /* @__PURE__ */ jsxRuntimeExports.jsx(
                             "button",
@@ -20901,7 +20910,7 @@ const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModa
                                 setShowAllComments(false);
                                 setTimeout(() => onManageComment(c, "edit"), 150);
                               },
-                              className: `text-[10px] font-bold select-none active:opacity-60 ${c.commenter_type === "groom" ? "text-blue-400" : "text-rose-400"}`,
+                              className: `text-[10px] font-bold select-none active:opacity-60 ${isGroom ? "text-blue-400" : "text-rose-400"}`,
                               style: { touchAction: "manipulation" },
                               children: "수정"
                             }
