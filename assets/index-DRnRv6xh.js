@@ -19940,7 +19940,7 @@ function Location() {
     showModal && reactDomExports.createPortal(
       /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "fixed inset-0 z-[599] bg-stone-900/80 animate-in fade-in duration-300", onPointerDown: () => setShowModal(false) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: vpStyle, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative bg-white w-full max-w-[320px] rounded-[24px] shadow-2xl border border-white/20 animate-in fade-in zoom-in duration-200 pointer-events-auto flex flex-col", style: { maxHeight: "100%", overflowY: "auto", fontFamily: "'Noto Serif KR', serif" }, onPointerDown: (e) => e.stopPropagation(), children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: vpStyle, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative bg-white w-full max-w-[320px] rounded-[24px] shadow-2xl border border-white/20 animate-in fade-in zoom-in duration-200 pointer-events-auto flex flex-col", style: { maxHeight: "100%", overflowY: "auto", fontFamily: "'Noto Sans KR', sans-serif" }, onPointerDown: (e) => e.stopPropagation(), children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 text-center", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-[17px] font-bold text-stone-900 mb-1", children: "직계가족만 확인" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[13px] text-stone-500 font-medium leading-tight", children: "직계가족 히든 번호 4자리 입력해주세요." }),
