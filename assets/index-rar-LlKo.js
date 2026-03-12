@@ -18968,9 +18968,20 @@ function Countdown() {
     { label: "MIN", value: timeLeft.minutes },
     { label: "SEC", value: timeLeft.seconds }
   ];
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex space-x-4 mt-8", children: units.map((unit, idx) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "bg-white/80 border border-white/20 w-12 h-12 rounded-lg flex items-center justify-center shadow-sm mb-1", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg font-serif text-stone-800", children: String(unit.value).padStart(2, "0") }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] tracking-widest text-stone-800 font-black", children: unit.label })
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex space-x-3 mt-8", children: units.map((unit, idx) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "div",
+      {
+        className: "w-[62px] h-[62px] rounded-2xl flex items-center justify-center mb-2 border",
+        style: {
+          background: "linear-gradient(145deg, rgba(255,255,255,0.92) 0%, rgba(248,248,255,0.88) 100%)",
+          boxShadow: "inset 0 1.5px 0 rgba(255,255,255,1), inset 1px 0 0 rgba(255,255,255,0.7), 0 2px 10px rgba(0,0,0,0.07)",
+          borderColor: "rgba(215,215,240,0.8)"
+        },
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-2xl font-semibold text-stone-700 tabular-nums", children: String(unit.value).padStart(2, "0") })
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] tracking-widest text-stone-600 font-black", children: unit.label })
   ] }, idx)) });
 }
 function Hero() {
@@ -20387,8 +20398,71 @@ const Pencil = createLucideIcon("Pencil", [
 const MessageSquare = createLucideIcon("MessageSquare", [
   ["path", { d: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z", key: "1lielz" }]
 ]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const ChevronsLeft = createLucideIcon("ChevronsLeft", [
+  ["path", { d: "m11 17-5-5 5-5", key: "13zhaf" }],
+  ["path", { d: "m18 17-5-5 5-5", key: "h8a8et" }]
+]);
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const ChevronsRight = createLucideIcon("ChevronsRight", [
+  ["path", { d: "m6 17 5-5-5-5", key: "xnjwq" }],
+  ["path", { d: "m13 17 5-5-5-5", key: "17xmmf" }]
+]);
 const GROOM_PW = "0806";
 const BRIDE_PW = "0407";
+const PinInput = reactExports.memo(({ value, onChange, show, onToggleShow, onEnter, inputRef }) => {
+  const slots = [0, 1, 2, 3];
+  const handleAreaClick = () => {
+    var _a;
+    return (_a = inputRef.current) == null ? void 0 : _a.focus({ preventScroll: true });
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center gap-5", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center gap-3 cursor-pointer", onClick: handleAreaClick, children: slots.map((i) => {
+      const isFilled = i < value.length;
+      const isNext = i === value.length;
+      return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `w-[60px] h-[60px] rounded-2xl flex items-center justify-center transition-all duration-200 select-none ${isFilled ? "bg-stone-800 border-2 border-stone-800 shadow-md" : isNext ? "bg-rose-50 border-2 border-rose-400 shadow-sm ring-2 ring-rose-200" : "bg-stone-100 border-2 border-stone-200"}`, children: isFilled ? show ? /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-white text-2xl font-bold", children: value[i] }) : /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "w-4 h-4 rounded-full bg-white block" }) : /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `text-[32px] font-thin leading-none ${isNext ? "text-rose-400" : "text-stone-300"}`, children: "○" }) }, i);
+    }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "input",
+      {
+        ref: inputRef,
+        type: "text",
+        inputMode: "numeric",
+        value,
+        onChange: (e) => onChange(e.target.value.replace(/\D/g, "").slice(0, 4)),
+        onKeyDown: (e) => e.key === "Enter" && onEnter(),
+        autoComplete: "off",
+        style: { position: "absolute", opacity: 0, width: "1px", height: "1px", left: "50%", top: "50%" }
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      "button",
+      {
+        type: "button",
+        onPointerDown: (e) => {
+          e.preventDefault();
+          onToggleShow();
+        },
+        style: { touchAction: "manipulation" },
+        className: "flex items-center gap-1.5 text-stone-400 text-[13px] active:text-stone-600",
+        children: [
+          show ? /* @__PURE__ */ jsxRuntimeExports.jsx(EyeOff, { size: 15 }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Eye, { size: 15 }),
+          show ? "숨기기" : "표시하기"
+        ]
+      }
+    )
+  ] });
+});
 const MessageItem = reactExports.memo(({ msg, unlockedMessages, openPasswordModal, toggleUnlock }) => {
   const isLocked = msg.is_secret && !unlockedMessages[msg.id];
   const isDev = msg.is_dev === true;
@@ -20503,6 +20577,7 @@ const ModernModal = reactExports.memo(({ isOpen, onClose, title, description, ch
     document.body
   );
 });
+const glassStyle = { touchAction: "manipulation", background: "linear-gradient(145deg, rgba(255,255,255,1) 0%, rgba(248,248,255,0.96) 100%)", boxShadow: "inset 0 1.5px 0 rgba(255,255,255,1), 0 2px 8px rgba(0,0,0,0.06)", borderColor: "rgba(215,215,240,0.8)" };
 function Guestbook({ showToast }) {
   const [ref, isVisible] = useScrollReveal();
   const [messages, setMessages] = reactExports.useState([]);
@@ -20527,6 +20602,8 @@ function Guestbook({ showToast }) {
   const [unlockedMessages, setUnlockedMessages] = reactExports.useState({});
   const [currentPage, setCurrentPage] = reactExports.useState(1);
   const MESSAGES_PER_PAGE = 3;
+  const [messageFilter, setMessageFilter] = reactExports.useState("all");
+  const [myName, setMyName] = reactExports.useState(() => localStorage.getItem("guestbook_my_name") || "");
   const isAnyModalOpen = isPasswordModalOpen || isDeleteModalOpen || isEditModalOpen || isReplyInputModalOpen;
   reactExports.useEffect(() => {
     if (isAnyModalOpen) {
@@ -20540,6 +20617,9 @@ function Guestbook({ showToast }) {
       setModalReplyText((t) => t.replace(/^[\s\n\r]+/, ""));
     }
   }, [isReplyInputModalOpen]);
+  reactExports.useEffect(() => {
+    setCurrentPage(1);
+  }, [messageFilter]);
   const fetchMessages = reactExports.useCallback(async (isAuto = false) => {
     try {
       const { data, error } = await supabase.from("guestbook").select("*").order("created_at", { ascending: false });
@@ -20769,6 +20849,8 @@ function Guestbook({ showToast }) {
         }
         showToast("소중한 메시지 감사합니다! 💌");
       }
+      localStorage.setItem("guestbook_my_name", trimmedName);
+      setMyName(trimmedName);
       setNewName("");
       setNewPassword("");
       setNewContent("");
@@ -20780,7 +20862,13 @@ function Guestbook({ showToast }) {
       setLoading(false);
     }
   };
-  const totalPages = Math.max(1, Math.ceil(messages.length / MESSAGES_PER_PAGE));
+  const filteredMessages = reactExports.useMemo(() => {
+    if (messageFilter === "mine" && myName) {
+      return messages.filter((m) => m.name === myName);
+    }
+    return messages;
+  }, [messages, messageFilter, myName]);
+  const totalPages = Math.max(1, Math.ceil(filteredMessages.length / MESSAGES_PER_PAGE));
   const prevMsgCount = React.useRef(messages.length);
   reactExports.useEffect(() => {
     if (messages.length > prevMsgCount.current) {
@@ -20793,55 +20881,54 @@ function Guestbook({ showToast }) {
   }, [currentPage, totalPages]);
   const paginatedMessages = reactExports.useMemo(() => {
     const start = (currentPage - 1) * MESSAGES_PER_PAGE;
-    return messages.slice(start, start + MESSAGES_PER_PAGE);
-  }, [messages, currentPage]);
+    return filteredMessages.slice(start, start + MESSAGES_PER_PAGE);
+  }, [filteredMessages, currentPage]);
+  const goToPage = reactExports.useCallback((page) => (e) => {
+    e.currentTarget.blur();
+    setCurrentPage(page);
+  }, []);
+  const pageItems = reactExports.useMemo(() => {
+    if (totalPages <= 4) return Array.from({ length: totalPages }, (_, i) => i + 1);
+    const pages = /* @__PURE__ */ new Set([1, totalPages]);
+    for (let i = Math.max(1, currentPage - 1); i <= Math.min(totalPages, currentPage + 1); i++) pages.add(i);
+    const sorted = [...pages].sort((a, b) => a - b);
+    const result = [];
+    for (let i = 0; i < sorted.length; i++) {
+      if (i > 0 && sorted[i] - sorted[i - 1] > 1) result.push("..." + i);
+      result.push(sorted[i]);
+    }
+    return result;
+  }, [totalPages, currentPage]);
   const messageListOutput = reactExports.useMemo(() => {
     if (initialLoading) return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center py-10 space-y-2", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-6 h-6 border-2 border-rose-200 border-t-rose-500 rounded-full animate-spin mx-auto" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-stone-400 text-xs text-center", children: "방명록을 불러오는 중입니다..." })
     ] });
-    if (messages.length === 0) return /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-center py-10 text-stone-400 text-sm italic font-medium", children: "첫 번째 축하 메시지를 남겨주세요." });
+    if (filteredMessages.length === 0) return /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-center py-10 text-stone-400 text-sm italic font-medium", children: messageFilter === "mine" ? "아직 남긴 글이 없습니다." : "첫 번째 축하 메시지를 남겨주세요." });
     return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4", children: [
       paginatedMessages.map((msg, idx) => /* @__PURE__ */ jsxRuntimeExports.jsx(MessageItem, { msg, unlockedMessages, openPasswordModal, toggleUnlock }, msg.id || idx)),
-      totalPages > 1 && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-center space-x-3 pt-4 pb-2", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "button",
-          {
-            onClick: () => setCurrentPage((p) => Math.max(1, p - 1)),
-            disabled: currentPage === 1,
-            style: { touchAction: "manipulation", background: "linear-gradient(145deg, rgba(255,255,255,1) 0%, rgba(248,248,255,0.96) 100%)", boxShadow: "inset 0 1.5px 0 rgba(255,255,255,1), 0 2px 8px rgba(0,0,0,0.06)", borderColor: "rgba(215,215,240,0.8)" },
-            className: "p-2.5 rounded-xl border text-stone-500 disabled:opacity-30 disabled:cursor-not-allowed select-none",
-            children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { size: 18 })
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center space-x-1.5", children: Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "button",
-          {
-            onClick: () => setCurrentPage(page),
-            style: page === currentPage ? { touchAction: "manipulation", background: "linear-gradient(145deg, #f43f5e 0%, #e11d48 100%)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.25), 0 3px 8px rgba(244,63,94,0.35)", borderColor: "rgba(225,29,72,0.4)" } : { touchAction: "manipulation", background: "linear-gradient(145deg, rgba(255,255,255,1) 0%, rgba(248,248,255,0.96) 100%)", boxShadow: "inset 0 1.5px 0 rgba(255,255,255,1), inset 1px 0 0 rgba(255,255,255,0.7), 0 2px 6px rgba(0,0,0,0.05)", borderColor: "rgba(215,215,240,0.8)" },
-            className: `w-8 h-8 rounded-lg text-xs font-bold select-none transition-all duration-200 border ${page === currentPage ? "text-white" : "text-stone-400"}`,
-            children: page
-          },
-          page
-        )) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "button",
-          {
-            onClick: () => setCurrentPage((p) => Math.min(totalPages, p + 1)),
-            disabled: currentPage === totalPages,
-            style: { touchAction: "manipulation", background: "linear-gradient(145deg, rgba(255,255,255,1) 0%, rgba(248,248,255,0.96) 100%)", boxShadow: "inset 0 1.5px 0 rgba(255,255,255,1), 0 2px 8px rgba(0,0,0,0.06)", borderColor: "rgba(215,215,240,0.8)" },
-            className: "p-2.5 rounded-xl border text-stone-500 disabled:opacity-30 disabled:cursor-not-allowed select-none",
-            children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { size: 18 })
-          }
-        )
+      totalPages > 1 && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-center gap-1.5 pt-4 pb-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: goToPage(1), disabled: currentPage === 1, style: glassStyle, className: "p-2.5 rounded-xl border text-stone-500 disabled:opacity-30 disabled:cursor-not-allowed select-none", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronsLeft, { size: 18 }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: goToPage(Math.max(1, currentPage - 1)), disabled: currentPage === 1, style: glassStyle, className: "p-2.5 rounded-xl border text-stone-500 disabled:opacity-30 disabled:cursor-not-allowed select-none", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { size: 18 }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center gap-1", children: pageItems.map((item) => {
+          if (typeof item === "string") return /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "w-6 text-center text-stone-400 text-[11px] font-bold select-none", children: "···" }, item);
+          return /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
+            {
+              onClick: goToPage(item),
+              style: item === currentPage ? { touchAction: "manipulation", background: "linear-gradient(145deg, #f43f5e 0%, #e11d48 100%)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.25), 0 3px 8px rgba(244,63,94,0.35)", borderColor: "rgba(225,29,72,0.4)" } : { touchAction: "manipulation", background: "linear-gradient(145deg, rgba(255,255,255,1) 0%, rgba(248,248,255,0.96) 100%)", boxShadow: "inset 0 1.5px 0 rgba(255,255,255,1), inset 1px 0 0 rgba(255,255,255,0.7), 0 2px 6px rgba(0,0,0,0.05)", borderColor: "rgba(215,215,240,0.8)" },
+              className: `w-8 h-8 rounded-lg text-xs font-bold select-none transition-all duration-200 border ${item === currentPage ? "text-white" : "text-stone-400"}`,
+              children: item
+            },
+            item
+          );
+        }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: goToPage(Math.min(totalPages, currentPage + 1)), disabled: currentPage === totalPages, style: glassStyle, className: "p-2.5 rounded-xl border text-stone-500 disabled:opacity-30 disabled:cursor-not-allowed select-none", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { size: 18 }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: goToPage(totalPages), disabled: currentPage === totalPages, style: glassStyle, className: "p-2.5 rounded-xl border text-stone-500 disabled:opacity-30 disabled:cursor-not-allowed select-none", children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronsRight, { size: 18 }) })
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-center text-[11px] text-stone-400 font-medium", children: [
-        "총 ",
-        messages.length,
-        "개의 메시지"
-      ] })
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-center text-[11px] text-stone-400 font-medium", children: messageFilter === "mine" ? `내 글 ${filteredMessages.length}개` : `총 ${messages.length}개의 메시지` })
     ] });
-  }, [messages, paginatedMessages, unlockedMessages, initialLoading, openPasswordModal, toggleUnlock, currentPage, totalPages]);
+  }, [messages, filteredMessages, paginatedMessages, unlockedMessages, initialLoading, openPasswordModal, toggleUnlock, currentPage, totalPages, messageFilter, goToPage]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "pt-24 pb-6 px-6 bg-[#FDFBF7] relative z-10", id: "guestbook", ref, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-md mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-10 flex flex-col items-center", children: [
@@ -20863,7 +20950,7 @@ function Guestbook({ showToast }) {
           /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "inline-block text-base ml-1.5", style: { verticalAlign: "middle" }, children: "💌" })
         ] })
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("form", { onSubmit: handleSubmit, className: "bg-white p-5 rounded-[1.25rem] shadow-sm border border-stone-100 mb-8 space-y-4 relative z-20", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("form", { onSubmit: handleSubmit, className: "bg-white p-5 rounded-[1.25rem] shadow-sm border border-stone-100 mb-6 space-y-4 relative z-20", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex space-x-2", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "text", placeholder: "성함", value: newName, onChange: (e) => setNewName(e.target.value), className: "w-24 shrink-0 bg-stone-50 border border-stone-100 rounded-xl px-4 py-4 text-[16px] font-medium text-stone-800 focus:ring-2 focus:ring-rose-200 outline-none placeholder:text-stone-400 placeholder:text-[13px] relative z-20", maxLength: 10 }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative flex-1 min-w-0", children: [
@@ -20886,6 +20973,42 @@ function Guestbook({ showToast }) {
           loading ? "전송 중..." : "메시지 남기기"
         ] })
       ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-2 mb-4", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          "button",
+          {
+            onClick: () => setMessageFilter("all"),
+            style: { touchAction: "manipulation", ...messageFilter === "all" ? {} : glassStyle },
+            className: `flex-1 py-2.5 rounded-xl text-[13px] font-bold transition-all select-none border ${messageFilter === "all" ? "bg-stone-800 text-white border-stone-800 shadow-md" : "text-stone-400"}`,
+            children: [
+              "전체 ",
+              messageFilter === "all" && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "ml-1 text-white/70", children: messages.length })
+            ]
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          "button",
+          {
+            onClick: () => {
+              if (messageFilter === "mine") {
+                setMessageFilter("all");
+                return;
+              }
+              if (!myName) {
+                showToast("먼저 메시지를 남겨주세요.");
+                return;
+              }
+              setMessageFilter("mine");
+            },
+            style: { touchAction: "manipulation", ...messageFilter === "mine" ? {} : glassStyle },
+            className: `flex-1 py-2.5 rounded-xl text-[13px] font-bold transition-all select-none border ${messageFilter === "mine" ? "bg-rose-500 text-white border-rose-500 shadow-md" : "text-stone-400"}`,
+            children: [
+              "내가 쓴 글 ",
+              messageFilter === "mine" && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "ml-1 text-white/70", children: filteredMessages.length })
+            ]
+          }
+        )
+      ] }),
       messageListOutput
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -20896,26 +21019,17 @@ function Guestbook({ showToast }) {
         title: modalPurpose === "siren" ? "🚨 긴급 토글" : (selectedMsg == null ? void 0 : selectedMsg.is_dev) === true ? "관리자 확인" : modalPurpose === "reply" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑 확인" : modalPurpose === "reply" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부 확인" : modalPurpose === "reply" ? "관리자 확인" : modalPurpose === "unlock" && ((selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" || (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride") ? "생일 확인" : "전화번호 확인",
         description: modalPurpose === "siren" ? "개발자 비밀번호를 입력해주세요." : (selectedMsg == null ? void 0 : selectedMsg.is_dev) === true ? "관리자 비밀번호를 입력해주세요." : modalPurpose === "reply" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑의 생일을 입력해주세요. (예: 0108)" : modalPurpose === "reply" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부의 생일을 입력해주세요. (예: 0315)" : modalPurpose === "reply" ? "신랑/신부 전용 비밀번호를 입력해주세요." : modalPurpose === "unlock" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "groom" ? "신랑의 생일을 입력해주세요. (예: 0108)" : modalPurpose === "unlock" && (selectedMsg == null ? void 0 : selectedMsg.receiver) === "bride" ? "신부의 생일을 입력해주세요. (예: 0315)" : "전화번호 뒷 4자리를 입력해주세요.",
         onConfirm: handleModalConfirm,
-        children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "input",
-            {
-              ref: passwordInputRef,
-              type: showModalPw ? "text" : "password",
-              inputMode: "numeric",
-              value: modalPassword,
-              onChange: (e) => setModalPassword(e.target.value),
-              onKeyDown: (e) => e.key === "Enter" && handleModalConfirm(),
-              className: "w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 pr-11 text-center text-lg tracking-[0.5em] focus:ring-2 focus:ring-stone-100 outline-none",
-              placeholder: "••••",
-              maxLength: 4
-            }
-          ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onPointerDown: (e) => {
-            e.preventDefault();
-            setShowModalPw((v) => !v);
-          }, style: { touchAction: "manipulation" }, className: "absolute right-3 top-1/2 -translate-y-1/2 p-1 text-stone-400 active:text-stone-600", children: showModalPw ? /* @__PURE__ */ jsxRuntimeExports.jsx(EyeOff, { size: 17 }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Eye, { size: 17 }) })
-        ] })
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          PinInput,
+          {
+            value: modalPassword,
+            onChange: setModalPassword,
+            show: showModalPw,
+            onToggleShow: () => setShowModalPw((v) => !v),
+            onEnter: handleModalConfirm,
+            inputRef: passwordInputRef
+          }
+        )
       }
     ),
     /* @__PURE__ */ jsxRuntimeExports.jsx(ModernModal, { isOpen: isDeleteModalOpen, onClose: () => setIsDeleteModalOpen(false), title: "메시지 삭제", description: "삭제하면 되돌릴 수 없습니다. 정말 삭제할까요?", onConfirm: confirmDelete, confirmLabel: "삭제", isDestructive: true }),
@@ -21542,7 +21656,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "197"
+        "198"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
