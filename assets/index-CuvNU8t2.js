@@ -21097,7 +21097,7 @@ function Guestbook({ showToast }) {
             className: `flex-1 py-2.5 rounded-xl text-[13px] font-bold transition-all select-none border ${messageFilter === "all" ? "text-white shadow-md" : "text-stone-400"}`,
             children: [
               "전체 ",
-              messageFilter === "all" && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "ml-1 text-white/70", children: messages.length })
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: `ml-1 ${messageFilter === "all" ? "text-white/70" : "text-stone-400"}`, children: messages.length })
             ]
           }
         ),
@@ -21113,12 +21113,9 @@ function Guestbook({ showToast }) {
               ...messageFilter === "family" ? { background: "linear-gradient(135deg, #FFB3C6 0%, #FFCBA4 35%, #FFF0A0 60%, #B8F0C8 80%, #B3C8FF 100%)", borderColor: "transparent" } : glassStyle
             },
             className: `flex-1 py-2.5 rounded-xl text-[13px] font-bold transition-all select-none border ${messageFilter === "family" ? "text-stone-700 shadow-md" : "text-stone-400"}`,
-            children: messageFilter === "family" ? familyFilterName ? `"${familyFilterName}" ${filteredMessages.length}개` : `직계가족 ${filteredMessages.length}개` : /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+            children: messageFilter === "family" ? familyFilterName ? `"${familyFilterName}" ${filteredMessages.length}` : `직계가족 ${filteredMessages.length}` : /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
               "직계가족 ",
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "font-normal text-stone-300", children: [
-                familyCount,
-                "개"
-              ] })
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-stone-300", children: familyCount })
             ] })
           }
         ),
@@ -22075,7 +22072,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "213"
+        "214"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
