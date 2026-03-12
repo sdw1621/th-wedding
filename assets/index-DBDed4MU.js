@@ -19974,7 +19974,8 @@ function Location() {
                     },
                     onKeyDown: (e) => e.key === "Enter" && handleConfirm(),
                     autoComplete: "off",
-                    style: { position: "absolute", opacity: 0, width: "1px", height: "1px", left: "50%", top: "50%" }
+                    autoFocus: true,
+                    style: { position: "absolute", opacity: 0, width: "1px", height: "1px", left: "50%", top: "50%", fontSize: "16px" }
                   }
                 ),
                 /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -20457,7 +20458,7 @@ const PinInput = reactExports.memo(({ value, onChange, show, onToggleShow, onEnt
         onChange: (e) => onChange(e.target.value.replace(/\D/g, "").slice(0, 4)),
         onKeyDown: (e) => e.key === "Enter" && onEnter(),
         autoComplete: "off",
-        style: { position: "absolute", opacity: 0, width: "1px", height: "1px", left: "50%", top: "50%" }
+        style: { position: "absolute", opacity: 0, width: "1px", height: "1px", left: "50%", top: "50%", fontSize: "16px" }
       }
     ),
     /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -21874,7 +21875,7 @@ function App() {
       ] }) }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         "gh-pages #",
-        "204"
+        "205"
       ] }) })
     ] }),
     !isEntered ? /* @__PURE__ */ jsxRuntimeExports.jsx(
