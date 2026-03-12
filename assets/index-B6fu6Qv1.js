@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "221"
+            "222"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -21019,7 +21019,7 @@ function Guestbook({ showToast }) {
     setCurrentPage(page);
     setTimeout(() => {
       var _a;
-      (_a = document.getElementById("guestbook")) == null ? void 0 : _a.scrollIntoView({ behavior: "smooth", block: "start" });
+      (_a = document.getElementById("guestbook-list")) == null ? void 0 : _a.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 0);
   }, []);
   const pageItems = reactExports.useMemo(() => {
@@ -21108,7 +21108,7 @@ function Guestbook({ showToast }) {
           loading ? "전송 중..." : "메시지 남기기"
         ] })
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-2 mb-4", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { id: "guestbook-list", className: "flex gap-2 mb-4", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
           "button",
           {
