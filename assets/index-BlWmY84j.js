@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "278"
+            "279"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -19132,13 +19132,23 @@ const ChevronRight = createLucideIcon("ChevronRight", [
 ]);
 const stack = [];
 let programmaticPop = false;
+let seq = 0;
+const getStateSeq = () => {
+  const s = window.history.state;
+  return s && typeof s === "object" ? s.__bbSeq ?? null : null;
+};
 const handlePop = () => {
   if (programmaticPop) {
     programmaticPop = false;
     return;
   }
-  const entry = stack.pop();
-  if (entry) entry.close();
+  const top = stack[stack.length - 1];
+  if (!top) return;
+  const currentSeq = getStateSeq();
+  if (currentSeq === top.beforeSeq) {
+    stack.pop();
+    top.close();
+  }
 };
 function useBackButton(isOpen, onClose) {
   const onCloseRef = reactExports.useRef(onClose);
@@ -19147,22 +19157,29 @@ function useBackButton(isOpen, onClose) {
   });
   reactExports.useEffect(() => {
     if (!isOpen) return;
-    const entry = { close: () => {
-      var _a;
-      return (_a = onCloseRef.current) == null ? void 0 : _a.call(onCloseRef);
-    } };
+    const beforeSeq = getStateSeq();
+    seq += 1;
+    const mySeq = seq;
+    const entry = {
+      beforeSeq,
+      mySeq,
+      close: () => {
+        var _a;
+        return (_a = onCloseRef.current) == null ? void 0 : _a.call(onCloseRef);
+      }
+    };
     const wasEmpty = stack.length === 0;
     stack.push(entry);
     if (wasEmpty) {
       window.addEventListener("popstate", handlePop);
     }
-    window.history.pushState(null, "");
+    window.history.pushState({ __bbSeq: mySeq }, "");
     return () => {
       const idx = stack.lastIndexOf(entry);
       const wasInStack = idx >= 0;
       const wasTop = wasInStack && idx === stack.length - 1;
       if (wasInStack) stack.splice(idx, 1);
-      if (wasTop) {
+      if (wasTop && getStateSeq() === mySeq) {
         programmaticPop = true;
         window.history.back();
       }
@@ -22496,28 +22513,41 @@ function Share({ onLightboxChange }) {
     )
   ] });
 }
+/**
+ * @license lucide-react v0.460.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const CodeXml = createLucideIcon("CodeXml", [
+  ["path", { d: "m18 16 4-4-4-4", key: "1inbqp" }],
+  ["path", { d: "m6 8-4 4 4 4", key: "15zrgr" }],
+  ["path", { d: "m14.5 4-5 16", key: "e7oirm" }]
+]);
 function BottomNav() {
   const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (id === "share") {
+      setTimeout(() => window.dispatchEvent(new CustomEvent("openDevCard")), 400);
+    }
   };
   const navItems = [
     { id: "greeting", label: "인사말", icon: Heart },
     { id: "gallery", label: "영상&갤러리", icon: Camera },
     { id: "location", label: "오시는길", icon: MapPin },
     { id: "account", label: "마음전하기", icon: Gift },
-    { id: "guestbook", label: "방명록", icon: MessageSquare }
+    { id: "guestbook", label: "방명록", icon: MessageSquare },
+    { id: "share", label: "개발자", icon: CodeXml, iconColor: "text-blue-400" }
   ];
   return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "fixed bottom-0 w-full max-w-[480px] bg-white/95 border-t border-stone-200 z-40 px-2 pt-1 pb-[max(4px,env(safe-area-inset-bottom))] flex justify-around items-center left-1/2 -translate-x-1/2 shadow-[0_-5px_20px_rgba(0,0,0,0.05)]", children: navItems.map((item) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
     "button",
     {
-      onPointerDown: (e) => {
-        scrollTo(item.id);
-      },
+      onPointerDown: () => scrollTo(item.id),
       style: { touchAction: "manipulation" },
       className: "flex flex-col items-center justify-center text-rose-300 hover:text-rose-500 active:bg-stone-50 select-none w-[18%] py-3 rounded-xl transition-colors",
       children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(item.icon, { size: 20, strokeWidth: 1.5, className: "mb-1" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(item.icon, { size: 20, strokeWidth: 1.5, className: `mb-1 ${item.iconColor || ""}` }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[9px] font-bold tracking-tight whitespace-nowrap text-stone-500 uppercase", children: item.label })
       ]
     },
