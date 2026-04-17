@@ -347,3 +347,24 @@ body.nav-hidden .fixed.bottom-0 {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.12); }
 }
+
+/* Countdown 다크 애니메이션 */
+@keyframes urgentDark {
+  0%, 100% {
+    background: linear-gradient(145deg, #0a0a1a 0%, #0d0d2e 100%);
+    box-shadow: 0 0 14px rgba(99,179,255,0.28), inset 0 1px 0 rgba(255,255,255,0.05);
+    border-color: rgba(99,179,255,0.3);
+  }
+  50% {
+    background: linear-gradient(145deg, #0d0d28 0%, #111140 100%);
+    box-shadow: 0 0 28px rgba(99,179,255,0.55), inset 0 1px 0 rgba(255,255,255,0.05);
+    border-color: rgba(99,179,255,0.5);
+  }
+}
+@keyframes countdownPulse {
+  0%, 100% { color: #f472b6; }
+  50%      { color: #ffffff; }
+}
+.countdown-num {
+  animation: countdownPulse 2s ease-in-out infinite;
+}

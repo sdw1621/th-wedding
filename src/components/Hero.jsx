@@ -52,11 +52,16 @@ export default function Hero() {
                     href={googleCalendarUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent' }}
-                    className="mt-10 flex items-center space-x-2 px-6 py-2.5 bg-white/90 border border-stone-200 rounded-full text-stone-600 text-[11px] font-bold active:bg-stone-50 shadow-sm select-none"
+                    style={{
+                        touchAction: 'manipulation',
+                        WebkitTapHighlightColor: 'transparent',
+                        background: 'linear-gradient(145deg, #111 0%, #1c1c1e 100%)',
+                        boxShadow: '0 4px 14px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.08)',
+                    }}
+                    className="mt-6 flex items-center space-x-2 px-6 py-3 rounded-2xl text-white/85 text-[12px] font-bold active:opacity-85 select-none"
                 >
-                    <Calendar size={14} />
-                    <span>캘린더에 일정 추가</span>
+                    <Calendar size={14} className="text-white/70" />
+                    <span className="tracking-wide">캘린더에 일정 추가</span>
                 </a>
             </div>
         </div>
