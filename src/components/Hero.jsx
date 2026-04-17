@@ -6,16 +6,15 @@ import Countdown from './Countdown';
 export default function Hero() {
     const [ref, isVisible] = useScrollReveal();
 
-    const addToCalendar = () => {
-        const title = "강태구 & 신희영 결혼식";
-        const location = "메이필드 호텔 봉래헌";
-        const details = "두 사람의 소중한 시작을 축복해 주세요.";
-        const startDate = "20260313T113000";
-        const endDate = "20260313T143000";
-
-        const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
-        window.open(googleCalendarUrl, '_blank');
-    };
+    // 구글 캘린더 추가 URL (정적 링크)
+    const googleCalendarUrl = (() => {
+        const title = '강태구 & 신희영 결혼식';
+        const location = '메이필드 호텔 봉래헌';
+        const details = '두 사람의 소중한 시작을 축복해 주세요.';
+        const startDate = '20260313T113000';
+        const endDate = '20260313T143000';
+        return `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
+    })();
 
     return (
         <div className="relative w-full h-screen overflow-hidden flex flex-col items-center justify-between pb-32" id="home">
@@ -49,14 +48,16 @@ export default function Hero() {
             <div className={`relative z-10 flex flex-col items-center transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                 <Countdown />
 
-                <button
-                    onPointerDown={addToCalendar}
-                    style={{ touchAction: 'manipulation' }}
+                <a
+                    href={googleCalendarUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent' }}
                     className="mt-10 flex items-center space-x-2 px-6 py-2.5 bg-white/90 border border-stone-200 rounded-full text-stone-600 text-[11px] font-bold active:bg-stone-50 shadow-sm select-none"
                 >
                     <Calendar size={14} />
                     <span>캘린더에 일정 추가</span>
-                </button>
+                </a>
             </div>
         </div>
     );

@@ -984,6 +984,9 @@ export default function Guestbook({ showToast }) {
                     const updated = messages.map((m) => m.id === existingMsg.id ? { ...m, ...msgDataLocal, date: dateStr } : m);
                     setMessages(updated);
                     localStorage.setItem('wedding_guestbook', JSON.stringify(updated));
+                } else {
+                    // 성공: realtime 구독을 기다리지 않고 즉시 재페치해서 UI 갱신
+                    fetchMessages(true);
                 }
                 showToast('메시지가 업데이트되었습니다! ✨');
             } else {
@@ -998,6 +1001,9 @@ export default function Guestbook({ showToast }) {
                     const newMessages = [localMsg, ...messages];
                     setMessages(newMessages);
                     localStorage.setItem('wedding_guestbook', JSON.stringify(newMessages));
+                } else {
+                    // 성공: realtime 구독을 기다리지 않고 즉시 재페치해서 UI에 반영
+                    fetchMessages(true);
                 }
                 showToast('소중한 메시지 감사합니다! 💌');
             }
