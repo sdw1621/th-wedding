@@ -31,18 +31,9 @@ export default function Location() {
         }
     };
 
-    const openNaverMap = () => {
-        window.open('https://map.naver.com/p/entry/place/11678840', '_blank');
-    };
-
-    const openKakaoMap = () => {
-        window.open('https://map.kakao.com/link/to/메이필드호텔 봉래헌,37.5478974,126.817971', '_blank');
-    };
-
-    const openTmap = () => {
-        // 티맵 앱을 열고 목적지로 바로 길안내를 시작하는 딥링크
-        window.open('tmap://route?goalname=메이필드호텔%20봉래헌&goalx=126.817971&goaly=37.5478974', '_blank');
-    };
+    const naverMapUrl = 'https://map.naver.com/p/entry/place/11678840';
+    const kakaoMapUrl = `https://map.kakao.com/link/to/${encodeURIComponent('메이필드호텔 봉래헌')},37.5478974,126.817971`;
+    const tmapUrl = 'tmap://route?goalname=%EB%A9%94%EC%9D%B4%ED%95%84%EB%93%9C%ED%98%B8%ED%85%94%20%EB%B4%89%EB%9E%98%ED%97%8C&goalx=126.817971&goaly=37.5478974';
 
     return (
         <section className="py-24 px-6 bg-[#FDFBF7]" id="location">
@@ -175,27 +166,31 @@ export default function Location() {
                                 <span className="w-1.5 h-1.5 bg-rose-400 rounded-full mr-2"></span> 자가용 이용 시
                             </h4>
                             <div className="flex space-x-2 pl-3.5 mt-4 relative z-20">
-                                <button
-                                    onPointerDown={openNaverMap}
+                                <a
+                                    href={naverMapUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     style={{ touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent' }}
-                                    className="flex-1 py-4 bg-[#00C73C] text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#009b2e] active:opacity-90 shadow-sm select-none"
+                                    className="flex-1 py-4 bg-[#00C73C] text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#009b2e] active:opacity-90 shadow-sm select-none no-underline"
                                 >
                                     네이버 지도
-                                </button>
-                                <button
-                                    onPointerDown={openKakaoMap}
+                                </a>
+                                <a
+                                    href={kakaoMapUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     style={{ touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent' }}
-                                    className="flex-1 py-4 bg-[#FAE100] text-[#391B1B] text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#e0c800] active:opacity-90 shadow-sm select-none"
+                                    className="flex-1 py-4 bg-[#FAE100] text-[#391B1B] text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-[#e0c800] active:opacity-90 shadow-sm select-none no-underline"
                                 >
                                     카카오맵
-                                </button>
-                                <button
-                                    onPointerDown={openTmap}
+                                </a>
+                                <a
+                                    href={tmapUrl}
                                     style={{ touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent' }}
-                                    className="flex-1 py-4 bg-stone-800 text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-stone-900 active:opacity-90 shadow-sm select-none"
+                                    className="flex-1 py-4 bg-stone-800 text-white text-[12px] font-bold rounded-xl flex justify-center items-center active:bg-stone-900 active:opacity-90 shadow-sm select-none no-underline"
                                 >
                                     티맵
-                                </button>
+                                </a>
                             </div>
                         </div>
 
