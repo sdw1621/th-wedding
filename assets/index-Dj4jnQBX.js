@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "279"
+            "280"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -18987,15 +18987,14 @@ function Countdown() {
 }
 function Hero() {
   const [ref, isVisible] = useScrollReveal();
-  const addToCalendar = () => {
+  const googleCalendarUrl = (() => {
     const title = "강태구 & 신희영 결혼식";
     const location = "메이필드 호텔 봉래헌";
     const details = "두 사람의 소중한 시작을 축복해 주세요.";
     const startDate = "20260313T113000";
     const endDate = "20260313T143000";
-    const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
-    window.open(googleCalendarUrl, "_blank");
-  };
+    return `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
+  })();
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative w-full h-screen overflow-hidden flex flex-col items-center justify-between pb-32", id: "home", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute inset-0", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -19026,10 +19025,12 @@ function Hero() {
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `relative z-10 flex flex-col items-center transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(Countdown, {}),
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
-        "button",
+        "a",
         {
-          onPointerDown: addToCalendar,
-          style: { touchAction: "manipulation" },
+          href: googleCalendarUrl,
+          target: "_blank",
+          rel: "noopener noreferrer",
+          style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
           className: "mt-10 flex items-center space-x-2 px-6 py-2.5 bg-white/90 border border-stone-200 rounded-full text-stone-600 text-[11px] font-bold active:bg-stone-50 shadow-sm select-none",
           children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(Calendar, { size: 14 }),
@@ -21310,6 +21311,8 @@ function Guestbook({ showToast }) {
           const updated = messages.map((m) => m.id === existingMsg.id ? { ...m, ...msgDataLocal, date: dateStr } : m);
           setMessages(updated);
           localStorage.setItem("wedding_guestbook", JSON.stringify(updated));
+        } else {
+          fetchMessages(true);
         }
         showToast("메시지가 업데이트되었습니다! ✨");
       } else {
@@ -21324,6 +21327,8 @@ function Guestbook({ showToast }) {
           const newMessages = [localMsg, ...messages];
           setMessages(newMessages);
           localStorage.setItem("wedding_guestbook", JSON.stringify(newMessages));
+        } else {
+          fetchMessages(true);
         }
         showToast("소중한 메시지 감사합니다! 💌");
       }
