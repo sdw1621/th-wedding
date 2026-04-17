@@ -6,6 +6,143 @@ import ChevronRight from 'lucide-react/dist/esm/icons/chevron-right';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useBackButton } from '../hooks/useBackButton';
 
+// 작은 벚꽃 한 송이 (5겹 꽃잎 + 노란 중심)
+const Blossom = ({ cx, cy, s = 1, op = 0.85, r = 0 }) => (
+    <g transform={`translate(${cx},${cy}) scale(${s}) rotate(${r})`}>
+        {[0, 72, 144, 216, 288].map((a, i) => (
+            <ellipse key={i} cx="0" cy="-7.5" rx="4.8" ry="7"
+                fill={i % 2 === 0 ? '#fcd8e8' : '#f8c8df'}
+                transform={`rotate(${a})`} opacity={op} />
+        ))}
+        <circle cx="0" cy="0" r="3.2" fill="#fef0b0" opacity="0.95" />
+        <circle cx="0" cy="-1.6" r="0.7" fill="#c87010" opacity="0.6" />
+        <circle cx="1.4" cy="-0.7" r="0.7" fill="#c87010" opacity="0.6" />
+        <circle cx="-1.4" cy="-0.7" r="0.7" fill="#c87010" opacity="0.6" />
+    </g>
+);
+
+// 사진 프레임을 감싸는 벚꽃 + 덩굴 오버레이 (4변 장식)
+const BlossomFrame = () => (
+    <svg viewBox="0 0 100 125" fill="none" xmlns="http://www.w3.org/2000/svg"
+        style={{ position: 'absolute', inset: '-8px', width: 'calc(100% + 16px)', height: 'calc(100% + 16px)', pointerEvents: 'none', overflow: 'visible', zIndex: 10 }}>
+        {/* 상단 가지 */}
+        <path d="M-2 7 C15 3 35 2 50 2 C65 2 82 3 102 7" stroke="#7a9860" strokeWidth="0.85" fill="none" opacity="0.55" strokeLinecap="round" />
+        <path d="M15 4 C14 8 12 12 10 16" stroke="#8aae7a" strokeWidth="0.55" fill="none" opacity="0.5" strokeLinecap="round" />
+        <path d="M35 3 C34 7 32 11 30 15" stroke="#8aae7a" strokeWidth="0.55" fill="none" opacity="0.48" strokeLinecap="round" />
+        <path d="M65 3 C64 7 62 11 60 15" stroke="#8aae7a" strokeWidth="0.55" fill="none" opacity="0.48" strokeLinecap="round" />
+        <path d="M85 4 C84 8 82 12 80 16" stroke="#8aae7a" strokeWidth="0.55" fill="none" opacity="0.5" strokeLinecap="round" />
+        <path d="M18 5 C22 1 28 4 24 8 C22 11 18 10 18 6Z" fill="#93b87a" opacity="0.4" />
+        <path d="M50 2 C54 -2 60 1 56 5 C54 8 50 7 50 3Z" fill="#93b87a" opacity="0.38" />
+        <Blossom cx={7} cy={5} s={0.26} op={0.82} r={20} />
+        <Blossom cx={38} cy={2} s={0.27} op={0.78} r={8} />
+        <Blossom cx={52} cy={1.5} s={0.22} op={0.68} r={-5} />
+        <Blossom cx={80} cy={3} s={0.24} op={0.72} r={-18} />
+        <Blossom cx={93} cy={6} s={0.26} op={0.8} r={10} />
+        <Blossom cx={10} cy={16} s={0.19} op={0.6} r={5} />
+        <Blossom cx={60} cy={15} s={0.18} op={0.55} r={10} />
+        <circle cx="22" cy="3" r="1.9" fill="white" opacity="0.92" />
+        <circle cx="20" cy="1" r="1.4" fill="#fdf6f9" opacity="0.87" />
+        <circle cx="24" cy="1.5" r="1.6" fill="white" opacity="0.89" />
+        <circle cx="66" cy="2" r="1.8" fill="white" opacity="0.90" />
+        <circle cx="64" cy="0" r="1.4" fill="#fdf6f9" opacity="0.85" />
+        <circle cx="68" cy="0.5" r="1.5" fill="white" opacity="0.88" />
+        <circle cx="30" cy="15" r="1.6" fill="white" opacity="0.88" />
+        <circle cx="28" cy="13" r="1.2" fill="#fdf6f9" opacity="0.83" />
+        <circle cx="80" cy="16" r="1.5" fill="white" opacity="0.86" />
+        <circle cx="78" cy="14" r="1.1" fill="#fdf6f9" opacity="0.81" />
+        {/* 하단 가지 */}
+        <path d="M-2 118 C15 122 35 123 50 123 C65 123 82 122 102 118" stroke="#7a9860" strokeWidth="0.85" fill="none" opacity="0.55" strokeLinecap="round" />
+        <path d="M15 121 C14 117 12 113 10 109" stroke="#8aae7a" strokeWidth="0.55" fill="none" opacity="0.5" strokeLinecap="round" />
+        <path d="M35 122 C34 118 32 114 30 110" stroke="#8aae7a" strokeWidth="0.55" fill="none" opacity="0.48" strokeLinecap="round" />
+        <path d="M65 122 C64 118 62 114 60 110" stroke="#8aae7a" strokeWidth="0.55" fill="none" opacity="0.48" strokeLinecap="round" />
+        <path d="M85 121 C84 117 82 113 80 109" stroke="#8aae7a" strokeWidth="0.55" fill="none" opacity="0.5" strokeLinecap="round" />
+        <path d="M18 120 C22 124 28 121 24 117 C22 114 18 115 18 119Z" fill="#93b87a" opacity="0.4" />
+        <path d="M50 123 C54 127 60 124 56 120 C54 117 50 118 50 122Z" fill="#93b87a" opacity="0.38" />
+        <Blossom cx={7} cy={120} s={0.26} op={0.82} r={-20} />
+        <Blossom cx={38} cy={123} s={0.27} op={0.78} r={-8} />
+        <Blossom cx={52} cy={123.5} s={0.22} op={0.68} r={5} />
+        <Blossom cx={80} cy={122} s={0.24} op={0.72} r={18} />
+        <Blossom cx={93} cy={119} s={0.26} op={0.8} r={-10} />
+        <Blossom cx={10} cy={109} s={0.19} op={0.6} r={-5} />
+        <Blossom cx={60} cy={110} s={0.18} op={0.55} r={-10} />
+        <circle cx="22" cy="122" r="1.9" fill="white" opacity="0.92" />
+        <circle cx="20" cy="124" r="1.4" fill="#fdf6f9" opacity="0.87" />
+        <circle cx="24" cy="123.5" r="1.6" fill="white" opacity="0.89" />
+        <circle cx="66" cy="123" r="1.8" fill="white" opacity="0.90" />
+        <circle cx="64" cy="125" r="1.4" fill="#fdf6f9" opacity="0.85" />
+        <circle cx="68" cy="124.5" r="1.5" fill="white" opacity="0.88" />
+        <circle cx="30" cy="110" r="1.6" fill="white" opacity="0.88" />
+        <circle cx="28" cy="112" r="1.2" fill="#fdf6f9" opacity="0.83" />
+        <circle cx="80" cy="109" r="1.5" fill="white" opacity="0.86" />
+        <circle cx="78" cy="111" r="1.1" fill="#fdf6f9" opacity="0.81" />
+        {/* 왼쪽 가지 */}
+        <path d="M7 -2 C3 15 2 35 2 50 C2 70 3 95 7 127" stroke="#7a9860" strokeWidth="0.85" fill="none" opacity="0.55" strokeLinecap="round" />
+        <path d="M4 18 C8 16 12 14 16 12" stroke="#8aae7a" strokeWidth="0.55" fill="none" opacity="0.5" strokeLinecap="round" />
+        <path d="M3 38 C7 36 11 34 15 32" stroke="#8aae7a" strokeWidth="0.55" fill="none" opacity="0.48" strokeLinecap="round" />
+        <path d="M2 58 C6 56 10 54 14 52" stroke="#8aae7a" strokeWidth="0.55" fill="none" opacity="0.48" strokeLinecap="round" />
+        <path d="M2 78 C6 76 10 74 14 72" stroke="#8aae7a" strokeWidth="0.55" fill="none" opacity="0.5" strokeLinecap="round" />
+        <path d="M3 98 C7 96 11 94 15 92" stroke="#8aae7a" strokeWidth="0.55" fill="none" opacity="0.48" strokeLinecap="round" />
+        <path d="M4 115 C8 113 12 111 16 109" stroke="#8aae7a" strokeWidth="0.55" fill="none" opacity="0.5" strokeLinecap="round" />
+        <path d="M4 14 C0 10 2 4 7 6 C10 8 9 14 5 14Z" fill="#93b87a" opacity="0.4" />
+        <path d="M3 54 C-1 50 1 44 6 46 C9 48 8 54 4 54Z" fill="#93b87a" opacity="0.38" />
+        <Blossom cx={4} cy={10} s={0.25} op={0.78} r={15} />
+        <Blossom cx={1.5} cy={45} s={0.26} op={0.8} r={20} />
+        <Blossom cx={2} cy={80} s={0.24} op={0.74} r={12} />
+        <Blossom cx={4} cy={112} s={0.23} op={0.72} r={8} />
+        <Blossom cx={16} cy={12} s={0.18} op={0.56} r={-10} />
+        <Blossom cx={14} cy={52} s={0.18} op={0.54} r={-8} />
+        <Blossom cx={15} cy={92} s={0.17} op={0.52} r={-12} />
+        <circle cx="2" cy="27" r="1.9" fill="white" opacity="0.91" />
+        <circle cx="0" cy="25" r="1.4" fill="#fdf6f9" opacity="0.86" />
+        <circle cx="0.5" cy="29" r="1.5" fill="white" opacity="0.88" />
+        <circle cx="2" cy="63" r="1.8" fill="white" opacity="0.90" />
+        <circle cx="0" cy="61" r="1.4" fill="#fdf6f9" opacity="0.85" />
+        <circle cx="0.5" cy="65" r="1.3" fill="white" opacity="0.87" />
+        <circle cx="3" cy="97" r="1.7" fill="white" opacity="0.88" />
+        <circle cx="1" cy="95" r="1.3" fill="#fdf6f9" opacity="0.83" />
+        <circle cx="15" cy="32" r="1.5" fill="white" opacity="0.86" />
+        <circle cx="13" cy="30" r="1.1" fill="#fdf6f9" opacity="0.81" />
+        <circle cx="14" cy="72" r="1.4" fill="white" opacity="0.84" />
+        <circle cx="16" cy="109" r="1.5" fill="white" opacity="0.85" />
+        {/* 오른쪽 가지 */}
+        <path d="M93 -2 C97 15 98 35 98 50 C98 70 97 95 93 127" stroke="#7a9860" strokeWidth="0.85" fill="none" opacity="0.55" strokeLinecap="round" />
+        <path d="M96 18 C92 16 88 14 84 12" stroke="#8aae7a" strokeWidth="0.55" fill="none" opacity="0.5" strokeLinecap="round" />
+        <path d="M97 38 C93 36 89 34 85 32" stroke="#8aae7a" strokeWidth="0.55" fill="none" opacity="0.48" strokeLinecap="round" />
+        <path d="M98 58 C94 56 90 54 86 52" stroke="#8aae7a" strokeWidth="0.55" fill="none" opacity="0.48" strokeLinecap="round" />
+        <path d="M98 78 C94 76 90 74 86 72" stroke="#8aae7a" strokeWidth="0.55" fill="none" opacity="0.5" strokeLinecap="round" />
+        <path d="M97 98 C93 96 89 94 85 92" stroke="#8aae7a" strokeWidth="0.55" fill="none" opacity="0.48" strokeLinecap="round" />
+        <path d="M96 115 C92 113 88 111 84 109" stroke="#8aae7a" strokeWidth="0.55" fill="none" opacity="0.5" strokeLinecap="round" />
+        <path d="M96 14 C100 10 98 4 93 6 C90 8 91 14 95 14Z" fill="#93b87a" opacity="0.4" />
+        <path d="M97 54 C101 50 99 44 94 46 C91 48 92 54 96 54Z" fill="#93b87a" opacity="0.38" />
+        <Blossom cx={96} cy={10} s={0.25} op={0.78} r={-15} />
+        <Blossom cx={98.5} cy={45} s={0.26} op={0.8} r={-20} />
+        <Blossom cx={98} cy={80} s={0.24} op={0.74} r={-12} />
+        <Blossom cx={96} cy={112} s={0.23} op={0.72} r={-8} />
+        <Blossom cx={84} cy={12} s={0.18} op={0.56} r={10} />
+        <Blossom cx={86} cy={52} s={0.18} op={0.54} r={8} />
+        <Blossom cx={85} cy={92} s={0.17} op={0.52} r={12} />
+        <circle cx="98" cy="27" r="1.9" fill="white" opacity="0.91" />
+        <circle cx="100" cy="25" r="1.4" fill="#fdf6f9" opacity="0.86" />
+        <circle cx="99.5" cy="29" r="1.5" fill="white" opacity="0.88" />
+        <circle cx="98" cy="63" r="1.8" fill="white" opacity="0.90" />
+        <circle cx="100" cy="61" r="1.4" fill="#fdf6f9" opacity="0.85" />
+        <circle cx="99.5" cy="65" r="1.3" fill="white" opacity="0.87" />
+        <circle cx="97" cy="97" r="1.7" fill="white" opacity="0.88" />
+        <circle cx="99" cy="95" r="1.3" fill="#fdf6f9" opacity="0.83" />
+        <circle cx="85" cy="32" r="1.5" fill="white" opacity="0.86" />
+        <circle cx="87" cy="30" r="1.1" fill="#fdf6f9" opacity="0.81" />
+        <circle cx="86" cy="72" r="1.4" fill="white" opacity="0.84" />
+        <circle cx="84" cy="109" r="1.5" fill="white" opacity="0.85" />
+        {/* 흩날리는 꽃잎 */}
+        <ellipse cx="25" cy="20" rx="2.2" ry="1.3" fill="#fcd8e8" opacity="0.38" transform="rotate(28 25 20)" />
+        <ellipse cx="75" cy="18" rx="2" ry="1.2" fill="#f8c5de" opacity="0.33" transform="rotate(-32 75 18)" />
+        <ellipse cx="18" cy="105" rx="2.2" ry="1.3" fill="#fcd8e8" opacity="0.36" transform="rotate(15 18 105)" />
+        <ellipse cx="82" cy="107" rx="2" ry="1.2" fill="#f8c5de" opacity="0.34" transform="rotate(-18 82 107)" />
+        <ellipse cx="12" cy="55" rx="1.8" ry="1.1" fill="#fce0ec" opacity="0.30" transform="rotate(40 12 55)" />
+        <ellipse cx="88" cy="75" rx="1.8" ry="1.1" fill="#fce0ec" opacity="0.30" transform="rotate(-35 88 75)" />
+    </svg>
+);
+
 // 웨딩 보태니컬 SVG 코너 장식 (흰 모란 + 초록 잎)
 const BotCorner = ({ flipX = false, flipY = false, size = 58 }) => (
     <svg width={size} height={size} viewBox="0 0 60 60" fill="none"
@@ -290,11 +427,8 @@ export default function Gallery({ onFullscreenChange }) {
                         {images.map((img, idx) => (
                             <div key={idx} className="flex-none w-[80vw] sm:w-[300px] snap-center">
                                 <div className="relative">
-                                    {/* 보태니컬 코너 장식 */}
-                                    <div className="absolute -top-4 -left-4 pointer-events-none select-none z-10"><BotCorner size={44}/></div>
-                                    <div className="absolute -top-4 -right-4 pointer-events-none select-none z-10"><BotCorner flipX size={44}/></div>
-                                    <div className="absolute -bottom-4 -left-4 pointer-events-none select-none z-10"><BotCorner flipY size={44}/></div>
-                                    <div className="absolute -bottom-4 -right-4 pointer-events-none select-none z-10"><BotCorner flipX flipY size={44}/></div>
+                                    {/* 벚꽃 프레임 오버레이 */}
+                                    <BlossomFrame />
                                     {/* 로즈골드 그라디언트 테두리 */}
                                     <div className="p-[2px] rounded-xl" style={{ background: 'linear-gradient(135deg, #e8b4b8 0%, #f5dcc8 50%, #d4a8c0 100%)' }}>
                                         <div
