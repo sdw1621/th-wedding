@@ -17,7 +17,9 @@ const Blossom = ({ cx, cy, s = 1, op = 0.85, r = 0 }) => (
     </g>
 );
 
-export default function IntroScreen({ onEnter, onStart }) {
+/* global __COMMIT_HASH__ */
+
+export default function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
     const [isOpen, setIsOpen] = useState(false);
     const [isProcessing, setIsProcessing] = useState(false);
 
@@ -141,13 +143,15 @@ export default function IntroScreen({ onEnter, onStart }) {
                     <p className="text-stone-600 text-[12.5px] leading-relaxed">
                         가족식(스몰웨딩)이라{' '}
                         <span className="text-warn text-rose-500 font-semibold">하객 없이</span>{' '}
-                        진행됩니다. 축하 방명록만 남겨주세요. 💌
+                        진행됩니다.
+                        <br />
+                        축하 방명록만 남겨주세요. 💌
                     </p>
                 </div>
             </div>
 
             {/* 메인 콘텐츠 */}
-            <div className={`relative z-10 flex-1 flex flex-col items-center justify-center pb-24 transition-all duration-1000 ${isOpen ? 'scale-105 opacity-0 -translate-y-4' : 'scale-100 opacity-100'}`}>
+            <div className={`relative z-10 flex-1 flex flex-col items-center justify-center pb-40 transition-all duration-1000 ${isOpen ? 'scale-105 opacity-0 -translate-y-4' : 'scale-100 opacity-100'}`}>
                 {/* 장식 구분선 */}
                 <div className="flex items-center gap-3 mb-7 opacity-55">
                     <div className="h-px w-14" style={{ background: 'linear-gradient(to right, transparent, #c4a080)' }} />
@@ -155,7 +159,7 @@ export default function IntroScreen({ onEnter, onStart }) {
                     <div className="h-px w-14" style={{ background: 'linear-gradient(to left, transparent, #c4a080)' }} />
                 </div>
 
-                <h1 className="text-5xl font-serif text-stone-700 mb-4 tracking-widest text-center px-8">
+                <h1 className="text-5xl font-serif text-stone-700 mb-4 tracking-widest text-center px-8 whitespace-nowrap">
                     태구 <span className="mx-1" style={{ color: '#bf7a9a' }}>&</span> 희영
                 </h1>
                 <p className="text-stone-400 text-sm tracking-[0.3em] mb-2 font-light">2026. 03. 13. FRI</p>
@@ -183,6 +187,18 @@ export default function IntroScreen({ onEnter, onStart }) {
                         </span>
                     </span>
                 </button>
+            </div>
+
+            {/* 방문자 + 버전 배지 (인트로 좌하단) */}
+            <div className="absolute bottom-3 left-3 z-10 flex flex-col gap-1 items-stretch select-none pointer-events-none font-mono text-[10px] text-stone-400">
+                {totalVisitors != null && (
+                    <div className="flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100">
+                        <span>total : {totalVisitors}, today : {todayVisitors ?? '-'}</span>
+                    </div>
+                )}
+                <div className="flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100">
+                    <span>gh-pages #{__COMMIT_HASH__}</span>
+                </div>
             </div>
 
             {/* 하단 플로럴 가지 */}

@@ -5,13 +5,24 @@ import VolumeX from 'lucide-react/dist/esm/icons/volume-x';
 import ChevronRight from 'lucide-react/dist/esm/icons/chevron-right';
 import Play from 'lucide-react/dist/esm/icons/play';
 
-export default function MusicPlayer({ forcePlay }) {
+export default function MusicPlayer({ forcePlay, onPlayerReady }) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isYtPlaying, setIsYtPlaying] = useState(false);
     const [showPlaylist, setShowPlaylist] = useState(false);
     const audioRef = useRef(null);
     const [showInfo, setShowInfo] = useState(false);
     const playerRef = useRef(null);
+
+    // 외부에서 재생 트리거할 수 있도록 API 노출
+    useEffect(() => {
+        onPlayerReady?.({
+            triggerPlay: () => {
+                audioRef.current?.play()
+                    .then(() => { setIsPlaying(true); triggerIntroAnimation(); })
+                    .catch(() => { });
+            },
+        });
+    }, []);
 
     // BGM 리스트 정의
     const PLAYLIST = [

@@ -337,3 +337,13 @@ body.nav-hidden .fixed.bottom-0 {
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
+
+/* Share 카드 메시지 애니메이션 */
+@keyframes msg-glow {
+  0%, 100% { text-shadow: 0 0 0 rgba(224, 48, 96, 0); }
+  50% { text-shadow: 0 0 8px rgba(224, 48, 96, 0.25); }
+}
+@keyframes word-highlight {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}

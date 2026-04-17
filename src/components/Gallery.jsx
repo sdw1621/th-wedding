@@ -4,6 +4,7 @@ import X from 'lucide-react/dist/esm/icons/x';
 import ChevronLeft from 'lucide-react/dist/esm/icons/chevron-left';
 import ChevronRight from 'lucide-react/dist/esm/icons/chevron-right';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { useBackButton } from '../hooks/useBackButton';
 
 // 웨딩 보태니컬 SVG 코너 장식 (흰 모란 + 초록 잎)
 const BotCorner = ({ flipX = false, flipY = false, size = 58 }) => (
@@ -108,19 +109,19 @@ export default function Gallery({ onFullscreenChange }) {
         }
     };
 
-    // 풀스크린 상태 변경 시 부모에 알림
+    const closeLightbox = useCallback(() => {
+        document.body.classList.remove('music-hidden');
+        document.body.classList.remove('nav-hidden');
+        setSelectedIdx(null);
+    }, []);
+
+    // 풀스크린 상태 변경 시 부모에 알림 (배지 숨김 등)
     useEffect(() => {
-        if (onFullscreenChange) {
-            onFullscreenChange(
-                selectedIdx !== null,
-                () => {
-                    document.body.classList.remove('music-hidden');
-                    document.body.classList.remove('nav-hidden');
-                    setSelectedIdx(null);
-                }
-            );
-        }
-    }, [selectedIdx !== null]);
+        onFullscreenChange?.(selectedIdx !== null);
+    }, [selectedIdx !== null, onFullscreenChange]);
+
+    // 라이트박스를 뒤로가기 스택에 올림 (main 위에 쌓임)
+    useBackButton(selectedIdx !== null, closeLightbox);
 
     // YouTube IFrame API: 플레이어 초기화 + BGM 연동
     useEffect(() => {
@@ -197,9 +198,20 @@ export default function Gallery({ onFullscreenChange }) {
     return (
         <section className="py-24 bg-white overflow-hidden" id="gallery" ref={ref}>
             <div className={`max-w-2xl mx-auto transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-                <div className="text-center mb-8 px-6">
-                    <Camera className="mx-auto text-rose-200 mb-4" size={28} strokeWidth={1.5} />
-                    <h2 className="text-xl font-serif tracking-widest text-stone-800 font-bold">우리의 빛나는 순간</h2>
+                <div className="text-center mb-8 px-6 flex flex-col items-center">
+                    <Camera className="mx-auto text-rose-200 mb-3" size={28} strokeWidth={1.5} />
+                    <div className="flex justify-center mb-3">
+                        <svg viewBox="0 0 240 24" height="24" className="w-56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="0" y1="12" x2="78" y2="12" stroke="#fca5a5" strokeWidth="1" strokeLinecap="round" opacity="0.5" />
+                            <circle cx="83" cy="12" r="1.5" fill="#fca5a5" opacity="0.6" />
+                            <path d="M95 9 L98 12 L95 15 L92 12 Z" fill="#fca5a5" />
+                            <path d="M120 4 L122.3 9.7 L128 12 L122.3 14.3 L120 20 L117.7 14.3 L112 12 L117.7 9.7 Z" fill="#f87171" />
+                            <path d="M145 9 L148 12 L145 15 L142 12 Z" fill="#fca5a5" />
+                            <circle cx="157" cy="12" r="1.5" fill="#fca5a5" opacity="0.6" />
+                            <line x1="162" y1="12" x2="240" y2="12" stroke="#fca5a5" strokeWidth="1" strokeLinecap="round" opacity="0.5" />
+                        </svg>
+                    </div>
+                    <h2 className="text-2xl font-serif tracking-[0.2em] text-stone-900 font-bold">우리의 빛나는 순간</h2>
                 </div>
 
                 {/* 영상 영역 */}
@@ -236,60 +248,18 @@ export default function Gallery({ onFullscreenChange }) {
                     </div>
                 </div>
 
-                {/* 강아지 + 꽃 캐릭터 */}
-                <div className="flex justify-center mb-8 select-none pointer-events-none"
-                    style={{ animation: 'couple-float 3s ease-in-out infinite' }}>
-                    <svg width="180" height="160" viewBox="0 0 110 98" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        {/* 강아지 팔 */}
-                        <path d="M44 52 Q32 60 26 67" stroke="#c47a3a" strokeWidth="5" strokeLinecap="round" fill="none" />
-                        <path d="M66 52 Q78 60 84 67" stroke="#c47a3a" strokeWidth="5" strokeLinecap="round" fill="none" />
-                        {/* 왼쪽 흰꽃 */}
-                        {[0,45,90,135,180,225,270,315].map((a, i) => (
-                            <ellipse key={`lp${i}`} cx="26" cy="70" rx="3.5" ry="9" fill="white" stroke="#e0ccd8" strokeWidth="0.6" opacity="0.97" transform={`rotate(${a} 26 80)`} />
-                        ))}
-                        <circle cx="26" cy="80" r="9" fill="#f5c340" />
-                        <circle cx="23.8" cy="79" r="1.2" fill="#3a1a00" /><circle cx="28.2" cy="79" r="1.2" fill="#3a1a00" />
-                        <path d="M23.5 82.5 Q26 85.5 28.5 82.5" stroke="#3a1a00" strokeWidth="1.1" fill="none" strokeLinecap="round" />
-                        <ellipse cx="21.5" cy="82" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
-                        <ellipse cx="30.5" cy="82" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
-                        <line x1="26" y1="70" x2="26" y2="67" stroke="#a8c890" strokeWidth="2.5" strokeLinecap="round" />
-                        {/* 오른쪽 파란꽃 */}
-                        {[0,45,90,135,180,225,270,315].map((a, i) => (
-                            <ellipse key={`rp${i}`} cx="84" cy="70" rx="3.5" ry="9" fill="#2272d8" opacity="0.9" transform={`rotate(${a} 84 80)`} />
-                        ))}
-                        <circle cx="84" cy="80" r="9" fill="#f5c340" />
-                        <circle cx="81.8" cy="79" r="1.2" fill="#3a1a00" /><circle cx="86.2" cy="79" r="1.2" fill="#3a1a00" />
-                        <path d="M81.5 82.5 Q84 85.5 86.5 82.5" stroke="#3a1a00" strokeWidth="1.1" fill="none" strokeLinecap="round" />
-                        <ellipse cx="79.5" cy="82" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
-                        <ellipse cx="88.5" cy="82" rx="2.2" ry="1.3" fill="#ff9eb5" opacity="0.55" />
-                        <line x1="84" y1="70" x2="84" y2="67" stroke="#a8c890" strokeWidth="2.5" strokeLinecap="round" />
-                        {/* 귀 */}
-                        <ellipse cx="40" cy="20" rx="8" ry="12" fill="#a05828" transform="rotate(18 40 20)" />
-                        <ellipse cx="70" cy="20" rx="8" ry="12" fill="#a05828" transform="rotate(-18 70 20)" />
-                        <ellipse cx="40.5" cy="21" rx="4.5" ry="8" fill="#d4874a" opacity="0.55" transform="rotate(18 40.5 21)" />
-                        <ellipse cx="69.5" cy="21" rx="4.5" ry="8" fill="#d4874a" opacity="0.55" transform="rotate(-18 69.5 21)" />
-                        {/* 몸 */}
-                        <ellipse cx="55" cy="51" rx="13" ry="11" fill="#c47a3a" />
-                        <ellipse cx="55" cy="53" rx="8" ry="7" fill="#d4874a" opacity="0.5" />
-                        {/* 곱슬 털 */}
-                        <circle cx="43" cy="23" r="6.5" fill="#c47a3a" /><circle cx="48" cy="16" r="7" fill="#c47a3a" />
-                        <circle cx="55" cy="13" r="7.5" fill="#c47a3a" /><circle cx="62" cy="16" r="7" fill="#c47a3a" /><circle cx="67" cy="23" r="6.5" fill="#c47a3a" />
-                        <circle cx="46" cy="19" r="2.8" fill="#d98a45" opacity="0.45" /><circle cx="55" cy="12" r="2.8" fill="#d98a45" opacity="0.45" /><circle cx="64" cy="20" r="2.8" fill="#d98a45" opacity="0.45" />
-                        {/* 머리 */}
-                        <circle cx="55" cy="32" r="15" fill="#c47a3a" />
-                        <circle cx="55" cy="34" r="13" fill="#be722f" opacity="0.3" />
-                        {/* 주둥이 */}
-                        <ellipse cx="55" cy="38" rx="7" ry="5.5" fill="#b86820" opacity="0.65" />
-                        <ellipse cx="55" cy="35.5" rx="3" ry="2.2" fill="#2a0f00" />
-                        <path d="M51.5 39.5 Q55 43.5 58.5 39.5" stroke="#2a0f00" strokeWidth="1.2" fill="none" strokeLinecap="round" />
-                        <ellipse cx="55" cy="42" rx="3" ry="2.4" fill="#ff7a9a" />
-                        {/* 눈 */}
-                        <circle cx="48.5" cy="29" r="3" fill="#1a0800" /><circle cx="61.5" cy="29" r="3" fill="#1a0800" />
-                        <circle cx="49.5" cy="28" r="1" fill="white" opacity="0.9" /><circle cx="62.5" cy="28" r="1" fill="white" opacity="0.9" />
-                        {/* 뺨 */}
-                        <ellipse cx="44" cy="36" rx="3.5" ry="2.2" fill="#ff9eb5" opacity="0.45" />
-                        <ellipse cx="66" cy="36" rx="3.5" ry="2.2" fill="#ff9eb5" opacity="0.45" />
-                    </svg>
+                {/* 모카 캐릭터 (mocha-0.png) */}
+                <div
+                    className="w-full mb-8 select-none pointer-events-none"
+                    style={{ animation: 'couple-float 3s ease-in-out infinite' }}
+                >
+                    <img
+                        src={`${import.meta.env.BASE_URL}img/mocha-0.png`}
+                        alt="모카"
+                        className="w-full h-auto block"
+                        style={{ mixBlendMode: 'multiply' }}
+                        draggable={false}
+                    />
                 </div>
 
                 <div className="text-center mb-6">
@@ -383,11 +353,7 @@ export default function Gallery({ onFullscreenChange }) {
                     onClick={(e) => {
                         // 스와이프 직후에는 닫히지 않도록 방지
                         if (isSwiping.current) return;
-                        if (e.target === e.currentTarget) {
-                            document.body.classList.remove('music-hidden');
-                            document.body.classList.remove('nav-hidden');
-                            setSelectedIdx(null);
-                        }
+                        if (e.target === e.currentTarget) closeLightbox();
                     }}
                     onTouchStart={handleTouchStart}
                     onTouchEnd={handleTouchEnd}
@@ -397,9 +363,7 @@ export default function Gallery({ onFullscreenChange }) {
                         style={{ touchAction: 'manipulation' }}
                         onPointerDown={(e) => {
                             e.stopPropagation();
-                            document.body.classList.remove('music-hidden');
-                            document.body.classList.remove('nav-hidden');
-                            setSelectedIdx(null);
+                            closeLightbox();
                         }}
                     >
                         <div className="w-9 h-9 rounded-full flex items-center justify-center text-stone-500">

@@ -39,3 +39,4 @@ error.txt
 
 # Claude IDE
 .claude/
+.claude-scratch/
