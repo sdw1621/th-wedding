@@ -4,11 +4,16 @@ import Camera from 'lucide-react/dist/esm/icons/camera';
 import MapPin from 'lucide-react/dist/esm/icons/map-pin';
 import MessageSquare from 'lucide-react/dist/esm/icons/message-square';
 import Gift from 'lucide-react/dist/esm/icons/gift';
+import CodeXml from 'lucide-react/dist/esm/icons/code-xml';
 
 export default function BottomNav() {
     const scrollTo = (id) => {
         const el = document.getElementById(id);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
+        // 개발자 탭: Share 섹션 스크롤 후 Made by Developer 카드 자동 확장
+        if (id === 'share') {
+            setTimeout(() => window.dispatchEvent(new CustomEvent('openDevCard')), 400);
+        }
     };
 
     const navItems = [
@@ -17,6 +22,7 @@ export default function BottomNav() {
         { id: 'location', label: '오시는길', icon: MapPin },
         { id: 'account', label: '마음전하기', icon: Gift },
         { id: 'guestbook', label: '방명록', icon: MessageSquare },
+        { id: 'share', label: '개발자', icon: CodeXml, iconColor: 'text-blue-400' },
     ];
 
     return (
@@ -24,15 +30,11 @@ export default function BottomNav() {
             {navItems.map((item) => (
                 <button
                     key={item.id}
-                    onPointerDown={(e) => {
-                        // 모바일에서의 즉각적인 반응을 위해 PointerDown 사용
-                        // 단, 스크롤 유발 방지 등을 위해 상황에 맞춰 사용
-                        scrollTo(item.id);
-                    }}
+                    onPointerDown={() => scrollTo(item.id)}
                     style={{ touchAction: 'manipulation' }}
                     className="flex flex-col items-center justify-center text-rose-300 hover:text-rose-500 active:bg-stone-50 select-none w-[18%] py-3 rounded-xl transition-colors"
                 >
-                    <item.icon size={20} strokeWidth={1.5} className="mb-1" />
+                    <item.icon size={20} strokeWidth={1.5} className={`mb-1 ${item.iconColor || ''}`} />
                     <span className="text-[9px] font-bold tracking-tight whitespace-nowrap text-stone-500 uppercase">{item.label}</span>
                 </button>
             ))}
