@@ -18894,7 +18894,7 @@ function IntroScreen({ onEnter, onStart, totalVisitors, todayVisitors }) {
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm border border-stone-100", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
             "gh-pages #",
-            "281"
+            "282"
           ] }) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -18980,9 +18980,26 @@ function Countdown() {
     { label: "MIN", value: timeLeft.minutes },
     { label: "SEC", value: timeLeft.seconds }
   ];
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex space-x-4 mt-8", children: units.map((unit, idx) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "bg-white/80 border border-white/20 w-12 h-12 rounded-lg flex items-center justify-center shadow-sm mb-1", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg font-serif text-stone-800", children: String(unit.value).padStart(2, "0") }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] tracking-widest text-stone-800 font-black", children: unit.label })
+  const isUrgent = timeLeft.days === 0;
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "relative flex space-x-3 mt-8", children: units.map((unit, idx) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center relative z-10", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "div",
+      {
+        className: "w-[62px] h-[62px] rounded-2xl flex items-center justify-center mb-2 border",
+        style: isUrgent ? {
+          background: "linear-gradient(145deg, #0a0a1a 0%, #0d0d2e 100%)",
+          borderColor: "rgba(99,179,255,0.35)",
+          boxShadow: "0 0 18px rgba(99,179,255,0.35), inset 0 1px 0 rgba(255,255,255,0.05)",
+          animation: "urgentDark 2s ease-in-out infinite"
+        } : {
+          background: "linear-gradient(145deg, #0a0a1a 0%, #0d0d2e 100%)",
+          borderColor: "rgba(99,179,255,0.2)",
+          boxShadow: "0 0 12px rgba(99,179,255,0.2), inset 0 1px 0 rgba(255,255,255,0.06)"
+        },
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-2xl font-semibold tabular-nums countdown-num", children: String(unit.value).padStart(2, "0") })
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] tracking-widest font-black text-stone-900", children: unit.label })
   ] }, idx)) });
 }
 function Hero() {
@@ -19030,11 +19047,16 @@ function Hero() {
           href: googleCalendarUrl,
           target: "_blank",
           rel: "noopener noreferrer",
-          style: { touchAction: "manipulation", WebkitTapHighlightColor: "transparent" },
-          className: "mt-10 flex items-center space-x-2 px-6 py-2.5 bg-white/90 border border-stone-200 rounded-full text-stone-600 text-[11px] font-bold active:bg-stone-50 shadow-sm select-none",
+          style: {
+            touchAction: "manipulation",
+            WebkitTapHighlightColor: "transparent",
+            background: "linear-gradient(145deg, #111 0%, #1c1c1e 100%)",
+            boxShadow: "0 4px 14px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.08)"
+          },
+          className: "mt-6 flex items-center space-x-2 px-6 py-3 rounded-2xl text-white/85 text-[12px] font-bold active:opacity-85 select-none",
           children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Calendar, { size: 14 }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "캘린더에 일정 추가" })
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Calendar, { size: 14, className: "text-white/70" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "tracking-wide", children: "캘린더에 일정 추가" })
           ]
         }
       )
